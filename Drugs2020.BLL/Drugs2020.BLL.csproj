@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Drugs2020.BLL.BE\Drugs2020.BLL.BE.csproj" />
+    <ProjectReference Include="..\Drugs2020.DAL\Drugs2020.DAL.csproj" />
+  </ItemGroup>
+
+</Project>
