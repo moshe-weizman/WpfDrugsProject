@@ -25,7 +25,7 @@ namespace Drugs2020.PL.Views
         public Login()
         {
             InitializeComponent();
-            IBL bl = 
+          
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)

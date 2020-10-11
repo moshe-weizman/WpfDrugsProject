@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Drugs2020.BLL.BE
 {
-    class MedicalRecord
+    public class MedicalRecord
     {
         public DateTime Date { get; }
         public string Problem { get; set; }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Drugs2020.BLL.BE
 {
-    class ClinicBranch
+    public class ClinicBranch
     {
         public int BranchNumber { get; set; }
 
