@@ -20,9 +20,17 @@ namespace Drugs2020.PL.Views
     /// </summary>
     public partial class Login : UserControl
     {
+        public int PhysicianId { get; set; }
+        public string Password { get; set; }
         public Login()
         {
             InitializeComponent();
+            IBL bl = 
+        }
+
+        private void Login_Click(object sender, RoutedEventArgs e)
+        {
+            if()
         }
     }
 }
