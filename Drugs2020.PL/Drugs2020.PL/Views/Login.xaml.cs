@@ -25,12 +25,29 @@ namespace Drugs2020.PL.Views
         public Login()
         {
             InitializeComponent();
-            IBL bl = 
+            PhysicianId = 89898;
+            Password = "8888";
+            DataContext = this;
         }
 
-        private void Login_Click(object sender, RoutedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if()
+            PhysicianId = int.Parse(((TextBox)sender).Text);
+        }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+            Password = ((TextBox)sender).Text;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
