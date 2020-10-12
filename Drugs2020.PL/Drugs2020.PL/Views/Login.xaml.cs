@@ -30,16 +30,6 @@ namespace Drugs2020.PL.Views
             DataContext = this;
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            PhysicianId = int.Parse(((TextBox)sender).Text);
-        }
-
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-            Password = ((TextBox)sender).Text;
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 

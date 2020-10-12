@@ -11,16 +11,12 @@
         <TextBlock TextWrapping="Wrap"
                    Text="Physician ID:" />
         <TextBox Height="23"
-                 TextWrapping="Wrap"
-                 Text="{Binding PhysicianId}"
-                 TextChanged="TextBox_TextChanged" />
+                 TextWrapping="Wrap" />
 
         <TextBlock TextWrapping="Wrap"
                    Text="Password" />
         <TextBox Height="23"
-                 TextWrapping="Wrap"
-                 Text="{Binding Password}"
-                 TextChanged="TextBox_TextChanged_1" />
+                 TextWrapping="Wrap"/>
         <Button Content="Log in"
                 Click="Button_Click" />
         <Button Content="Enter as Administrator"
