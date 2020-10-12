@@ -63,7 +63,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\LogInCommand.cs" />
+    <Compile Include="Models\LogInModel.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="MyConverter.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Drugs2020.PL.Commands;
+using Drugs2020.PL.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -11,11 +13,26 @@ namespace Drugs2020.PL.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private UserModel userModel;
+        private LogInModel logInModel;
+
+        public LogInCommand LogInUserCommand { get; set; }
+
+        public int IdUser {
+            get { return logInModel.IdUser; }
+            set { logInModel.IdUser = value; } 
+        }
+
+        public string Password
+        {
+            get { return logInModel.Password; }
+            set { logInModel.Password = value; }
+        }
 
         public LogInViewModel()
         {
-            userModel = new UserModel();
+            logInModel = new LogInModel();
+
+            LogInUserCommand = new LogInCommand(this);
         }
     }
 }

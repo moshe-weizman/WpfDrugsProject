@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Drugs2020.PL.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,34 +21,40 @@ namespace Drugs2020.PL.Views
     /// </summary>
     public partial class Login : UserControl
     {
+
+        private LogInViewModel currentVM;
         public int PhysicianId { get; set; }
         public string Password { get; set; }
         public Login()
         {
             InitializeComponent();
-            PhysicianId = 89898;
-            Password = "8888";
-            DataContext = this;
+
+            currentVM = new LogInViewModel();
+            this.DataContext = currentVM;
+
+            //PhysicianId = 89898;
+            //Password = "8888";
+            //DataContext = this;
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            PhysicianId = int.Parse(((TextBox)sender).Text);
-        }
+        //private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    PhysicianId = int.Parse(((TextBox)sender).Text);
+        //}
 
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-            Password = ((TextBox)sender).Text;
-        }
+        //private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        //{
+        //    Password = ((TextBox)sender).Text;
+        //}
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
 
-        }
+        //}
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
+        //private void Button_Click_1(object sender, RoutedEventArgs e)
+        //{
 
-        }
+        //}
     }
 }

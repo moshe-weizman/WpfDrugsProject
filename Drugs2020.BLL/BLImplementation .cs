@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Drugs2020.BLL
 {
-    class BLImplementation : IBL
+    public class BLImplementation : IBL
     {
         public bool AutheticatePassword(string password)
         {

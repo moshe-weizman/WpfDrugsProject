@@ -22,6 +22,8 @@ namespace Drugs2020.PL
         public UserModel()
         {
             bl = new BLImplementation();
+
+
         }
     }
 }

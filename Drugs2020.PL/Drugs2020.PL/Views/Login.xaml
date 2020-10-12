@@ -7,24 +7,35 @@
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800">
+    <UserControl.Resources>
+        
+    </UserControl.Resources>
+    
     <StackPanel Width="299">
         <TextBlock TextWrapping="Wrap"
                    Text="Physician ID:" />
-        <TextBox Height="23"
+        <TextBox Name="TextBoxID" Height="23"
                  TextWrapping="Wrap"
-                 Text="{Binding PhysicianId}"
-                 TextChanged="TextBox_TextChanged" />
+                 Text="{Binding IdUser}"
+                 />
 
         <TextBlock TextWrapping="Wrap"
                    Text="Password" />
-        <TextBox Height="23"
+        <TextBox Name="PasswordTextBox"  Height="23"
                  TextWrapping="Wrap"
                  Text="{Binding Password}"
-                 TextChanged="TextBox_TextChanged_1" />
-        <Button Content="Log in"
-                Click="Button_Click" />
+                  />
+        <Button Content="Log in" Command="{Binding LogInUser}"  >
+            <!--<Button.CommandParameter>
+                --><!--<MultiBinding Converter="{StaticResource myConverter}">
+                    <Binding Path="Text" ElementName="PasswordTextBox"/>
+                    <Binding Path="Text" ElementName="TextBoxID"/>
+                </MultiBinding>--><!--
+
+            </Button.CommandParameter>-->
+              </Button>
         <Button Content="Enter as Administrator"
-                Click="Button_Click_1" />
+                 />
     </StackPanel>
 
 </UserControl>
