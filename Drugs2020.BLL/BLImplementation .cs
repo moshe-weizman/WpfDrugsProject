@@ -7,6 +7,7 @@ namespace Drugs2020.BLL
 {
     public class BLImplementation : IBL
     {
+        //
         public bool AutheticatePassword(string password)
         {
             throw new NotImplementedException();
