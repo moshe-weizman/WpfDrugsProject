@@ -3,39 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:Drugs2020.PL.Views"
+             xmlns:local="clr-namespace:Drugs2020.PL.Views" xmlns:local1="clr-namespace:Drugs2020.PL"
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800">
     <UserControl.Resources>
-        
+        <local:MyConverter x:Key="myConverter"/>
     </UserControl.Resources>
     
     <StackPanel Width="299">
-        <TextBlock TextWrapping="Wrap"
-                   Text="Physician ID:" />
-        <TextBox Name="TextBoxID" Height="23"
-                 TextWrapping="Wrap"
-                 Text="{Binding IdUser}"
-                 />
+       
+        <TextBlock TextWrapping="Wrap" Text="Physician ID:" />
+        <TextBox Name="TextBoxID" Height="23" TextWrapping="Wrap" Text="{Binding IdUser}"/>
 
-        <TextBlock TextWrapping="Wrap"
-                   Text="Password" />
-        <TextBox Name="PasswordTextBox"  Height="23"
-                 TextWrapping="Wrap"
-                 Text="{Binding Password}"
-                  />
-        <Button Content="Log in" Command="{Binding LogInUser}"  >
-            <!--<Button.CommandParameter>
-                --><!--<MultiBinding Converter="{StaticResource myConverter}">
+        <TextBlock TextWrapping="Wrap" Text="Password" />
+        <TextBox Name="PasswordTextBox"  Height="23" TextWrapping="Wrap" Text="{Binding Password}"/>
+        
+        <Button Content="Log in" Command="{Binding LogInUserCommand}"  >
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource myConverter}">
                     <Binding Path="Text" ElementName="PasswordTextBox"/>
                     <Binding Path="Text" ElementName="TextBoxID"/>
-                </MultiBinding>--><!--
+                </MultiBinding>
 
-            </Button.CommandParameter>-->
+            </Button.CommandParameter>
               </Button>
-        <Button Content="Enter as Administrator"
-                 />
+        <Button Content="Enter as Administrator"/>
     </StackPanel>
 
 </UserControl>

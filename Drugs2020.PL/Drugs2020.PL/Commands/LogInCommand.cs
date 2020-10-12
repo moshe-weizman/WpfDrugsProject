@@ -25,7 +25,16 @@ namespace Drugs2020.PL.Commands
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            var result = false;
+
+            var values = parameter as string[];
+
+            if (parameter != null)
+            {
+                result = true;
+            }
+
+            return result;
         }
 
         public void Execute(object parameter)

@@ -19,13 +19,20 @@ namespace Drugs2020.PL.ViewModels
 
         public int IdUser {
             get { return logInModel.IdUser; }
-            set { logInModel.IdUser = value; } 
+            set { logInModel.IdUser = value;
+                //if (PropertyChanged != null)//יכול להיות שזה לא נצרך
+                //    PropertyChanged(this, new PropertyChangedEventArgs("IdUser"));
+            
+            } 
         }
 
         public string Password
         {
             get { return logInModel.Password; }
-            set { logInModel.Password = value; }
+            set { logInModel.Password = value;
+            //    if (PropertyChanged != null)//יכול להיות שזה לא נצרך
+            //        PropertyChanged(this, new PropertyChangedEventArgs("Password"));
+            }
         }
 
         public LogInViewModel()
