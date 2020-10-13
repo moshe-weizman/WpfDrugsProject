@@ -5,15 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Drugs2020.PL.Commands
 {
     class LogInCommand : ICommand
     {
-        private ILogInViewModel logInViewModel;
-
-        public LogInCommand(LogInViewModel logInViewModel)
+        private ILogInViewModel logInViewModel;        
+        public LogInCommand(ILogInViewModel logInViewModel)
         {
             this.logInViewModel = logInViewModel;
         }
@@ -27,10 +27,9 @@ namespace Drugs2020.PL.Commands
         public bool CanExecute(object parameter)
         {
             var result = false;
-
             var values = (object[])parameter;
 
-            if ((string)values[0] != "" && (string)values[1] != "")
+            if (values[0] as string != "" && values[1] as string != "")
             {
                 result = true;
             }
@@ -39,15 +38,11 @@ namespace Drugs2020.PL.Commands
         }
 
         public void Execute(object parameter)
-        {
-            var values = (object[])parameter;
-            var userId = (string)values[0];
-            var password = (string)values[1];
-
-            IUser user = logInViewModel.IdentifyUser(userId);
-            if (user != null && logInViewModel.ValidatePassword(user, password))
+        {         
+            logInViewModel.User = logInViewModel.IdentifyUser();
+            if (logInViewModel.User != null && logInViewModel.ValidatePassword())
             {
-                //new userControl
+                MessageBox.Show(logInViewModel.Password + " " + logInViewModel.UserId);
             }
             else
             {
