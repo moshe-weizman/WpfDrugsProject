@@ -8,6 +8,7 @@ using System.Windows.Input;
 
 namespace Drugs2020.PL.Commands
 {
+    ///
     class LogInCommand : ICommand
     {
         private LogInViewModel logInViewModel;
@@ -27,16 +28,16 @@ namespace Drugs2020.PL.Commands
         {
             var result = false;
 
-            var values = parameter as string[];
+            var values = parameter.ToString(); 
 
-            if (parameter != null)
+            if (values != "")
             {
                 result = true;
             }
 
             return result;
         }
-
+        
         public void Execute(object parameter)
         {
             
