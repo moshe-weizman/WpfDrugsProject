@@ -23,8 +23,8 @@ namespace Drugs2020.PL.Views
     {
 
         private LogInViewModel currentVM;
-        public int PhysicianId { get; set; }
-        public string Password { get; set; }
+        //public int PhysicianId { get; set; }
+        //public string Password { get; set; }
         public Login()
         {
             InitializeComponent();
@@ -33,25 +33,25 @@ namespace Drugs2020.PL.Views
             this.DataContext = currentVM;
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            PhysicianId = int.Parse(((TextBox)sender).Text);
-        }
+        //private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    PhysicianId = int.Parse(((TextBox)sender).Text);
+        //}
 
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-            Password = ((TextBox)sender).Text;
-        }
+        //private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        //{
+        //    Password = ((TextBox)sender).Text;
+        //}
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
 
-            //}
+        //    //}
 
-            //private void Button_Click_1(object sender, RoutedEventArgs e)
-            //{
+        //    //private void Button_Click_1(object sender, RoutedEventArgs e)
+        //    //{
 
-            //}
-        }
+        //    //}
+        //}
     }
 }

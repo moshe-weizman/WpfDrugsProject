@@ -9,10 +9,8 @@
         Title="MainWindow"
         Height="450"
         Width="800">
-    <Window.Resources>
-        <!--<local:MyConverter x:Key="myConverter" />-->
-    </Window.Resources>
-    <Grid>
+
+    <Grid x:Name="OpeningScreen">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50*" />
             <ColumnDefinition Width="50*" />

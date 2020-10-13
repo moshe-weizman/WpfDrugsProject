@@ -10,5 +10,7 @@ namespace Drugs2020.BLL
          bool ValidatePassword(IUser user, string password);
 
          IUser IdentifyUser(string userID);
+
+        Patient GetPatient(string ID);
     }
 }

@@ -23,5 +23,10 @@ namespace Drugs2020.BLL
 
             return new Physician("1234", "Mose", "Weizman", "0545678990", Sex.MALE, @"Moshe@gmail.com", "1234", "Elad", DateTime.Parse("12/10/1985"), SpecializationType.FAMILY_PHYSICIAN);
         }
+
+        public Patient GetPatient(string ID)
+        {
+            return new Patient("12", "Dudu", "Cohen", Sex.MALE, "0501234567", "d@gmail.com", "tel aviv", DateTime.Parse("12/10/1985"));
+        }
     }
 }
