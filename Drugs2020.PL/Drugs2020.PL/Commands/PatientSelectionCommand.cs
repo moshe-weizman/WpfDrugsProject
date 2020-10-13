@@ -11,9 +11,9 @@ namespace Drugs2020.PL.Commands
     class PatientSelectionCommand : ICommand
     {
 
-        private PatientSelectionViewModel patientSelectionVM;
+        private PatientSearchViewModel patientSelectionVM;
 
-        public PatientSelectionCommand(PatientSelectionViewModel patientSelectionVM)
+        public PatientSelectionCommand(PatientSearchViewModel patientSelectionVM)
         {
             this.patientSelectionVM = patientSelectionVM;
         }

@@ -42,11 +42,12 @@ namespace Drugs2020.PL.Commands
             if (logInViewModel.User != null && logInViewModel.ValidatePassword())
             {
                 MessageBox.Show(logInViewModel.Password + " " + logInViewModel.UserId);
+                logInViewModel.LogUserIn();
 
             }
             else
             {
-                //no such user
+                MessageBox.Show("invalid user name or password");
             }
         }
     }

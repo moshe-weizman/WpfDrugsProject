@@ -13,9 +13,9 @@ namespace Drugs2020.PL.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public Physician PhysicianUser { get; }
-        public PhysicianPanelViewModel(Physician physicianUser)
+        public PhysicianPanelViewModel(IUser physicianUser)
         {
-            PhysicianUser = physicianUser;
+            PhysicianUser = physicianUser as Physician;
         }
     }
 }

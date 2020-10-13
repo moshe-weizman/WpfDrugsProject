@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Drugs2020.PL.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,12 +17,11 @@ using System.Windows.Shapes;
 namespace Drugs2020.PL.Views
 {
     /// <summary>
-    /// Interaction logic for PatientSearchUC.xaml
+    /// Interaction logic for PhysicianPanel.xaml
     /// </summary>
-    public partial class PatientSearchUC : UserControl
+    public partial class PhysicianPanel : UserControl
     {
-        private currentVM
-        public PatientSearchUC()
+        public PhysicianPanel()
         {
             InitializeComponent();
         }

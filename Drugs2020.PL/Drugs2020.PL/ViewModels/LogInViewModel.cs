@@ -9,6 +9,7 @@ namespace Drugs2020.PL.ViewModels
     {
 
         private LogInModel logInModel;
+        private MainWindowViewModel containingVm;
         public LogInCommand LogInUserCommand { get; set; }
 
         public string UserId
@@ -28,10 +29,10 @@ namespace Drugs2020.PL.ViewModels
             set { logInModel.User = value; }
         }
 
-        public LogInViewModel()
+        public LogInViewModel(MainWindowViewModel containingVm)
         {
+            this.containingVm = containingVm;
             logInModel = new LogInModel();
-
             LogInUserCommand = new LogInCommand(this);
         }
         public IUser IdentifyUser()
@@ -41,6 +42,10 @@ namespace Drugs2020.PL.ViewModels
         public bool ValidatePassword()
         {
             return logInModel.ValidatePassword();
+        }
+        public void LogUserIn()
+        {
+            containingVm.CurrentVm = new PhysicianPanelViewModel(User);
         }
     }
 }

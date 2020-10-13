@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.Models
 {
-    class PatientSelectionModel
+    class PatientSearchModel
     {
 
         private IBL bl;
         public string PatientID { get; set; }
 
-        public PatientSelectionModel()
+        public PatientSearchModel()
         {
             this.bl = new BLImplementation();
         }

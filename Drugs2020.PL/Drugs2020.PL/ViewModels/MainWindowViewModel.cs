@@ -26,7 +26,7 @@ namespace Drugs2020.PL.ViewModels
 
         public MainWindowViewModel()
         {
-            CurrentVm = new LogInViewModel();
+            CurrentVm = new LogInViewModel(this);
         }
     }
 }
