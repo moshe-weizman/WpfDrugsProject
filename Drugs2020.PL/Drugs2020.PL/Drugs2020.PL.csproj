@@ -63,9 +63,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\LogInCommand.cs" />
+    <Compile Include="Models\LogInModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="ViewModels\LogInViewModel.cs" />
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MyConverter.cs" />
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -110,9 +115,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="ViewModels\" />
+    <ProjectReference Include="..\..\Drugs2020.BLL.BE\Drugs2020.BLL.BE.csproj">
+      <Project>{293a841b-86d8-47b7-ba76-df3f48e485d8}</Project>
+      <Name>Drugs2020.BLL.BE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Drugs2020.BLL\Drugs2020.BLL.csproj">
+      <Project>{e7c1f385-2bf1-43ca-8b1a-4ec528a9dc3a}</Project>
+      <Name>Drugs2020.BLL</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\medicine.jpg" />

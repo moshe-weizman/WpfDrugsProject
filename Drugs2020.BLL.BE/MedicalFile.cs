@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Drugs2020.BLL.BE
 {
-    class MedicalFile
+    public class MedicalFile
     {
         public double Weight { get; set; }
         public double Height { get; set; }

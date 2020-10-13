@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Drugs2020.BLL.BE
 {
-    class ActiveIngredient
+    public class ActiveIngredient
     {
         public string Ingredient { get; set; }
         public double MgQuantity { get; set; }
