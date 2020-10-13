@@ -13,7 +13,7 @@ namespace Drugs2020.PL.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         private IViewModel _CurrentVm;
 
-        public IViewModel MyProperty
+        public IViewModel CurrentVm
         {
             get { return _CurrentVm; }
             set 
@@ -26,7 +26,7 @@ namespace Drugs2020.PL.ViewModels
 
         public MainWindowViewModel()
         {
-            CurrentView = new LogInViewModel();
+            CurrentVm = new LogInViewModel();
         }
     }
 }
