@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class LogInViewModel : ILogInViewModel
+    class LogInViewModel : ILogInViewModel, IViewModel
     {
 
         private LogInModel logInModel;

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PhysicianPanelViewModel : INotifyPropertyChanged
+    class PhysicianPanelViewModel : INotifyPropertyChanged, IViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public Physician PhysicianUser { get; }

@@ -69,7 +69,9 @@
     <Compile Include="Models\PhysicianPanelModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="ViewModels\ILogInViewModel.cs" />
+    <Compile Include="ViewModels\IViewModel.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\PhysicianPanelViewModel.cs" />
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>

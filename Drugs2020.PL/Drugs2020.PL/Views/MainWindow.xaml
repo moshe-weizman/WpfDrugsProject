@@ -12,16 +12,5 @@
     <Window.Resources>
         <!--<local:MyConverter x:Key="myConverter" />-->
     </Window.Resources>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50*" />
-            <ColumnDefinition Width="50*" />
-        </Grid.ColumnDefinitions>
-        <uc:Login Grid.Column="0"/>
-        <Image Source="/Images/medicine.jpg"
-               Stretch="UniformToFill"
-               
-               Grid.Column="1"
-               Grid.ColumnSpan="1" />
-    </Grid>
+    <ContentControl Content="{Binding CurrentVm}" />
 </Window>

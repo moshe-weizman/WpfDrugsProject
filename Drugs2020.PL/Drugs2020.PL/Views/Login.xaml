@@ -12,36 +12,48 @@
         <local:MyConverter x:Key="myConverter" />
     </UserControl.Resources>
 
-    <StackPanel Width="299">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="50*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Width="299">
 
-        <TextBlock TextWrapping="Wrap"
-                   Text="Physician ID:" />
-        <TextBox Name="TextBoxID"
-                 Height="23"
-                 TextWrapping="Wrap"
-                 Text="{Binding UserId}"/>
+            <TextBlock TextWrapping="Wrap"
+                       Text="Physician ID:" />
+            <TextBox Name="TextBoxID"
+                     Height="23"
+                     TextWrapping="Wrap"
+                     Text="{Binding UserId}" />
 
-        <TextBlock TextWrapping="Wrap"
-                   Text="Password" />
-        <TextBox Name="PasswordTextBox"
-                 Height="23"
-                 TextWrapping="Wrap"
-                 Text="{Binding Password}"/>
+            <TextBlock TextWrapping="Wrap"
+                       Text="Password" />
+            <TextBox Name="PasswordTextBox"
+                     Height="23"
+                     TextWrapping="Wrap"
+                     Text="{Binding Password}" />
 
-        <Button Content="Log in"
-                Command="{Binding LogInUserCommand}">
-            <Button.CommandParameter>
-                <MultiBinding Converter="{StaticResource myConverter}">
-                    <Binding Path="Text"
-                             ElementName="TextBoxID" />
-                    <Binding Path="Text"
-                             ElementName="PasswordTextBox" />
-                </MultiBinding>
+            <Button Content="Log in"
+                    Command="{Binding LogInUserCommand}">
+                <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource myConverter}">
+                        <Binding Path="Text"
+                                 ElementName="TextBoxID" />
+                        <Binding Path="Text"
+                                 ElementName="PasswordTextBox" />
+                    </MultiBinding>
 
-            </Button.CommandParameter>
+                </Button.CommandParameter>
 
-        </Button>
-        <Button Content="Enter as Administrator" />
-    </StackPanel>
+            </Button>
+            <Button Content="Enter as Administrator" />
+        </StackPanel>
+        <Image Source="/Images/medicine.jpg"
+               Stretch="UniformToFill"
+               Grid.Column="1"
+               Grid.ColumnSpan="1" />
+    </Grid>
+
+    
 
 </UserControl>

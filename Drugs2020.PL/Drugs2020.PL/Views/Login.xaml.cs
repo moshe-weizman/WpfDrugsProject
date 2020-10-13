@@ -22,15 +22,15 @@ namespace Drugs2020.PL.Views
     public partial class Login : UserControl
     {
 
-        private LogInViewModel currentVM;
+        private LogInViewModel viewModel;
         public int PhysicianId { get; set; }
         public string Password { get; set; }
         public Login()
         {
             InitializeComponent();
 
-            currentVM = new LogInViewModel();
-            this.DataContext = currentVM;
+            viewModel = new LogInViewModel();
+            DataContext = viewModel;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

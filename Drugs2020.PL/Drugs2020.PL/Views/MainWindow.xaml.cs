@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Drugs2020.PL.ViewModels;
+using Drugs2020.PL.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,12 @@ namespace Drugs2020.PL
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainWindowViewModel viewModel;    
         public MainWindow()
         {
             InitializeComponent();
+            viewModel = new MainWindowViewModel();
+            this.DataContext = viewModel; 
         }
     }
 }
