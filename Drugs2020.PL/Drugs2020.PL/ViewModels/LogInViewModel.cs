@@ -5,23 +5,28 @@ using System.ComponentModel;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class LogInViewModel : INotifyPropertyChanged, ILogInViewModel
+    class LogInViewModel : ILogInViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
 
         private LogInModel logInModel;
         public LogInCommand LogInUserCommand { get; set; }
 
-        //public string UserId {
-        //    get { return logInModel.UserId; }
-        //    set { logInModel.UserId = value;} 
-        //}
-        //
-        //public string Password
-        //{
-        //    get { return logInModel.Password; }
-        //    set { logInModel.Password = value;}
-        //}
+        public string UserId
+        {
+            get { return logInModel.UserId; }
+            set { logInModel.UserId = value; }
+        }
+
+        public string Password
+        {
+            get { return logInModel.Password; }
+            set { logInModel.Password = value; }
+        }
+        public IUser User
+        {
+            get { return logInModel.User; }
+            set { logInModel.User = value; }
+        }
 
         public LogInViewModel()
         {
@@ -29,13 +34,13 @@ namespace Drugs2020.PL.ViewModels
 
             LogInUserCommand = new LogInCommand(this);
         }
-        public IUser IdentifyUser(string userId)
+        public IUser IdentifyUser()
         {
-            return logInModel.IdentifyUser(userId);
+            return logInModel.IdentifyUser();
         }
-        public bool ValidatePassword(IUser user, string password)
+        public bool ValidatePassword()
         {
-            return logInModel.ValidatePassword(user, password);
+            return logInModel.ValidatePassword();
         }
     }
 }

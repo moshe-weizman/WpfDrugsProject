@@ -18,13 +18,15 @@
                    Text="Physician ID:" />
         <TextBox Name="TextBoxID"
                  Height="23"
-                 TextWrapping="Wrap"/>
+                 TextWrapping="Wrap"
+                 Text="{Binding UserId}"/>
 
         <TextBlock TextWrapping="Wrap"
                    Text="Password" />
         <TextBox Name="PasswordTextBox"
                  Height="23"
-                 TextWrapping="Wrap"/>
+                 TextWrapping="Wrap"
+                 Text="{Binding Password}"/>
 
         <Button Content="Log in"
                 Command="{Binding LogInUserCommand}">
@@ -37,6 +39,7 @@
                 </MultiBinding>
 
             </Button.CommandParameter>
+
         </Button>
         <Button Content="Enter as Administrator" />
     </StackPanel>

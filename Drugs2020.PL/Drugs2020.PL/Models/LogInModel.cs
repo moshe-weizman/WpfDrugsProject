@@ -9,22 +9,23 @@ using System.Threading.Tasks;
 namespace Drugs2020.PL.Models
 {
     class LogInModel
-    {       
-        public Physician PhysicianUser { get; set; }
-        public Admin AdminUser { get; set; } 
+    {             
         private IBL bl;
+        public string UserId { get; set; }
+        public string Password { get; set; }
+        public IUser User { get; set; }
 
         public LogInModel()
         {
             bl = new BLImplementation();
         }
-        public IUser IdentifyUser(string userId)
+        public IUser IdentifyUser()
         {
-            return bl.IdentifyUser(userId);
+            return bl.IdentifyUser(UserId);
         }
-        public bool ValidatePassword(IUser user, string password)
+        public bool ValidatePassword()
         {
-            return bl.ValidatePassword(user, password);
+            return bl.ValidatePassword(User, Password);
         }
     }
 }

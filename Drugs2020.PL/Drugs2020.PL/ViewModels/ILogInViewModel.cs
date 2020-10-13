@@ -4,7 +4,10 @@ namespace Drugs2020.PL.ViewModels
 {
     interface ILogInViewModel
     {
-        IUser IdentifyUser(string userId);
-        bool ValidatePassword(IUser user, string password);
+        string Password { get; set; }
+        string UserId { get; set; }
+        IUser User { get; set; }
+        IUser IdentifyUser();
+        bool ValidatePassword();
     }
 }
