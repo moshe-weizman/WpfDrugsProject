@@ -10,6 +10,6 @@ namespace Drugs2020.PL.Models
     class PhysicianPanelModel
     {
         public Physician CurrentPhysician { get; set; }
-        public Patient C { get; set; }
+        public Patient Patient { get; set; }
     }
 }

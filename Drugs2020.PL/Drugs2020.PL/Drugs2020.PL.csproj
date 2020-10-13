@@ -65,6 +65,7 @@
     </ApplicationDefinition>
     <Compile Include="Commands\LogInCommand.cs" />
     <Compile Include="Models\LogInModel.cs" />
+    <Compile Include="Models\PatientSelectionModel.cs" />
     <Compile Include="Models\PhysicianPanelModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="ViewModels\ILogInViewModel.cs" />
