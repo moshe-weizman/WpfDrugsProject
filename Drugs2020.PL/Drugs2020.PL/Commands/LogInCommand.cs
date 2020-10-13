@@ -12,7 +12,8 @@ namespace Drugs2020.PL.Commands
 {
     class LogInCommand : ICommand
     {
-        private ILogInViewModel logInViewModel;        
+        private ILogInViewModel logInViewModel;
+
         public LogInCommand(ILogInViewModel logInViewModel)
         {
             this.logInViewModel = logInViewModel;
@@ -30,19 +31,18 @@ namespace Drugs2020.PL.Commands
             var values = (object[])parameter;
 
             if (values[0] as string != "" && values[1] as string != "")
-            {
                 result = true;
-            }
 
             return result;
         }
 
         public void Execute(object parameter)
         {         
-            logInViewModel.User = logInViewModel.IdentifyUser();
+            logInViewModel.User = logInViewModel.IdentifyUser();//צריך להשתמש בתפסית חריגה במקום
             if (logInViewModel.User != null && logInViewModel.ValidatePassword())
             {
                 MessageBox.Show(logInViewModel.Password + " " + logInViewModel.UserId);
+
             }
             else
             {
