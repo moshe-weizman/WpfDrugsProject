@@ -8,14 +8,20 @@ namespace Drugs2020.BLL
     public class BLImplementation : IBL
     {
         ///
-        public bool AutheticatePassword(string password)
+        public bool ValidatePassword(IUser user, string password)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            if (user.GetPassword() == password)
+            {
+                result = true;
+            }
+            return result;
         }
 
-        public UserType IdentifyUser(string userID)
+        public IUser IdentifyUser(string userID)
         {
-            throw new NotImplementedException();
+
+            return new Physician(1234, "Mose", "Weizman", "0545678990", Sex.MALE, @"Moshe@gmail.com", "1234", "Elad", DateTime.Parse("12/10/1985"), SpecializationType.FAMILY_PHYSICIAN);
         }
     }
 }

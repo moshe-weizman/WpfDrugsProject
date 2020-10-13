@@ -1,45 +1,41 @@
-﻿using Drugs2020.PL.Commands;
+﻿using Drugs2020.BLL.BE;
+using Drugs2020.PL.Commands;
 using Drugs2020.PL.Models;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class LogInViewModel : INotifyPropertyChanged
+    class LogInViewModel : INotifyPropertyChanged, ILogInViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
         private LogInModel logInModel;
-
         public LogInCommand LogInUserCommand { get; set; }
 
-        public int IdUser {
-            get { return logInModel.IdUser; }
-            set { logInModel.IdUser = value;
-                //if (PropertyChanged != null)//יכול להיות שזה לא נצרך
-                //    PropertyChanged(this, new PropertyChangedEventArgs("IdUser"));
-            
-            } 
-        }
-
-        public string Password
-        {
-            get { return logInModel.Password; }
-            set { logInModel.Password = value;
-            //    if (PropertyChanged != null)//יכול להיות שזה לא נצרך
-            //        PropertyChanged(this, new PropertyChangedEventArgs("Password"));
-            }
-        }
+        //public string UserId {
+        //    get { return logInModel.UserId; }
+        //    set { logInModel.UserId = value;} 
+        //}
+        //
+        //public string Password
+        //{
+        //    get { return logInModel.Password; }
+        //    set { logInModel.Password = value;}
+        //}
 
         public LogInViewModel()
         {
             logInModel = new LogInModel();
 
             LogInUserCommand = new LogInCommand(this);
+        }
+        public IUser IdentifyUser(string userId)
+        {
+            return logInModel.IdentifyUser(userId);
+        }
+        public bool ValidatePassword(IUser user, string password)
+        {
+            return logInModel.ValidatePassword(user, password);
         }
     }
 }

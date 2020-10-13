@@ -31,10 +31,6 @@ namespace Drugs2020.PL.Views
 
             currentVM = new LogInViewModel();
             this.DataContext = currentVM;
-
-            //PhysicianId = 89898;
-            //Password = "8888";
-            //DataContext = this;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -50,11 +46,12 @@ namespace Drugs2020.PL.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-        //}
+            //}
 
-        //private void Button_Click_1(object sender, RoutedEventArgs e)
-        //{
+            //private void Button_Click_1(object sender, RoutedEventArgs e)
+            //{
 
-        //}
+            //}
+        }
     }
 }

@@ -66,7 +66,9 @@
     <Compile Include="Commands\LogInCommand.cs" />
     <Compile Include="Models\LogInModel.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="ViewModels\ILogInViewModel.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
+    <Compile Include="ViewModels\PhysicianPanelViewModel.cs" />
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>

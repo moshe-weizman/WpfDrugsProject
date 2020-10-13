@@ -7,8 +7,8 @@ namespace Drugs2020.BLL
 {
    public interface IBL
     {
-         bool AutheticatePassword(string password);
+         bool ValidatePassword(IUser user, string password);
 
-         UserType IdentifyUser(string userID);
+         IUser IdentifyUser(string userID);
     }
 }
