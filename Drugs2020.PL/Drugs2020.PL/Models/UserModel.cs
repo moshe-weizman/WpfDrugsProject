@@ -12,18 +12,6 @@ namespace Drugs2020.PL
     class UserModel
     {
 
-        private IBL bl;
-
-        public Physician PhysicianUser { get; set; }
-
-        public Admin AdminUser { get; set; }
-
-
-        public UserModel()
-        {
-            bl = new BLImplementation();
-
-
-        }
+        
     }
 }

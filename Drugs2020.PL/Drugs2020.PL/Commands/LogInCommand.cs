@@ -1,4 +1,5 @@
-﻿using Drugs2020.PL.ViewModels;
+﻿using Drugs2020.BLL.BE;
+using Drugs2020.PL.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +9,9 @@ using System.Windows.Input;
 
 namespace Drugs2020.PL.Commands
 {
-    ///
     class LogInCommand : ICommand
     {
-        private LogInViewModel logInViewModel;
+        private ILogInViewModel logInViewModel;
 
         public LogInCommand(LogInViewModel logInViewModel)
         {
@@ -28,19 +28,31 @@ namespace Drugs2020.PL.Commands
         {
             var result = false;
 
-            var values = parameter.ToString(); 
+            var values = (object[])parameter;
 
-            if (values != "")
+            if ((string)values[0] != "" && (string)values[1] != "")
             {
                 result = true;
             }
 
             return result;
         }
-        
+
         public void Execute(object parameter)
         {
-            
+            var values = (object[])parameter;
+            var userId = (string)values[0];
+            var password = (string)values[1];
+
+            IUser user = logInViewModel.IdentifyUser(userId);
+            if (user != null && logInViewModel.ValidatePassword(user, password))
+            {
+                //new userControl
+            }
+            else
+            {
+                //no such user
+            }
         }
     }
 }
