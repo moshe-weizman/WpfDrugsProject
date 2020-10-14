@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{00700E6F-0568-4078-A757-318FB8AFE924}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ddddddd</RootNamespace>
+    <AssemblyName>ddddddd</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\AddToDbCommand.cs" />
+    <Compile Include="Commands\LogInCommand.cs" />
+    <Compile Include="Commands\PatientSelectionCommand.cs" />
+    <Compile Include="Converters\FieldsTextToBoolConverter.cs" />
+    <Compile Include="Models\AddPatientModel.cs" />
+    <Compile Include="Models\LogInModel.cs" />
+    <Compile Include="Models\MainWindowModel.cs" />
+    <Compile Include="Models\PatientDataModel.cs" />
+    <Compile Include="Models\PatientSearchModel.cs" />
+    <Compile Include="Models\PhysicianPanelModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="ViewModels\AddPatientViewModel.cs" />
+    <Compile Include="ViewModels\IAddToDb.cs" />
+    <Compile Include="ViewModels\ILogInViewModel.cs" />
+    <Compile Include="ViewModels\IPatientSearchViewModel.cs" />
+    <Compile Include="ViewModels\IViewModel.cs" />
+    <Compile Include="ViewModels\LogInViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\PatientDataViewModel.cs" />
+    <Compile Include="ViewModels\PatientSearchViewModel.cs" />
+    <Compile Include="ViewModels\PhysicianPanelViewModel.cs" />
+    <Compile Include="Views\AddPatient.xaml.cs">
+      <DependentUpon>AddPatient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MyConverter.cs" />
+    <Compile Include="Views\PatientData.xaml.cs">
+      <DependentUpon>PatientData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PatientSearch.xaml.cs">
+      <DependentUpon>PatientSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PhysicianPanel.xaml.cs">
+      <DependentUpon>PhysicianPanel.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\medicine.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\AddPatient.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PatientData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PatientSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PhysicianPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
