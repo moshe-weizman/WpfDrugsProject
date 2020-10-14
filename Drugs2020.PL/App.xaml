@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:Drugs2020.PL"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary Source="DataTemplates.xaml" />
     </Application.Resources>
 </Application>
