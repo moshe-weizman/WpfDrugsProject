@@ -17,7 +17,7 @@
         <TextBox Height="23"
                  TextWrapping="Wrap"
                  Text="{Binding PhysicianId}"
-                 TextChanged="TextBox_TextChanged" />
+                 />
 
         <TextBlock TextWrapping="Wrap"
                    Text="Password" />

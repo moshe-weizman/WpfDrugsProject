@@ -4,8 +4,9 @@ using System.Text;
 
 namespace Drugs2020.BLL.BE
 {
-    class Recept
+    public class Recept
     {
+        public int ReceptId { get; set; }
         public DateTime Date { get; set; }
         public Drug Drug { get; set; }
         public int Quantity { get; set; }
@@ -13,8 +14,9 @@ namespace Drugs2020.BLL.BE
         public DateTime TreatmentEndDate { get; set; }
         public DateTime ExpirationDate { get; set; }
 
-        public Recept(DateTime date, Drug drug, int quantity, int days, DateTime treatmentEndDate)
+        public Recept(int id, DateTime date, Drug drug, int quantity, int days, DateTime treatmentEndDate)
         {
+            ReceptId = id;
             Date = date;
             Drug = drug;
             Quantity = quantity;

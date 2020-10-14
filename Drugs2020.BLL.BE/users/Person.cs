@@ -1,15 +1,12 @@
-﻿using Drugs2020.BLL.BE;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
-namespace Drugs2020.PL.Models
+namespace Drugs2020.BLL.BE
 {
     public abstract class Person
     {
-        public int ID { get; set; }
+        [Key]
+        public string ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Sex Sex { get; set; }
@@ -18,7 +15,7 @@ namespace Drugs2020.PL.Models
         public string Address { get; set; }
         public DateTime BirthDate { get; set; }
 
-        public Person(int id, string fNamen, string lName, Sex sex, string phone, string email, string address, DateTime birthDate)
+        public Person(string id, string fNamen, string lName, Sex sex, string phone, string email, string address, DateTime birthDate)
         {
             ID = id;
             FirstName = fNamen;
@@ -31,3 +28,4 @@ namespace Drugs2020.PL.Models
         }
     }
 }
+

@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Drugs2020.BLL.BE
 {
-    class MedicalFile
+    public class MedicalFile
     {
+        [Key]
+        public int PatientId { get; set; }
         public double Weight { get; set; }
         public double Height { get; set; }
         public int Age { get; set; }
@@ -15,12 +16,12 @@ namespace Drugs2020.BLL.BE
         public List<Recept> ReceptsHistory { get; set; }
         public MedicalFile(double weight, double height, int age, List<MedicalRecord> medicalRecords, List<string> chronicIllness, List<string> drugAllergy)
         {
-            Weight = weight;
-            Height = height;
-            Age = age;
-            MedicalRecords = medicalRecords;
-            ChronicIllness = chronicIllness;
-            DrugAllergy = drugAllergy;
+            this.Weight = weight;
+            this.Height = height;
+            this.Age = age;
+            this.MedicalRecords = medicalRecords;
+            this.ChronicIllness = chronicIllness;
+            this.DrugAllergy = drugAllergy;
         }
     }
 }
