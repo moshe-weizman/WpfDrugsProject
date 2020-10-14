@@ -7,16 +7,28 @@
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800">
-    <StackPanel  Width="299">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="50*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Width="299">
         <TextBlock Text="Patient ID:"
                    TextWrapping="Wrap" />
-        <TextBox x:Name="PatientIDTextBlock"
+        <TextBox x:Name="PatientIDTextBox"
                  Text="{Binding PatientId}"
                  Height="23"
                  TextWrapping="Wrap" />
         <Button x:Name="SearchButton"
                 Command="{Binding PatientSelectionCommand}"
-                CommandParameter="{Binding Text, ElementName=PatientIDTextBlock}"
+                CommandParameter="{Binding Text, ElementName=PatientIDTextBox}"
                 Content="Search" />
-    </StackPanel>
+            <Button Content="Back" Command="{Binding BackCommand}"/>
+
+        </StackPanel>
+    <Image Source="/Images/medicine.jpg"
+               Stretch="UniformToFill"
+               Grid.Column="1"
+               Grid.ColumnSpan="1" />
+    </Grid>
 </UserControl>

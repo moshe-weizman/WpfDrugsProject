@@ -17,5 +17,10 @@ namespace Drugs2020.PL.ViewModels
         {
             PhysicianUser = physicianUser as Physician;
         }
+
+        public void GoBack()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

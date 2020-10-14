@@ -9,9 +9,16 @@ namespace Drugs2020.PL.ViewModels
     {
 
         private LogInModel logInModel;
+
         private MainWindowViewModel containingVm;
         public LogInCommand LogInUserCommand { get; set; }
 
+        public LogInViewModel(MainWindowViewModel containingVm)
+        {
+            this.containingVm = containingVm;
+            logInModel = new LogInModel();
+            LogInUserCommand = new LogInCommand(this);
+        }
         public string UserId
         {
             get { return logInModel.UserId; }
@@ -29,12 +36,7 @@ namespace Drugs2020.PL.ViewModels
             set { logInModel.User = value; }
         }
 
-        public LogInViewModel(MainWindowViewModel containingVm)
-        {
-            this.containingVm = containingVm;
-            logInModel = new LogInModel();
-            LogInUserCommand = new LogInCommand(this);
-        }
+
         public IUser IdentifyUser()
         {
             return logInModel.IdentifyUser();
@@ -45,7 +47,7 @@ namespace Drugs2020.PL.ViewModels
         }
         public void LogUserIn()
         {
-            containingVm.CurrentVm = new PatientSearchViewModel();
+            containingVm.ReplaceScreen(Screen.SEARCH_PATIENT_SCREEN);
         }
     }
 }

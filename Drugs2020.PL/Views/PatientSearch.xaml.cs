@@ -21,12 +21,9 @@ namespace Drugs2020.PL.Views
     /// </summary>
     public partial class PatientSearch : UserControl
     {
-        private PatientSearchViewModel viewModel;
         public PatientSearch()
         {
             InitializeComponent();
-            viewModel = new PatientSearchViewModel();
-            this.DataContext = viewModel;
         }
     }
 }

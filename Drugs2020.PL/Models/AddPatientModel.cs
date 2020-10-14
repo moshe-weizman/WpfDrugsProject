@@ -13,7 +13,8 @@ namespace Drugs2020.PL.Models
         private IBL bl;
         public Patient Patient { get; set; }
         public void AddPatientToDb()
-        {          
+        {
+            Patient = new Patient();
         }
     }
 }

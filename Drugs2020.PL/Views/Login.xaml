@@ -46,7 +46,6 @@
                 </Button.CommandParameter>
 
             </Button>
-            <Button Content="Enter as Administrator" />
         </StackPanel>
         <Image Source="/Images/medicine.jpg"
                Stretch="UniformToFill"

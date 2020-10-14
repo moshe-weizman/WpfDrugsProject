@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,7 +12,12 @@ namespace Drugs2020.PL.ViewModels
     class MainWindowViewModel : INotifyPropertyChanged, IViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
         private IViewModel _CurrentVm;
+
+        private LogInViewModel logInVM;
+        private PatientSearchViewModel patientSearchVM;
+        private AddPatientViewModel addPatientVM;
 
         public IViewModel CurrentVm
         {
@@ -26,7 +32,30 @@ namespace Drugs2020.PL.ViewModels
 
         public MainWindowViewModel()
         {
-            CurrentVm = new LogInViewModel(this);
+            logInVM = new LogInViewModel(this);
+            patientSearchVM = new PatientSearchViewModel(this);
+            addPatientVM = new AddPatientViewModel(this);
+            CurrentVm  = addPatientVM;
         }
+
+        public void ReplaceScreen(Screen currentScreen)
+        {
+            switch (currentScreen)
+            {
+                case Screen.LOGIN_SCREEN:
+                    CurrentVm = logInVM;
+                    break;
+                case Screen.SEARCH_PATIENT_SCREEN:
+                    CurrentVm = patientSearchVM;
+                    break;
+                case Screen.ADD_PATIENT_SCREEN:
+                     CurrentVm = addPatientVM;
+                    break;
+                default: break;
+
+
+            }
+        }
+
     }
 }

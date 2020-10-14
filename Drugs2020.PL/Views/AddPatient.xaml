@@ -7,6 +7,34 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <StackPanel Width="299">
+            <TextBlock TextWrapping="Wrap" Text="ID:"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding ID}" />
             
+            <TextBlock TextWrapping="Wrap" Text="First Name"/>
+            <TextBox Height="23" TextWrapping="Wrap"  Text="{Binding FName}"/>
+            
+            <TextBlock TextWrapping="Wrap" Text="Last Name"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding LName}"/>
+            
+            <TextBlock TextWrapping="Wrap" Text="Phone:"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Phone}"/>
+            
+            <TextBlock TextWrapping="Wrap" Text="Address:"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Address}"/>
+            
+            <TextBlock TextWrapping="Wrap" Text="Email:"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Email}"/>
+            
+            <TextBlock TextWrapping="Wrap" Text="Sex:"/>
+            <ListBox Height="100" SelectedValue="{Binding SexOfPatient}"/>
+            
+            <TextBlock TextWrapping="Wrap" Text="Birth Date:"/>
+            <DatePicker SelectedDate="{Binding BirthDate}"/>
+
+
+
+
+        </StackPanel>     
     </Grid>
 </UserControl>
