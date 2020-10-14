@@ -40,10 +40,8 @@ namespace Drugs2020.PL.Commands
         {         
             logInViewModel.User = logInViewModel.IdentifyUser();//צריך להשתמש בתפסית חריגה במקום
             if (logInViewModel.User != null && logInViewModel.ValidatePassword())
-            {
-                MessageBox.Show(logInViewModel.Password + " " + logInViewModel.UserId);
+            {              
                 logInViewModel.LogUserIn();
-
             }
             else
             {

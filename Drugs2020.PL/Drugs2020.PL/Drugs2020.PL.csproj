@@ -63,14 +63,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\AddToDbCommand.cs" />
     <Compile Include="Commands\LogInCommand.cs" />
     <Compile Include="Commands\PatientSelectionCommand.cs" />
+    <Compile Include="Converters\FieldsTextToBoolConverter.cs" />
+    <Compile Include="Models\AddPatientModel.cs" />
     <Compile Include="Models\LogInModel.cs" />
     <Compile Include="Models\MainWindowModel.cs" />
     <Compile Include="Models\PatientDataModel.cs" />
     <Compile Include="Models\PatientSearchModel.cs" />
     <Compile Include="Models\PhysicianPanelModel.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="ViewModels\AddPatientViewModel.cs" />
+    <Compile Include="ViewModels\IAddToDb.cs" />
     <Compile Include="ViewModels\ILogInViewModel.cs" />
     <Compile Include="ViewModels\IPatientSearchViewModel.cs" />
     <Compile Include="ViewModels\IViewModel.cs" />
@@ -79,6 +84,9 @@
     <Compile Include="ViewModels\PatientDataViewModel.cs" />
     <Compile Include="ViewModels\PatientSearchViewModel.cs" />
     <Compile Include="ViewModels\PhysicianPanelViewModel.cs" />
+    <Compile Include="Views\AddPatient.xaml.cs">
+      <DependentUpon>AddPatient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -93,6 +101,10 @@
       <DependentUpon>PhysicianPanel.xaml</DependentUpon>
     </Compile>
     <Page Include="DataTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddPatient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
