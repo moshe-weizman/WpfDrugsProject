@@ -13,6 +13,7 @@ namespace Drugs2020.PL.Models
 
         private IBL bl;
         public string PatientID { get; set; }
+        public Patient PatientFound { get; set; }
 
         public PatientSearchModel()
         {

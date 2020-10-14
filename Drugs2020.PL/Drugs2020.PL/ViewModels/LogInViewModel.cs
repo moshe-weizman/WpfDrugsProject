@@ -45,7 +45,7 @@ namespace Drugs2020.PL.ViewModels
         }
         public void LogUserIn()
         {
-            containingVm.CurrentVm = new PhysicianPanelViewModel(User);
+            containingVm.CurrentVm = new PatientSearchViewModel();
         }
     }
 }

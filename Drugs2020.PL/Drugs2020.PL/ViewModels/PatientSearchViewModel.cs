@@ -9,24 +9,33 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PatientSearchViewModel
+    class PatientSearchViewModel : IViewModel, IPatientSearchViewModel
     {
-        private PatientSearchModel patientSearchM;
-        public PatientSelectionCommand PatientSelectionCommand { get; set; }
 
-        public string PatientID { 
+        public PatientSelectionCommand PatientSelectionCommand { get; set; }
+        private PatientSearchModel patientSearchM;
+        public string PatientID
+        {
             get { return patientSearchM.PatientID; }
-            set { patientSearchM.PatientID = value; } 
+            set { patientSearchM.PatientID = value; }
         }
+        private Patient patientFoundM;
+        public Patient PatientFound
+        {
+            get { return patientSearchM.PatientFound; }
+            set { patientSearchM.PatientFound = value; }
+        }
+
         public PatientSearchViewModel()
         {
             this.patientSearchM = new PatientSearchModel();
 
             PatientSelectionCommand = new PatientSelectionCommand(this);
         }
+
         public Patient GetPatient()
         {
-           return patientSearchM.GetPatient();
+            return patientSearchM.GetPatient();
         }
     }
 }
