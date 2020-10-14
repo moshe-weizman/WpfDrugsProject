@@ -9,17 +9,8 @@
         Title="MainWindow"
         Height="450"
         Width="800">
-
-    <Grid x:Name="OpeningScreen">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50*" />
-            <ColumnDefinition Width="50*" />
-        </Grid.ColumnDefinitions>
-        <uc:Login Grid.Column="0"/>
-        <Image Source="/Images/medicine.jpg"
-               Stretch="UniformToFill"
-               
-               Grid.Column="1"
-               Grid.ColumnSpan="1" />
-    </Grid>
+    <Window.Resources>
+        <!--<local:MyConverter x:Key="myConverter" />-->
+    </Window.Resources>
+    <ContentControl Content="{Binding CurrentVm}" />
 </Window>

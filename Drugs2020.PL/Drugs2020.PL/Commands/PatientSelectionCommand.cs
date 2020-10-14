@@ -1,9 +1,11 @@
-﻿using Drugs2020.PL.ViewModels;
+﻿using Drugs2020.BLL.BE;
+using Drugs2020.PL.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Drugs2020.PL.Commands
@@ -11,11 +13,11 @@ namespace Drugs2020.PL.Commands
     class PatientSelectionCommand : ICommand
     {
 
-        private PatientSelectionViewModel patientSelectionVM;
+        private IPatientSearchViewModel patientSearchVm;
 
-        public PatientSelectionCommand(PatientSelectionViewModel patientSelectionVM)
+        public PatientSelectionCommand(IPatientSearchViewModel patientSelectionVM)
         {
-            this.patientSelectionVM = patientSelectionVM;
+            this.patientSearchVm = patientSelectionVM;
         }
 
         public event EventHandler CanExecuteChanged
@@ -28,7 +30,7 @@ namespace Drugs2020.PL.Commands
         {
             bool result=false;
 
-            if (parameter != null)
+            if (parameter as string != "")
                 result = true;
 
             return result;
@@ -36,7 +38,16 @@ namespace Drugs2020.PL.Commands
 
         public void Execute(object parameter)
         {
-            patientSelectionVM.GetPatient();
+            Patient patient = patientSearchVm.GetPatient();
+            if (patient != null)
+            {
+                patientSearchVm.PatientFound = patient;
+                MessageBox.Show(patientSearchVm.PatientFound.FirstName + " " + patientSearchVm.PatientFound.LastName);
+            }
+            else
+            {
+                MessageBox.Show("no patient found");
+            }         
         }
     }
 }

@@ -9,14 +9,8 @@ namespace Drugs2020.PL.Models
 {
     class MainWindowModel
     {
-        private PatientSearchUC patientSearchUC;
-
-        private Login loginUC;
-
         public MainWindowModel()
         {
-            this.patientSearchUC = new PatientSearchUC();
-            this.loginUC =new Login();
         }
 
 

@@ -9,5 +9,6 @@ namespace Drugs2020.PL.ViewModels
         IUser User { get; set; }
         IUser IdentifyUser();
         bool ValidatePassword();
+        void LogUserIn();
     }
 }

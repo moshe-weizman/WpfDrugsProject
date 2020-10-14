@@ -67,21 +67,35 @@
     <Compile Include="Commands\PatientSelectionCommand.cs" />
     <Compile Include="Models\LogInModel.cs" />
     <Compile Include="Models\MainWindowModel.cs" />
-    <Compile Include="Models\PatientSelectionModel.cs" />
+    <Compile Include="Models\PatientDataModel.cs" />
+    <Compile Include="Models\PatientSearchModel.cs" />
     <Compile Include="Models\PhysicianPanelModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="ViewModels\ILogInViewModel.cs" />
+    <Compile Include="ViewModels\IPatientSearchViewModel.cs" />
+    <Compile Include="ViewModels\IViewModel.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="ViewModels\PatientSelectionViewModel.cs" />
+    <Compile Include="ViewModels\PatientDataViewModel.cs" />
+    <Compile Include="ViewModels\PatientSearchViewModel.cs" />
     <Compile Include="ViewModels\PhysicianPanelViewModel.cs" />
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MyConverter.cs" />
-    <Compile Include="Views\PatientSearchUC.xaml.cs">
-      <DependentUpon>PatientSearchUC.xaml</DependentUpon>
+    <Compile Include="Views\PatientData.xaml.cs">
+      <DependentUpon>PatientData.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PatientSearch.xaml.cs">
+      <DependentUpon>PatientSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PhysicianPanel.xaml.cs">
+      <DependentUpon>PhysicianPanel.xaml</DependentUpon>
+    </Compile>
+    <Page Include="DataTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -98,7 +112,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PatientSearchUC.xaml">
+    <Page Include="Views\PatientData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PatientSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PhysicianPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

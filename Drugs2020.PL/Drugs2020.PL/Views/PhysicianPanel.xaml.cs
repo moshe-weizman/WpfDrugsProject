@@ -17,11 +17,11 @@ using System.Windows.Shapes;
 namespace Drugs2020.PL.Views
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for PhysicianPanel.xaml
     /// </summary>
-    public partial class Login : UserControl
+    public partial class PhysicianPanel : UserControl
     {
-        public Login()
+        public PhysicianPanel()
         {
             InitializeComponent();
         }
