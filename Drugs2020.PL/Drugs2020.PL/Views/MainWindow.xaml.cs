@@ -1,4 +1,5 @@
 ﻿using Drugs2020.PL.ViewModels;
+using Drugs2020.PL.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,16 +15,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Drugs2020.PL.Views
+namespace Drugs2020.PL
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class Login : UserControl
+    public partial class MainWindow : Window
     {
-        public Login()
+        private MainWindowViewModel viewModel;    
+        public MainWindow()
         {
             InitializeComponent();
+            viewModel = new MainWindowViewModel();
+            this.DataContext = viewModel; 
         }
     }
 }

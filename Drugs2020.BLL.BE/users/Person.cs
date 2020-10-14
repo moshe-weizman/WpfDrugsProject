@@ -1,11 +1,14 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using Drugs2020.BLL.BE;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Drugs2020.BLL.BE
 {
     public abstract class Person
     {
-        [Key]
         public string ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -28,4 +31,3 @@ namespace Drugs2020.BLL.BE
         }
     }
 }
-
