@@ -3,13 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Drugs2020.BLL", "Drugs2020.BLL\Drugs2020.BLL.csproj", "{E7C1F385-2BF1-43CA-8B1A-4EC528A9DC3A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Drugs2020.DAL", "Drugs2020.DAL\Drugs2020.DAL.csproj", "{41840D4B-0393-41EA-A8DE-92BB1BCD2401}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Drugs2020.BLL.BE", "Drugs2020.BLL.BE\Drugs2020.BLL.BE.csproj", "{293A841B-86D8-47B7-BA76-DF3F48E485D8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drugs2020.PL", "Drugs2020.PL\Drugs2020.PL\Drugs2020.PL.csproj", "{3327CEEC-40B0-414C-A50D-DD75D3D22F99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drugs2020.DAL", "Drugs2020.DAL\Drugs2020.DAL.csproj", "{0D8391A9-3261-41CC-A895-833914DC8A47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drugs2020.BLL.BE", "Drugs2020.BLL.BE\Drugs2020.BLL.BE.csproj", "{F894F295-B16D-4A61-AF10-10D64991C054}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drugs2020.BLL", "Drugs2020.BLL\Drugs2020.BLL.csproj", "{BE81B25F-0DB4-49B3-8D04-F43024FA3701}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BD2C23CE-7A39-4B9C-903C-6AB832A2E45F}"
+	ProjectSection(SolutionItems) = preProject
+		TextFile1.txt = TextFile1.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,22 +22,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E7C1F385-2BF1-43CA-8B1A-4EC528A9DC3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E7C1F385-2BF1-43CA-8B1A-4EC528A9DC3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E7C1F385-2BF1-43CA-8B1A-4EC528A9DC3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E7C1F385-2BF1-43CA-8B1A-4EC528A9DC3A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{41840D4B-0393-41EA-A8DE-92BB1BCD2401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{41840D4B-0393-41EA-A8DE-92BB1BCD2401}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{41840D4B-0393-41EA-A8DE-92BB1BCD2401}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{41840D4B-0393-41EA-A8DE-92BB1BCD2401}.Release|Any CPU.Build.0 = Release|Any CPU
-		{293A841B-86D8-47B7-BA76-DF3F48E485D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{293A841B-86D8-47B7-BA76-DF3F48E485D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{293A841B-86D8-47B7-BA76-DF3F48E485D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{293A841B-86D8-47B7-BA76-DF3F48E485D8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3327CEEC-40B0-414C-A50D-DD75D3D22F99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3327CEEC-40B0-414C-A50D-DD75D3D22F99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3327CEEC-40B0-414C-A50D-DD75D3D22F99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3327CEEC-40B0-414C-A50D-DD75D3D22F99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D8391A9-3261-41CC-A895-833914DC8A47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D8391A9-3261-41CC-A895-833914DC8A47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D8391A9-3261-41CC-A895-833914DC8A47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D8391A9-3261-41CC-A895-833914DC8A47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F894F295-B16D-4A61-AF10-10D64991C054}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F894F295-B16D-4A61-AF10-10D64991C054}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F894F295-B16D-4A61-AF10-10D64991C054}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F894F295-B16D-4A61-AF10-10D64991C054}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE81B25F-0DB4-49B3-8D04-F43024FA3701}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE81B25F-0DB4-49B3-8D04-F43024FA3701}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE81B25F-0DB4-49B3-8D04-F43024FA3701}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE81B25F-0DB4-49B3-8D04-F43024FA3701}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

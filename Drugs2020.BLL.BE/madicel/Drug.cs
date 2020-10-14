@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace Drugs2020.BLL.BE
 {
     public class Drug
     {
         public string IdCode { get; set; }
+        [Key]
         public string Name { get; set; }
         public string Manufacturer { get; set; }
         public string GenericName { get; set; }
