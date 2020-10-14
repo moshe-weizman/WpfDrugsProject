@@ -7,7 +7,7 @@ namespace Drugs2020.BLL
 {
     public class BLImplementation : IBL
     {
-        ///
+        
         public bool ValidatePassword(IUser user, string password)
         {
             bool result = false;
