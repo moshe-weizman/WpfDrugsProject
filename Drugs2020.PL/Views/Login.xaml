@@ -47,6 +47,8 @@
 
             </Button>
             <Button Content="Enter as Administrator" />
+            <Button Content="שעיה תלחץ עליי, אני שומר תמונה"
+                    Click="Button_Click" />
         </StackPanel>
         <Image Source="/Images/medicine.jpg"
                Stretch="UniformToFill"

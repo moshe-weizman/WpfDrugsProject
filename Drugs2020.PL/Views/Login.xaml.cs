@@ -1,4 +1,5 @@
-﻿using Drugs2020.PL.ViewModels;
+﻿using Drugs2020.BLL;
+using Drugs2020.PL.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,12 @@ namespace Drugs2020.PL.Views
         public Login()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SaveAndRetrive bl = new SaveAndRetrive();
+            bl.SaveImage();
         }
     }
 }
