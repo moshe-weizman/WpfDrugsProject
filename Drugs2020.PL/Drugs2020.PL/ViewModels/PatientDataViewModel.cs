@@ -11,6 +11,7 @@ namespace Drugs2020.PL.ViewModels
 {
     class PatientDataViewModel : INotifyPropertyChanged
     {
+       //
         private PatientDataModel patientDataModel; 
         public event PropertyChangedEventHandler PropertyChanged;
        
