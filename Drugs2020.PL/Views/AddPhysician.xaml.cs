@@ -1,6 +1,4 @@
-﻿using Drugs2020.BLL;
-using Drugs2020.PL.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,19 +16,13 @@ using System.Windows.Shapes;
 namespace Drugs2020.PL.Views
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for AddPhysician.xaml
     /// </summary>
-    public partial class Login : UserControl
+    public partial class AddPhysician : UserControl
     {
-        public Login()
+        public AddPhysician()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            SaveAndRetrive bl = new SaveAndRetrive();
-            bl.SaveImage();
         }
     }
 }

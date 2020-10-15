@@ -12,7 +12,7 @@ namespace Drugs2020.PL.Models
     {
 
         private IBL bl;
-        public string PatientID { get; set; }
+        public string PatientId { get; set; }
         public Patient PatientFound { get; set; }
 
         public PatientSearchModel()
@@ -22,7 +22,7 @@ namespace Drugs2020.PL.Models
 
         public Patient GetPatient()
         {
-            return bl.GetPatient(PatientID);
+            return bl.GetPatient(PatientId);
         }
     }
 }

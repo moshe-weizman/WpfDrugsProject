@@ -9,13 +9,13 @@ namespace Drugs2020.BLL
 {
     public class SaveAndRetrive
     {
-        Program p;
+        DalImplementation p;
         public SaveAndRetrive() {
-            p = new Program();
+            p = new DalImplementation();
             googleDrive = new GoogleDrive();
         }
         public void Save() {
-            p.SaveToReM(new Patient("11", "many2", "fd", Sex.MALE, "54", "fd", "fr", new DateTime(2010, 01, 01)));
+            p.AddPatient(new Patient("11", "many2", "fd", Sex.MALE, "54", "fd", "fr", new DateTime(2010, 01, 01)));
         }
 
         GoogleDrive googleDrive;

@@ -5,7 +5,7 @@ namespace Drugs2020.PL.ViewModels
     interface IPatientSearchViewModel
     {
         Patient PatientFound { get; set; }
-        string PatientID { get; set; }
+        string PatientId { get; set; }
 
         Patient GetPatient();
     }
