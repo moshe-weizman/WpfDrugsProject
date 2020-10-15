@@ -37,9 +37,9 @@ namespace Drugs2020.PL.ViewModels
         }
 
 
-        public IUser IdentifyUser()
+        public void IdentifyUser()
         {
-            return logInModel.IdentifyUser();
+            this.User = logInModel.IdentifyUser();
         }
         public bool ValidatePassword()
         {
@@ -47,7 +47,10 @@ namespace Drugs2020.PL.ViewModels
         }
         public void LogUserIn()
         {
-            containingVm.ReplaceScreen(Screen.SEARCH_PATIENT_SCREEN);
+            if (User is Physician)
+                containingVm.ReplaceScreen(Screen.SEARCH_PATIENT_SCREEN);
+            else
+                containingVm.ReplaceScreen(Screen.ACTIONS_MENU);
         }
     }
 }

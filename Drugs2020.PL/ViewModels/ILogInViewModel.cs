@@ -7,7 +7,7 @@ namespace Drugs2020.PL.ViewModels
         string Password { get; set; }
         string UserId { get; set; }
         IUser User { get; set; }
-        IUser IdentifyUser();
+        void IdentifyUser();
         bool ValidatePassword();
         void LogUserIn();
     }

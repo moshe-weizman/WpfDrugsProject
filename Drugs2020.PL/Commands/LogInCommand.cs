@@ -38,8 +38,8 @@ namespace Drugs2020.PL.Commands
 
         public void Execute(object parameter)
         {         
-            logInViewModel.User = logInViewModel.IdentifyUser();//צריך להשתמש בתפסית חריגה במקום
-            if (logInViewModel.User != null && logInViewModel.ValidatePassword())
+            logInViewModel.IdentifyUser();                 
+            if (logInViewModel.User != null && logInViewModel.ValidatePassword()) //צריך להשתמש בתפסית חריגה במקום
             {              
                 logInViewModel.LogUserIn();
             }

@@ -14,14 +14,14 @@ namespace Drugs2020.PL.ViewModels
         private AddPatientModel AddPatientM;
 
         private MainWindowViewModel containingVm;
-        public AddToDbCommand addToDbCommand { get; set; }
+        public AddToDbCommand AddToDbCommand { get; set; }
         public AddPatientViewModel(MainWindowViewModel containingVm)
         {
             AddPatientM = new AddPatientModel();
 
             this.containingVm = containingVm;
 
-            addToDbCommand = new AddToDbCommand(this);
+            AddToDbCommand = new AddToDbCommand(this);
         }
 
         public Array SexEnumValues => Enum.GetValues(typeof(Sex));

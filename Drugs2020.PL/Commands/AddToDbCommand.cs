@@ -23,21 +23,17 @@ namespace Drugs2020.PL.Commands
             this.addToDbViewModel = addToDbViewModel;
         }
 
-        public event EventHandler CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
-        }
+       
 
         public bool CanExecute(object parameter)
         {
-            bool result = addToDbViewModel.AllFieldsFilled();           
+            bool result = false;
+            result = addToDbViewModel.AllFieldsFilled();           
             return result;
         }
 
         public void Execute(object parameter)
         {
-            addToDbViewModel.AddItemToDb();
             if (!addToDbViewModel.ItemAlreadyExists())
             {
                 addToDbViewModel.AddItemToDb();

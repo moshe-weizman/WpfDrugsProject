@@ -30,8 +30,8 @@ namespace Drugs2020.PL.ViewModels
         }
         public string PatientID
         {
-            get { return patientSearchM.PatientID; }
-            set { patientSearchM.PatientID = value; }
+            get { return patientSearchM.PatientId; }
+            set { patientSearchM.PatientId = value; }
         }
         private Patient patientFoundM;//בשביל מה זה נצרך?
         public Patient PatientFound//בשביל מה זה נצרך?

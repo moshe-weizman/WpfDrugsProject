@@ -18,6 +18,7 @@ namespace Drugs2020.PL.ViewModels
         private LogInViewModel logInVM;
         private PatientSearchViewModel patientSearchVM;
         private AddPatientViewModel addPatientVM;
+        private ActionsMenuViewModel actionsMenuVM;
 
         public IViewModel CurrentVm
         {
@@ -35,6 +36,7 @@ namespace Drugs2020.PL.ViewModels
             logInVM = new LogInViewModel(this);
             patientSearchVM = new PatientSearchViewModel(this);
             addPatientVM = new AddPatientViewModel(this);
+            actionsMenuVM = new ActionsMenuViewModel(this);
             CurrentVm  = logInVM;
         }
 
@@ -50,6 +52,9 @@ namespace Drugs2020.PL.ViewModels
                     break;
                 case Screen.ADD_PATIENT_SCREEN:
                      CurrentVm = addPatientVM;
+                    break;
+                case Screen.ACTIONS_MENU:
+                    CurrentVm = actionsMenuVM;
                     break;
                 default: break;
 

@@ -21,7 +21,7 @@ namespace Drugs2020.BLL
         public IUser IdentifyUser(string userID)
         {
 
-            return new Physician("1234", "Mose", "Weizman", "0545678990", Sex.MALE, @"Moshe@gmail.com", "1234", "Elad", DateTime.Parse("12/10/1985"));
+            return new Admin("1234", "Mose", "Weizman", "0545678990", Sex.MALE, @"Moshe@gmail.com", "1234", "Elad", DateTime.Parse("12/10/1985"));
         }
 
         #region Patient CRUD Functions

@@ -10,9 +10,9 @@ namespace Drugs2020.PL.Commands
 {
     class ScreenReplacementCommand : ICommand
     {
-        private IViewModel viewModel;
+        private IScreenReplacementVM viewModel;
 
-        public ScreenReplacementCommand(IViewModel viewModel)
+        public ScreenReplacementCommand(IScreenReplacementVM viewModel)
         {
             this.viewModel = viewModel;
         }
@@ -30,7 +30,7 @@ namespace Drugs2020.PL.Commands
 
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            viewModel.ReplaceScreen((Screen) Enum.Parse(typeof(Screen), parameter.ToString()));
         }
     }
 }
