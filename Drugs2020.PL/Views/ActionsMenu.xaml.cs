@@ -1,5 +1,4 @@
-﻿using Drugs2020.BLL.BE;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,14 +16,18 @@ using System.Windows.Shapes;
 namespace Drugs2020.PL.Views
 {
     /// <summary>
-    /// Interaction logic for AddPatient.xaml
+    /// Interaction logic for ActionsMenu.xaml
     /// </summary>
-    public partial class AddPatient : UserControl
+    public partial class ActionsMenu : UserControl
     {
-         
-        public AddPatient()
+        public ActionsMenu()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

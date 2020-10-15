@@ -24,6 +24,8 @@ namespace Drugs2020.PL.ViewModels
             addToDbCommand = new AddToDbCommand(this);
         }
 
+        public Array SexEnumValues => Enum.GetValues(typeof(Sex));
+
         public string ID
         {
             get { return AddPatientM.Patient.ID; }
@@ -74,7 +76,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void AddItemToDb()
         {
-            throw new NotImplementedException();
+            AddPatientM.AddPatientToDb();
         }
 
         public bool AllFieldsFilled()

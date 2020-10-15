@@ -10,8 +10,13 @@ namespace Drugs2020.PL.Commands
 {
     public class AddToDbCommand : ICommand
     {
-        public event EventHandler CanExecuteChanged;
         private IAddToDb addToDbViewModel;
+
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
         public AddToDbCommand(IAddToDb addToDbViewModel)
         {
@@ -25,6 +30,7 @@ namespace Drugs2020.PL.Commands
 
         public void Execute(object parameter)
         {
+            addToDbViewModel.AddItemToDb();
             if (!addToDbViewModel.ItemAlreadyExists())
             {
                 addToDbViewModel.AddItemToDb();

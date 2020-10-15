@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="Drugs2020.PL.Views.ActionsMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Drugs2020.PL.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+        <Button Command="{Binding ScreenReplacementCommand}" CommandParameter="{}" Content="ADD PATIENT" Margin="157,20,0,20" HorizontalAlignment="Left" Width="500" Height="60" />
+        <Button Content="ADD PHYSICIAN" Margin="157,20,139,20" Height="60" Width="500"/>
+        <Button Content="ADD DRUG" Margin="157,20,139,20" Height="60" Width="500"/>
+        <Button Content="DATA" Margin="157,20,139,20" Height="60" Click="Button_Click" Width="500"/>
+
+    </StackPanel>
+</UserControl>

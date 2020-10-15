@@ -35,7 +35,7 @@ namespace Drugs2020.PL.ViewModels
             logInVM = new LogInViewModel(this);
             patientSearchVM = new PatientSearchViewModel(this);
             addPatientVM = new AddPatientViewModel(this);
-            CurrentVm  = addPatientVM;
+            CurrentVm  = logInVM;
         }
 
         public void ReplaceScreen(Screen currentScreen)

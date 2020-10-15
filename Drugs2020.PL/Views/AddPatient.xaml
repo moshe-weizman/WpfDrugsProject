@@ -25,12 +25,13 @@
             
             <TextBlock TextWrapping="Wrap" Text="Email:"/>
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Email}"/>
-            
+
             <TextBlock TextWrapping="Wrap" Text="Sex:"/>
-            <ListBox Height="100" SelectedValue="{Binding SexOfPatient}"/>
+            <ComboBox Name="SexComboBox" Width="120" ItemsSource="{Binding SexEnumValues}" SelectedItem="{Binding SexOfPatient}"/>
             
             <TextBlock TextWrapping="Wrap" Text="Birth Date:"/>
             <DatePicker SelectedDate="{Binding BirthDate}"/>
+            <Button Content="ADD" Command="{Binding AddToDbCommand}"/>
 
 
 

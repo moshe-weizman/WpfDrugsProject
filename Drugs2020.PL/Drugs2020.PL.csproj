@@ -60,7 +60,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\BackCommand.cs" />
+    <Compile Include="Commands\ScreenReplacementCommand.cs" />
     <Compile Include="Screen.cs" />
+    <Compile Include="ViewModels\ActionsMenuViewModel.cs" />
     <Compile Include="ViewModels\AddPatientViewModel.cs" />
     <Compile Include="ViewModels\IAddToDb.cs" />
     <Compile Include="ViewModels\IGoBackScreenVM.cs" />
@@ -72,6 +74,9 @@
     <Compile Include="ViewModels\PatientDataViewModel.cs" />
     <Compile Include="ViewModels\PatientSearchViewModel.cs" />
     <Compile Include="ViewModels\PhysicianPanelViewModel.cs" />
+    <Compile Include="Views\ActionsMenu.xaml.cs">
+      <DependentUpon>ActionsMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddPatient.xaml.cs">
       <DependentUpon>AddPatient.xaml</DependentUpon>
     </Compile>
@@ -134,6 +139,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="DataTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ActionsMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
