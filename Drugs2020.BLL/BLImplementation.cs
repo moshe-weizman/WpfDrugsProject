@@ -1,13 +1,13 @@
 ﻿using Drugs2020.BLL.BE;
+using Drugs2020.DAL;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Drugs2020.BLL
 {
     public class BLImplementation : IBL
     {
-
+        Program program;
+       
         public bool ValidatePassword(IUser user, string password)
         {
             bool result = false;
@@ -24,69 +24,70 @@ namespace Drugs2020.BLL
             return new Physician("1234", "Mose", "Weizman", "0545678990", Sex.MALE, @"Moshe@gmail.com", "1234", "Elad", DateTime.Parse("12/10/1985"));
         }
 
+        #region Patient CRUD Functions
         public Patient GetPatient(string ID)
         {
-            return new Patient("12", "Dudu", "Cohen", Sex.MALE, "0501234567", "d@gmail.com", "tel aviv", DateTime.Parse("12/10/1985"));
+            return program.GetPatient(ID);
         }
 
-        #region Patient CRUD Functions
         public void AddPatient(Patient patient)
         {
-            throw new NotImplementedException();
+            program.SavePatient(patient);
         }
 
         public void UpdatePatient(string id, Patient updatedPatient)
         {
-            throw new NotImplementedException();
+            program.UpdataPatient(updatedPatient);
         }
 
         public void DeletePatient(string id)
         {
-            throw new NotImplementedException();
+            program.DeletePatient(id);
         }
         #endregion
 
         #region Physician CRUD Functions
-        public void AddPhysician(Physician physician)
+        public Physician GetPhysician(string ID)
         {
-            throw new NotImplementedException();
+            return program.GetPhysician(ID);
         }
 
-        public Patient GetPhysician(string id)
+        public void AddPhysician(Physician physician)
         {
-            throw new NotImplementedException();
+            program.SavePhysician(physician);
         }
 
         public void UpdatePhysician(string id, Physician updatedPhysician)
         {
-            throw new NotImplementedException();
+            program.UpdataPhysician(updatedPhysician);
         }
 
         public void DeletePhysician(string id)
         {
-            throw new NotImplementedException();
+            program.DeletePhysician(id);
         }
+
         #endregion
 
         #region Drug CRUD Functions
+        public Drug GetDrug(string ID)
+        {
+            return program.GetDrug(ID);
+        }
+
         public void AddDrug(Drug drug)
         {
-            throw new NotImplementedException();
+            program.SaveDrug(drug);
         }
 
-        public Patient GetDrug(string id)
+        public void UpdateDrug(string id, Drug updatedDrug)
         {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateDrug(string id, Patient updatedDrug)
-        {
-            throw new NotImplementedException();
+            program.UpdataDrug(updatedDrug);
         }
 
         public void DeleteDrug(string id)
         {
-            throw new NotImplementedException();
+            program.DeleteDrug(id);
         }
         #endregion
     }

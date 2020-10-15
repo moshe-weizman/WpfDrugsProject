@@ -21,15 +21,15 @@ namespace Drugs2020.BLL
 
         #region Physician CRUD Functions
         void AddPhysician(Physician physician);
-        Patient GetPhysician(string id);
+        Physician GetPhysician(string id);
         void UpdatePhysician(string id, Physician updatedPhysician);
         void DeletePhysician(string id);
         #endregion
 
         #region Drug CRUD Functions
         void AddDrug(Drug drug);
-        Patient GetDrug(string id);
-        void UpdateDrug(string id, Patient updatedDrug);
+        Drug GetDrug(string id);
+        void UpdateDrug(string id, Drug updatedDrug);
         void DeleteDrug(string id);
         #endregion
     }

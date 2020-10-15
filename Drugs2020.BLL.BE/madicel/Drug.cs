@@ -7,8 +7,8 @@ namespace Drugs2020.BLL.BE
 {
     public class Drug
     {
-        public string IdCode { get; set; }
         [Key]
+        public string IdCode { get; set; }
         public string Name { get; set; }
         public string Manufacturer { get; set; }
         public string GenericName { get; set; }

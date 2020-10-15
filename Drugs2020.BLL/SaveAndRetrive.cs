@@ -15,13 +15,13 @@ namespace Drugs2020.BLL
             googleDrive = new GoogleDrive();
         }
         public void Save() {
-            p.SaveToReM(new Patient("11", "many2", "fd", Sex.MALE, "54", "fd", "fr", new DateTime(2010, 01, 01)));
+            p.SavePatient(new Patient("11", "many2", "fd", Sex.MALE, "54", "fd", "fr", new DateTime(2010, 01, 01)));
         }
 
         GoogleDrive googleDrive;
         public void SaveImage()
         {
-            googleDrive.progrem();
+            googleDrive.UploadBasicImage("C:\\Users\\ipewz\\source\\repos\\drugsProject2020\\Drugs2020.PL\\Images\\medicine.jpg");
         }
 
           //  public File Retrive() {

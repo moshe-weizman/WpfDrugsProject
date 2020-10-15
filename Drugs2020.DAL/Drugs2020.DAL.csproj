@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="card.json" />
     <None Include="tt3.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
