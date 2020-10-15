@@ -18,10 +18,6 @@ namespace Drugs2020.BLL.BE
         public string Address { get; set; }
         public DateTime BirthDate { get; set; }
 
-        protected Person()
-        {
-        }
-
         public Person(string id, string fNamen, string lName, Sex sex, string phone, string email, string address, DateTime birthDate)
         {
             ID = id;
@@ -32,6 +28,9 @@ namespace Drugs2020.BLL.BE
             Email = email;
             Address = address;
             BirthDate = birthDate;
+        }
+        protected Person()
+        {
         }
     }
 }

@@ -27,12 +27,11 @@ namespace Drugs2020.PL.Commands
 
         public bool CanExecute(object parameter)
         {
-            var result = false;
-            var values = (object[])parameter;
-
-            if (values[0] as string != "" && values[1] as string != "")
-                result = true;
-
+            bool result = false;
+            if (parameter != null)
+            {
+                result = (bool)parameter;
+            }
             return result;
         }
 

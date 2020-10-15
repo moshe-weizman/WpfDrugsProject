@@ -8,6 +8,6 @@ namespace Drugs2020.PL.ViewModels
 {
     public interface IScreenReplacementVM
     {
-        void ReplaceScreen(Screen currentScreen);
+        void ReplaceScreen(Screen desiredScreen);
     }
 }

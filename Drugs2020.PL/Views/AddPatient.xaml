@@ -1,41 +1,92 @@
 ﻿<UserControl x:Class="Drugs2020.PL.Views.AddPatient"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:converters="clr-namespace:Drugs2020.PL.Converters"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
+    </UserControl.Resources>
+
     <Grid>
         <StackPanel Width="299">
-            <TextBlock TextWrapping="Wrap" Text="ID:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding ID}" />
-            
-            <TextBlock TextWrapping="Wrap" Text="First Name"/>
-            <TextBox Height="23" TextWrapping="Wrap"  Text="{Binding FName}"/>
-            
-            <TextBlock TextWrapping="Wrap" Text="Last Name"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding LName}"/>
-            
-            <TextBlock TextWrapping="Wrap" Text="Phone:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Phone}"/>
-            
-            <TextBlock TextWrapping="Wrap" Text="Address:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Address}"/>
-            
-            <TextBlock TextWrapping="Wrap" Text="Email:"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Email}"/>
+            <TextBlock  TextWrapping="Wrap"
+                        Text="ID:" />
+            <TextBox Name="Id"
+                     Height="23"
+                     TextWrapping="Wrap"
+                     Text="{Binding Patient.ID}" />
 
-            <TextBlock TextWrapping="Wrap" Text="Sex:"/>
-            <ComboBox Name="SexComboBox" Width="120" ItemsSource="{Binding SexEnumValues}" SelectedItem="{Binding SexOfPatient}"/>
-            
-            <TextBlock TextWrapping="Wrap" Text="Birth Date:"/>
-            <DatePicker SelectedDate="{Binding BirthDate}"/>
-            <Button Content="ADD" Command="{Binding AddToDbCommand}"/>
+            <TextBlock TextWrapping="Wrap"
+                       Text="First Name" />
+            <TextBox Name="FName" Height="23"
+                     TextWrapping="Wrap"
+                     Text="{Binding Patient.FirstName}" />
+
+            <TextBlock TextWrapping="Wrap"
+                       Text="Last Name" />
+            <TextBox Name="LName" Height="23"
+                     TextWrapping="Wrap"
+                     Text="{Binding Patient.LastName}" />
+
+            <TextBlock TextWrapping="Wrap"
+                       Text="Phone:" />
+            <TextBox Name="Phone" Height="23"
+                     TextWrapping="Wrap"
+                     Text="{Binding Patient.Phone}" />
+
+            <TextBlock TextWrapping="Wrap"
+                       Text="Address:" />
+            <TextBox Name="Address" Height="23"
+                     TextWrapping="Wrap"
+                     Text="{Binding Patient.Address}" />
+
+            <TextBlock TextWrapping="Wrap"
+                       Text="Email:" />
+            <TextBox Name="Email" Height="23"
+                     TextWrapping="Wrap"
+                     Text="{Binding Patient.Email}" />
+
+            <TextBlock TextWrapping="Wrap"
+                       Text="Sex:" />
+            <ComboBox Name="SexComboBox"
+                      Width="120"
+                      ItemsSource="{Binding SexEnumValues}"
+                      SelectedItem="{Binding Patient.Sex}" />
+
+            <TextBlock TextWrapping="Wrap"
+                       Text="Birth Date:" />
+            <DatePicker Name="BirthDate" SelectedDate="{Binding BirthDate}" />
+            <Button Content="ADD"
+                    Command="{Binding AddToDbCommand}">
+                <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
+                        <Binding Path="Text"
+                                 ElementName="Id" />
+                        <Binding Path="Text"
+                                 ElementName="FName" />
+                        <Binding Path="Text"
+                                 ElementName="LName" />
+                        <Binding Path="Text"
+                                 ElementName="Phone" />
+                        <Binding Path="Text"
+                                 ElementName="Address" />
+                        <Binding Path="Text"
+                                 ElementName="Email" />
+                        <Binding Path="Text"
+                                 ElementName="BirthDate" />
+                    </MultiBinding>
+
+                </Button.CommandParameter>
+            </Button>
 
 
 
 
-        </StackPanel>     
+        </StackPanel>
     </Grid>
 </UserControl>

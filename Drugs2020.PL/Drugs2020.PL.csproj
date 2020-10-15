@@ -95,7 +95,6 @@
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MyConverter.cs" />
     <Compile Include="Views\PatientData.xaml.cs">
       <DependentUpon>PatientData.xaml</DependentUpon>
     </Compile>

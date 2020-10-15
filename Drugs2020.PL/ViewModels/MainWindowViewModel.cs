@@ -37,7 +37,7 @@ namespace Drugs2020.PL.ViewModels
             patientSearchVM = new PatientSearchViewModel(this);
             addPatientVM = new AddPatientViewModel(this);
             actionsMenuVM = new ActionsMenuViewModel(this);
-            CurrentVm  = logInVM;
+            CurrentVm  = addPatientVM;
         }
 
         public void ReplaceScreen(Screen currentScreen)
@@ -57,10 +57,7 @@ namespace Drugs2020.PL.ViewModels
                     CurrentVm = actionsMenuVM;
                     break;
                 default: break;
-
-
             }
         }
-
     }
 }

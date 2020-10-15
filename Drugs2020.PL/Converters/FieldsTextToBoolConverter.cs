@@ -13,7 +13,11 @@ namespace Drugs2020.PL.Converters
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             string[] stringValues = Array.ConvertAll(values, x => x.ToString());
-            return stringValues.Contains<string>("");
+            if (stringValues.Contains<string>(""))
+            {
+                return false;
+            }
+            return true;
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

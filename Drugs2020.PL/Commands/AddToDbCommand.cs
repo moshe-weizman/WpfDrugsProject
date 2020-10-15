@@ -28,7 +28,10 @@ namespace Drugs2020.PL.Commands
         public bool CanExecute(object parameter)
         {
             bool result = false;
-            result = addToDbViewModel.AllFieldsFilled();           
+            if (parameter != null)
+            {
+                result = (bool)parameter;
+            }
             return result;
         }
 
