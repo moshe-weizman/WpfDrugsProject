@@ -1,15 +1,16 @@
 ﻿using Drugs2020.BLL.BE;
-using System.Data.Entity;
 
 
 
 
 namespace Drugs2020.DAL
 {
-    public class Program
+    public class DalImplementation : IDal
     {
-        public void SavePatient(Patient patient) {
-            using ( var ctx = new PharmacyContext())
+       
+        public void AddPatient(Patient patient)
+        {
+            using (var ctx = new PharmacyContext())
             {
                 ctx.Patients.Add(patient);
                 ctx.SaveChanges();
@@ -19,11 +20,11 @@ namespace Drugs2020.DAL
         {
             using (var ctx = new PharmacyContext())
             {
-               ctx.Patients.Remove(ctx.Patients.Find(id));
+                ctx.Patients.Remove(ctx.Patients.Find(id));
                 ctx.SaveChanges();
             }
         }
-        public void UpdataPatient(Patient patient)
+        public void UpdatePatient(Patient patient)
         {
             using (var ctx = new PharmacyContext())
             {
@@ -36,11 +37,11 @@ namespace Drugs2020.DAL
         {
             using (var ctx = new PharmacyContext())
             {
-               return ctx.Patients.Find(id);
+                return ctx.Patients.Find(id);
             }
         }
 
-        public void SavePhysician(Physician physician)
+        public void AddPhysician(Physician physician)
         {
             using (var ctx = new PharmacyContext())
             {
@@ -56,7 +57,7 @@ namespace Drugs2020.DAL
                 ctx.SaveChanges();
             }
         }
-        public void UpdataPhysician(Physician physician)
+        public void UpdatePhysician(Physician physician)
         {
             using (var ctx = new PharmacyContext())
             {
@@ -73,7 +74,7 @@ namespace Drugs2020.DAL
             }
         }
 
-        public void SaveDrug(Drug drug)
+        public void AddDrug(Drug drug)
         {
             using (var ctx = new PharmacyContext())
             {
@@ -89,7 +90,7 @@ namespace Drugs2020.DAL
                 ctx.SaveChanges();
             }
         }
-        public void UpdataDrug(Drug drug)
+        public void UpdateDrug(Drug drug)
         {
             using (var ctx = new PharmacyContext())
             {
@@ -105,20 +106,6 @@ namespace Drugs2020.DAL
                 return ctx.Drugs.Find(IdCode);
             }
         }
-    }
-
-
-    public class PharmacyContext : DbContext
-    {
-        public PharmacyContext() : base("test_06")
-        {
-                               
-        }
-
-
-        public DbSet<Patient> Patients { get; set; }
-        public DbSet<Physician> Physicians { get; set; }
-        public DbSet<Drug> Drugs { get; set; }
     }
 
 }

@@ -9,19 +9,19 @@ namespace Drugs2020.BLL
 {
     public class SaveAndRetrive
     {
-        Program p;
+        DalImplementation p;
         public SaveAndRetrive() {
-            p = new Program();
+            p = new DalImplementation();
             googleDrive = new GoogleDrive();
         }
         public void Save() {
-            p.SavePatient(new Patient("11", "many2", "fd", Sex.MALE, "54", "fd", "fr", new DateTime(2010, 01, 01)));
+            p.AddPatient(new Patient("11", "many2", "fd", Sex.MALE, "54", "fd", "fr", new DateTime(2010, 01, 01)));
         }
 
         GoogleDrive googleDrive;
         public void SaveImage()
         {
-            googleDrive.UploadBasicImage("C:\\Users\\ipewz\\source\\repos\\drugsProject2020\\Drugs2020.PL\\Images\\medicine.jpg");
+            googleDrive.progrem();
         }
 
           //  public File Retrive() {

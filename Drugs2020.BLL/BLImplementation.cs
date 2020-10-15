@@ -6,7 +6,7 @@ namespace Drugs2020.BLL
 {
     public class BLImplementation : IBL
     {
-        Program program;
+        IDal program = new DalImplementation();
        
         public bool ValidatePassword(IUser user, string password)
         {
@@ -32,12 +32,12 @@ namespace Drugs2020.BLL
 
         public void AddPatient(Patient patient)
         {
-            program.SavePatient(patient);
+            program.AddPatient(patient);
         }
 
         public void UpdatePatient(string id, Patient updatedPatient)
         {
-            program.UpdataPatient(updatedPatient);
+            program.UpdatePatient(updatedPatient);
         }
 
         public void DeletePatient(string id)
@@ -54,12 +54,12 @@ namespace Drugs2020.BLL
 
         public void AddPhysician(Physician physician)
         {
-            program.SavePhysician(physician);
+            program.AddPhysician(physician);
         }
 
         public void UpdatePhysician(string id, Physician updatedPhysician)
         {
-            program.UpdataPhysician(updatedPhysician);
+            program.UpdatePhysician(updatedPhysician);
         }
 
         public void DeletePhysician(string id)
@@ -77,12 +77,12 @@ namespace Drugs2020.BLL
 
         public void AddDrug(Drug drug)
         {
-            program.SaveDrug(drug);
+            program.AddDrug(drug);
         }
 
         public void UpdateDrug(string id, Drug updatedDrug)
         {
-            program.UpdataDrug(updatedDrug);
+            program.UpdateDrug(updatedDrug);
         }
 
         public void DeleteDrug(string id)

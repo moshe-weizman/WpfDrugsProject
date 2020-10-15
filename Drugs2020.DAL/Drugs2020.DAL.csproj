@@ -79,8 +79,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DalImplementation.cs" />
     <Compile Include="GoogleDrive.cs" />
+    <Compile Include="IDal.cs" />
+    <Compile Include="PharmacyContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

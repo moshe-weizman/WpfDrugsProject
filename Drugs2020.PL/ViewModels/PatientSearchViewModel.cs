@@ -14,10 +14,10 @@ namespace Drugs2020.PL.ViewModels
 
         public PatientSelectionCommand PatientSelectionCommand { get; set; }
         private PatientSearchModel patientSearchM;
-        public string PatientID
+        public string PatientId
         {
-            get { return patientSearchM.PatientID; }
-            set { patientSearchM.PatientID = value; }
+            get { return patientSearchM.PatientId; }
+            set { patientSearchM.PatientId = value; }
         }
         private Patient patientFoundM;
         public Patient PatientFound
