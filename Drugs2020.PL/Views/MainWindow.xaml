@@ -12,5 +12,15 @@
     <Window.Resources>
         <!--<local:MyConverter x:Key="myConverter" />-->
     </Window.Resources>
-    <ContentControl Content="{Binding CurrentVm}" />
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="30*" />
+        </Grid.ColumnDefinitions>
+        <Image Source="/Images/medicine.jpg"
+               Stretch="UniformToFill" Grid.Column="1" Margin="5"/>
+        <ContentControl Content="{Binding CurrentVm}" Grid.Column="0" />
+        <ContentControl Content="{Binding RightCurrentVm}" Grid.Column="1" />
+
+    </Grid>
 </Window>

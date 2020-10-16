@@ -1,4 +1,5 @@
-﻿using Drugs2020.PL.Views;
+﻿using Drugs2020.BLL.BE;
+using Drugs2020.PL.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace Drugs2020.PL.Models
         {
         }
 
+        public IUser User { get; set; }
+        public Patient Patient { get; set; }
 
     }
 }

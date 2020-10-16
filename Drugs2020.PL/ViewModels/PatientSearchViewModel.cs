@@ -42,14 +42,15 @@ namespace Drugs2020.PL.ViewModels
 
        
 
-        public Patient GetPatient()
+        public void GetPatient()
         {
-            return patientSearchM.GetPatient();
+            PatientFound= patientSearchM.GetPatient();
+            containingVm.MainWindowM.Patient = PatientFound;
         }
 
         public void GoBack()
         {
-            containingVm.ReplaceScreen(Screen.LOGIN_SCREEN);
+            containingVm.ReplaceLeftUC(Screen.LOGIN_SCREEN);
         }
     }
 }

@@ -12,8 +12,8 @@
         <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
     </UserControl.Resources>
 
-    <Grid>
-        <StackPanel Width="299">
+    
+        <StackPanel Margin="5" Grid.Column="0">
             <TextBlock  TextWrapping="Wrap"
                         Text="ID:" />
             <TextBox Name="Id"
@@ -85,8 +85,8 @@
             </Button>
 
 
-
+        <Button Content="Back" Command="{Binding BackCommand}"/>
 
         </StackPanel>
-    </Grid>
+    
 </UserControl>

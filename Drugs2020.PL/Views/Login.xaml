@@ -10,15 +10,10 @@
              d:DesignHeight="450"
              d:DesignWidth="800">
     <UserControl.Resources>
-        <Converters:FieldsTextToBoolConverter x:Name="fieldsTextToBoolConverter" />
+        <Converters:FieldsTextToBoolConverter x:Key="fieldsTextToBoolConverter" />
     </UserControl.Resources>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50*" />
-            <ColumnDefinition Width="50*" />
-        </Grid.ColumnDefinitions>
-        <StackPanel Width="299">
+        <StackPanel Grid.Column="0" Margin="5"  VerticalAlignment="Center" >
 
             <TextBlock TextWrapping="Wrap"
                        Text="Physician ID:" />
@@ -47,13 +42,10 @@
                 </Button.CommandParameter>
 
             </Button>
-        </StackPanel>
-        <Image Source="/Images/medicine.jpg"
-               Stretch="UniformToFill"
-               Grid.Column="1"
-               Grid.ColumnSpan="1" />
-    </Grid>
+        
 
-    
+    </StackPanel>
+
+   
 
 </UserControl>

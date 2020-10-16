@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class ActionsMenuViewModel : IViewModel, IScreenReplacementVM
+    class ActionsMenuViewModel :  IScreenReplacementVM, IViewModel
     {
         private MainWindowViewModel mainWindowVM;
-
         public ScreenReplacementCommand ScreenReplacementCommand { get; set; }
         public ActionsMenuViewModel(MainWindowViewModel mainWindowVM)
         {
@@ -21,7 +20,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void ReplaceScreen(Screen desiredScreen)
         {
-            mainWindowVM.ReplaceScreen(desiredScreen);
+            mainWindowVM.ReplaceLeftUC(desiredScreen);
         }
     }
 }

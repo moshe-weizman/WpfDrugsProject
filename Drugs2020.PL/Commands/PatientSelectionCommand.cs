@@ -38,10 +38,9 @@ namespace Drugs2020.PL.Commands
 
         public void Execute(object parameter)
         {
-            Patient patient = patientSearchVm.GetPatient();
-            if (patient != null)
+            patientSearchVm.GetPatient();
+            if (patientSearchVm.PatientFound != null)
             {
-                patientSearchVm.PatientFound = patient;
                 MessageBox.Show(patientSearchVm.PatientFound.FirstName + " " + patientSearchVm.PatientFound.LastName);
             }
             else
