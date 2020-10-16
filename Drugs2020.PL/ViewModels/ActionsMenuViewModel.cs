@@ -19,9 +19,9 @@ namespace Drugs2020.PL.ViewModels
             this.ScreenReplacementCommand = new ScreenReplacementCommand(this);
         }
 
-        public void ReplaceScreen(Screen currentScreen)
+        public void ReplaceScreen(Screen desiredScreen)
         {
-            mainWindowVM.ReplaceScreen(currentScreen);
+            mainWindowVM.ReplaceScreen(desiredScreen);
         }
     }
 }

@@ -4,12 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
+             xmlns:Converters ="clr-namespace:Drugs2020.PL.Converters"
              xmlns:viewmodels="clr-namespace:Drugs2020.PL.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800">
     <UserControl.Resources>
-        <local:MyConverter x:Key="myConverter" />
+        <Converters:FieldsTextToBoolConverter x:Name="fieldsTextToBoolConverter" />
     </UserControl.Resources>
 
     <Grid>
@@ -36,7 +37,7 @@
             <Button Content="Log in"
                     Command="{Binding LogInUserCommand}">
                 <Button.CommandParameter>
-                    <MultiBinding Converter="{StaticResource myConverter}">
+                    <MultiBinding Converter="{StaticResource fieldsTextToBoolConverter}">
                         <Binding Path="Text"
                                  ElementName="TextBoxID" />
                         <Binding Path="Text"
