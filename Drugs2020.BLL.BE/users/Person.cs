@@ -17,6 +17,7 @@ namespace Drugs2020.BLL.BE
         public string Email { get; set; }
         public string Address { get; set; }
         public DateTime BirthDate { get; set; }
+        public int Age { get; set; }
 
         public Person(string id, string fNamen, string lName, Sex sex, string phone, string email, string address, DateTime birthDate)
         {
@@ -28,6 +29,7 @@ namespace Drugs2020.BLL.BE
             Email = email;
             Address = address;
             BirthDate = birthDate;
+            Age = DateTime.Now.Year - BirthDate.Year;
         }
         protected Person()
         {

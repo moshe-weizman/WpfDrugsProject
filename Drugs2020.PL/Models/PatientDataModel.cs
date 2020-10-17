@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.Models
 {
-    class PatientDataModel
+    class PatientDataModel// לכאורה לא נצרך!!
     {
         private IBL bl;
         public Patient CurrentPatient { get; set; }

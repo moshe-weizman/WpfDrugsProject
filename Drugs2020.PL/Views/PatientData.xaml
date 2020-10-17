@@ -10,7 +10,7 @@
         <TextBlock TextWrapping="Wrap"  Text="{Binding Patient.ID}" Margin="20,20,0,20"  Height="60"/>
         <TextBlock TextWrapping="Wrap" Text="{Binding Patient.FirstName}" Margin="20,20,0,20"  Height="60"/>
         <TextBlock TextWrapping="Wrap" Text="{Binding Patient.LastName}" Margin="20,20,0,20"  Height="60"/>
-        <TextBlock TextWrapping="Wrap" Text="{Binding Patient.BirthDate}" Margin="20,20,0,20"  Height="60"/>
+        <TextBlock TextWrapping="Wrap" Text="{Binding Patient.Age}" Margin="20,20,0,20"  Height="60"/>
 
 
     </StackPanel>

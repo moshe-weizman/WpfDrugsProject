@@ -29,8 +29,8 @@ namespace Drugs2020.PL.ViewModels
         public PatientDataViewModel(MainWindowViewModel viewModel)
         {
             containingVm = viewModel;
-            patientDataModel = new PatientDataModel();
-            CurrentPatient = containingVm.MainWindowM.Patient;
+           // patientDataModel = new PatientDataModel();
+            CurrentPatient = containingVm.CurrentPatient;
         }
 
     }

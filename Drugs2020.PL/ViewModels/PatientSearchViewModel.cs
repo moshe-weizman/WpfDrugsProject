@@ -45,7 +45,7 @@ namespace Drugs2020.PL.ViewModels
         public void GetPatient()
         {
             PatientFound= patientSearchM.GetPatient();
-            containingVm.MainWindowM.Patient = PatientFound;
+            containingVm.CurrentPatient = PatientFound;
         }
 
         public void GoBack()

@@ -15,15 +15,32 @@ namespace Drugs2020.PL.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private IViewModel _CurrentVm;
+        private IViewModel _LeftCurrentVm;
         private IViewModel _RightCurrentVm;
 
         private LogInViewModel logInVM;
         private PatientSearchViewModel patientSearchVM;
         private AddPatientViewModel addPatientVM;
         private ActionsMenuViewModel actionsMenuVM;
+        public MainWindowViewModel()
+        {
+            logInVM = new LogInViewModel(this);
+            patientSearchVM = new PatientSearchViewModel(this);
+            addPatientVM = new AddPatientViewModel(this);
+            actionsMenuVM = new ActionsMenuViewModel(this);
+            LeftCurrentVm = logInVM;
+        }
+        public MainWindowModel MainWindowM { get; set; }
 
-       
+        public IUser CurrentUser {
+            get { return MainWindowM.User; } 
+            set { MainWindowM.User = value; } 
+        }
+
+        public Patient CurrentPatient {
+            get { return MainWindowM.Patient; }
+            set { MainWindowM.Patient = value; }
+        }
         public IViewModel RightCurrentVm 
         {
             get { return _RightCurrentVm; }
@@ -33,25 +50,15 @@ namespace Drugs2020.PL.ViewModels
             }
         }
 
-        public MainWindowModel MainWindowM { get; set; }
-        public IViewModel CurrentVm
+        public IViewModel LeftCurrentVm
         {
-            get { return _CurrentVm; }
+            get { return _LeftCurrentVm; }
             set 
             { 
-                _CurrentVm = value;
+                _LeftCurrentVm = value;
                 if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("CurrentVm"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("LeftCurrentVm"));
             }
-        }
-
-        public MainWindowViewModel()
-        {
-            logInVM = new LogInViewModel(this);
-            patientSearchVM = new PatientSearchViewModel(this);
-            addPatientVM = new AddPatientViewModel(this);
-            actionsMenuVM = new ActionsMenuViewModel(this);
-            CurrentVm  = logInVM;
         }
 
         public void ReplaceLeftUC(Screen currentVM)
@@ -59,16 +66,16 @@ namespace Drugs2020.PL.ViewModels
             switch (currentVM)
             {
                 case Screen.LOGIN_SCREEN:
-                    CurrentVm = logInVM;
+                    LeftCurrentVm = logInVM;
                     break;
                 case Screen.SEARCH_PATIENT_SCREEN:
-                    CurrentVm = patientSearchVM;
+                    LeftCurrentVm = patientSearchVM;
                     break;
                 case Screen.ADD_PATIENT_SCREEN:
-                     CurrentVm = addPatientVM;
+                     LeftCurrentVm = addPatientVM;
                     break;
                 case Screen.ACTIONS_MENU:
-                    CurrentVm = actionsMenuVM;
+                    LeftCurrentVm = actionsMenuVM;
                     break;
                 default: break;
             }

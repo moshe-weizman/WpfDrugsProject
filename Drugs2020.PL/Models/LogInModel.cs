@@ -19,9 +19,9 @@ namespace Drugs2020.PL.Models
         {
             bl = new BLImplementation();
         }
-        public IUser IdentifyUser()
+        public void IdentifyUser()
         {
-            return bl.IdentifyUser(UserId);
+            User = bl.IdentifyUser(UserId);
         }
         public bool ValidatePassword()
         {

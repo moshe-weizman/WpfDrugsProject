@@ -39,7 +39,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void IdentifyUser()
         {
-            this.User = logInModel.IdentifyUser();
+            logInModel.IdentifyUser();
         }
         public bool ValidatePassword()
         {
