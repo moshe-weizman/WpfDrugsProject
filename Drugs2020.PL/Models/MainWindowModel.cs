@@ -16,6 +16,6 @@ namespace Drugs2020.PL.Models
 
         public IUser User { get; set; }
         public Patient Patient { get; set; }
-
+        
     }
 }
