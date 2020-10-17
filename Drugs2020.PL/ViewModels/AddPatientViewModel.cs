@@ -10,12 +10,14 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class AddPatientViewModel : IAddToDb , IGoBackScreenVM , IViewModel
+    class AddPatientViewModel : IAddToDb , IGoBackScreenVM, IViewModel
     {
         private AddPatientModel AddPatientM;
 
         private MainWindowViewModel containingVm;
         public AddToDbCommand AddToDbCommand { get; set; }
+
+        public BackCommand BackCommand { get; set; }
         public Patient Patient
         {
             get { return AddPatientM.Patient; }
@@ -28,6 +30,7 @@ namespace Drugs2020.PL.ViewModels
             AddPatientM = new AddPatientModel();
             this.containingVm = containingVm;
             AddToDbCommand = new AddToDbCommand(this);
+            BackCommand = new BackCommand(this);
             Patient = new Patient();
         }
 
@@ -105,7 +108,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void GoBack()
         {
-            throw new NotImplementedException();
+            containingVm.ReplaceLeftUC(Screen.ACTIONS_MENU);
         }
-    }
+    }//
 }

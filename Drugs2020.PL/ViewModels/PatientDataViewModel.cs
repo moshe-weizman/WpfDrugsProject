@@ -9,25 +9,28 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PatientDataViewModel : INotifyPropertyChanged
+    class PatientDataViewModel : INotifyPropertyChanged, IViewModel
     {
         private PatientDataModel patientDataModel;
+        private MainWindowViewModel containingVm;
         public event PropertyChangedEventHandler PropertyChanged;
-        public Patient Patient
+        public Patient CurrentPatient
         {
-            get { return patientDataModel.Patient; }
-            set
+            get { return patientDataModel.CurrentPatient; }
+            set//לכאורה זה לא נצרך
             {
-                patientDataModel.Patient = value;
+                patientDataModel.CurrentPatient = value;
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("Patient"));
                 }
             }
         }
-        public PatientDataViewModel()
+        public PatientDataViewModel(MainWindowViewModel viewModel)
         {
+            containingVm = viewModel;
             patientDataModel = new PatientDataModel();
+            CurrentPatient = containingVm.MainWindowM.Patient;
         }
 
     }

@@ -11,101 +11,82 @@
     <UserControl.Resources>
         <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
     </UserControl.Resources>
-    <StackPanel Width="180">
-        <StackPanel Orientation="Horizontal">
+
+    
+        <StackPanel Margin="5" Grid.Column="0">
             <TextBlock  TextWrapping="Wrap"
                         Text="ID:" />
             <TextBox Name="Id"
                      Height="23"
                      TextWrapping="Wrap"
                      Text="{Binding Patient.ID}" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
+
             <TextBlock TextWrapping="Wrap"
                        Text="First Name" />
-            <TextBox Name="FName"
-                     Height="23"
+            <TextBox Name="FName" Height="23"
                      TextWrapping="Wrap"
                      Text="{Binding Patient.FirstName}" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
+
             <TextBlock TextWrapping="Wrap"
                        Text="Last Name" />
-            <TextBox Name="LName"
-                     Height="23"
+            <TextBox Name="LName" Height="23"
                      TextWrapping="Wrap"
                      Text="{Binding Patient.LastName}" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
+
             <TextBlock TextWrapping="Wrap"
                        Text="Phone:" />
-            <TextBox Name="Phone"
-                     Height="23"
+            <TextBox Name="Phone" Height="23"
                      TextWrapping="Wrap"
                      Text="{Binding Patient.Phone}" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
+
             <TextBlock TextWrapping="Wrap"
                        Text="Address:" />
-            <TextBox Name="Address"
-                     Height="23"
+            <TextBox Name="Address" Height="23"
                      TextWrapping="Wrap"
                      Text="{Binding Patient.Address}" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
+
             <TextBlock TextWrapping="Wrap"
                        Text="Email:" />
-            <TextBox Name="Email"
-                     Height="23"
+            <TextBox Name="Email" Height="23"
                      TextWrapping="Wrap"
                      Text="{Binding Patient.Email}" />
 
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
             <TextBlock TextWrapping="Wrap"
                        Text="Sex:" />
             <ComboBox Name="SexComboBox"
                       Width="120"
                       ItemsSource="{Binding SexEnumValues}"
                       SelectedItem="{Binding Patient.Sex}" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
+
             <TextBlock TextWrapping="Wrap"
                        Text="Birth Date:" />
-            <DatePicker Name="BirthDate"
-                        SelectedDate="{Binding BirthDate}" />
+            <DatePicker Name="BirthDate" SelectedDate="{Binding BirthDate}" />
+            <Button Content="ADD"
+                    Command="{Binding AddToDbCommand}">
+                <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
+                        <Binding Path="Text"
+                                 ElementName="Id" />
+                        <Binding Path="Text"
+                                 ElementName="FName" />
+                        <Binding Path="Text"
+                                 ElementName="LName" />
+                        <Binding Path="Text"
+                                 ElementName="Phone" />
+                        <Binding Path="Text"
+                                 ElementName="Address" />
+                        <Binding Path="Text"
+                                 ElementName="Email" />
+                        <Binding Path="Text"
+                                 ElementName="BirthDate" />
+                    </MultiBinding>
+
+                </Button.CommandParameter>
+            </Button>
+
+
+        <Button Content="Back" Command="{Binding BackCommand}"/>
 
         </StackPanel>
-        <StackPanel Orientation="Horizontal">
-
-        </StackPanel>
-        <Button Content="Add"
-                Width="50"
-                Padding="5"
-                Command="{Binding AddToDbCommand}">
-            <Button.CommandParameter>
-                <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
-                    <Binding Path="Text"
-                             ElementName="Id" />
-                    <Binding Path="Text"
-                             ElementName="FName" />
-                    <Binding Path="Text"
-                             ElementName="LName" />
-                    <Binding Path="Text"
-                             ElementName="Phone" />
-                    <Binding Path="Text"
-                             ElementName="Address" />
-                    <Binding Path="Text"
-                             ElementName="Email" />
-                    <Binding Path="Text"
-                             ElementName="BirthDate" />
-                </MultiBinding>
-
-            </Button.CommandParameter>
-        </Button>
-
-
-
-
-    </StackPanel>
+    
 </UserControl>

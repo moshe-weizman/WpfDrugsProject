@@ -9,12 +9,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     
-    <StackPanel>
+    <StackPanel Grid.Column="0" Margin="5">
 
-        <Button Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_PATIENT_SCREEN }" Content="ADD PATIENT" Margin="157,20,0,20" HorizontalAlignment="Left" Width="500" Height="60" />
-        <Button Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_PHYSICIAN_SCREEN}" Content="ADD PHYSICIAN" Margin="157,20,139,20" Height="60" Width="500"/>
-        <Button Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_DRUG}" Content="ADD DRUG" Margin="157,20,139,20" Height="60" Width="500" />
-        <Button Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.DATA}" Content="DATA" Margin="157,20,139,20" Height="60" Click="Button_Click" Width="500"/>
+        <Button Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_PATIENT_SCREEN }" Content="ADD PATIENT" HorizontalContentAlignment="Center" Margin="20,20,0,20"  Height="60" />
+        <Button Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_PHYSICIAN_SCREEN}" Content="ADD PHYSICIAN" HorizontalContentAlignment="Center" Margin="20,20,0,20" Height="60" />
+        <Button Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_DRUG}" Content="ADD DRUG" Margin="20,20,0,20" HorizontalContentAlignment="Center" Height="60"  />
+        <Button Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.DATA}" Content="DATA" Margin="20,20,0,20" Height="60" Click="Button_Click" HorizontalContentAlignment="Center"/>
 
     </StackPanel>
 </UserControl>

@@ -11,7 +11,7 @@ namespace Drugs2020.PL.Models
     class PatientDataModel
     {
         private IBL bl;
-        public Patient Patient { get; set; }
+        public Patient CurrentPatient { get; set; }
         public PatientDataModel()
         {
             bl = new BLImplementation();
