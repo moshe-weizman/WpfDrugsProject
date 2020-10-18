@@ -7,11 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <TextBlock TextWrapping="Wrap"  Text="{Binding Patient.ID}" Margin="20,20,0,20"  Height="60"/>
-        <TextBlock TextWrapping="Wrap" Text="{Binding Patient.FirstName}" Margin="20,20,0,20"  Height="60"/>
-        <TextBlock TextWrapping="Wrap" Text="{Binding Patient.LastName}" Margin="20,20,0,20"  Height="60"/>
-        <TextBlock TextWrapping="Wrap" Text="{Binding Patient.Age}" Margin="20,20,0,20"  Height="60"/>
-
-
+        <TextBlock TextWrapping="Wrap" FontSize="28" Text="{Binding CurrentPatient.ID , StringFormat=ID: {0}}" Margin="20,20,0,20"  Height="60"/>
+        <TextBlock TextWrapping="Wrap" FontSize="28" Text="{Binding CurrentPatient.FirstName , StringFormat=First Name: {0}}" Margin="20,20,0,20"  Height="60"/>
+        <TextBlock TextWrapping="Wrap" FontSize="28" Text="{Binding CurrentPatient.LastName , StringFormat=Last Name: {0}}" Margin="20,20,0,20"  Height="60"/>
+        <TextBlock TextWrapping="Wrap" FontSize="28" Text="{Binding CurrentPatient.Age , StringFormat=Age: {0}}" Margin="20,20,0,20"  Height="60"/>
     </StackPanel>
 </UserControl>

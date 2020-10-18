@@ -11,18 +11,18 @@ namespace Drugs2020.PL.ViewModels
 {
     class PatientDataViewModel : INotifyPropertyChanged, IViewModel
     {
-        private PatientDataModel patientDataModel;
+        //private PatientDataModel patientDataModel;
         private MainWindowViewModel containingVm;
         public event PropertyChangedEventHandler PropertyChanged;
         public Patient CurrentPatient
         {
-            get { return patientDataModel.CurrentPatient; }
+            get { return containingVm.MainWindowM.Patient; }
             set//לכאורה זה לא נצרך
             {
-                patientDataModel.CurrentPatient = value;
+                containingVm.MainWindowM.Patient = value;
                 if (PropertyChanged != null)
                 {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Patient"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("CurrentPatient"));
                 }
             }
         }
@@ -30,7 +30,7 @@ namespace Drugs2020.PL.ViewModels
         {
             containingVm = viewModel;
            // patientDataModel = new PatientDataModel();
-            CurrentPatient = containingVm.CurrentPatient;
+            //CurrentPatient = containingVm.MainWindowM.Patient;
         }
 
     }

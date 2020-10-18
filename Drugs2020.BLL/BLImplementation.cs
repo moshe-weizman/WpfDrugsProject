@@ -21,13 +21,14 @@ namespace Drugs2020.BLL
         public IUser IdentifyUser(string userID)
         {
 
-            return new Admin("1234", "Mose", "Weizman", "0545678990", Sex.MALE, @"Moshe@gmail.com", "1234", "Elad", DateTime.Parse("12/10/1985"));
+            return new Physician("1234", "Mose", "Weizman", "0545678990", Sex.MALE, @"Moshe@gmail.com", "1234", "Elad", DateTime.Parse("12/10/1985"));
         }
 
         #region Patient CRUD Functions
         public Patient GetPatient(string ID)
         {
-            return program.GetPatient(ID);
+            return new Patient("1234", "Dudu", "Cohen", Sex.MALE, "0545678990", @"Moshe@gmail.com", "Elad", DateTime.Parse("12/10/1985"));
+
         }
 
         public void AddPatient(Patient patient)

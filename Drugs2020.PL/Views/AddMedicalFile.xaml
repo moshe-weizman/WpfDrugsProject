@@ -3,22 +3,43 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Drugs2020.PL.Views"
+             xmlns:local="clr-namespace:Drugs2020.PL.Views" xmlns:converters="clr-namespace:Drugs2020.PL.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
+    </UserControl.Resources>
     <StackPanel>
         <TextBlock TextWrapping="Wrap" Text="Weight:"/>
-        <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
+        <TextBox x:Name="Weight"  Height="23" TextWrapping="Wrap" Text="{Binding CurrentPatient.MedicalFile.Weight}"/>
 
         <TextBlock TextWrapping="Wrap" Text="Height:"/>
-        <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
+        <TextBox x:Name="Height" Height="23" TextWrapping="Wrap" Text="{Binding CurrentPatient.MedicalFile.Height}"/>
 
         <TextBlock TextWrapping="Wrap" Text="Chronic Illness:"/>
-        <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
+        <TextBox x:Name="ChronicIllness" Height="23" TextWrapping="Wrap" Text="{Binding CurrentPatient.MedicalFile.ChronicIllness}"/>
 
         <TextBlock TextWrapping="Wrap" Text="Drug Allergy:"/>
-        <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
-        
+        <TextBox x:Name="DrugAllergy" Height="23" TextWrapping="Wrap" Text="{Binding CurrentPatient.MedicalFile.DrugAllergy}"/>
+
+        <Button Content="ADD" Command="{Binding AddToDbCommand}" d:LayoutOverrides="Height">
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
+                    <Binding Path="Text"
+                                 ElementName="Weight" />
+                    <Binding Path="Text"
+                                 ElementName="Height" />
+                    <Binding Path="Text"
+                                 ElementName="ChronicIllness" />
+                    <Binding Path="Text"
+                                 ElementName="DrugAllergy" />
+                </MultiBinding>
+
+            </Button.CommandParameter>
+
+        </Button>
+        <Button Content="Back" d:LayoutOverrides="Height" Command="{Binding BackCommand}"/>
+
 
 
     </StackPanel>

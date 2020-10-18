@@ -22,5 +22,9 @@ namespace Drugs2020.BLL.BE
             this.ChronicIllness = chronicIllness;
             this.DrugAllergy = drugAllergy;
         }
+
+        public MedicalFile()
+        {
+        }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PatientSearchViewModel : IViewModel, IPatientSearchViewModel , IGoBackScreenVM
+    class PatientSearchViewModel : IViewModel, IPatientSearchViewModel , IGoBackScreenVM 
     {
 
         private MainWindowViewModel containingVm;
@@ -45,12 +45,21 @@ namespace Drugs2020.PL.ViewModels
         public void GetPatient()
         {
             PatientFound= patientSearchM.GetPatient();
-            containingVm.CurrentPatient = PatientFound;
+            if (PatientFound != null) {
+                containingVm.CurrentPatient = PatientFound;
+                ReplaceScreen();
+            }
         }
 
         public void GoBack()
         {
             containingVm.ReplaceLeftUC(Screen.LOGIN_SCREEN);
+        }
+
+        public void ReplaceScreen()
+        {
+            containingVm.ReplaceRightUC(Screen.PATIENT_DATA);
+            containingVm.ReplaceLeftUC(Screen.ADD_MEDICAL_FILE);
         }
     }
 }

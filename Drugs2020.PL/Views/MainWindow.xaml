@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
         <Image Source="/Images/medicine.jpg"
                Stretch="UniformToFill" Grid.Column="1" Margin="5"/>
-        <ContentControl Content="{Binding CurrentVm}" Grid.Column="0" />
+        <ContentControl Content="{Binding LeftCurrentVm}" Grid.Column="0" />
         <ContentControl Content="{Binding RightCurrentVm}" Grid.Column="1" />
 
     </Grid>

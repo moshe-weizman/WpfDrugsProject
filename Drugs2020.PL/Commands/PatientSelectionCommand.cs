@@ -41,7 +41,7 @@ namespace Drugs2020.PL.Commands
             patientSearchVm.GetPatient();
             if (patientSearchVm.PatientFound != null)
             {
-                MessageBox.Show(patientSearchVm.PatientFound.FirstName + " " + patientSearchVm.PatientFound.LastName);
+
             }
             else
             {

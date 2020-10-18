@@ -18,4 +18,10 @@
     <DataTemplate DataType="{x:Type viewModels:ActionsMenuViewModel}">
         <views:ActionsMenu/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:PatientDataViewModel}">
+        <views:PatientData/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:AddMedicalFileViewModel}">
+        <views:AddMedicalFile/>
+    </DataTemplate>
 </ResourceDictionary>
