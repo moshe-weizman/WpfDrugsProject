@@ -29,7 +29,7 @@ namespace Drugs2020.PL.ViewModels
             this.containingVm = containingVm;
             containingVm.CurrentPatient = new Patient();
         }
-        public string PatientID
+        public string PatientId
         {
             get { return patientSearchM.PatientId; }
             set { patientSearchM.PatientId = value; }
