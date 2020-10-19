@@ -24,5 +24,19 @@ namespace Drugs2020.PL.Models
         {
             bl.AddPatient(Patient);
         }
+
+        public bool DoesPatientExist()
+        {
+            if (bl.GetPatient(Patient.ID) != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void UpdatePatient()
+        {
+            bl.UpdatePatient(Patient.ID, Patient);
+        }
     }
 }
