@@ -15,6 +15,21 @@
         <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
         <TextBlock TextWrapping="Wrap" Text="TextBlock"/>
         <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
+        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center"  >
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Margin" Value="30,10,30,10"/>
+                    
+                </Style>
+            </StackPanel.Resources>
+            <Button Content="Medical File" d:LayoutOverrides="Height" Margin="30,5"/>
+            <Button Content="Patient's List of Medications" d:LayoutOverrides="Height" Margin="30,5"/>
+       
+       
+        </StackPanel>
+        <Button Content="Prescription Publishing" d:LayoutOverrides="Height" Margin="5"/>
+        <Button Content="ADD" d:LayoutOverrides="Height" Margin="5"/>
+        <Button Content="Back" d:LayoutOverrides="Height" Margin="5"/>
 
     </StackPanel>
 </UserControl>

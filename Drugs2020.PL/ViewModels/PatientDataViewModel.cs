@@ -11,27 +11,28 @@ namespace Drugs2020.PL.ViewModels
 {
     class PatientDataViewModel : INotifyPropertyChanged, IViewModel
     {
-        //private PatientDataModel patientDataModel;
+        private PatientModel patientModel;
         private MainWindowViewModel containingVm;
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public PatientDataViewModel(MainWindowViewModel viewModel, PatientModel patientModel)
+        {
+            containingVm = viewModel;
+            this.patientModel = patientModel;
+        }
         public Patient CurrentPatient
         {
-            get { return containingVm.MainWindowM.Patient; }
+            get { return patientModel.CurrentPatient; }
             set//לכאורה זה לא נצרך
             {
-                containingVm.MainWindowM.Patient = value;
+                patientModel.CurrentPatient = value;
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("CurrentPatient"));
                 }
             }
         }
-        public PatientDataViewModel(MainWindowViewModel viewModel)
-        {
-            containingVm = viewModel;
-           // patientDataModel = new PatientDataModel();
-            //CurrentPatient = containingVm.MainWindowM.Patient;
-        }
+       
 
     }
 }

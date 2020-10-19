@@ -27,10 +27,6 @@ namespace Drugs2020.PL.Views
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            SaveAndRetrive bl = new SaveAndRetrive();
-            bl.SaveImage();
-        }
+       
     }
 }

@@ -24,28 +24,23 @@ namespace Drugs2020.PL.ViewModels
         private ActionsMenuViewModel actionsMenuVM;
         private PatientDataViewModel patientDataVM;
         private AddMedicalFileViewModel addMedicalFileVM;
+        private VisitTheClinicViewModel visitingTheClinicVM;
+
+        private PatientModel patientModel;
         public MainWindowViewModel()
         {
+            patientModel = new PatientModel();
             MainWindowM = new MainWindowModel();
             logInVM = new LogInViewModel(this);
-            patientSearchVM = new PatientSearchViewModel(this);
+            patientSearchVM = new PatientSearchViewModel(this, patientModel);
             addPatientVM = new AddPatientViewModel(this);
             actionsMenuVM = new ActionsMenuViewModel(this);
-            patientDataVM = new PatientDataViewModel(this);
-            addMedicalFileVM = new AddMedicalFileViewModel(this);
+            patientDataVM = new PatientDataViewModel(this, patientModel);
+            addMedicalFileVM = new AddMedicalFileViewModel(this, patientModel);
+            visitingTheClinicVM = new VisitTheClinicViewModel(this, patientModel);
             LeftCurrentVm = logInVM;
         }
         public MainWindowModel MainWindowM { get; set; }
-
-        public IUser CurrentUser {
-            get { return MainWindowM.User; } 
-            set { MainWindowM.User = value; } 
-        }
-
-        public Patient CurrentPatient {
-            get { return MainWindowM.Patient; }
-            set { MainWindowM.Patient = value; }
-        }
         public IViewModel RightCurrentVm 
         {
             get { return _RightCurrentVm; }

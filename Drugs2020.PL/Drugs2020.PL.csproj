@@ -84,6 +84,7 @@
     <Compile Include="ViewModels\PatientDataViewModel.cs" />
     <Compile Include="ViewModels\PatientSearchViewModel.cs" />
     <Compile Include="ViewModels\PhysicianPanelViewModel.cs" />
+    <Compile Include="ViewModels\VisitTheClinicViewModel.cs" />
     <Compile Include="Views\ActionsMenu.xaml.cs">
       <DependentUpon>ActionsMenu.xaml</DependentUpon>
     </Compile>
@@ -120,8 +121,7 @@
     <Compile Include="Models\AddPatientModel.cs" />
     <Compile Include="Models\LogInModel.cs" />
     <Compile Include="Models\MainWindowModel.cs" />
-    <Compile Include="Models\PatientDataModel.cs" />
-    <Compile Include="Models\PatientSearchModel.cs" />
+    <Compile Include="Models\PatientModel.cs" />
     <Compile Include="Models\PhysicianPanelModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

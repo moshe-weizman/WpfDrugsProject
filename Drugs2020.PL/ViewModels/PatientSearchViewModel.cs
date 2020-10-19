@@ -16,38 +16,32 @@ namespace Drugs2020.PL.ViewModels
         public PatientSelectionCommand PatientSelectionCommand { get; set; }
         public BackCommand BackCommand { get; set; }
 
-        private PatientSearchModel patientSearchM;
+        private PatientModel patientM;
 
-        public PatientSearchViewModel(MainWindowViewModel containingVm)
+        public PatientSearchViewModel(MainWindowViewModel containingVm, PatientModel patientM)
         {
-            this.patientSearchM = new PatientSearchModel();
-
-            PatientSelectionCommand = new PatientSelectionCommand(this);
-
-            BackCommand = new BackCommand(this);
-
+            this.PatientSelectionCommand = new PatientSelectionCommand(this);
+            this.BackCommand = new BackCommand(this);
             this.containingVm = containingVm;
-            containingVm.CurrentPatient = new Patient();
+            this.patientM = patientM;
         }
         public string PatientId
         {
-            get { return patientSearchM.PatientId; }
-            set { patientSearchM.PatientId = value; }
+            get { return patientM.PatientId; }
+            set { patientM.PatientId = value; }
         }
-        private Patient patientFoundM;//בשביל מה זה נצרך?
-        public Patient PatientFound//בשביל מה זה נצרך?
+        public Patient PatientFound
         {
-            get { return patientSearchM.PatientFound; }
-            set { patientSearchM.PatientFound = value; }
+            get { return patientM.CurrentPatient; }
+            set { patientM.CurrentPatient = value; }
         }
 
        
 
         public void GetPatient()
         {
-            PatientFound= patientSearchM.GetPatient();
+            PatientFound= patientM.GetPatient();
             if (PatientFound != null) {
-                containingVm.CurrentPatient = PatientFound;
                 ReplaceScreen();
             }
         }

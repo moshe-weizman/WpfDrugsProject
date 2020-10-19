@@ -20,21 +20,7 @@ namespace Drugs2020.PL.Models
         public IUser User { get; set; }
         public Patient Patient { get; set; }
 
-        public void UpdatePatient()
-        {
-            bl.UpdatePatient(Patient.ID, Patient);
-        }
-
-        public void UpdateUser()
-        {
-            if (User is Physician) {//אולי לשנות ואלי לעשות CURD שמתאים לIUSER
-                Physician physician = (Physician)User;
-                bl.UpdatePhysician(physician.ID, physician);
-            }
-            else
-            {
-              
-            }
-        }
+        
+       
     }
 }
