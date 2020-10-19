@@ -12,7 +12,7 @@ namespace Drugs2020.PL.ViewModels
 {
     class AddPhysicianViewModel : IAddToDb, IGoBackScreenVM, IViewModel
     {
-        private AddPhysicianModel AddPhysicianM;
+        private AddPhysicianModel addPhysicianM;
 
         private MainWindowViewModel containingVm;
         public AddToDbCommand AddToDbCommand { get; set; }
@@ -20,14 +20,14 @@ namespace Drugs2020.PL.ViewModels
         public BackCommand BackCommand { get; set; }
         public Physician Physician
         {
-            get { return AddPhysicianM.Physician; }
-            set { AddPhysicianM.Physician = value; }
+            get { return addPhysicianM.Physician; }
+            set { addPhysicianM.Physician = value; }
         }
         public Array SexEnumValues => Enum.GetValues(typeof(Sex));
 
         public AddPhysicianViewModel(MainWindowViewModel containingVm)
         {
-            AddPhysicianM = new AddPhysicianModel();
+            addPhysicianM = new AddPhysicianModel();
             this.containingVm = containingVm;
             AddToDbCommand = new AddToDbCommand(this);
             BackCommand = new BackCommand(this);
@@ -36,22 +36,23 @@ namespace Drugs2020.PL.ViewModels
 
         public void AddItemToDb()
         {
-            AddPhysicianM.AddPhysicianToDb();
+            addPhysicianM.AddPhysicianToDb();
         }
 
         public bool ItemAlreadyExists()
         {
-            return false;
+            return addPhysicianM.DoesPhysicianExist();
         }
 
         public void UpdateExistingItem()
         {
-            throw new NotImplementedException();
+            addPhysicianM.UpdatePhysician();
         }
 
         public bool UserWantsToReplaceExistingItem()
         {
-            throw new NotImplementedException();
+            ExistingItemDecisionViewModel existingItemDecision = new ExistingItemDecisionViewModel("Physician");
+            return existingItemDecision.Decision;
         }
 
         public void GoBack()

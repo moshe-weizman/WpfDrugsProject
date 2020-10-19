@@ -23,5 +23,18 @@ namespace Drugs2020.PL.Models
         {
             bl.AddPhysician(Physician);
         }
+        public bool DoesPhysicianExist()
+        {
+            if (bl.GetPhysician(Physician.ID) != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void UpdatePhysician()
+        {
+            bl.UpdatePhysician(Physician.ID, Physician);
+        }
     }
 }
