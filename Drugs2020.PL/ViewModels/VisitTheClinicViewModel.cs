@@ -18,5 +18,5 @@ namespace Drugs2020.PL.ViewModels
             this.patientModel = patientModel;
             this.containingVm = containingVm;
         }
-    }
+    }//
 }
