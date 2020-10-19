@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Drugs2020.BLL.BE
 {
@@ -16,8 +17,10 @@ namespace Drugs2020.BLL.BE
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
-        public DateTime BirthDate { get; set; }
         public int Age { get; set; }
+        [NotMapped]
+        public DateTime BirthDate { get; set; }
+       
 
         public Person(string id, string fNamen, string lName, Sex sex, string phone, string email, string address, DateTime birthDate)
         {
