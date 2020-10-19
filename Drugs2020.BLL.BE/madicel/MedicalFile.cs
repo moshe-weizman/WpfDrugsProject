@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace Drugs2020.BLL.BE
 {
     public class MedicalFile
     {
+        [Key]
         public int PatientId { get; set; }
         public double Weight { get; set; }
         public double Height { get; set; }

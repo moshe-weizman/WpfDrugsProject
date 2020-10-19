@@ -6,7 +6,7 @@ namespace Drugs2020.BLL
 {
     public class BLImplementation : IBL
     {
-        IDal program = new DalImplementation();
+        IDal dal = new DalImplementation();
        
         public bool ValidatePassword(IUser user, string password)
         {
@@ -20,52 +20,58 @@ namespace Drugs2020.BLL
 
         public IUser IdentifyUser(string userID)
         {
-
-            return new Physician("1234", "Mose", "Weizman", "0545678990", Sex.MALE, @"Moshe@gmail.com", "1234", "Elad", DateTime.Parse("12/10/1985"));
+            switch (userID)
+            {
+                case "1234":
+                    return new Admin("1234", "Mose", "Weizman", Sex.MALE, "0545678990", @"Moshe@gmail.com", "1234", "Elad", DateTime.Parse("12/10/1985"));
+                case "4321":
+                    return new Physician("4321", "Mose", "Weizman", Sex.MALE, "0545678990", @"Moshe@gmail.com", "4321", "Elad", DateTime.Parse("12/10/1985"));
+            }
+            return null;
         }
 
         #region Patient CRUD Functions
         public Patient GetPatient(string ID)
         {
-            return new Patient("1234", "Dudu", "Cohen", Sex.MALE, "0545678990", @"Moshe@gmail.com", "Elad", DateTime.Parse("12/10/1985"));
-
+            //return new Patient("1234", "Dudu", "Cohen", Sex.MALE, "0545678990", @"Moshe@gmail.com", "Elad", DateTime.Parse("12/10/1985"));
+            return null;
         }
 
         public void AddPatient(Patient patient)
         {
-            program.AddPatient(patient);
+            dal.AddPatient(patient);
         }
 
         public void UpdatePatient(string id, Patient updatedPatient)
         {
-            program.UpdatePatient(updatedPatient);
+            dal.UpdatePatient(updatedPatient);
         }
 
         public void DeletePatient(string id)
         {
-            program.DeletePatient(id);
+            dal.DeletePatient(id);
         }
         #endregion
 
         #region Physician CRUD Functions
         public Physician GetPhysician(string ID)
         {
-            return program.GetPhysician(ID);
+            return dal.GetPhysician(ID);
         }
 
         public void AddPhysician(Physician physician)
         {
-            program.AddPhysician(physician);
+            dal.AddPhysician(physician);
         }
 
         public void UpdatePhysician(string id, Physician updatedPhysician)
         {
-            program.UpdatePhysician(updatedPhysician);
+            dal.UpdatePhysician(updatedPhysician);
         }
 
         public void DeletePhysician(string id)
         {
-            program.DeletePhysician(id);
+            dal.DeletePhysician(id);
         }
 
         #endregion
@@ -73,22 +79,22 @@ namespace Drugs2020.BLL
         #region Drug CRUD Functions
         public Drug GetDrug(string ID)
         {
-            return program.GetDrug(ID);
+            return dal.GetDrug(ID);
         }
 
         public void AddDrug(Drug drug)
         {
-            program.AddDrug(drug);
+            dal.AddDrug(drug);
         }
 
         public void UpdateDrug(string id, Drug updatedDrug)
         {
-            program.UpdateDrug(updatedDrug);
+            dal.UpdateDrug(updatedDrug);
         }
 
         public void DeleteDrug(string id)
         {
-            program.DeleteDrug(id);
+            dal.DeleteDrug(id);
         }
         #endregion
     }

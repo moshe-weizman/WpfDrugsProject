@@ -60,7 +60,7 @@
 
             <TextBlock TextWrapping="Wrap"
                        Text="Birth Date:" />
-            <DatePicker Name="BirthDate" SelectedDate="{Binding BirthDate}" />
+            <DatePicker Name="BirthDate" SelectedDate="{Binding Patient.BirthDate}" />
             <Button Content="ADD"
                     Command="{Binding AddToDbCommand}">
                 <Button.CommandParameter>
