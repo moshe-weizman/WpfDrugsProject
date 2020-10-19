@@ -3,22 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Drugs2020.PL.Views"
+             xmlns:local="clr-namespace:Drugs2020.PL.Views" xmlns:converters="clr-namespace:Drugs2020.PL.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
+    </UserControl.Resources>
     <StackPanel>
-        <TextBlock TextWrapping="Wrap" Text="TextBlock"/>
-        <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
-        <TextBlock TextWrapping="Wrap" Text="TextBlock"/>
-        <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
-        <TextBlock TextWrapping="Wrap" Text="TextBlock"/>
-        <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
-        <TextBlock TextWrapping="Wrap" Text="TextBlock"/>
-        <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
+        <TextBlock TextWrapping="Wrap" Text="Problem:"/>
+        <TextBox x:Name="ProblemTextBox"  Height="23" TextWrapping="Wrap" Text="{Binding MedicalRecord.Problem}"/>
+
+        <TextBlock TextWrapping="Wrap" Text="Diagnose:"/>
+        <TextBox x:Name="DiagnoseTextBox"  Height="23" TextWrapping="Wrap" Text="{Binding MedicalRecord.Diagnose}"/>
+
+        <TextBlock TextWrapping="Wrap" Text="Treatment:"/>
+        <TextBox x:Name="TreatmentTextBox"  Height="23" TextWrapping="Wrap" Text="{Binding MedicalRecord.Treatment}"/>
+
+        <TextBlock TextWrapping="Wrap" Text="Notes:"/>
+        <TextBox x:Name="NotesTextBox" Height="23" TextWrapping="Wrap" Text="{Binding MedicalRecord.PhysicianNotes}"/>
+        
         <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center"  >
             <StackPanel.Resources>
                 <Style TargetType="{x:Type Button}">
-                    <Setter Property="Margin" Value="30,10,30,10"/>
+                    <Setter Property="Margin" Value="30,10,30,10" />
                     
                 </Style>
             </StackPanel.Resources>
@@ -28,7 +35,21 @@
        
         </StackPanel>
         <Button Content="Prescription Publishing" d:LayoutOverrides="Height" Margin="5"/>
-        <Button Content="ADD" d:LayoutOverrides="Height" Margin="5"/>
+        <Button Content="ADD" Command="{Binding AddToDbCommand}" d:LayoutOverrides="Height" Margin="5">
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
+                    <Binding Path="Text"
+                                 ElementName="ProblemTextBox" />
+                    <Binding Path="Text"
+                                 ElementName="DiagnoseTextBox" />
+                    <Binding Path="Text"
+                                 ElementName="TreatmentTextBox" />
+                    <Binding Path="Text"
+                                 ElementName="NotesTextBox" />
+                </MultiBinding>
+
+            </Button.CommandParameter>
+        </Button>
         <Button Content="Back" d:LayoutOverrides="Height" Margin="5"/>
 
     </StackPanel>

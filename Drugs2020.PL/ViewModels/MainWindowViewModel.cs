@@ -61,7 +61,7 @@ namespace Drugs2020.PL.ViewModels
             }
         }
 
-        public void ReplaceLeftUC(Screen currentVM)
+        public void ReplaceUC(Screen currentVM)
         {
             switch (currentVM)
             {
@@ -70,6 +70,7 @@ namespace Drugs2020.PL.ViewModels
                     break;
                 case Screen.SEARCH_PATIENT_SCREEN:
                     LeftCurrentVm = patientSearchVM;
+                    RightCurrentVm = null;
                     break;
                 case Screen.ADD_PATIENT_SCREEN:
                      LeftCurrentVm = addPatientVM;
@@ -79,20 +80,7 @@ namespace Drugs2020.PL.ViewModels
                     break;
                 case Screen.ADD_MEDICAL_FILE:
                     LeftCurrentVm = addMedicalFileVM;
-                    break;
-                default: break;
-            }
-        }
-
-        public void ReplaceRightUC(Screen currentVM)
-        {
-            switch (currentVM)
-            {
-                case Screen.PATIENT_DATA:
                     RightCurrentVm = patientDataVM;
-                    break;
-                case Screen.EMPTY:
-                    RightCurrentVm = null;
                     break;
                 default: break;
             }

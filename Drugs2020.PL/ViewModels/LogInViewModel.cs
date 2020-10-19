@@ -48,9 +48,9 @@ namespace Drugs2020.PL.ViewModels
         public void LogUserIn()
         {
             if (User is Physician)
-                containingVm.ReplaceLeftUC(Screen.SEARCH_PATIENT_SCREEN);
+                containingVm.ReplaceUC(Screen.SEARCH_PATIENT_SCREEN);
             else
-                containingVm.ReplaceLeftUC(Screen.ACTIONS_MENU);
+                containingVm.ReplaceUC(Screen.ACTIONS_MENU);
         }
     }
 }

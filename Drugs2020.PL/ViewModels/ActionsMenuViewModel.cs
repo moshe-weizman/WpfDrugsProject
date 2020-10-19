@@ -20,7 +20,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void ReplaceScreen(Screen desiredScreen)
         {
-            mainWindowVM.ReplaceLeftUC(desiredScreen);
+            mainWindowVM.ReplaceUC(desiredScreen);
         }
     }
 }
