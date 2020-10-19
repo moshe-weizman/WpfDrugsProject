@@ -96,6 +96,9 @@ namespace Drugs2020.PL.ViewModels
                 case Screen.PATIENT_DATA:
                     RightCurrentVm = patientDataVM;
                     break;
+                case Screen.EMPTY:
+                    RightCurrentVm = null;
+                    break;
                 default: break;
             }
         }

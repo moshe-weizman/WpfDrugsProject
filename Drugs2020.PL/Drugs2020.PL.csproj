@@ -108,6 +108,9 @@
     <Compile Include="Views\PhysicianPanel.xaml.cs">
       <DependentUpon>PhysicianPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\VisitingTheClinic.xaml.cs">
+      <DependentUpon>VisitingTheClinic.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\AddToDbCommand.cs" />
@@ -186,6 +189,10 @@
     <Page Include="Views\PhysicianPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\VisitingTheClinic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

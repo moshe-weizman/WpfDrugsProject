@@ -27,6 +27,7 @@ namespace Drugs2020.PL.ViewModels
             BackCommand = new BackCommand(this);
 
             this.containingVm = containingVm;
+            containingVm.CurrentPatient = new Patient();
         }
         public string PatientID
         {
@@ -59,7 +60,9 @@ namespace Drugs2020.PL.ViewModels
         public void ReplaceScreen()
         {
             containingVm.ReplaceRightUC(Screen.PATIENT_DATA);
-            containingVm.ReplaceLeftUC(Screen.ADD_MEDICAL_FILE);
+            if(!PatientFound.GetType().GetProperties().Any(prop => prop == null))//if all properties is null so open medical file screen
+               containingVm.ReplaceLeftUC(Screen.ADD_MEDICAL_FILE);
+
         }
     }
 }

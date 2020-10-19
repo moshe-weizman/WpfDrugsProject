@@ -81,6 +81,7 @@
   <ItemGroup>
     <Compile Include="DalImplementation.cs" />
     <Compile Include="GoogleDrive.cs" />
+    <Compile Include="ICloudForImage.cs" />
     <Compile Include="IDal.cs" />
     <Compile Include="PharmacyContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,10 +89,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="card.json" />
-    <None Include="tt3.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="test.json" />
     <None Include="credentials.json" />
     <None Include="packages.config" />
   </ItemGroup>

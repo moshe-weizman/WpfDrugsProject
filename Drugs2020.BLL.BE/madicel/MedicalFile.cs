@@ -9,7 +9,7 @@ namespace Drugs2020.BLL.BE
         public int PatientId { get; set; }
         public double Weight { get; set; }
         public double Height { get; set; }
-        public List<MedicalRecord> MedicalRecords { get; }
+        public List<MedicalRecord> MedicalRecords { get; set; }
         public List<string> ChronicIllness { get; set; }
         public List<string> DrugAllergy { get; set; }
         public List<Recept> ReceptsHistory { get; set; }

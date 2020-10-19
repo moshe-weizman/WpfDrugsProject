@@ -47,6 +47,7 @@ namespace Drugs2020.PL.ViewModels
         public void GoBack()
         {
             containingVm.ReplaceLeftUC(Screen.SEARCH_PATIENT_SCREEN);
+            containingVm.ReplaceRightUC(Screen.EMPTY);
         }
     }
 }
