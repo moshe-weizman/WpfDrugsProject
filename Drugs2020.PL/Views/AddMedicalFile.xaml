@@ -11,16 +11,16 @@
     </UserControl.Resources>
     <StackPanel>
         <TextBlock TextWrapping="Wrap" Text="Weight:"/>
-        <TextBox x:Name="Weight"  Height="23" TextWrapping="Wrap" Text="{Binding CurrentPatient.MedicalFile.Weight}"/>
+        <TextBox x:Name="Weight"  Height="23" TextWrapping="Wrap" Text="{Binding MedicalFile.Weight}"/>
 
         <TextBlock TextWrapping="Wrap" Text="Height:"/>
-        <TextBox x:Name="Height" Height="23" TextWrapping="Wrap" Text="{Binding CurrentPatient.MedicalFile.Height}"/>
+        <TextBox x:Name="Height" Height="23" TextWrapping="Wrap" Text="{Binding MedicalFile.Height}"/>
 
         <TextBlock TextWrapping="Wrap" Text="Chronic Illness:"/>
-        <TextBox x:Name="ChronicIllness" Height="23" TextWrapping="Wrap" Text="{Binding CurrentPatient.MedicalFile.ChronicIllness}"/>
+        <TextBox x:Name="ChronicIllness" Height="23" TextWrapping="Wrap" Text="{Binding MedicalFile.ChronicIllness}"/>
 
         <TextBlock TextWrapping="Wrap" Text="Drug Allergy:"/>
-        <TextBox x:Name="DrugAllergy" Height="23" TextWrapping="Wrap" Text="{Binding CurrentPatient.MedicalFile.DrugAllergy}"/>
+        <TextBox x:Name="DrugAllergy" Height="23" TextWrapping="Wrap" Text="{Binding MedicalFile.DrugAllergy}"/>
 
         <Button Content="ADD" Command="{Binding AddToDbCommand}" d:LayoutOverrides="Height">
             <Button.CommandParameter>

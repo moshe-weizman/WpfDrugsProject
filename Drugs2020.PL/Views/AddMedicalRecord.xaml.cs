@@ -18,9 +18,9 @@ namespace Drugs2020.PL.Views
     /// <summary>
     /// Interaction logic for VisitingTheClinic.xaml
     /// </summary>
-    public partial class VisitingTheClinic : UserControl
+    public partial class AddMedicalRecord : UserControl
     {
-        public VisitingTheClinic()
+        public AddMedicalRecord()
         {
             InitializeComponent();
         }

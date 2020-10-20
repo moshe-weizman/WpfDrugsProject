@@ -53,8 +53,12 @@ namespace Drugs2020.PL.ViewModels
 
         public void ReplaceScreen()
         {
-            if(!PatientFound.GetType().GetProperties().Any(prop => prop == null))//if all properties is null so open medical file screen
-               containingVm.ReplaceUC(Screen.ADD_MEDICAL_FILE);
+           
+            // if (!PatientFound.GetType().GetProperties().Any(prop => prop == null))//if all properties is null so open medical file screen
+            if( PatientFound.MedicalFile==null)
+                containingVm.ReplaceUC(Screen.ADD_MEDICAL_FILE);
+            else
+                containingVm.ReplaceUC(Screen.ADD_MEDICAL_RECORD);
 
         }
     }

@@ -15,19 +15,20 @@ namespace Drugs2020.PL.ViewModels
         private MainWindowViewModel containingVm;
         public BackCommand BackCommand { get; set; }
         public AddToDbCommand AddToDbCommand { get; set; }
-        public Patient CurrentPatient { 
-            get { return patientModel.CurrentPatient; } 
-            set {
-                patientModel.CurrentPatient = value;
-                patientModel.CurrentPatient = value;
-            } 
+        public MedicalFile MedicalFile
+        {
+            get;
+            set; 
         }
         public AddMedicalFileViewModel(MainWindowViewModel containingVm, PatientModel patientModel)
         {
             this.containingVm = containingVm;
+            this.patientModel = patientModel;
             AddToDbCommand = new AddToDbCommand(this);
             BackCommand = new BackCommand(this);
-            this.patientModel = patientModel;
+            MedicalFile = new MedicalFile();
+
+
         }
 
         public void AddItemToDb()
@@ -47,6 +48,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void UpdateExistingItem()
         {
+            patientModel.CurrentPatient.MedicalFile = MedicalFile;
             patientModel.UpdatePatient();
         }
 

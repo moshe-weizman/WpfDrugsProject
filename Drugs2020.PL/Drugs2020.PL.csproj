@@ -96,7 +96,7 @@
     <Compile Include="ViewModels\PatientDataViewModel.cs" />
     <Compile Include="ViewModels\PatientSearchViewModel.cs" />
     <Compile Include="ViewModels\PhysicianPanelViewModel.cs" />
-    <Compile Include="ViewModels\VisitTheClinicViewModel.cs" />
+    <Compile Include="ViewModels\AddMedicalRecordViewModel.cs" />
     <Compile Include="Views\ActionsMenu.xaml.cs">
       <DependentUpon>ActionsMenu.xaml</DependentUpon>
     </Compile>
@@ -121,11 +121,11 @@
     <Compile Include="Views\PatientSearch.xaml.cs">
       <DependentUpon>PatientSearch.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AddMedicalRecord.xaml.cs">
+      <DependentUpon>AddMedicalRecord.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PhysicianPanel.xaml.cs">
       <DependentUpon>PhysicianPanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\VisitingTheClinic.xaml.cs">
-      <DependentUpon>VisitingTheClinic.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -205,11 +205,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\PhysicianPanel.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Views\AddMedicalRecord.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\VisitingTheClinic.xaml">
+    <Page Include="Views\PhysicianPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

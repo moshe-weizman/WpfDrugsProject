@@ -9,18 +9,23 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class VisitTheClinicViewModel: IAddToDb, IGoBackScreenVM
+    class AddMedicalRecordViewModel: IAddToDb, IGoBackScreenVM, IViewModel
     {
         private PatientModel patientModel;
         private MainWindowViewModel containingVm;
 
-        public VisitTheClinicViewModel(MainWindowViewModel containingVm, PatientModel patientModel)
+        public AddMedicalRecordViewModel(MainWindowViewModel containingVm, PatientModel patientModel)
         {
             this.patientModel = patientModel;
             this.containingVm = containingVm;
+            BackCommand = new BackCommand(this);
+            AddToDbCommand = new AddToDbCommand(this);
+            MedicalRecord = new MedicalRecord();
         }
 
         public AddToDbCommand AddToDbCommand { get; set; }
+
+        public BackCommand BackCommand { get; set; }
 
         public MedicalRecord MedicalRecord{ set; get; }
 
