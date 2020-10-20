@@ -22,7 +22,7 @@
         <TextBlock TextWrapping="Wrap" Text="Drug Allergy:"/>
         <TextBox x:Name="DrugAllergy" Height="23" TextWrapping="Wrap" Text="{Binding MedicalFile.DrugAllergy}"/>
 
-        <Button Content="ADD" Command="{Binding AddToDbCommand}" d:LayoutOverrides="Height">
+        <Button Content="Add/Update" Command="{Binding AddToDbCommand}" Margin="10" d:LayoutOverrides="Height">
             <Button.CommandParameter>
                 <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
                     <Binding Path="Text"
@@ -38,7 +38,7 @@
             </Button.CommandParameter>
 
         </Button>
-        <Button Content="Back" d:LayoutOverrides="Height" Command="{Binding BackCommand}"/>
+        <Button Content="Back" d:LayoutOverrides="Height" Command="{Binding BackCommand}" Margin="10"/>
 
 
 

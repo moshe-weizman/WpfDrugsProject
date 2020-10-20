@@ -12,7 +12,10 @@ namespace Drugs2020.BLL
 
         IUser IdentifyUser(string userID);
 
-
+        void AddMedicalFileToPatient(MedicalFile medicalFile);
+        void UpdateMedicalFile(string patientId, MedicalFile medicalFile);
+        void AddRecept(Recept recept);
+        MedicalFile GetMedicalFile(string patientID);
         #region Patient CRUD Functions
         void AddPatient(Patient patient);
         Patient GetPatient(string id);

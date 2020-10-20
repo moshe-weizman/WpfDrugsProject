@@ -18,10 +18,10 @@
                  Height="23"
                  TextWrapping="Wrap" />
         <Button x:Name="SearchButton"
-                Command="{Binding PatientSelectionCommand}"
+                Command="{Binding PatientSelectionCommand}" Margin="10"
                 CommandParameter="{Binding Text, ElementName=PatientIDTextBox}"
                 Content="Search" />
-            <Button Content="Back" Command="{Binding BackCommand}"/>
+            <Button Content="Back" Command="{Binding BackCommand}" Margin="10"/>
 
         </StackPanel>
     

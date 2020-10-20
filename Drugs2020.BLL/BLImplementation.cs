@@ -30,6 +30,29 @@ namespace Drugs2020.BLL
             }
             return null;
         }
+        public void AddMedicalFileToPatient(MedicalFile medicalFile)
+        {
+
+        }
+
+        public MedicalFile GetMedicalFile(string patientID)
+        {
+            return null;
+        }
+
+        public void UpdateMedicalFile(string patientId, MedicalFile medicalFile)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddRecept(Recept recept)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
 
         #region Patient CRUD Functions
         public Patient GetPatient(string ID)
@@ -39,11 +62,12 @@ namespace Drugs2020.BLL
             
         }
 
+
         public void AddPatient(Patient patient)
         {
             dal.AddPatient(patient);
         }
-
+       
         public void UpdatePatient(string id, Patient updatedPatient)
         {
             dal.UpdatePatient(updatedPatient);
@@ -98,6 +122,8 @@ namespace Drugs2020.BLL
         {
             dal.DeleteDrug(id);
         }
+
+       
         #endregion
     }
 }

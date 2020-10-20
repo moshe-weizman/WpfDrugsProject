@@ -84,6 +84,7 @@
     <Compile Include="ViewModels\AddMedicalFileViewModel.cs" />
     <Compile Include="ViewModels\AddPatientViewModel.cs" />
     <Compile Include="ViewModels\AddPhysicianViewModel.cs" />
+    <Compile Include="ViewModels\AddReceptViewModel.cs" />
     <Compile Include="ViewModels\ExistingItemDecisionViewModel.cs" />
     <Compile Include="ViewModels\IAddToDb.cs" />
     <Compile Include="ViewModels\IGoBackScreenVM.cs" />
@@ -108,6 +109,9 @@
     </Compile>
     <Compile Include="Views\AddPhysician.xaml.cs">
       <DependentUpon>AddPhysician.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddRecept.xaml.cs">
+      <DependentUpon>AddRecept.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -188,6 +192,10 @@
     <Page Include="Views\AddPhysician.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AddRecept.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Login.xaml">
       <Generator>MSBuild:Compile</Generator>

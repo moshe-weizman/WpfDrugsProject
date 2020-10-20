@@ -62,7 +62,7 @@
                        Text="Birth Date:" />
             <DatePicker Name="BirthDate" SelectedDate="{Binding Patient.BirthDate}" />
             <Button Content="ADD"
-                    Command="{Binding AddToDbCommand}">
+                    Command="{Binding AddToDbCommand}" Margin="10">
                 <Button.CommandParameter>
                     <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
                         <Binding Path="Text"
@@ -85,7 +85,7 @@
             </Button>
 
 
-        <Button Content="Back" Command="{Binding BackCommand}"/>
+        <Button Content="Back" Command="{Binding BackCommand}" Margin="10"/>
 
         </StackPanel>
     
