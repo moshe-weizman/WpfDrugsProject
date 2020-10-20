@@ -1,8 +1,6 @@
 ﻿using Drugs2020.BLL.BE;
 
 
-
-
 namespace Drugs2020.DAL
 {
     public class DalImplementation : IDal
@@ -22,6 +20,7 @@ namespace Drugs2020.DAL
         public void UpdatePatient(Patient patient)
         {
             ctx.Patients.Remove(ctx.Patients.Find(patient.ID));
+            ctx.SaveChanges();
             ctx.Patients.Add(patient);
             ctx.SaveChanges();
         }
