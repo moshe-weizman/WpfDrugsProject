@@ -1,6 +1,7 @@
 ﻿using Drugs2020.BLL.BE;
 using Drugs2020.DAL;
 using System;
+using System.Runtime.InteropServices;
 
 namespace Drugs2020.BLL
 {
@@ -29,18 +30,44 @@ namespace Drugs2020.BLL
             }
             return null;
         }
+        public void AddMedicalFileToPatient(MedicalFile medicalFile)
+        {
+
+        }
+
+        public MedicalFile GetMedicalFile(string patientID)
+        {
+            return null;
+        }
+
+        public void UpdateMedicalFile(string patientId, MedicalFile medicalFile)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddRecept(Recept recept)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
 
         #region Patient CRUD Functions
-        public Patient GetPatient(string id)
+        public Patient GetPatient(string ID)
         {
-            return dal.GetPatient(id);
+           return new Patient("1234", "Dudu", "Cohen", Sex.MALE, "0545678990", @"Moshe@gmail.com", "Elad", DateTime.Parse("12/10/1985"));
+            // return null;
+            
         }
+
 
         public void AddPatient(Patient patient)
         {
             dal.AddPatient(patient);
         }
-
+       
         public void UpdatePatient(string id, Patient updatedPatient)
         {
             dal.UpdatePatient(updatedPatient);
@@ -95,6 +122,8 @@ namespace Drugs2020.BLL
         {
             dal.DeleteDrug(id);
         }
+
+       
         #endregion
     }
 }

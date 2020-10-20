@@ -9,18 +9,24 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class VisitTheClinicViewModel: IAddToDb, IGoBackScreenVM
+    class AddMedicalRecordViewModel: IAddToDb, IGoBackScreenVM, IViewModel, IScreenReplacementVM
     {
         private PatientModel patientModel;
         private MainWindowViewModel containingVm;
 
-        public VisitTheClinicViewModel(MainWindowViewModel containingVm, PatientModel patientModel)
+        public AddMedicalRecordViewModel(MainWindowViewModel containingVm, PatientModel patientModel)
         {
             this.patientModel = patientModel;
             this.containingVm = containingVm;
+            BackCommand = new BackCommand(this);
+            AddToDbCommand = new AddToDbCommand(this);
+            MedicalRecord = new MedicalRecord();
+            ScreenReplacementCommand = new ScreenReplacementCommand(this);
         }
 
         public AddToDbCommand AddToDbCommand { get; set; }
+        public ScreenReplacementCommand ScreenReplacementCommand { get; set; }
+        public BackCommand BackCommand { get; set; }
 
         public MedicalRecord MedicalRecord{ set; get; }
 
@@ -39,10 +45,15 @@ namespace Drugs2020.PL.ViewModels
             return true;
         }
 
+        public void ReplaceScreen(Screen desiredScreen)
+        {
+            containingVm.ReplaceUC(desiredScreen);
+        }
+
         public void UpdateExistingItem()
         {
-            patientModel.CurrentPatient.MedicalFile.MedicalRecords.Add(MedicalRecord);
-            patientModel.UpdatePatient();
+            patientModel.MedicalFile.MedicalRecords.Add(MedicalRecord);
+            patientModel.UpdateMedicalFile();
         }
 
         public bool UserWantsToReplaceExistingItem()

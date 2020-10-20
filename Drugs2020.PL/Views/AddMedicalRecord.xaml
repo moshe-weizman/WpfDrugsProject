@@ -1,8 +1,9 @@
-﻿<UserControl x:Class="Drugs2020.PL.Views.VisitingTheClinic"
+﻿<UserControl x:Class="Drugs2020.PL.Views.AddMedicalRecord"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local1="clr-namespace:Drugs2020.PL"
              xmlns:local="clr-namespace:Drugs2020.PL.Views" xmlns:converters="clr-namespace:Drugs2020.PL.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -21,21 +22,14 @@
 
         <TextBlock TextWrapping="Wrap" Text="Notes:"/>
         <TextBox x:Name="NotesTextBox" Height="23" TextWrapping="Wrap" Text="{Binding MedicalRecord.PhysicianNotes}"/>
+
         
-        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center"  >
-            <StackPanel.Resources>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Margin" Value="30,10,30,10" />
-                    
-                </Style>
-            </StackPanel.Resources>
-            <Button Content="Medical File" d:LayoutOverrides="Height" Margin="30,5"/>
-            <Button Content="Patient's List of Medications" d:LayoutOverrides="Height" Margin="30,5"/>
-       
-       
-        </StackPanel>
-        <Button Content="Prescription Publishing" d:LayoutOverrides="Height" Margin="5"/>
-        <Button Content="ADD" Command="{Binding AddToDbCommand}" d:LayoutOverrides="Height" Margin="5">
+            <Button Content="Medical File" d:LayoutOverrides="Height" Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_MEDICAL_FILE}" Margin="10"/>
+            <Button Width="Auto" Content="Patient's List of Medications" d:LayoutOverrides="Height" Margin="10"/>
+
+
+        <Button Content="Prescription Publishing" d:LayoutOverrides="Height" Margin="10" Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_RECEPT}"/>
+        <Button Content="ADD" Command="{Binding AddToDbCommand}" d:LayoutOverrides="Height" Margin="10">
             <Button.CommandParameter>
                 <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
                     <Binding Path="Text"
@@ -50,7 +44,7 @@
 
             </Button.CommandParameter>
         </Button>
-        <Button Content="Back" d:LayoutOverrides="Height" Margin="5"/>
+        <Button Content="Back" d:LayoutOverrides="Height" Command="{Binding BackCommand}" Margin="10"/>
 
     </StackPanel>
 </UserControl>

@@ -24,4 +24,10 @@
     <DataTemplate DataType="{x:Type viewModels:AddMedicalFileViewModel}">
         <views:AddMedicalFile/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:AddMedicalRecordViewModel}">
+        <views:AddMedicalRecord/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:AddReceptViewModel}">
+        <views:AddRecept/>
+    </DataTemplate>
 </ResourceDictionary>

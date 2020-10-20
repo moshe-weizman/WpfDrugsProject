@@ -24,7 +24,9 @@ namespace Drugs2020.PL.ViewModels
         private ActionsMenuViewModel actionsMenuVM;
         private PatientDataViewModel patientDataVM;
         private AddMedicalFileViewModel addMedicalFileVM;
-        private VisitTheClinicViewModel visitingTheClinicVM;
+        private AddMedicalRecordViewModel AddMedicalRecordVM;
+        private AddReceptViewModel addReceptVM;
+       
 
         private PatientModel patientModel;
         public MainWindowViewModel()
@@ -37,7 +39,8 @@ namespace Drugs2020.PL.ViewModels
             actionsMenuVM = new ActionsMenuViewModel(this);
             patientDataVM = new PatientDataViewModel(this, patientModel);
             addMedicalFileVM = new AddMedicalFileViewModel(this, patientModel);
-            visitingTheClinicVM = new VisitTheClinicViewModel(this, patientModel);
+            AddMedicalRecordVM = new AddMedicalRecordViewModel(this, patientModel);
+            addReceptVM = new AddReceptViewModel(this, patientModel);
             LeftCurrentVm = logInVM;
         }
         public MainWindowModel MainWindowM { get; set; }
@@ -81,6 +84,13 @@ namespace Drugs2020.PL.ViewModels
                 case Screen.ADD_MEDICAL_FILE:
                     LeftCurrentVm = addMedicalFileVM;
                     RightCurrentVm = patientDataVM;
+                    break;
+                case Screen.ADD_MEDICAL_RECORD:
+                    LeftCurrentVm = AddMedicalRecordVM;
+                    RightCurrentVm = patientDataVM;
+                    break;
+                case Screen.ADD_RECEPT:
+                    LeftCurrentVm = addReceptVM;
                     break;
                 default: break;
             }

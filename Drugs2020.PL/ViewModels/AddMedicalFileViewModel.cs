@@ -3,41 +3,49 @@ using Drugs2020.PL.Commands;
 using Drugs2020.PL.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class AddMedicalFileViewModel: IViewModel, IAddToDb , IGoBackScreenVM
+    class AddMedicalFileViewModel: IViewModel, IAddToDb , IGoBackScreenVM , INotifyPropertyChanged
     {
         private PatientModel patientModel;
         private MainWindowViewModel containingVm;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public BackCommand BackCommand { get; set; }
         public AddToDbCommand AddToDbCommand { get; set; }
-        public Patient CurrentPatient { 
-            get { return patientModel.CurrentPatient; } 
-            set {
-                patientModel.CurrentPatient = value;
-                patientModel.CurrentPatient = value;
-            } 
+        public MedicalFile MedicalFile
+        {
+            get { return patientModel.MedicalFile; }
+            set { 
+                patientModel.MedicalFile = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("MedicalFile"));
+                }
+            }
         }
         public AddMedicalFileViewModel(MainWindowViewModel containingVm, PatientModel patientModel)
         {
             this.containingVm = containingVm;
+            this.patientModel = patientModel;
             AddToDbCommand = new AddToDbCommand(this);
             BackCommand = new BackCommand(this);
-            this.patientModel = patientModel;
         }
 
         public void AddItemToDb()
         {
-            throw new NotImplementedException();
+            patientModel.AddMedicalFileToPatient();
         }
 
         public bool ItemAlreadyExists()
         {
-            return true;//האם צריך לעשות בדיקה למשהו שלכאורה אם הגענו עד לשלב הזה צריך להית קיים. אני חושב שכן מריך לעשות כרגע לא עשיתי.
+            return patientModel.MedicalFileAlreadyExists();
         }
 
         public bool UserWantsToReplaceExistingItem()
@@ -47,12 +55,12 @@ namespace Drugs2020.PL.ViewModels
 
         public void UpdateExistingItem()
         {
-            patientModel.UpdatePatient();
+            patientModel.UpdateMedicalFile();
         }
 
         public void GoBack()
         {
-            containingVm.ReplaceUC(Screen.SEARCH_PATIENT_SCREEN);
+            containingVm.ReplaceUC(Screen.ADD_MEDICAL_RECORD);
         }
     }
 }

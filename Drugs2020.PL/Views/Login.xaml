@@ -30,7 +30,7 @@
                      Text="{Binding Password}" />
 
             <Button Content="Log in"
-                    Command="{Binding LogInUserCommand}">
+                    Command="{Binding LogInUserCommand}" Margin="10">
                 <Button.CommandParameter>
                     <MultiBinding Converter="{StaticResource fieldsTextToBoolConverter}">
                         <Binding Path="Text"

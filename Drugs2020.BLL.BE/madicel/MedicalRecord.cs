@@ -10,11 +10,16 @@ namespace Drugs2020.BLL.BE
         
        // public DateTime Date { get; }
        [Key]
+        public string MedicalRecordID { get; set; }
         public string Problem { get; set; }
         public string Diagnose { get; set; }
         public string Treatment { get; set; }
         //public bool DrugGiven { get; set; }
         public string PhysicianNotes { get; set; }
+
+        public MedicalRecord()
+        {
+        }
 
         public MedicalRecord(string problem, string diagnose, string treatment, string physicianNotes)
         {

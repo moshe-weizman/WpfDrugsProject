@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Drugs2020.PL.Views
 {
     /// <summary>
-    /// Interaction logic for VisitingTheClinic.xaml
+    /// Interaction logic for AddRecept.xaml
     /// </summary>
-    public partial class VisitingTheClinic : UserControl
+    public partial class AddRecept : UserControl
     {
-        public VisitingTheClinic()
+        public AddRecept()
         {
             InitializeComponent();
         }

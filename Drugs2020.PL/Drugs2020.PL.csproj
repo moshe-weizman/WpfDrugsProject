@@ -75,17 +75,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Commands\AddingScreenCommand.cs" />
     <Compile Include="Commands\BackCommand.cs" />
     <Compile Include="Commands\ScreenReplacementCommand.cs" />
     <Compile Include="Models\AddDrugModel.cs" />
     <Compile Include="Models\AddPhysicianModel.cs" />
-    <Compile Include="Models\PatientManagementModel.cs" />
     <Compile Include="Screen.cs" />
     <Compile Include="ViewModels\ActionsMenuViewModel.cs" />
     <Compile Include="ViewModels\AddMedicalFileViewModel.cs" />
     <Compile Include="ViewModels\AddPatientViewModel.cs" />
     <Compile Include="ViewModels\AddPhysicianViewModel.cs" />
+    <Compile Include="ViewModels\AddReceptViewModel.cs" />
     <Compile Include="ViewModels\ExistingItemDecisionViewModel.cs" />
     <Compile Include="ViewModels\IAddToDb.cs" />
     <Compile Include="ViewModels\IGoBackScreenVM.cs" />
@@ -96,10 +95,9 @@
     <Compile Include="ViewModels\LogInViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\PatientDataViewModel.cs" />
-    <Compile Include="ViewModels\PatientManagementViewModel.cs" />
     <Compile Include="ViewModels\PatientSearchViewModel.cs" />
     <Compile Include="ViewModels\PhysicianPanelViewModel.cs" />
-    <Compile Include="ViewModels\VisitTheClinicViewModel.cs" />
+    <Compile Include="ViewModels\AddMedicalRecordViewModel.cs" />
     <Compile Include="Views\ActionsMenu.xaml.cs">
       <DependentUpon>ActionsMenu.xaml</DependentUpon>
     </Compile>
@@ -112,8 +110,8 @@
     <Compile Include="Views\AddPhysician.xaml.cs">
       <DependentUpon>AddPhysician.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AdminShell.xaml.cs">
-      <DependentUpon>AdminShell.xaml</DependentUpon>
+    <Compile Include="Views\AddRecept.xaml.cs">
+      <DependentUpon>AddRecept.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -127,14 +125,11 @@
     <Compile Include="Views\PatientSearch.xaml.cs">
       <DependentUpon>PatientSearch.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PatientsManagement.xaml.cs">
-      <DependentUpon>PatientsManagement.xaml</DependentUpon>
+    <Compile Include="Views\AddMedicalRecord.xaml.cs">
+      <DependentUpon>AddMedicalRecord.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PhysicianPanel.xaml.cs">
       <DependentUpon>PhysicianPanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\VisitingTheClinic.xaml.cs">
-      <DependentUpon>VisitingTheClinic.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -198,7 +193,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\AdminShell.xaml">
+    <Page Include="Views\AddRecept.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -218,15 +213,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\PatientsManagement.xaml">
+    <Page Include="Views\AddMedicalRecord.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PhysicianPanel.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\VisitingTheClinic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -240,21 +231,6 @@
       <Project>{be81b25f-0db4-49b3-8d04-f43024fa3701}</Project>
       <Name>Drugs2020.BLL</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\icons8-plus-48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\icons8-left-48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\icons8-edit-48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\icons8-remove-48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\icons8-search-48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />

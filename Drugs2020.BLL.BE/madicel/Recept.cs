@@ -7,17 +7,25 @@ namespace Drugs2020.BLL.BE
     public class Recept
     {
         public int ReceptId { get; set; }
+        public string PatientID { get; set; }
         public DateTime Date { get; set; }
         public Drug Drug { get; set; }
         public int Quantity { get; set; }
         public int Days { get; set; }
-        public DateTime TreatmentEndDate { get; set; }
+        public DateTime TreatmentEndDate { get; set; }//לכאורה לא נצרך כי כבר יש שדה של ימים
         public DateTime ExpirationDate { get; set; }
 
-        public Recept(int id, DateTime date, Drug drug, int quantity, int days, DateTime treatmentEndDate)
+        public Recept(string patientID)
         {
+            // לממש את הID 
+            PatientID = patientID;
+        }
+
+        public Recept(string patientID, int id, Drug drug, int quantity, int days, DateTime treatmentEndDate)
+        {
+            PatientID = patientID;
             ReceptId = id;
-            Date = date;
+            Date = DateTime.Today;
             Drug = drug;
             Quantity = quantity;
             Days = days;
