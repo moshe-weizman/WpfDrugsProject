@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PatientManagementViewModel : IAdd, IEdit, IDelete, IGoBackScreenVM, IViewModel
+    class PatientsManagementViewModel : IAdd, IEdit, IDelete, IGoBackScreenVM, IViewModel
     {
         private PatientManagementModel patientManagementM;
         private AdminShellViewModel shellViewModel;
@@ -19,13 +19,13 @@ namespace Drugs2020.PL.ViewModels
         public EditingItemCommand EditCommand { get; set; }
         public DeleteItemCommand DeleteCommand { get; set; }
         public BackCommand BackCommand { get; set; }
-        public ObservableCollection<Patient> Patients
+        public ObservableCollection<Patient> Items
         {
             get { return patientManagementM.Patients; }
             set { patientManagementM.Patients = value; }
         }
 
-        public PatientManagementViewModel(AdminShellViewModel shellViewModel)
+        public PatientsManagementViewModel(AdminShellViewModel shellViewModel)
         {
             patientManagementM = new PatientManagementModel();
             this.shellViewModel = shellViewModel;
@@ -41,12 +41,12 @@ namespace Drugs2020.PL.ViewModels
             shellViewModel.ReplaceScreen(Screen.ADD_PATIENT_SCREEN);
         }
 
-        public void OpenEditingScreen()
+        public void OpenEditingScreen(object selectedPatient)
         {
             throw new NotImplementedException();
         }
 
-        public void RemoveItemFromDb()
+        public void RemoveItemFromDb(object selectedPatient)
         {
             throw new NotImplementedException();
         }

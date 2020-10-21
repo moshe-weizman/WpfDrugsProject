@@ -23,12 +23,16 @@ namespace Drugs2020.PL.Commands
         }
         public bool CanExecute(object parameter)
         {
+            if (parameter == null)
+            {
+                return false;
+            }
             return true;
         }
 
         public void Execute(object parameter)
         {
-            vm.OpenEditingScreen();
+            vm.OpenEditingScreen(parameter);
         }
     }
 }

@@ -6,25 +6,58 @@
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100" />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>   
-        <Image Grid.Column="1" 
-               Source="/Images/medicine-panel.jpg" 
-               Stretch="UniformToFill" />
+    <TabControl TabStripPlacement="Left"
+                Margin="0, 0, 0, 0">
+        <TabItem Name="patients"
+                 ToolTip="Patients">
+            <TabItem.Header>
+                <Grid>
+                    <Image Source="/Images/icons8-health-checkup-100.png"
+                           Stretch="None" />
+                </Grid>
+            </TabItem.Header>
+            <TabItem.Content>
+                <ContentControl Content="{Binding PatientsVm}" />
+            </TabItem.Content>
+        </TabItem>
 
-        <StackPanel Orientation="Vertical">
-            <Button Content="Patients" 
-                    Command="{Binding ScreenReplacementCommand}"
-                    CommandParameter="PATIENTS_MANAGEMENT"/>
-            <Button Content="Physicians" />
-            <Button Content="Drugs" />
-            <Button Content="Statistics" />
-        </StackPanel>
-        <ContentControl Grid.Column="1" Content="{Binding CurrentVm}"/>
-        
+        <TabItem Name="physicians"
+                 ToolTip="Physicians">
+            <TabItem.Header>
+                <Grid>
+                    <Image Source="/Images/icons8-stethoscope-96.png"
+                           Stretch="None" />
+                </Grid>
+            </TabItem.Header>
+            <TabItem.Content>
+                <ContentControl Content="{Binding PhysiciansVm}" />
+            </TabItem.Content>
+        </TabItem>
 
-    </Grid>
+        <TabItem Name="drugs"
+                 ToolTip="Drugs">
+            <TabItem.Header>
+                <Grid>
+                    <Image Source="/Images/icons8-pill-90.png"
+                           Stretch="None" />
+                </Grid>
+            </TabItem.Header>
+            <TabItem.Content>
+                <ContentControl Content="{Binding DrugsVm}" />
+            </TabItem.Content>
+        </TabItem>
+
+        <TabItem Name="statistics"
+                 ToolTip="Statistics">
+            <TabItem.Header>
+                <Grid>
+                    <Image Source="/Images/icons8-statistics-90.png"
+                           Stretch="None" />
+                </Grid>
+            </TabItem.Header>
+            <TabItem.Content>
+                <ContentControl Content="{Binding StatisticsVm}" />
+            </TabItem.Content>
+        </TabItem>
+    </TabControl>
 </UserControl>

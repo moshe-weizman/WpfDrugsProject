@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Drugs2020.PL"
+                    xmlns:entities="clr-namespace:Drugs2020.BLL.BE;assembly=Drugs2020.BLL.BE"
                     xmlns:views="clr-namespace:Drugs2020.PL.Views"
                     xmlns:viewModels="clr-namespace:Drugs2020.PL.ViewModels">
     <DataTemplate DataType="{x:Type viewModels:PatientSearchViewModel}">
@@ -12,8 +13,11 @@
     <DataTemplate DataType="{x:Type viewModels:AdminShellViewModel}">
         <views:AdminShell />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:PatientManagementViewModel}">
-        <views:PatientsManagement />
+    <DataTemplate DataType="{x:Type entities:Patient}">
+        <views:PatientDetails />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:PatientsManagementViewModel}">
+        <views:DataManagement />
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:AddPatientViewModel}">
         <views:AddPatient />

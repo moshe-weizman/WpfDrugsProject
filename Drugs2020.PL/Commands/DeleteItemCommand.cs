@@ -23,6 +23,10 @@ namespace Drugs2020.PL.Commands
         }
         public bool CanExecute(object parameter)
         {
+            if (parameter == null)
+            {
+                return false;
+            }
             return true;
         }
 
@@ -30,7 +34,7 @@ namespace Drugs2020.PL.Commands
         {
             if (vm.IsUserSureToDelete())
             {
-                vm.RemoveItemFromDb();
+                vm.RemoveItemFromDb(parameter);
             }           
         }
     }

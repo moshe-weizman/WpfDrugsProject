@@ -8,6 +8,6 @@ namespace Drugs2020.PL.ViewModels
 {
     public interface IEdit
     {
-        void OpenEditingScreen();
+        void OpenEditingScreen(object item);
     }
 }
