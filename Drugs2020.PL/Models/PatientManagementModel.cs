@@ -11,7 +11,7 @@ namespace Drugs2020.PL.Models
 {
     class PatientManagementModel
     {
-        public ObservableCollection<Patient> Patients { get; set; }
+        public ObservableCollection<Patient> Patients { get; set; }//להחליף את זה לרשימה רגילה!!!
         private IBL bl;
         public PatientManagementModel()
         {

@@ -82,6 +82,7 @@
     <Compile Include="Commands\ScreenReplacementCommand.cs" />
     <Compile Include="Models\AddDrugModel.cs" />
     <Compile Include="Models\AddPhysicianModel.cs" />
+    <Compile Include="Models\DrugModel.cs" />
     <Compile Include="Models\PatientManagementModel.cs" />
     <Compile Include="Screen.cs" />
     <Compile Include="ViewModels\ActionsMenuViewModel.cs" />

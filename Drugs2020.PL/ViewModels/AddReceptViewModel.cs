@@ -3,6 +3,7 @@ using Drugs2020.PL.Commands;
 using Drugs2020.PL.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,17 +14,19 @@ namespace Drugs2020.PL.ViewModels
     {
         private MainWindowViewModel containingVm;
         private PatientModel patientModel;
-
+        private DrugModel drugModel;
         public AddReceptViewModel(MainWindowViewModel containingVm, PatientModel patientModel)
         {
             this.containingVm = containingVm;
             this.patientModel = patientModel;
             AddToDbCommand = new AddToDbCommand(this);
             BackCommand = new BackCommand(this);
+            drugModel = new DrugModel();
+            DrugCollection = new ObservableCollection<Drug>(drugModel.DrugList);
         }
 
         public Recept Recept { get { return patientModel.Recept; } set { patientModel.Recept = value; } }
-
+        public ObservableCollection<Drug> DrugCollection { get; set; }
         public AddToDbCommand AddToDbCommand { get; set; }
         public BackCommand BackCommand { get; set; }
         public void AddItemToDb()
