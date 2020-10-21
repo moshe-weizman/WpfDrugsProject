@@ -135,6 +135,9 @@
     <Compile Include="Views\PatientData.xaml.cs">
       <DependentUpon>PatientData.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PatientDetails.xaml.cs">
+      <DependentUpon>PatientDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PatientSearch.xaml.cs">
       <DependentUpon>PatientSearch.xaml</DependentUpon>
     </Compile>
@@ -228,6 +231,10 @@
     <Page Include="Views\PatientData.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PatientDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PatientSearch.xaml">
       <Generator>MSBuild:Compile</Generator>

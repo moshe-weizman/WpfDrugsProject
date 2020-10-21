@@ -19,7 +19,7 @@ namespace Drugs2020.PL.ViewModels
         public EditingItemCommand EditCommand { get; set; }
         public DeleteItemCommand DeleteCommand { get; set; }
         public BackCommand BackCommand { get; set; }
-        public ObservableCollection<Patient> Patients
+        public ObservableCollection<Patient> Items
         {
             get { return patientManagementM.Patients; }
             set { patientManagementM.Patients = value; }

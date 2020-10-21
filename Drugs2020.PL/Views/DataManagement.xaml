@@ -13,9 +13,9 @@
                     Command="{Binding AddCommand}">
                 <Image Source="/Images/icons8-plus-48.png" />
             </Button>
-            <TextBox x:Name="searchTextBox" 
+            <TextBox x:Name="searchTextBox"
                      Width="150"
-                     Margin="50,0,0,0"/>
+                     Margin="50,0,0,0" />
             <Button ToolTip="Search"
                     Command="{Binding SearchCommand}"
                     CommandParameter="{Binding ElementName=searchTextBox, Path=Text}">
@@ -32,6 +32,11 @@
                 <Image Source="/Images/icons8-remove-48.png" />
             </Button>
         </StackPanel>
-        <ListView x:Name="itemList" ItemsSource="{Binding Patients}" />
+        <ListView x:Name="itemList"
+                  
+                  ItemsSource="{Binding Items}"
+                  VerticalContentAlignment="Top"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  ScrollViewer.CanContentScroll="True"/>
     </StackPanel>
 </UserControl>
