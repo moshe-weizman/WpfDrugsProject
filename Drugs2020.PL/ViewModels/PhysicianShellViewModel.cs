@@ -73,6 +73,12 @@ namespace Drugs2020.PL.ViewModels
             addMedicalRecordVM = new AddMedicalRecordViewModel(this, id);
             addReceptVM = new AddReceptViewModel(this, id);
             patientSearchVM = new PatientSearchViewModel(containingVm);
+
+            PersonalDetailsTab = patientDetailsVM;
+            MedicalFileTab = medicalFileVM;
+            AddReceptTab = addReceptVM;
+            AddMedicalRecordTab = addMedicalRecordVM;
+
         }
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

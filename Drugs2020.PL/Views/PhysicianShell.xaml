@@ -43,7 +43,7 @@
                     </Grid>
                 </TabItem.Header>
                 <TabItem.Content>
-                    <ContentControl Content="{Binding PhysiciansVm}" />
+                    <ContentControl Content="{Binding MedicalFileTab}" />
                 </TabItem.Content>
             </TabItem>
 
@@ -56,7 +56,7 @@
                     </Grid>
                 </TabItem.Header>
                 <TabItem.Content>
-                    <ContentControl Content="{Binding DrugsVm}" />
+                    <ContentControl Content="{Binding AddReceptTab}" />
                 </TabItem.Content>
             </TabItem>
 
@@ -69,7 +69,7 @@
                     </Grid>
                 </TabItem.Header>
                 <TabItem.Content>
-                    <ContentControl Content="{Binding StatisticsVm}" />
+                    <ContentControl Content="{Binding AddMedicalRecordTab}" />
                 </TabItem.Content>
             </TabItem>
         </TabControl>
