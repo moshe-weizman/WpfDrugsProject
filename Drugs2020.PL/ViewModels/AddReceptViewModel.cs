@@ -13,27 +13,28 @@ namespace Drugs2020.PL.ViewModels
 {
     class AddReceptViewModel: IViewModel, IAddToDb , IGoBackScreenVM, INotifyPropertyChanged
     {
-        private MainWidowViewModel containingVm;
-        private PhysicianShellModel patientModel;
+        private PhysicianShellViewModel containingVm;
+       // private PhysicianShellModel patientModel;
         private DrugModel drugModel;
-        public AddReceptViewModel(MainWidowViewModel containingVm, PhysicianShellModel patientModel)
+        private AddReceptModel addReceptModel;
+        public AddReceptViewModel(PhysicianShellViewModel containingVm, string patientId)
         {
             this.containingVm = containingVm;
-            this.patientModel = patientModel;
             AddToDbCommand = new AddToDbCommand(this);
             BackCommand = new BackCommand(this);
             drugModel = new DrugModel();
             DrugCollection = new ObservableCollection<Drug>(drugModel.DrugList);
+            addReceptModel = new AddReceptModel(patientId);
         }
 
-        public Recept Recept { get { return patientModel.Recept; } set { patientModel.Recept = value; } }
+        public Recept Recept { get { return addReceptModel.Recept; } set { addReceptModel.Recept = value; } }
         public ObservableCollection<Drug> DrugCollection { get; set; }
         public AddToDbCommand AddToDbCommand { get; set; }
         public BackCommand BackCommand { get; set; }
-        public Drug SelectedDrug { get { return patientModel.Recept.Drug; }
+        public Drug SelectedDrug { get { return addReceptModel.Recept.Drug; }
             set 
             {
-                patientModel.Recept.Drug = value;
+                addReceptModel.Recept.Drug = value;
                 if(PropertyChanged!=null)
                     PropertyChanged(this, new PropertyChangedEventArgs("SelectedDrug"));
             }
@@ -43,7 +44,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void AddItemToDb()
         {
-            patientModel.AddRecept();
+            addReceptModel.AddRecept();
         }
 
         public void GoBack()
@@ -53,7 +54,7 @@ namespace Drugs2020.PL.ViewModels
 
         public bool ItemAlreadyExists()
         {
-           return patientModel.ReceptAlreadyExists();
+           return addReceptModel.ReceptAlreadyExists();
         }
 
         public void UpdateExistingItem()

@@ -9,40 +9,18 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PhysicianShellViewModel : INotifyPropertyChanged, IViewModel, ISearch
+    class PhysicianShellViewModel : INotifyPropertyChanged, IViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
         
-        private PatientSearchViewModel patientSearchVM;
         private PatientDetailsViewModel patientDetailsVM;
         private MedicalFileViewModel medicalFileVM;
         private AddMedicalRecordViewModel addMedicalRecordVM;
         private AddReceptViewModel addReceptVM;
-        private PhysicianShellModel physicianShellM;
+        private PatientSearchViewModel patientSearchVM;
 
-        
-        public Patient CurrentPatient
-        {
-            get
-            {
-                return physicianShellM.CurrentPatient;
-            }
-            set
-            {
-                physicianShellM.CurrentPatient = value;
-            }
-        }
-        public MedicalFile MedicalFile
-        {
-            get
-            {
-                return physicianShellM.MedicalFile;
-            }
-            set
-            {
-                physicianShellM.MedicalFile = value;
-            }
-        }
+
+
         private IViewModel personalDetailsTab { get; set; }
         public IViewModel PersonalDetailsTab
         {
@@ -54,7 +32,7 @@ namespace Drugs2020.PL.ViewModels
                     PropertyChanged(this, new PropertyChangedEventArgs("PersonalDetailsTab"));
             }
         }
-        private IViewModel medicalFileTab { get; set; }
+        private IViewModel medicalFileTab; 
         public IViewModel MedicalFileTab
         {
             get { return medicalFileTab; }
@@ -65,7 +43,7 @@ namespace Drugs2020.PL.ViewModels
                     PropertyChanged(this, new PropertyChangedEventArgs("MedicalFileTab"));
             }
         }
-        private IViewModel addReceptTab { get; set; }
+        private IViewModel addReceptTab;
         public IViewModel AddReceptTab
         {
             get { return addReceptTab; }
@@ -76,7 +54,7 @@ namespace Drugs2020.PL.ViewModels
                     PropertyChanged(this, new PropertyChangedEventArgs("AddReceptTab"));
             }
         }
-        private IViewModel addMedicalRecordTab { get; set; }
+        private IViewModel addMedicalRecordTab;
         public IViewModel AddMedicalRecordTab
         {
             get { return addMedicalRecordTab; }
@@ -87,31 +65,21 @@ namespace Drugs2020.PL.ViewModels
                     PropertyChanged(this, new PropertyChangedEventArgs("AddMedicalRecordTab"));
             }
         }
-        public Patient currentPatient
+
+        public PhysicianShellViewModel(MainWidowViewModel containingVm, string id)
         {
-            get { return physicianShellM.CurrentPatient; }
-            set { physicianShellM.CurrentPatient = value; }
+            patientDetailsVM = new PatientDetailsViewModel(this, id);
+            medicalFileVM = new MedicalFileViewModel(this, id);
+            addMedicalRecordVM = new AddMedicalRecordViewModel(this, id);
+            addReceptVM = new AddReceptViewModel(this, id);
+            patientSearchVM = new PatientSearchViewModel(containingVm);
         }
 
-        public PhysicianShellViewModel()
-        {
-            currentPatient = new Patient();
-            physicianShellM = new PhysicianShellModel(currentPatient);
-            //patientSearchVM = new PatientSearchViewModel(this, physicianShellM);
-            patientDetailsVM = new PatientDetailsViewModel(this);
-            medicalFileVM = new MedicalFileViewModel(this, currentPatient);
-            //addMedicalRecordVM = new AddMedicalRecordViewModel(this, physicianShellM);
-            //addReceptVM = new AddReceptViewModel(this, physicianShellM);
-
-        }
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         public void ReplaceUC(Screen currentVM)
         {
             switch (currentVM)
             {
-                case Screen.LOGIN_SCREEN:
-                    break;
                 case Screen.SEARCH_PATIENT_SCREEN:
                     break;
                 case Screen.ADD_PATIENT_SCREEN:
@@ -128,10 +96,10 @@ namespace Drugs2020.PL.ViewModels
             }
         }
 
-        public void GetItem(string id)
-        {
+        //public void GetItem(string id)?
+        //{
            
-        }
+        //}
     }
     
 }

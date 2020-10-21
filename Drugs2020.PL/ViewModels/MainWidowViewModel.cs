@@ -20,32 +20,22 @@ namespace Drugs2020.PL.ViewModels
 
         private LogInViewModel logInVM;
         private PatientSearchViewModel patientSearchVM;
-        private AddPatientViewModel addPatientVM;
-        private ActionsMenuViewModel actionsMenuVM;
-        private PatientDetailsViewModel patientDataVM;
-        private MedicalFileViewModel addMedicalFileVM;
-        private AddMedicalRecordViewModel AddMedicalRecordVM;
-        private AddReceptViewModel addReceptVM;
         private AdminShellViewModel adminShellVM;
-       
+       // private PhysicianShellViewModel physicianShellVM;
 
-        private PhysicianShellModel patientModel;
+
+     //   private PhysicianShellModel patientModel;
         public MainWidowViewModel()
         {
-            
-            MainWindowM = new MainWindowModel();
+          //  patientModel = new PhysicianShellModel();
+         //   MainWindowM = new MainWindowModel();
             logInVM = new LogInViewModel(this);
-            patientSearchVM = new PatientSearchViewModel(this, patientModel);
-            //addPatientVM = new AddPatientViewModel(this);
-            actionsMenuVM = new ActionsMenuViewModel(this);
-            //patientDataVM = new PatientDetailsViewModel(this, patientModel);
-            //addMedicalFileVM = new MedicalFileViewModel(this, patientModel);
-            AddMedicalRecordVM = new AddMedicalRecordViewModel(this, patientModel);
-            addReceptVM = new AddReceptViewModel(this, patientModel);
+            patientSearchVM = new PatientSearchViewModel(this);
             adminShellVM = new AdminShellViewModel();
+           // physicianShellVM = new PhysicianShellViewModel(this, patientModel);
             LeftCurrentVm = logInVM;
         }
-        public MainWindowModel MainWindowM { get; set; }
+      //  public MainWindowModel MainWindowM { get; set; }
         public IViewModel RightCurrentVm 
         {
             get { return _RightCurrentVm; }
@@ -77,22 +67,9 @@ namespace Drugs2020.PL.ViewModels
                     LeftCurrentVm = patientSearchVM;
                     RightCurrentVm = null;
                     break;
-                case Screen.ADD_PATIENT_SCREEN:
-                     LeftCurrentVm = addPatientVM;
-                    break;
-                case Screen.ACTIONS_MENU:
-                    LeftCurrentVm = actionsMenuVM;
-                    break;
-                case Screen.ADD_MEDICAL_FILE:
-                    LeftCurrentVm = addMedicalFileVM;
-                    RightCurrentVm = patientDataVM;
-                    break;
-                case Screen.ADD_MEDICAL_RECORD:
-                    LeftCurrentVm = AddMedicalRecordVM;
-                    RightCurrentVm = patientDataVM;
-                    break;
-                case Screen.ADD_RECEPT:
-                    LeftCurrentVm = addReceptVM;
+                case Screen.ADMIN_SHELL:
+                    LeftCurrentVm = adminShellVM;
+                    RightCurrentVm = null;
                     break;
                 default: break;
             }

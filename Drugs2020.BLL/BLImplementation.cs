@@ -51,6 +51,11 @@ namespace Drugs2020.BLL
             throw new NotImplementedException();
         }
 
+        public Recept GetAllReceptOfPatient(string id)
+        {
+            throw new NotImplementedException();
+        }
+
 
 
 
@@ -58,7 +63,9 @@ namespace Drugs2020.BLL
         #region Patient CRUD Functions
         public Patient GetPatient(string ID)
         {
-            return dal.GetPatient(ID);
+            return new Patient("1234", "Dudu", "Cohen", Sex.MALE, "0545678990", @"Moshe@gmail.com", "Elad", DateTime.Parse("12/10/1985"));
+
+            //return dal.GetPatient(ID);
         }
         public List<Patient> GetAllPatients()
         {
@@ -146,7 +153,7 @@ namespace Drugs2020.BLL
             };
         }
 
-
+       
         #endregion
     }
 }

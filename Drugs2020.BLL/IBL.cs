@@ -15,6 +15,7 @@ namespace Drugs2020.BLL
         void AddMedicalFileToPatient(MedicalFile medicalFile);
         void UpdateMedicalFile(string patientId, MedicalFile medicalFile);
         void AddRecept(Recept recept);
+        Recept GetAllReceptOfPatient(string id);
         MedicalFile GetMedicalFile(string patientID);
         #region Patient CRUD Functions
         void AddPatient(Patient patient);

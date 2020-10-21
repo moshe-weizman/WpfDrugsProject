@@ -18,12 +18,12 @@ namespace Drugs2020.PL.ViewModels
 
         private PhysicianShellModel patientM;
 
-        public PatientSearchViewModel(MainWidowViewModel containingVm, PhysicianShellModel patientM)
+        public PatientSearchViewModel(MainWidowViewModel containingVm)
         {
             this.PatientSelectionCommand = new SearchItemCommand(this);
             this.BackCommand = new BackCommand(this);
             this.containingShellVm = containingVm;
-            this.patientM = patientM;
+            this.patientM = new PhysicianShellModel();
         }
         
         public Patient PatientFound
@@ -37,7 +37,7 @@ namespace Drugs2020.PL.ViewModels
              patientM.GetPatient(id);
             if (PatientFound != null)
             {
-                ReplaceScreen();
+                containingShellVm.LeftCurrentVm = new PhysicianShellViewModel(containingShellVm, id);
             }
         }
 
@@ -52,7 +52,7 @@ namespace Drugs2020.PL.ViewModels
             // if (!PatientFound.GetType().GetProperties().Any(prop => prop == null))//if all properties is null so open medical file screen
              //   containingVm.ReplaceUC(Screen.ADD_MEDICAL_FILE);
          //   else
-                containingShellVm.ReplaceUC(Screen.ADD_MEDICAL_RECORD);
+                containingShellVm.ReplaceUC(Screen.PHYSICIAN_SHELL);
 
         }
     }

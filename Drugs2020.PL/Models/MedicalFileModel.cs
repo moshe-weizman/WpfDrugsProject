@@ -8,16 +8,33 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.Models
 {
-    class MedicalFileModel
+    public class MedicalFileModel
     {
         private IBL bl;
-       private  Patient CurrentPatient;
+
         public MedicalFile MedicalFile { get; set; }
-        public MedicalFileModel(Patient patient)
+        public MedicalFileModel(string patientId)
         {
-            CurrentPatient =patient;
             bl = new BLImplementation();
-            MedicalFile = bl.GetMedicalFile("6");
+            
+            MedicalFile = bl.GetMedicalFile(patientId);
+            if (MedicalFile == null)
+                MedicalFile = new MedicalFile(patientId);
+        }
+
+        internal void AddMedicalFileToDb()
+        {
+            bl.AddMedicalFileToPatient(MedicalFile);
+        }
+
+        internal bool MedicalFileAlreadyExists()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void UpdateMedicalFile()
+        {
+            bl.UpdateMedicalFile(MedicalFile.PatientId, MedicalFile);
         }
     }
 }

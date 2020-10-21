@@ -50,7 +50,7 @@ namespace Drugs2020.PL.ViewModels
             if (User is Physician)
                 containingVm.ReplaceUC(Screen.SEARCH_PATIENT_SCREEN);
             else
-                containingVm.ReplaceUC(Screen.ACTIONS_MENU);
+                containingVm.ReplaceUC(Screen.ADMIN_SHELL);
         }
     }
 }

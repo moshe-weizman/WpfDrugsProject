@@ -11,20 +11,21 @@ namespace Drugs2020.PL.ViewModels
 {
     class PatientDetailsViewModel : INotifyPropertyChanged, IViewModel
     {        
-        private PhysicianShellViewModel containingShellVm;
-        public event PropertyChangedEventHandler PropertyChanged;       
+        private PhysicianShellViewModel containingShellVm;//לכאורה לא נצרך
+        public event PropertyChangedEventHandler PropertyChanged;
+        public PhysicianShellModel physicianShellModel { get; set; }
 
-
-        public PatientDetailsViewModel(PhysicianShellViewModel viewModel)
+        public PatientDetailsViewModel(PhysicianShellViewModel viewModel, string patientId)
         {
             containingShellVm = viewModel;
+            physicianShellModel = new PhysicianShellModel(patientId);
         }
         public Patient CurrentPatient
         {
-            get { return containingShellVm.CurrentPatient; }
+            get { return physicianShellModel.CurrentPatient; }
             set//לכאורה זה לא נצרך
             {
-                containingShellVm.CurrentPatient = value;
+                physicianShellModel.CurrentPatient = value;
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("CurrentPatient"));

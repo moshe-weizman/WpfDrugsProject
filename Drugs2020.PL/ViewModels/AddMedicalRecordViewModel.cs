@@ -11,12 +11,12 @@ namespace Drugs2020.PL.ViewModels
 {
     class AddMedicalRecordViewModel: IAddToDb, IGoBackScreenVM, IViewModel, IScreenReplacementVM
     {
-        private PhysicianShellModel patientModel;
-        private MainWidowViewModel containingVm;
+        private MedicalFileModel medicalFileModel;
+        private PhysicianShellViewModel containingVm;
 
-        public AddMedicalRecordViewModel(MainWidowViewModel containingVm, PhysicianShellModel patientModel)
+        public AddMedicalRecordViewModel(PhysicianShellViewModel containingVm, string patientId)
         {
-            this.patientModel = patientModel;
+            this.medicalFileModel = new MedicalFileModel(patientId);
             this.containingVm = containingVm;
             BackCommand = new BackCommand(this);
             AddToDbCommand = new AddToDbCommand(this);
@@ -52,8 +52,8 @@ namespace Drugs2020.PL.ViewModels
 
         public void UpdateExistingItem()
         {
-            patientModel.MedicalFile.MedicalRecords.Add(MedicalRecord);
-            patientModel.UpdateMedicalFile();
+            medicalFileModel.MedicalFile.MedicalRecords.Add(MedicalRecord);
+            medicalFileModel.UpdateMedicalFile();
         }
 
         public bool UserWantsToReplaceExistingItem()

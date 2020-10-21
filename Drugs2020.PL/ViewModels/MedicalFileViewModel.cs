@@ -29,10 +29,10 @@ namespace Drugs2020.PL.ViewModels
                 }
             }
         }
-        public MedicalFileViewModel(PhysicianShellViewModel containingShellVm, Patient patient)
+        public MedicalFileViewModel(PhysicianShellViewModel containingShellVm, string patientId)
         {
             this.containingShellVm = containingShellVm;
-            medicalFileM = new MedicalFileModel(patient);
+            medicalFileM = new MedicalFileModel(patientId);
             AddToDbCommand = new AddToDbCommand(this);
             BackCommand = new BackCommand(this);
         }
@@ -41,13 +41,13 @@ namespace Drugs2020.PL.ViewModels
 
         public void AddItemToDb()
         {
-//            medicalFileM.AddMedicalFileToDb();
+            medicalFileM.AddMedicalFileToDb();
         }
 
         public bool ItemAlreadyExists()
         {
-            //            return medicalFileM.MedicalFileAlreadyExists();
-            return true;
+            return medicalFileM.MedicalFileAlreadyExists();
+          //  return true;
         }
 
         public bool UserWantsToReplaceExistingItem()
@@ -58,7 +58,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void UpdateExistingItem()
         {
-  //          medicalFileM.UpdateMedicalFile();
+            medicalFileM.UpdateMedicalFile();
         }
 
         public void GoBack()
