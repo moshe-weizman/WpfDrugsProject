@@ -8,11 +8,11 @@ namespace Drugs2020.PL.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        private MainWindowViewModel viewModel;    
+        private MainWidowViewModel viewModel;    
         public MainWindow()
         {
             InitializeComponent();
-            viewModel = new MainWindowViewModel();
+            viewModel = new MainWidowViewModel();
             this.DataContext = viewModel; 
         }
     }

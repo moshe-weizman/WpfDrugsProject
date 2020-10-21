@@ -10,14 +10,14 @@ using System.Windows.Input;
 
 namespace Drugs2020.PL.Commands
 {
-    class PatientSelectionCommand : ICommand
+    class SearchItemCommand : ICommand
     {
 
-        private IPatientSearchViewModel patientSearchVm;
+        private ISearch searchVm;
 
-        public PatientSelectionCommand(IPatientSearchViewModel patientSelectionVM)
+        public SearchItemCommand(ISearch searchVm)
         {
-            this.patientSearchVm = patientSelectionVM;
+            this.searchVm = searchVm;
         }
 
         public event EventHandler CanExecuteChanged
@@ -38,15 +38,7 @@ namespace Drugs2020.PL.Commands
 
         public void Execute(object parameter)
         {
-            patientSearchVm.GetPatient();
-            if (patientSearchVm.PatientFound != null)
-            {
-
-            }
-            else
-            {
-                MessageBox.Show("no patient found");
-            }         
+            searchVm.GetItem(parameter as string);           
         }
     }
 }

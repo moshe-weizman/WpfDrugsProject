@@ -9,46 +9,41 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PatientSearchViewModel : IViewModel, IPatientSearchViewModel , IGoBackScreenVM 
+    class PatientSearchViewModel : IViewModel, ISearch , IGoBackScreenVM 
     {
 
-        private MainWindowViewModel containingVm;
-        public PatientSelectionCommand PatientSelectionCommand { get; set; }
+        private MainWidowViewModel containingShellVm;
+        public SearchItemCommand PatientSelectionCommand { get; set; }
         public BackCommand BackCommand { get; set; }
 
-        private PatientModel patientM;
+        private PhysicianShellModel patientM;
 
-        public PatientSearchViewModel(MainWindowViewModel containingVm, PatientModel patientM)
+        public PatientSearchViewModel(MainWidowViewModel containingVm, PhysicianShellModel patientM)
         {
-            this.PatientSelectionCommand = new PatientSelectionCommand(this);
+            this.PatientSelectionCommand = new SearchItemCommand(this);
             this.BackCommand = new BackCommand(this);
-            this.containingVm = containingVm;
+            this.containingShellVm = containingVm;
             this.patientM = patientM;
         }
-        public string PatientId
-        {
-            get { return patientM.PatientId; }
-            set { patientM.PatientId = value; }
-        }
+        
         public Patient PatientFound
         {
             get { return patientM.CurrentPatient; }
             set { patientM.CurrentPatient = value; }
-        }
+        }    
 
-       
-
-        public void GetPatient()
+        public void GetItem(string id)
         {
-             patientM.GetPatient();
-            if (PatientFound != null) {
+             patientM.GetPatient(id);
+            if (PatientFound != null)
+            {
                 ReplaceScreen();
             }
         }
 
         public void GoBack()
         {
-            containingVm.ReplaceUC(Screen.LOGIN_SCREEN);
+            containingShellVm.ReplaceUC(Screen.LOGIN_SCREEN);
         }
 
         public void ReplaceScreen()
@@ -57,7 +52,7 @@ namespace Drugs2020.PL.ViewModels
             // if (!PatientFound.GetType().GetProperties().Any(prop => prop == null))//if all properties is null so open medical file screen
              //   containingVm.ReplaceUC(Screen.ADD_MEDICAL_FILE);
          //   else
-                containingVm.ReplaceUC(Screen.ADD_MEDICAL_RECORD);
+                containingShellVm.ReplaceUC(Screen.ADD_MEDICAL_RECORD);
 
         }
     }

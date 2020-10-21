@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class MainWindowViewModel : INotifyPropertyChanged, IViewModel
+    class MainWidowViewModel : INotifyPropertyChanged, IViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -22,24 +22,24 @@ namespace Drugs2020.PL.ViewModels
         private PatientSearchViewModel patientSearchVM;
         private AddPatientViewModel addPatientVM;
         private ActionsMenuViewModel actionsMenuVM;
-        private PatientDataViewModel patientDataVM;
-        private AddMedicalFileViewModel addMedicalFileVM;
+        private PatientDetailsViewModel patientDataVM;
+        private MedicalFileViewModel addMedicalFileVM;
         private AddMedicalRecordViewModel AddMedicalRecordVM;
         private AddReceptViewModel addReceptVM;
         private AdminShellViewModel adminShellVM;
        
 
-        private PatientModel patientModel;
-        public MainWindowViewModel()
+        private PhysicianShellModel patientModel;
+        public MainWidowViewModel()
         {
-            patientModel = new PatientModel();
+            
             MainWindowM = new MainWindowModel();
             logInVM = new LogInViewModel(this);
             patientSearchVM = new PatientSearchViewModel(this, patientModel);
             //addPatientVM = new AddPatientViewModel(this);
             actionsMenuVM = new ActionsMenuViewModel(this);
-            patientDataVM = new PatientDataViewModel(this, patientModel);
-            addMedicalFileVM = new AddMedicalFileViewModel(this, patientModel);
+            //patientDataVM = new PatientDetailsViewModel(this, patientModel);
+            //addMedicalFileVM = new MedicalFileViewModel(this, patientModel);
             AddMedicalRecordVM = new AddMedicalRecordViewModel(this, patientModel);
             addReceptVM = new AddReceptViewModel(this, patientModel);
             adminShellVM = new AdminShellViewModel();

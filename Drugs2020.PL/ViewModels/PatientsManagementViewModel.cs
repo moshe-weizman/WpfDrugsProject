@@ -11,34 +11,33 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PatientsManagementViewModel : IAdd, IEdit, IDelete, IGoBackScreenVM, IViewModel
+    class PatientsManagementViewModel : IAdd, IEdit, IDelete, ISearch, IGoBackScreenVM, IViewModel
     {
         private PatientManagementModel patientManagementM;
-        private AdminShellViewModel shellViewModel;
+        private AdminShellViewModel containingShellVm;
         public AddingItemCommand AddCommand { get; set; }
         public EditingItemCommand EditCommand { get; set; }
         public DeleteItemCommand DeleteCommand { get; set; }
         public BackCommand BackCommand { get; set; }
-        public ObservableCollection<Patient> Items
-        {
-            get { return patientManagementM.Patients; }
-            set { patientManagementM.Patients = value; }
-        }
+        public SearchItemCommand SearchCommand { get; set; }
+        public ObservableCollection<Patient> Items { get; set; }
 
         public PatientsManagementViewModel(AdminShellViewModel shellViewModel)
         {
             patientManagementM = new PatientManagementModel();
-            this.shellViewModel = shellViewModel;
+            Items = new ObservableCollection<Patient>(patientManagementM.Patients);
+            this.containingShellVm = shellViewModel;
             AddCommand = new AddingItemCommand(this);
             EditCommand = new EditingItemCommand(this);
             DeleteCommand = new DeleteItemCommand(this);
+            SearchCommand = new SearchItemCommand(this);
             BackCommand = new BackCommand(this);
         }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         public void OpenAddingScreen()
         {
-            shellViewModel.ReplaceScreen(Screen.ADD_PATIENT_SCREEN);
+            containingShellVm.ReplaceScreen(Screen.ADD_PATIENT_SCREEN);
         }
 
         public void OpenEditingScreen(object selectedPatient)
@@ -57,6 +56,11 @@ namespace Drugs2020.PL.ViewModels
         }
 
         public void GoBack()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetItem(string id)
         {
             throw new NotImplementedException();
         }

@@ -9,9 +9,9 @@ namespace Drugs2020.PL.ViewModels
 {
     class ActionsMenuViewModel :  IScreenReplacementVM, IViewModel
     {
-        private MainWindowViewModel mainWindowVM;
+        private MainWidowViewModel mainWindowVM;
         public ScreenReplacementCommand ScreenReplacementCommand { get; set; }
-        public ActionsMenuViewModel(MainWindowViewModel mainWindowVM)
+        public ActionsMenuViewModel(MainWidowViewModel mainWindowVM)
         {
             this.mainWindowVM = mainWindowVM;
 

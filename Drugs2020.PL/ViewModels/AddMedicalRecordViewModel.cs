@@ -11,10 +11,10 @@ namespace Drugs2020.PL.ViewModels
 {
     class AddMedicalRecordViewModel: IAddToDb, IGoBackScreenVM, IViewModel, IScreenReplacementVM
     {
-        private PatientModel patientModel;
-        private MainWindowViewModel containingVm;
+        private PhysicianShellModel patientModel;
+        private MainWidowViewModel containingVm;
 
-        public AddMedicalRecordViewModel(MainWindowViewModel containingVm, PatientModel patientModel)
+        public AddMedicalRecordViewModel(MainWidowViewModel containingVm, PhysicianShellModel patientModel)
         {
             this.patientModel = patientModel;
             this.containingVm = containingVm;

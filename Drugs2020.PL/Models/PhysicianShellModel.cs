@@ -8,33 +8,33 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.Models
 {
-    class PatientModel
+    class PhysicianShellModel
     {
         
-        private IBL bl;
-        public string PatientId { get; set; }
+        private IBL bl;        
         public Patient CurrentPatient { get; set; }
         public MedicalFile MedicalFile { get; set; }
         public Recept Recept { get; set; }
 
-        public PatientModel()
+        public PhysicianShellModel(Patient currentPatient)
         {
-            bl = new BLImplementation();   
+            bl = new BLImplementation();
+            this.CurrentPatient = currentPatient;
         }
 
-        public void GetPatient()
+        public void GetPatient(string id)
         {
-            CurrentPatient= bl.GetPatient(PatientId);
+            CurrentPatient= bl.GetPatient(id);
             if (CurrentPatient == null)//exception instead?
             {
                 return;
             }
-            MedicalFile = bl.GetMedicalFile(PatientId);
+            MedicalFile = bl.GetMedicalFile(id);
             if (MedicalFile == null)
             {
-                MedicalFile = new MedicalFile(PatientId);
+                MedicalFile = new MedicalFile(id);
             }
-            Recept = new Recept(PatientId);
+            Recept = new Recept(id);
         }
 
         public void UpdatePatient()
@@ -49,14 +49,14 @@ namespace Drugs2020.PL.Models
 
         public void UpdateMedicalFile()
         {
-            bl.UpdateMedicalFile(PatientId, MedicalFile);
+            //bl.UpdateMedicalFile(PatientId, MedicalFile);
         }
 
         public bool MedicalFileAlreadyExists()
         {
-            if (bl.GetMedicalFile(PatientId) == null)
-                return false;
-            return true;
+            //if (bl.GetMedicalFile(PatientId) == null)
+            //    return false;
+           return true;
         }
         public void AddRecept()
         {

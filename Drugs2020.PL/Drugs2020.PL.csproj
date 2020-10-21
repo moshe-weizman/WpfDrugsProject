@@ -83,10 +83,11 @@
     <Compile Include="Models\AddDrugModel.cs" />
     <Compile Include="Models\AddPhysicianModel.cs" />
     <Compile Include="Models\DrugModel.cs" />
+    <Compile Include="Models\MedicalFileModel.cs" />
     <Compile Include="Models\PatientManagementModel.cs" />
     <Compile Include="Screen.cs" />
     <Compile Include="ViewModels\ActionsMenuViewModel.cs" />
-    <Compile Include="ViewModels\AddMedicalFileViewModel.cs" />
+    <Compile Include="ViewModels\MedicalFileViewModel.cs" />
     <Compile Include="ViewModels\AddPatientViewModel.cs" />
     <Compile Include="ViewModels\AddPhysicianViewModel.cs" />
     <Compile Include="ViewModels\AddReceptViewModel.cs" />
@@ -98,15 +99,16 @@
     <Compile Include="ViewModels\IEdit.cs" />
     <Compile Include="ViewModels\IGoBackScreenVM.cs" />
     <Compile Include="ViewModels\ILogInViewModel.cs" />
-    <Compile Include="ViewModels\IPatientSearchViewModel.cs" />
+    <Compile Include="ViewModels\ISearch.cs" />
     <Compile Include="ViewModels\IDelete.cs" />
     <Compile Include="ViewModels\IScreenReplacementVM.cs" />
     <Compile Include="ViewModels\IViewModel.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
-    <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="ViewModels\PatientDataViewModel.cs" />
+    <Compile Include="ViewModels\MainWidowViewModel.cs" />
+    <Compile Include="ViewModels\PatientDetailsViewModel.cs" />
     <Compile Include="ViewModels\PatientsManagementViewModel.cs" />
     <Compile Include="ViewModels\PatientSearchViewModel.cs" />
+    <Compile Include="ViewModels\PhysicianShellViewModel.cs" />
     <Compile Include="ViewModels\PhysicianPanelViewModel.cs" />
     <Compile Include="ViewModels\AddMedicalRecordViewModel.cs" />
     <Compile Include="Views\ActionsMenu.xaml.cs">
@@ -151,16 +153,19 @@
     <Compile Include="Views\PhysicianPanel.xaml.cs">
       <DependentUpon>PhysicianPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PhysicianShell.xaml.cs">
+      <DependentUpon>PhysicianShell.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\AddToDbCommand.cs" />
     <Compile Include="Commands\LogInCommand.cs" />
-    <Compile Include="Commands\PatientSelectionCommand.cs" />
+    <Compile Include="Commands\SearchItemCommand.cs" />
     <Compile Include="Converters\FieldsTextToBoolConverter.cs" />
     <Compile Include="Models\AddPatientModel.cs" />
     <Compile Include="Models\LogInModel.cs" />
     <Compile Include="Models\MainWindowModel.cs" />
-    <Compile Include="Models\PatientModel.cs" />
+    <Compile Include="Models\PhysicianShellModel.cs" />
     <Compile Include="Models\PhysicianPanelModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -250,6 +255,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\PhysicianPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PhysicianShell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

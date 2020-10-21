@@ -14,7 +14,7 @@ namespace Drugs2020.PL.ViewModels
     {
         private AddPhysicianModel addPhysicianM;
 
-        private MainWindowViewModel containingVm;
+        private MainWidowViewModel containingVm;
         public AddToDbCommand AddToDbCommand { get; set; }
 
         public BackCommand BackCommand { get; set; }
@@ -25,7 +25,7 @@ namespace Drugs2020.PL.ViewModels
         }
         public Array SexEnumValues => Enum.GetValues(typeof(Sex));
 
-        public AddPhysicianViewModel(MainWindowViewModel containingVm)
+        public AddPhysicianViewModel(MainWidowViewModel containingVm)
         {
             addPhysicianM = new AddPhysicianModel();
             this.containingVm = containingVm;
