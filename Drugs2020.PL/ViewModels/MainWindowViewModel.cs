@@ -35,13 +35,13 @@ namespace Drugs2020.PL.ViewModels
             MainWindowM = new MainWindowModel();
             logInVM = new LogInViewModel(this);
             patientSearchVM = new PatientSearchViewModel(this, patientModel);
-            addPatientVM = new AddPatientViewModel(this);
+            //addPatientVM = new AddPatientViewModel(this);
             actionsMenuVM = new ActionsMenuViewModel(this);
             patientDataVM = new PatientDataViewModel(this, patientModel);
             addMedicalFileVM = new AddMedicalFileViewModel(this, patientModel);
             AddMedicalRecordVM = new AddMedicalRecordViewModel(this, patientModel);
             addReceptVM = new AddReceptViewModel(this, patientModel);
-            LeftCurrentVm = logInVM;
+            LeftCurrentVm = new AdminShellViewModel();
         }
         public MainWindowModel MainWindowM { get; set; }
         public IViewModel RightCurrentVm 

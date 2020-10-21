@@ -2,12 +2,6 @@
 using Drugs2020.PL.Commands;
 using Drugs2020.PL.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace Drugs2020.PL.ViewModels
 {
@@ -15,7 +9,7 @@ namespace Drugs2020.PL.ViewModels
     {
         private AddPatientModel addPatientM;
 
-        private MainWindowViewModel containingVm;
+        private AdminShellViewModel shellVm;
         public AddToDbCommand AddToDbCommand { get; set; }
 
         public BackCommand BackCommand { get; set; }
@@ -26,10 +20,10 @@ namespace Drugs2020.PL.ViewModels
         }
         public Array SexEnumValues => Enum.GetValues(typeof(Sex));
 
-        public AddPatientViewModel(MainWindowViewModel containingVm)
+        public AddPatientViewModel(AdminShellViewModel shellVm)
         {
             addPatientM = new AddPatientModel();
-            this.containingVm = containingVm;
+            this.shellVm = shellVm;
             AddToDbCommand = new AddToDbCommand(this);
             BackCommand = new BackCommand(this);
             Patient = new Patient();           
@@ -38,6 +32,7 @@ namespace Drugs2020.PL.ViewModels
         public void AddItemToDb()
         {
             addPatientM.AddPatientToDb();
+            GoBack();
         }
 
         public bool ItemAlreadyExists()
@@ -48,6 +43,7 @@ namespace Drugs2020.PL.ViewModels
         public void UpdateExistingItem()
         {
             addPatientM.UpdatePatient();
+            GoBack();
         }
 
         public bool UserWantsToReplaceExistingItem()
@@ -58,7 +54,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void GoBack()
         {
-            containingVm.ReplaceUC(Screen.ACTIONS_MENU);
+            shellVm.ReplaceScreen(Screen.PATIENTS_MANAGEMENT);
         }
     }
 }

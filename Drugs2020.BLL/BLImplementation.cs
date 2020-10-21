@@ -1,6 +1,7 @@
 ﻿using Drugs2020.BLL.BE;
 using Drugs2020.DAL;
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace Drugs2020.BLL
@@ -57,11 +58,17 @@ namespace Drugs2020.BLL
         #region Patient CRUD Functions
         public Patient GetPatient(string ID)
         {
-           return new Patient("1234", "Dudu", "Cohen", Sex.MALE, "0545678990", @"Moshe@gmail.com", "Elad", DateTime.Parse("12/10/1985"));
-            // return null;
-            
+            return dal.GetPatient(ID);
         }
-
+        public List<Patient> GetAllPatients()
+        {
+            return new List<Patient>
+            {
+                new Patient("1234", "Dudu", "Cohen", Sex.MALE, "0545678990", @"Moshe@gmail.com", "Elad", DateTime.Parse("12/10/1985")),
+                new Patient("111", "Roni", "Cohen", Sex.MALE, "0545678990", @"Moshe@gmail.com", "Elad", DateTime.Parse("12/10/1985")),
+                new Patient("444", "Yossi", "Cohen", Sex.MALE, "0545678990", @"Moshe@gmail.com", "Elad", DateTime.Parse("12/10/1985")),
+            };
+        }
 
         public void AddPatient(Patient patient)
         {
@@ -83,6 +90,11 @@ namespace Drugs2020.BLL
         public Physician GetPhysician(string ID)
         {
             return dal.GetPhysician(ID);
+        }
+       
+        public List<Physician> GetAllPhysicians()
+        {
+            throw new NotImplementedException();
         }
 
         public void AddPhysician(Physician physician)
@@ -123,7 +135,13 @@ namespace Drugs2020.BLL
             dal.DeleteDrug(id);
         }
 
-       
+        
+        public List<Drug> GetAllDrugs()
+        {
+            throw new NotImplementedException();
+        }
+
+
         #endregion
     }
 }

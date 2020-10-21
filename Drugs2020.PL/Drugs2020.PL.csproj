@@ -75,8 +75,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Commands\AddingScreenCommand.cs" />
+    <Compile Include="Commands\AddingItemCommand.cs" />
     <Compile Include="Commands\BackCommand.cs" />
+    <Compile Include="Commands\DeleteItemCommand.cs" />
+    <Compile Include="Commands\EditingItemCommand.cs" />
     <Compile Include="Commands\ScreenReplacementCommand.cs" />
     <Compile Include="Models\AddDrugModel.cs" />
     <Compile Include="Models\AddPhysicianModel.cs" />
@@ -87,11 +89,16 @@
     <Compile Include="ViewModels\AddPatientViewModel.cs" />
     <Compile Include="ViewModels\AddPhysicianViewModel.cs" />
     <Compile Include="ViewModels\AddReceptViewModel.cs" />
+    <Compile Include="ViewModels\AdminShellViewModel.cs" />
+    <Compile Include="ViewModels\DeleteDecisionViewmodel.cs" />
     <Compile Include="ViewModels\ExistingItemDecisionViewModel.cs" />
+    <Compile Include="ViewModels\IAdd.cs" />
     <Compile Include="ViewModels\IAddToDb.cs" />
+    <Compile Include="ViewModels\IEdit.cs" />
     <Compile Include="ViewModels\IGoBackScreenVM.cs" />
     <Compile Include="ViewModels\ILogInViewModel.cs" />
     <Compile Include="ViewModels\IPatientSearchViewModel.cs" />
+    <Compile Include="ViewModels\IDelete.cs" />
     <Compile Include="ViewModels\IScreenReplacementVM.cs" />
     <Compile Include="ViewModels\IViewModel.cs" />
     <Compile Include="ViewModels\LogInViewModel.cs" />
@@ -257,6 +264,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\icons8-plus-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\medicine-panel.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />

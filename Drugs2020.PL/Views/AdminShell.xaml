@@ -12,15 +12,18 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>   
         <Image Grid.Column="1" 
-               Source="/Images/medicine.jpg" 
+               Source="/Images/medicine-panel.jpg" 
                Stretch="UniformToFill" />
+
         <StackPanel Orientation="Vertical">
-            <Button Content="Patients" />
+            <Button Content="Patients" 
+                    Command="{Binding ScreenReplacementCommand}"
+                    CommandParameter="PATIENTS_MANAGEMENT"/>
             <Button Content="Physicians" />
             <Button Content="Drugs" />
             <Button Content="Statistics" />
         </StackPanel>
-        <ContentControl Grid.Column="1" Content="{Binding CurrentVM}"/>
+        <ContentControl Grid.Column="1" Content="{Binding CurrentVm}"/>
         
 
     </Grid>

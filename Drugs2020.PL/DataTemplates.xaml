@@ -9,14 +9,20 @@
     <DataTemplate DataType="{x:Type viewModels:LogInViewModel}">
         <views:Login />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:PhysicianPanelViewModel}">
-        <views:PhysicianPanel />
+    <DataTemplate DataType="{x:Type viewModels:AdminShellViewModel}">
+        <views:AdminShell />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:PatientManagementViewModel}">
+        <views:PatientsManagement />
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:AddPatientViewModel}">
-        <views:AddPatient/>
+        <views:AddPatient />
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ActionsMenuViewModel}">
-        <views:ActionsMenu/>
+        <views:ActionsMenu />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:PhysicianPanelViewModel}">
+        <views:PhysicianPanel />
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:PatientDataViewModel}">
         <views:PatientData/>

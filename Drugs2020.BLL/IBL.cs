@@ -19,6 +19,7 @@ namespace Drugs2020.BLL
         #region Patient CRUD Functions
         void AddPatient(Patient patient);
         Patient GetPatient(string id);
+        List<Patient> GetAllPatients();
         void UpdatePatient(string id, Patient updatedPatient);
         void DeletePatient(string id);
         #endregion
@@ -26,6 +27,7 @@ namespace Drugs2020.BLL
         #region Physician CRUD Functions
         void AddPhysician(Physician physician);
         Physician GetPhysician(string id);
+        List<Physician> GetAllPhysicians();
         void UpdatePhysician(string id, Physician updatedPhysician);
         void DeletePhysician(string id);
         #endregion
@@ -33,6 +35,7 @@ namespace Drugs2020.BLL
         #region Drug CRUD Functions
         void AddDrug(Drug drug);
         Drug GetDrug(string id);
+        List<Drug> GetAllDrugs();
         void UpdateDrug(string id, Drug updatedDrug);
         void DeleteDrug(string id);
         #endregion

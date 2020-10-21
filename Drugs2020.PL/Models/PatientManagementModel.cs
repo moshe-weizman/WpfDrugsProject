@@ -16,6 +16,7 @@ namespace Drugs2020.PL.Models
         public PatientManagementModel()
         {
             bl = new BLImplementation();
+            Patients = new ObservableCollection<Patient>(bl.GetAllPatients());
         }
     }
 }
