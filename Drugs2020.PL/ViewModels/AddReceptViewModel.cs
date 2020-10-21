@@ -4,13 +4,14 @@ using Drugs2020.PL.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class AddReceptViewModel: IViewModel, IAddToDb , IGoBackScreenVM
+    class AddReceptViewModel: IViewModel, IAddToDb , IGoBackScreenVM, INotifyPropertyChanged
     {
         private MainWindowViewModel containingVm;
         private PatientModel patientModel;
@@ -29,6 +30,17 @@ namespace Drugs2020.PL.ViewModels
         public ObservableCollection<Drug> DrugCollection { get; set; }
         public AddToDbCommand AddToDbCommand { get; set; }
         public BackCommand BackCommand { get; set; }
+        public Drug SelectedDrug { get { return patientModel.Recept.Drug; }
+            set 
+            {
+                patientModel.Recept.Drug = value;
+                if(PropertyChanged!=null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("SelectedDrug"));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public void AddItemToDb()
         {
             patientModel.AddRecept();

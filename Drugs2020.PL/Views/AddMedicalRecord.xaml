@@ -23,8 +23,8 @@
         <TextBlock TextWrapping="Wrap" Text="Notes:"/>
         <TextBox x:Name="NotesTextBox" Height="23" TextWrapping="Wrap" Text="{Binding MedicalRecord.PhysicianNotes}"/>
 
-        
-            <Button Content="Medical File" d:LayoutOverrides="Height" Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_MEDICAL_FILE}" Margin="10"/>
+
+        <Button Content="Medical File" d:LayoutOverrides="Height" Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_MEDICAL_RECORD}" Margin="10"/>
             <Button Width="Auto" Content="Patient's List of Medications" d:LayoutOverrides="Height" Margin="10"/>
 
 

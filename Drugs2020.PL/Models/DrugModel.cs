@@ -10,6 +10,7 @@ namespace Drugs2020.PL.Models
 {
     class DrugModel
     {
+
         public List<Drug> DrugList { get; set; }
         private IBL bl;
 

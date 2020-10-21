@@ -26,6 +26,7 @@ namespace Drugs2020.PL.ViewModels
         private AddMedicalFileViewModel addMedicalFileVM;
         private AddMedicalRecordViewModel AddMedicalRecordVM;
         private AddReceptViewModel addReceptVM;
+        private AdminShellViewModel adminShellVM;
        
 
         private PatientModel patientModel;
@@ -41,7 +42,8 @@ namespace Drugs2020.PL.ViewModels
             addMedicalFileVM = new AddMedicalFileViewModel(this, patientModel);
             AddMedicalRecordVM = new AddMedicalRecordViewModel(this, patientModel);
             addReceptVM = new AddReceptViewModel(this, patientModel);
-            LeftCurrentVm = new AdminShellViewModel();
+            adminShellVM = new AdminShellViewModel();
+            LeftCurrentVm = logInVM;
         }
         public MainWindowModel MainWindowM { get; set; }
         public IViewModel RightCurrentVm 
