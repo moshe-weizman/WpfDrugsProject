@@ -12,17 +12,17 @@ namespace Drugs2020.PL.ViewModels
     class PatientSearchViewModel : IViewModel, ISearch , IGoBackScreenVM 
     {
 
-        private MainWindowViewModel containingVm;
+        private MainWidowViewModel containingShellVm;
         public SearchItemCommand PatientSelectionCommand { get; set; }
         public BackCommand BackCommand { get; set; }
 
-        private PatientModel patientM;
+        private PhysicianShellModel patientM;
 
-        public PatientSearchViewModel(MainWindowViewModel containingVm, PatientModel patientM)
+        public PatientSearchViewModel(MainWidowViewModel containingVm, PhysicianShellModel patientM)
         {
             this.PatientSelectionCommand = new SearchItemCommand(this);
             this.BackCommand = new BackCommand(this);
-            this.containingVm = containingVm;
+            this.containingShellVm = containingVm;
             this.patientM = patientM;
         }
         
@@ -43,7 +43,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void GoBack()
         {
-            containingVm.ReplaceUC(Screen.LOGIN_SCREEN);
+            containingShellVm.ReplaceUC(Screen.LOGIN_SCREEN);
         }
 
         public void ReplaceScreen()
@@ -52,7 +52,7 @@ namespace Drugs2020.PL.ViewModels
             // if (!PatientFound.GetType().GetProperties().Any(prop => prop == null))//if all properties is null so open medical file screen
              //   containingVm.ReplaceUC(Screen.ADD_MEDICAL_FILE);
          //   else
-                containingVm.ReplaceUC(Screen.ADD_MEDICAL_RECORD);
+                containingShellVm.ReplaceUC(Screen.ADD_MEDICAL_RECORD);
 
         }
     }

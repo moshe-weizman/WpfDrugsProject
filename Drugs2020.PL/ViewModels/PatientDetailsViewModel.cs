@@ -9,23 +9,22 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PatientDataViewModel : INotifyPropertyChanged, IViewModel
-    {
-        private PatientModel patientModel;
-        private MainWindowViewModel containingVm;
-        public event PropertyChangedEventHandler PropertyChanged;
+    class PatientDetailsViewModel : INotifyPropertyChanged, IViewModel
+    {        
+        private PhysicianShellViewModel containingShellVm;
+        public event PropertyChangedEventHandler PropertyChanged;       
 
-        public PatientDataViewModel(MainWindowViewModel viewModel, PatientModel patientModel)
+
+        public PatientDetailsViewModel(PhysicianShellViewModel viewModel)
         {
-            containingVm = viewModel;
-            this.patientModel = patientModel;
+            containingShellVm = viewModel;
         }
         public Patient CurrentPatient
         {
-            get { return patientModel.CurrentPatient; }
+            get { return containingShellVm.CurrentPatient; }
             set//לכאורה זה לא נצרך
             {
-                patientModel.CurrentPatient = value;
+                containingShellVm.CurrentPatient = value;
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("CurrentPatient"));

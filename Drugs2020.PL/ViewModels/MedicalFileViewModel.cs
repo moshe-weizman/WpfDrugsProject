@@ -10,57 +10,60 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class AddMedicalFileViewModel: IViewModel, IAddToDb , IGoBackScreenVM , INotifyPropertyChanged
+    class MedicalFileViewModel: IViewModel, IAddToDb , IGoBackScreenVM , INotifyPropertyChanged
     {
-        private PatientModel patientModel;
-        private MainWindowViewModel containingVm;
-
+        private PhysicianShellViewModel containingShellVm;
+        private MedicalFileModel medicalFileM;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public BackCommand BackCommand { get; set; }
         public AddToDbCommand AddToDbCommand { get; set; }
         public MedicalFile MedicalFile
         {
-            get { return patientModel.MedicalFile; }
-            set { 
-                patientModel.MedicalFile = value;
+            get { return medicalFileM.MedicalFile; }
+            set {
+                medicalFileM.MedicalFile = value;
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("MedicalFile"));
                 }
             }
         }
-        public AddMedicalFileViewModel(MainWindowViewModel containingVm, PatientModel patientModel)
+        public MedicalFileViewModel(PhysicianShellViewModel containingShellVm, Patient patient)
         {
-            this.containingVm = containingVm;
-            this.patientModel = patientModel;
+            this.containingShellVm = containingShellVm;
+            medicalFileM = new MedicalFileModel(patient);
             AddToDbCommand = new AddToDbCommand(this);
             BackCommand = new BackCommand(this);
         }
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         public void AddItemToDb()
         {
-            patientModel.AddMedicalFileToPatient();
+//            medicalFileM.AddMedicalFileToDb();
         }
 
         public bool ItemAlreadyExists()
         {
-            return patientModel.MedicalFileAlreadyExists();
+            //            return medicalFileM.MedicalFileAlreadyExists();
+            return true;
         }
 
         public bool UserWantsToReplaceExistingItem()
         {
-            return true;
+            ExistingItemDecisionViewModel decision = new ExistingItemDecisionViewModel("medical file");
+            return decision.Decision;
         }
 
         public void UpdateExistingItem()
         {
-            patientModel.UpdateMedicalFile();
+  //          medicalFileM.UpdateMedicalFile();
         }
 
         public void GoBack()
         {
-            containingVm.ReplaceUC(Screen.ADD_MEDICAL_RECORD);
+            containingShellVm.ReplaceUC(Screen.ADD_MEDICAL_RECORD);
         }
     }
 }

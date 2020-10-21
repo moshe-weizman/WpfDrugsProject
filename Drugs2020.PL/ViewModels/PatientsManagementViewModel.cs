@@ -14,7 +14,7 @@ namespace Drugs2020.PL.ViewModels
     class PatientsManagementViewModel : IAdd, IEdit, IDelete, ISearch, IGoBackScreenVM, IViewModel
     {
         private PatientManagementModel patientManagementM;
-        private AdminShellViewModel shellViewModel;
+        private AdminShellViewModel containingShellVm;
         public AddingItemCommand AddCommand { get; set; }
         public EditingItemCommand EditCommand { get; set; }
         public DeleteItemCommand DeleteCommand { get; set; }
@@ -26,7 +26,7 @@ namespace Drugs2020.PL.ViewModels
         {
             patientManagementM = new PatientManagementModel();
             Items = new ObservableCollection<Patient>(patientManagementM.Patients);
-            this.shellViewModel = shellViewModel;
+            this.containingShellVm = shellViewModel;
             AddCommand = new AddingItemCommand(this);
             EditCommand = new EditingItemCommand(this);
             DeleteCommand = new DeleteItemCommand(this);
@@ -37,7 +37,7 @@ namespace Drugs2020.PL.ViewModels
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         public void OpenAddingScreen()
         {
-            shellViewModel.ReplaceScreen(Screen.ADD_PATIENT_SCREEN);
+            containingShellVm.ReplaceScreen(Screen.ADD_PATIENT_SCREEN);
         }
 
         public void OpenEditingScreen(object selectedPatient)

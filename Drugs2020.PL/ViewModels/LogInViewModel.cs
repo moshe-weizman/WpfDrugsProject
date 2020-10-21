@@ -10,10 +10,10 @@ namespace Drugs2020.PL.ViewModels
 
         private LogInModel logInModel;
 
-        private MainWindowViewModel containingVm;
+        private MainWidowViewModel containingVm;
         public LogInCommand LogInUserCommand { get; set; }
 
-        public LogInViewModel(MainWindowViewModel containingVm)
+        public LogInViewModel(MainWidowViewModel containingVm)
         {
             this.containingVm = containingVm;
             logInModel = new LogInModel();
