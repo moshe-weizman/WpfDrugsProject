@@ -13,7 +13,9 @@
             <TabItem.Header>
                 <Grid>
                     <Image Source="/Images/icons8-health-checkup-100.png"
-                           Stretch="None" />
+                           Stretch="None"
+                           Height="100"
+                           VerticalAlignment="Top" />
                 </Grid>
             </TabItem.Header>
             <TabItem.Content>

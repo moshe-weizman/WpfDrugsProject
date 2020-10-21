@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PatientsManagementViewModel : IAdd, IEdit, IDelete, IGoBackScreenVM, IViewModel
+    class PatientsManagementViewModel : IAdd, IEdit, IDelete, ISearch, IGoBackScreenVM, IViewModel
     {
         private PatientManagementModel patientManagementM;
         private AdminShellViewModel shellViewModel;
@@ -19,19 +19,18 @@ namespace Drugs2020.PL.ViewModels
         public EditingItemCommand EditCommand { get; set; }
         public DeleteItemCommand DeleteCommand { get; set; }
         public BackCommand BackCommand { get; set; }
-        public ObservableCollection<Patient> Items
-        {
-            get { return patientManagementM.Patients; }
-            set { patientManagementM.Patients = value; }
-        }
+        public SearchItemCommand SearchCommand { get; set; }
+        public ObservableCollection<Patient> Items { get; set; }
 
         public PatientsManagementViewModel(AdminShellViewModel shellViewModel)
         {
             patientManagementM = new PatientManagementModel();
+            Items = new ObservableCollection<Patient>(patientManagementM.Patients);
             this.shellViewModel = shellViewModel;
             AddCommand = new AddingItemCommand(this);
             EditCommand = new EditingItemCommand(this);
             DeleteCommand = new DeleteItemCommand(this);
+            SearchCommand = new SearchItemCommand(this);
             BackCommand = new BackCommand(this);
         }
 
@@ -57,6 +56,11 @@ namespace Drugs2020.PL.ViewModels
         }
 
         public void GoBack()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetItem(string id)
         {
             throw new NotImplementedException();
         }

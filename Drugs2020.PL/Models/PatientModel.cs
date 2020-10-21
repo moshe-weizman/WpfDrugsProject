@@ -22,19 +22,19 @@ namespace Drugs2020.PL.Models
             bl = new BLImplementation();   
         }
 
-        public void GetPatient()
+        public void GetPatient(string id)
         {
-            CurrentPatient= bl.GetPatient(PatientId);
+            CurrentPatient= bl.GetPatient(id);
             if (CurrentPatient == null)//exception instead?
             {
                 return;
             }
-            MedicalFile = bl.GetMedicalFile(PatientId);
+            MedicalFile = bl.GetMedicalFile(id);
             if (MedicalFile == null)
             {
-                MedicalFile = new MedicalFile(PatientId);
+                MedicalFile = new MedicalFile(id);
             }
-            Recept = new Recept(PatientId);
+            Recept = new Recept(id);
         }
 
         public void UpdatePatient()

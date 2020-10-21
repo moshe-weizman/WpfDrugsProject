@@ -9,39 +9,34 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PatientSearchViewModel : IViewModel, IPatientSearchViewModel , IGoBackScreenVM 
+    class PatientSearchViewModel : IViewModel, ISearch , IGoBackScreenVM 
     {
 
         private MainWindowViewModel containingVm;
-        public PatientSelectionCommand PatientSelectionCommand { get; set; }
+        public SearchItemCommand PatientSelectionCommand { get; set; }
         public BackCommand BackCommand { get; set; }
 
         private PatientModel patientM;
 
         public PatientSearchViewModel(MainWindowViewModel containingVm, PatientModel patientM)
         {
-            this.PatientSelectionCommand = new PatientSelectionCommand(this);
+            this.PatientSelectionCommand = new SearchItemCommand(this);
             this.BackCommand = new BackCommand(this);
             this.containingVm = containingVm;
             this.patientM = patientM;
         }
-        public string PatientId
-        {
-            get { return patientM.PatientId; }
-            set { patientM.PatientId = value; }
-        }
+        
         public Patient PatientFound
         {
             get { return patientM.CurrentPatient; }
             set { patientM.CurrentPatient = value; }
-        }
+        }    
 
-       
-
-        public void GetPatient()
+        public void GetItem(string id)
         {
-             patientM.GetPatient();
-            if (PatientFound != null) {
+             patientM.GetPatient(id);
+            if (PatientFound != null)
+            {
                 ReplaceScreen();
             }
         }

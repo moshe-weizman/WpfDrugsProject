@@ -98,7 +98,7 @@
     <Compile Include="ViewModels\IEdit.cs" />
     <Compile Include="ViewModels\IGoBackScreenVM.cs" />
     <Compile Include="ViewModels\ILogInViewModel.cs" />
-    <Compile Include="ViewModels\IPatientSearchViewModel.cs" />
+    <Compile Include="ViewModels\ISearch.cs" />
     <Compile Include="ViewModels\IDelete.cs" />
     <Compile Include="ViewModels\IScreenReplacementVM.cs" />
     <Compile Include="ViewModels\IViewModel.cs" />
@@ -155,7 +155,7 @@
   <ItemGroup>
     <Compile Include="Commands\AddToDbCommand.cs" />
     <Compile Include="Commands\LogInCommand.cs" />
-    <Compile Include="Commands\PatientSelectionCommand.cs" />
+    <Compile Include="Commands\SearchItemCommand.cs" />
     <Compile Include="Converters\FieldsTextToBoolConverter.cs" />
     <Compile Include="Models\AddPatientModel.cs" />
     <Compile Include="Models\LogInModel.cs" />

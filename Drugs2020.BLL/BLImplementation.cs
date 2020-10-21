@@ -9,7 +9,7 @@ namespace Drugs2020.BLL
     public class BLImplementation : IBL
     {
         IDal dal = new DalImplementation();
-       
+
         public bool ValidatePassword(IUser user, string password)
         {
             bool result = false;
@@ -74,7 +74,7 @@ namespace Drugs2020.BLL
         {
             dal.AddPatient(patient);
         }
-       
+
         public void UpdatePatient(string id, Patient updatedPatient)
         {
             dal.UpdatePatient(updatedPatient);
@@ -91,7 +91,7 @@ namespace Drugs2020.BLL
         {
             return dal.GetPhysician(ID);
         }
-       
+
         public List<Physician> GetAllPhysicians()
         {
             throw new NotImplementedException();
@@ -135,10 +135,15 @@ namespace Drugs2020.BLL
             dal.DeleteDrug(id);
         }
 
-        
+
         public List<Drug> GetAllDrugs()
         {
-            throw new NotImplementedException();
+            return new List<Drug>
+            {
+                new Drug("1433", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png"),
+                new Drug("44444", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png"),
+                new Drug("88", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png")
+            };
         }
 
 
