@@ -12,9 +12,10 @@
     <DataTemplate DataType="{x:Type viewModels:AdminShellViewModel}">
         <views:AdminShell />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:PatientManagementViewModel}">
-        <views:PatientsManagement />
+    <DataTemplate DataType="{x:Type viewModels:PatientsManagementViewModel}">
+        <views:DataManagement />
     </DataTemplate>
+    
     <DataTemplate DataType="{x:Type viewModels:AddPatientViewModel}">
         <views:AddPatient />
     </DataTemplate>

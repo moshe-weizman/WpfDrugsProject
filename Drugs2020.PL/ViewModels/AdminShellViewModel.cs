@@ -11,24 +11,56 @@ namespace Drugs2020.PL.ViewModels
     class AdminShellViewModel : INotifyPropertyChanged, IViewModel, IScreenReplacementVM
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public ScreenReplacementCommand ScreenReplacementCommand { get; set; }
-        private IViewModel currentVm; 
-        public IViewModel CurrentVm
+        private IViewModel patientsVm; 
+        public IViewModel PatientsVm
         {
-            get { return currentVm; }
+            get { return patientsVm; }
             set
             {
-                currentVm = value;
+                patientsVm = value;
                 if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("CurrentVm"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("PatientsVm"));
             }
         }
-        private PatientManagementViewModel patientManagementVm;
+        private IViewModel physiciansVm;
+        public IViewModel PhysiciansVm
+        {
+            get { return physiciansVm; }
+            set
+            {
+                physiciansVm = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("PhysiciansVm"));
+            }
+        }
+        private IViewModel drugsVm;
+        public IViewModel DrugsVm
+        {
+            get { return drugsVm; }
+            set
+            {
+                drugsVm = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("DrugsVm"));
+            }
+        }
+        private IViewModel statisticsVm;
+        public IViewModel StatisticsVm
+        {
+            get { return statisticsVm; }
+            set
+            {
+                statisticsVm = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("StatisticsVm"));
+            }
+        }
+        private PatientsManagementViewModel patientsManagementVm;
 
         public AdminShellViewModel()
         {
-            patientManagementVm = new PatientManagementViewModel(this);
-            ScreenReplacementCommand = new ScreenReplacementCommand(this);
+            patientsManagementVm = new PatientsManagementViewModel(this);
+            patientsVm = patientsManagementVm;
         }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -45,7 +77,7 @@ namespace Drugs2020.PL.ViewModels
                 case Screen.ACTIONS_MENU:
                     break;
                 case Screen.ADD_PATIENT_SCREEN:
-                    CurrentVm = new AddPatientViewModel(this);
+                    PatientsVm = new AddPatientViewModel(this);
                     break;
                 case Screen.ADD_PHYSICIAN_SCREEN:
                     break;
@@ -64,7 +96,7 @@ namespace Drugs2020.PL.ViewModels
                 case Screen.ADD_RECEPT:
                     break;
                 case Screen.PATIENTS_MANAGEMENT:
-                    CurrentVm = patientManagementVm;
+                    PatientsVm = patientsManagementVm;
                     break;
                 default:
                     break;

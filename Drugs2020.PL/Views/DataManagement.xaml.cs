@@ -18,9 +18,9 @@ namespace Drugs2020.PL.Views
     /// <summary>
     /// Interaction logic for PatientsManagement.xaml
     /// </summary>
-    public partial class PatientsManagement : UserControl
+    public partial class DataManagement : UserControl
     {
-        public PatientsManagement()
+        public DataManagement()
         {
             InitializeComponent();
         }

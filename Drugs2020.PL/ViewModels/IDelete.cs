@@ -8,7 +8,7 @@ namespace Drugs2020.PL.ViewModels
 {
     public interface IDelete
     {
-        void RemoveItemFromDb();
+        void RemoveItemFromDb(object item);
         bool IsUserSureToDelete();
     }
 }

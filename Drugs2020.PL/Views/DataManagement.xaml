@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Drugs2020.PL.Views.PatientsManagement"
+﻿<UserControl x:Class="Drugs2020.PL.Views.DataManagement"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -17,18 +17,21 @@
                      Width="150"
                      Margin="50,0,0,0"/>
             <Button ToolTip="Search"
-                    Command="{Binding SearchCommand}">
+                    Command="{Binding SearchCommand}"
+                    CommandParameter="{Binding ElementName=searchTextBox, Path=Text}">
                 <Image Source="/Images/icons8-search-48.png" />
             </Button>
             <Button ToolTip="Edit Selected Item"
-                    Command="{Binding EditCommand}">
+                    Command="{Binding EditCommand}"
+                    CommandParameter="{Binding ElementName=itemList, Path=SelectedItem}">
                 <Image Source="/Images/icons8-edit-48.png" />
             </Button>
             <Button ToolTip="Delete Selected Item"
-                    Command="{Binding DeleteCommand}">
+                    Command="{Binding DeleteCommand}"
+                    CommandParameter="{Binding ElementName=itemList, Path=SelectedItem}">
                 <Image Source="/Images/icons8-remove-48.png" />
             </Button>
         </StackPanel>
-        <ListView ItemsSource="{Binding Patients}" />
+        <ListView x:Name="itemList" ItemsSource="{Binding Patients}" />
     </StackPanel>
 </UserControl>
