@@ -9,7 +9,7 @@ namespace Drugs2020.PL.ViewModels
     {
         private AddPatientModel addPatientM;
 
-        private AdminShellViewModel shellVm;
+        private PatientsManagementViewModel containingVm;
         public AddToDbCommand AddToDbCommand { get; set; }
 
         public BackCommand BackCommand { get; set; }
@@ -20,18 +20,21 @@ namespace Drugs2020.PL.ViewModels
         }
         public Array SexEnumValues => Enum.GetValues(typeof(Sex));
 
-        public AddPatientViewModel(AdminShellViewModel shellVm)
+        public AddPatientViewModel(PatientsManagementViewModel containingVm)
         {
             addPatientM = new AddPatientModel();
-            this.shellVm = shellVm;
+            this.containingVm = containingVm;
             AddToDbCommand = new AddToDbCommand(this);
             BackCommand = new BackCommand(this);
             Patient = new Patient();           
         }
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         public void AddItemToDb()
         {
             addPatientM.AddPatientToDb();
+            containingVm.Items.Add(Patient);
             GoBack();
         }
 
@@ -43,6 +46,8 @@ namespace Drugs2020.PL.ViewModels
         public void UpdateExistingItem()
         {
             addPatientM.UpdatePatient();
+            containingVm.Items;
+
             GoBack();
         }
 
@@ -54,7 +59,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void GoBack()
         {
-            shellVm.ReplaceScreen(Screen.PATIENTS_MANAGEMENT);
+            containingVm.ReturnToContaining();
         }
     }
 }

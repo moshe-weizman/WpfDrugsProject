@@ -89,6 +89,7 @@
     <Compile Include="Models\PatientManagementModel.cs" />
     <Compile Include="Screen.cs" />
     <Compile Include="ViewModels\ActionsMenuViewModel.cs" />
+    <Compile Include="ViewModels\IContainingVm.cs" />
     <Compile Include="ViewModels\MedicalFileViewModel.cs" />
     <Compile Include="ViewModels\AddPatientViewModel.cs" />
     <Compile Include="ViewModels\AddPhysicianViewModel.cs" />
