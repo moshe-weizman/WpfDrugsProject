@@ -11,14 +11,13 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PatientsManagementViewModel : IAdd, IEdit, IDelete, ISearch, IGoBackScreenVM, IViewModel
+    class PatientsManagementViewModel : IAdd, IEdit, IDelete, ISearch, IViewModel
     {
         private PatientManagementModel patientManagementM;
         private AdminShellViewModel containingShellVm;
         public AddingItemCommand AddCommand { get; set; }
         public EditingItemCommand EditCommand { get; set; }
         public DeleteItemCommand DeleteCommand { get; set; }
-        public BackCommand BackCommand { get; set; }
         public SearchItemCommand SearchCommand { get; set; }
         public ObservableCollection<Patient> Items { get; set; }
 
@@ -31,7 +30,6 @@ namespace Drugs2020.PL.ViewModels
             EditCommand = new EditingItemCommand(this);
             DeleteCommand = new DeleteItemCommand(this);
             SearchCommand = new SearchItemCommand(this);
-            BackCommand = new BackCommand(this);
         }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -51,11 +49,6 @@ namespace Drugs2020.PL.ViewModels
         }
 
         public bool IsUserSureToDelete()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GoBack()
         {
             throw new NotImplementedException();
         }

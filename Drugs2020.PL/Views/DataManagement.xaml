@@ -8,35 +8,38 @@
              d:DesignHeight="450"
              d:DesignWidth="800">
     <StackPanel Orientation="Vertical">
-        <StackPanel Orientation="Horizontal">
+        <DockPanel LastChildFill="False">
             <Button ToolTip="Add"
-                    Command="{Binding AddCommand}">
+                    Command="{Binding AddCommand}"
+                    DockPanel.Dock="Left">
                 <Image Source="/Images/icons8-plus-48.png" />
             </Button>
-            <TextBox x:Name="searchTextBox"
-                     Width="150"
-                     Margin="50,0,0,0" />
-            <Button ToolTip="Search"
-                    Command="{Binding SearchCommand}"
-                    CommandParameter="{Binding ElementName=searchTextBox, Path=Text}">
-                <Image Source="/Images/icons8-search-48.png" />
-            </Button>
-            <Button ToolTip="Edit Selected Item"
-                    Command="{Binding EditCommand}"
-                    CommandParameter="{Binding ElementName=itemList, Path=SelectedItem}">
-                <Image Source="/Images/icons8-edit-48.png" />
-            </Button>
             <Button ToolTip="Delete Selected Item"
+                    DockPanel.Dock="Right"
                     Command="{Binding DeleteCommand}"
                     CommandParameter="{Binding ElementName=itemList, Path=SelectedItem}">
                 <Image Source="/Images/icons8-remove-48.png" />
             </Button>
-        </StackPanel>
+            <Button ToolTip="Edit Selected Item"
+                    DockPanel.Dock="Right"
+                    Command="{Binding EditCommand}"
+                    CommandParameter="{Binding ElementName=itemList, Path=SelectedItem}">
+                <Image Source="/Images/icons8-edit-48.png" />
+            </Button>
+            <Button ToolTip="Search"
+                    DockPanel.Dock="Right"
+                    Command="{Binding SearchCommand}"
+                    CommandParameter="{Binding ElementName=searchTextBox, Path=Text}">
+                <Image Source="/Images/icons8-search-48.png" />
+            </Button>
+            <TextBox x:Name="searchTextBox"
+                     Width="150"
+                     DockPanel.Dock="Right" />
+        </DockPanel>
         <ListView x:Name="itemList"
                   
                   ItemsSource="{Binding Items}"
-                  VerticalContentAlignment="Top"
-                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  ScrollViewer.HorizontalScrollBarVisibility="Visible"
                   ScrollViewer.CanContentScroll="True"/>
     </StackPanel>
 </UserControl>
