@@ -5,7 +5,7 @@ namespace Drugs2020.DAL
 {
     public class PharmacyContext : DbContext
     {
-        public PharmacyContext() : base("test_10")
+        public PharmacyContext() : base("test_11")
         {}
 
         public DbSet<Patient> Patients { get; set; }

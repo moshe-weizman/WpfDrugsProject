@@ -39,6 +39,14 @@ namespace Drugs2020.DAL
             return result;
         }
 #endif
+#if false
+         public void AddPatient2(Patient patient)
+        {
+            ctx.Patients.AddAsync(patient);
+            ctx.SaveChangesAsync();
+        }
+#endif
+
         #region Patient
         public void AddPatient(Patient patient)
         {
