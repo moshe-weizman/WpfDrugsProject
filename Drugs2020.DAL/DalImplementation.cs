@@ -123,6 +123,21 @@ namespace Drugs2020.DAL
         }
         List<Drug> GetAllDrugs() { return null; }
 
+        List<Patient> IDal.GetAllPatients()
+        {
+            throw new NotImplementedException();
+        }
+
+        List<Physician> IDal.GetAllPhysicians()
+        {
+            throw new NotImplementedException();
+        }
+
+        List<Drug> IDal.GetAllDrugs()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 
