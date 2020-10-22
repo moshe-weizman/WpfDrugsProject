@@ -12,19 +12,21 @@ namespace Drugs2020.PL.Models
     {
         private IBL bl;
         public Recept Recept { get; set; }
-
+        public List<Drug> DrugList { get; set; }
         public AddReceptModel(string id)
         {
             bl = new BLImplementation();
             Recept = new Recept(id);
+            DrugList = bl.GetAllDrugs();
+
         }
 
-        internal void AddRecept()
+        public void AddRecept()
         {
             bl.AddRecept(Recept);
         }
 
-        internal bool ReceptAlreadyExists()
+        public bool ReceptAlreadyExists()
         {
             return false;//צריך לממש את זה!!!
         }

@@ -21,7 +21,7 @@ namespace Drugs2020.PL.ViewModels
 
 
 
-        private IViewModel personalDetailsTab { get; set; }
+        private IViewModel personalDetailsTab;
         public IViewModel PersonalDetailsTab
         {
             get { return personalDetailsTab; }
@@ -60,7 +60,7 @@ namespace Drugs2020.PL.ViewModels
             get { return addMedicalRecordTab; }
             set
             {
-                personalDetailsTab = value;
+                addMedicalRecordTab = value;
                 if (PropertyChanged != null)
                     PropertyChanged(this, new PropertyChangedEventArgs("AddMedicalRecordTab"));
             }
@@ -78,8 +78,6 @@ namespace Drugs2020.PL.ViewModels
             AddReceptTab = addReceptVM;
             AddMedicalRecordTab = addMedicalRecordVM;
             MedicalFileTab = medicalFileVM;
-
-
         }
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

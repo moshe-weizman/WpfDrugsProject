@@ -83,12 +83,13 @@
     <Compile Include="Models\AddDrugModel.cs" />
     <Compile Include="Models\AddPhysicianModel.cs" />
     <Compile Include="Models\AddReceptModel.cs" />
-    <Compile Include="Models\CurrentPatient.cs" />
-    <Compile Include="Models\DrugModel.cs" />
     <Compile Include="Models\MedicalFileModel.cs" />
     <Compile Include="Models\PatientManagementModel.cs" />
     <Compile Include="Screen.cs" />
     <Compile Include="ViewModels\ActionsMenuViewModel.cs" />
+    <Compile Include="ViewModels\ConsumptionOfDrugs.xaml.cs">
+      <DependentUpon>ConsumptionOfDrugs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\IContainingVm.cs" />
     <Compile Include="ViewModels\MedicalFileViewModel.cs" />
     <Compile Include="ViewModels\AddPatientViewModel.cs" />
@@ -202,6 +203,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="DataTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModels\ConsumptionOfDrugs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -20,7 +20,7 @@
         </StackPanel>-->
         
         <TabControl TabStripPlacement="Left">
-            <TabItem ToolTip="Personal Details">
+            <TabItem ToolTip="Patient Details">
                 <TabItem.Header>
                     <Grid>
                         <Image Source="/Images/icons8-health-checkup-100.png"
@@ -34,8 +34,8 @@
                 </TabItem.Content>
             </TabItem>
 
-            <TabItem Name="physicians"
-                     ToolTip="Physicians">
+            <TabItem 
+                     ToolTip="Medical File">
                 <TabItem.Header>
                     <Grid>
                         <Image Source="/Images/icons8-stethoscope-96.png"
@@ -47,8 +47,8 @@
                 </TabItem.Content>
             </TabItem>
 
-            <TabItem Name="drugs"
-                     ToolTip="Drugs">
+            <TabItem 
+                     ToolTip="Add Recept">
                 <TabItem.Header>
                     <Grid>
                         <Image Source="/Images/icons8-pill-90.png"
@@ -60,8 +60,8 @@
                 </TabItem.Content>
             </TabItem>
 
-            <TabItem Name="statistics"
-                     ToolTip="Statistics">
+            <TabItem 
+                     ToolTip="Medical Record">
                 <TabItem.Header>
                     <Grid>
                         <Image Source="/Images/icons8-statistics-90.png"

@@ -15,15 +15,13 @@ namespace Drugs2020.PL.ViewModels
     {
         private PhysicianShellViewModel containingVm;
        // private PhysicianShellModel patientModel;
-        private DrugModel drugModel;
         private AddReceptModel addReceptModel;
         public AddReceptViewModel(PhysicianShellViewModel containingVm, string patientId)
         {
             this.containingVm = containingVm;
             AddToDbCommand = new AddToDbCommand(this);
             BackCommand = new BackCommand(this);
-            drugModel = new DrugModel();
-            DrugCollection = new ObservableCollection<Drug>(drugModel.DrugList);
+            DrugCollection = new ObservableCollection<Drug>(addReceptModel.DrugList);
             addReceptModel = new AddReceptModel(patientId);
         }
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class AddMedicalRecordViewModel: IAddToDb, IGoBackScreenVM, IViewModel, IScreenReplacementVM
+    class AddMedicalRecordViewModel: IAddToDb, IGoBackScreenVM, IViewModel
     {
         private MedicalFileModel medicalFileModel;
         private PhysicianShellViewModel containingVm;
@@ -21,11 +21,9 @@ namespace Drugs2020.PL.ViewModels
             BackCommand = new BackCommand(this);
             AddToDbCommand = new AddToDbCommand(this);
             MedicalRecord = new MedicalRecord();
-            ScreenReplacementCommand = new ScreenReplacementCommand(this);
         }
 
         public AddToDbCommand AddToDbCommand { get; set; }
-        public ScreenReplacementCommand ScreenReplacementCommand { get; set; }
         public BackCommand BackCommand { get; set; }
 
         public MedicalRecord MedicalRecord{ set; get; }
@@ -45,10 +43,7 @@ namespace Drugs2020.PL.ViewModels
             return true;
         }
 
-        public void ReplaceScreen(Screen desiredScreen)
-        {
-            containingVm.ReplaceUC(desiredScreen);
-        }
+       
 
         public void UpdateExistingItem()
         {
