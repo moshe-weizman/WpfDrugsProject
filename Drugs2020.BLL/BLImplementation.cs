@@ -96,7 +96,7 @@ namespace Drugs2020.BLL
 
         public List<Physician> GetAllPhysicians()
         {
-            throw new NotImplementedException();
+            return dal.GetAllPhysicians();
         }
 
         public void AddPhysician(Physician physician)

@@ -1,5 +1,4 @@
-﻿using Drugs2020.BLL;
-using Drugs2020.BLL.BE;
+﻿using Drugs2020.BLL.BE;
 using Drugs2020.PL.Commands;
 using Drugs2020.PL.Models;
 using System;
@@ -9,25 +8,24 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls.Primitives;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PatientsManagementViewModel : IAdd, IEdit, IDelete, ISearch, IViewModel, IContainingVm
+    class PhysiciansManagementViewModel : IAdd, IEdit, IDelete, ISearch, IViewModel, IContainingVm
     {
-        private PatientManagementModel patientManagementM;
+        private PhysiciansManagementModel physiciansManagementM;
         private AdminShellViewModel containingShellVm;
         public AddingItemCommand AddCommand { get; set; }
         public EditingItemCommand EditCommand { get; set; }
         public DeleteItemCommand DeleteCommand { get; set; }
         public SearchItemCommand SearchCommand { get; set; }
-        public ObservableCollection<Patient> Items { get; set; }
-        
-        public PatientsManagementViewModel(AdminShellViewModel shellViewModel)
+        public ObservableCollection<Physician> Items { get; set; }
+
+        public PhysiciansManagementViewModel(AdminShellViewModel shellViewModel)
         {
-            patientManagementM = new PatientManagementModel();
-            Items = new ObservableCollection<Patient>(patientManagementM.Patients);
-            Items.CollectionChanged += PatientsChanged;
+            physiciansManagementM = new PhysiciansManagementModel();
+            Items = new ObservableCollection<Physician>(physiciansManagementM.Physicians);
+            Items.CollectionChanged += PhysiciansChanged;
             this.containingShellVm = shellViewModel;
             AddCommand = new AddingItemCommand(this);
             EditCommand = new EditingItemCommand(this);
@@ -35,35 +33,35 @@ namespace Drugs2020.PL.ViewModels
             SearchCommand = new SearchItemCommand(this);
         }
 
-        private void PatientsChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        private void PhysiciansChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
-                patientManagementM.SyncWithDb();
+                physiciansManagementM.SyncWithDb();
             }
         }
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         public void OpenAddingScreen()
         {
-            containingShellVm.PatientsTabVm = new AddPatientViewModel(this);
+            containingShellVm.PhysiciansTabVm = new AddPhysicianViewModel(this);
         }
 
-        public void OpenEditingScreen(object selectedPatient)
+        public void OpenEditingScreen(object selectedPhysician)
         {
-            containingShellVm.PatientsTabVm = new UpdatePatientViewModel(this, selectedPatient as Patient) ;
+            //containingShellVm.PhysiciansVm = new UpdatePhysicianViewModel(this, selectedPhysician as Physician);
         }
 
-        public void RemoveItemFromDb(object selectedPatient)
+        public void RemoveItemFromDb(object selectedPhysician)
         {
-            Patient patient = selectedPatient as Patient;
-            patientManagementM.RemoveFromDb(patient);
-            Items.Remove(patient);
+            Physician physician = selectedPhysician as Physician;
+            physiciansManagementM.RemoveFromDb(physician);
+            Items.Remove(physician);
         }
 
         public bool IsUserSureToDelete()
         {
-            return new DeleteDecisionViewmodel("patient").Decision;
+            return new DeleteDecisionViewmodel("physician").Decision;
         }
 
         public void GetItem(string id)
@@ -72,7 +70,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void ReturnToContaining()
         {
-            containingShellVm.PatientsTabVm = this;
+            containingShellVm.PhysiciansTabVm = this;
         }
     }
 }

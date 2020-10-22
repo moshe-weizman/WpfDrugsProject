@@ -19,7 +19,7 @@
                 </Grid>
             </TabItem.Header>
             <TabItem.Content>
-                <ContentControl Content="{Binding PatientsVm}" />
+                <ContentControl Content="{Binding PatientsTabVm}" />
             </TabItem.Content>
         </TabItem>
 
@@ -32,7 +32,7 @@
                 </Grid>
             </TabItem.Header>
             <TabItem.Content>
-                <ContentControl Content="{Binding PhysiciansVm}" />
+                <ContentControl Content="{Binding PhysiciansTabVm}" />
             </TabItem.Content>
         </TabItem>
 
@@ -45,7 +45,7 @@
                 </Grid>
             </TabItem.Header>
             <TabItem.Content>
-                <ContentControl Content="{Binding DrugsVm}" />
+                <ContentControl Content="{Binding DrugsTabVm}" />
             </TabItem.Content>
         </TabItem>
 
@@ -58,7 +58,7 @@
                 </Grid>
             </TabItem.Header>
             <TabItem.Content>
-                <ContentControl Content="{Binding StatisticsVm}" />
+                <ContentControl Content="{Binding StatisticsTabVm}" />
             </TabItem.Content>
         </TabItem>
     </TabControl>

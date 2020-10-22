@@ -11,56 +11,59 @@ namespace Drugs2020.PL.ViewModels
     class AdminShellViewModel : INotifyPropertyChanged, IViewModel, IScreenReplacementVM
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private IViewModel patientsVm; 
-        public IViewModel PatientsVm
+        private IViewModel patientsTabVm; 
+        public IViewModel PatientsTabVm
         {
-            get { return patientsVm; }
+            get { return patientsTabVm; }
             set
             {
-                patientsVm = value;
+                patientsTabVm = value;
                 if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("PatientsVm"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("PatientsTabVm"));
             }
         }
-        private IViewModel physiciansVm;
-        public IViewModel PhysiciansVm
+        private IViewModel physiciansTabVm;
+        public IViewModel PhysiciansTabVm
         {
-            get { return physiciansVm; }
+            get { return physiciansTabVm; }
             set
             {
-                physiciansVm = value;
+                physiciansTabVm = value;
                 if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("PhysiciansVm"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("PhysiciansTabVm"));
             }
         }
-        private IViewModel drugsVm;
-        public IViewModel DrugsVm
+        private IViewModel drugsTabVm;
+        public IViewModel DrugsTabVm
         {
-            get { return drugsVm; }
+            get { return drugsTabVm; }
             set
             {
-                drugsVm = value;
+                drugsTabVm = value;
                 if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("DrugsVm"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("DrugsTabVm"));
             }
         }
-        private IViewModel statisticsVm;
-        public IViewModel StatisticsVm
+        private IViewModel statisticsTabVm;
+        public IViewModel StatisticsTabVm
         {
-            get { return statisticsVm; }
+            get { return statisticsTabVm; }
             set
             {
-                statisticsVm = value;
+                statisticsTabVm = value;
                 if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("StatisticsVm"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("StatisticsTabVm"));
             }
         }
         private PatientsManagementViewModel patientsManagementVm;
+        private PhysiciansManagementViewModel physiciansManagementVm;
 
         public AdminShellViewModel()
         {
             patientsManagementVm = new PatientsManagementViewModel(this);
-            patientsVm = patientsManagementVm;
+            patientsTabVm = patientsManagementVm;
+            physiciansManagementVm = new PhysiciansManagementViewModel(this);
+            physiciansTabVm = physiciansManagementVm;
         }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -95,7 +98,7 @@ namespace Drugs2020.PL.ViewModels
                 case Screen.ADD_RECEPT:
                     break;
                 case Screen.PATIENTS_MANAGEMENT:
-                    PatientsVm = patientsManagementVm;
+                    PatientsTabVm = patientsManagementVm;
                     break;
                 default:
                     break;

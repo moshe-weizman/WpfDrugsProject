@@ -14,8 +14,8 @@ namespace Drugs2020.PL.ViewModels
     {
         private AddPhysicianModel addPhysicianM;
 
-        private MainWidowViewModel containingVm;
-        public AddToDbCommand AddToDbCommand { get; set; }
+        private PhysiciansManagementViewModel containingVm;
+        public AddToDbCommand UpdateDbCommand { get; set; }
 
         public BackCommand BackCommand { get; set; }
         public Physician Physician
@@ -25,18 +25,21 @@ namespace Drugs2020.PL.ViewModels
         }
         public Array SexEnumValues => Enum.GetValues(typeof(Sex));
 
-        public AddPhysicianViewModel(MainWidowViewModel containingVm)
+        public AddPhysicianViewModel(PhysiciansManagementViewModel containingShellVm)
         {
             addPhysicianM = new AddPhysicianModel();
-            this.containingVm = containingVm;
-            AddToDbCommand = new AddToDbCommand(this);
+            this.containingVm = containingShellVm;
+            UpdateDbCommand = new AddToDbCommand(this);
             BackCommand = new BackCommand(this);
             Physician = new Physician();
         }
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         public void AddItemToDb()
         {
             addPhysicianM.AddPhysicianToDb();
+            containingVm.Items.Add(Physician);
+            GoBack();
         }
 
         public bool ItemAlreadyExists()
@@ -47,6 +50,9 @@ namespace Drugs2020.PL.ViewModels
         public void UpdateExistingItem()
         {
             addPhysicianM.UpdatePhysician();
+            containingVm.Items.Remove(containingVm.Items.Single(i => i.ID == Physician.ID));
+            containingVm.Items.Add(Physician);
+            GoBack();
         }
 
         public bool UserWantsToReplaceExistingItem()
@@ -57,7 +63,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void GoBack()
         {
-            containingVm.ReplaceUC(Screen.ACTIONS_MENU);
+            containingVm.ReturnToContaining();
         }
     }
 }

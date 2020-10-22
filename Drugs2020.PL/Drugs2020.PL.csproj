@@ -79,6 +79,7 @@
     <Compile Include="Commands\BackCommand.cs" />
     <Compile Include="Commands\DeleteItemCommand.cs" />
     <Compile Include="Commands\EditingItemCommand.cs" />
+    <Compile Include="Models\PhysiciansManagementModel.cs" />
     <Compile Include="Models\UpdatePatientModel.cs" />
     <Compile Include="ViewModels\IUpdateInDb.cs" />
     <Compile Include="Commands\ScreenReplacementCommand.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="ViewModels\PhysicianShellViewModel.cs" />
     <Compile Include="ViewModels\PhysicianPanelViewModel.cs" />
     <Compile Include="ViewModels\AddMedicalRecordViewModel.cs" />
+    <Compile Include="ViewModels\PhysiciansManagementViewModel.cs" />
     <Compile Include="ViewModels\UpdatePatientViewModel.cs" />
     <Compile Include="Views\ActionsMenu.xaml.cs">
       <DependentUpon>ActionsMenu.xaml</DependentUpon>

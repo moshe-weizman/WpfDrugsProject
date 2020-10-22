@@ -99,7 +99,7 @@ namespace Drugs2020.DAL
         {
             return ctx.Physicians.Find(id);
         }
-        public List<Physician> GetAllPhysicians() { return null; }
+        public List<Physician> GetAllPhysicians() { return ctx.Physicians.Where(s => s.FirstName != null).ToList(); }
 
         #endregion
 
