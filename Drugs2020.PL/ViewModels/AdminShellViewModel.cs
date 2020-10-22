@@ -77,7 +77,6 @@ namespace Drugs2020.PL.ViewModels
                 case Screen.ACTIONS_MENU:
                     break;
                 case Screen.ADD_PATIENT_SCREEN:
-                    PatientsVm = new AddPatientViewModel(this);
                     break;
                 case Screen.ADD_PHYSICIAN_SCREEN:
                     break;

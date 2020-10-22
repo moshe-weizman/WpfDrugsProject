@@ -1,4 +1,8 @@
 ﻿using Drugs2020.BLL.BE;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 
 namespace Drugs2020.DAL
@@ -7,6 +11,45 @@ namespace Drugs2020.DAL
     {
         private PharmacyContext ctx = new PharmacyContext();
 
+#if false
+        //maybe it need asinc in the calling func.
+        public async void AddPatientAsync(Patient patient)
+        {
+            await Task.Run(() =>
+            {
+                ctx.Patients.Add(patient);
+                ctx.SaveChanges();
+            });
+        }
+#endif
+#if false
+        //maybe it need asinc in the calling func.
+        public async Task<bool> AddPatientAsync(Patient patient)
+        {           
+            bool result =true;
+            try {
+                await Task.Run(() =>
+                    {
+                        ctx.Patients.Add(patient);
+                        ctx.SaveChanges();
+                    }); 
+            }
+            catch (Exception ex)
+            { 
+                result = false; 
+            }
+            return result;
+        }
+#endif
+#if false
+         public void AddPatient2(Patient patient)
+        {
+            ctx.Patients.AddAsync(patient);
+            ctx.SaveChangesAsync();
+        }
+#endif
+
+        #region Patient
         public void AddPatient(Patient patient)
         {
             ctx.Patients.Add(patient);
@@ -28,7 +71,13 @@ namespace Drugs2020.DAL
         {
             return ctx.Patients.Find(id);
         }
+        public List<Patient> GetAllPatients() 
+        {
+           return ctx.Patients.Where(s => s.FirstName != null).ToList();
+        }
+        #endregion
 
+        #region Physician
         public void AddPhysician(Physician physician)
         {
             ctx.Physicians.Add(physician);
@@ -42,6 +91,7 @@ namespace Drugs2020.DAL
         public void UpdatePhysician(Physician physician)
         {
             ctx.Physicians.Remove(ctx.Physicians.Find(physician.ID));
+            ctx.SaveChanges();
             ctx.Physicians.Add(physician);
             ctx.SaveChanges();
         }
@@ -49,7 +99,11 @@ namespace Drugs2020.DAL
         {
             return ctx.Physicians.Find(id);
         }
+        public List<Physician> GetAllPhysicians() { return null; }
 
+        #endregion
+
+        #region Drug
         public void AddDrug(Drug drug)
         {
             ctx.Drugs.Add(drug);
@@ -63,6 +117,7 @@ namespace Drugs2020.DAL
         public void UpdateDrug(Drug drug)
         {
             ctx.Drugs.Remove(ctx.Drugs.Find(drug.IdCode));
+            ctx.SaveChanges();
             ctx.Drugs.Add(drug);
             ctx.SaveChanges();
         }
@@ -70,6 +125,8 @@ namespace Drugs2020.DAL
         {
             return ctx.Drugs.Find(IdCode);
         }
+        public List<Drug> GetAllDrugs() { return null; }
+ #endregion
     }
 
 }

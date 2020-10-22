@@ -1,4 +1,5 @@
 ﻿using Drugs2020.BLL.BE;
+using System.Collections.Generic;
 
 namespace Drugs2020.DAL
 {
@@ -9,6 +10,7 @@ namespace Drugs2020.DAL
         Patient GetPatient(string id);
         void UpdatePatient(Patient patient);
         void DeletePatient(string id);
+        List<Patient> GetAllPatients(); 
         #endregion
 
         #region Physician CRUD Functions
@@ -16,6 +18,7 @@ namespace Drugs2020.DAL
         Physician GetPhysician(string id);
         void UpdatePhysician(Physician physician);
         void DeletePhysician(string id);
+        List<Physician> GetAllPhysicians();
         #endregion
 
         #region Drug CRUD Functions
@@ -23,7 +26,7 @@ namespace Drugs2020.DAL
         Drug GetDrug(string IdCode);
         void UpdateDrug(Drug drug);
         void DeleteDrug(string id);
-
+        List<Drug> GetAllDrugs();
         #endregion
     }
 }
