@@ -62,7 +62,7 @@
                        Text="Birth Date:" />
             <DatePicker Name="BirthDate" SelectedDate="{Binding Patient.BirthDate}" />
             <Button Content="ADD"
-                    Command="{Binding AddToDbCommand}" Margin="10">
+                    Command="{Binding UpdateDbCommand}" Margin="10">
                 <Button.CommandParameter>
                     <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
                         <Binding Path="Text"

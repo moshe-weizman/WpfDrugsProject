@@ -2,6 +2,7 @@
 using Drugs2020.PL.Commands;
 using Drugs2020.PL.Models;
 using System;
+using System.Linq;
 
 namespace Drugs2020.PL.ViewModels
 {
@@ -10,7 +11,7 @@ namespace Drugs2020.PL.ViewModels
         private AddPatientModel addPatientM;
 
         private PatientsManagementViewModel containingVm;
-        public AddToDbCommand AddToDbCommand { get; set; }
+        public AddToDbCommand UpdateDbCommand { get; set; }
 
         public BackCommand BackCommand { get; set; }
         public Patient Patient
@@ -24,7 +25,7 @@ namespace Drugs2020.PL.ViewModels
         {
             addPatientM = new AddPatientModel();
             this.containingVm = containingVm;
-            AddToDbCommand = new AddToDbCommand(this);
+            UpdateDbCommand = new AddToDbCommand(this);
             BackCommand = new BackCommand(this);
             Patient = new Patient();           
         }
@@ -45,8 +46,9 @@ namespace Drugs2020.PL.ViewModels
 
         public void UpdateExistingItem()
         {
-            addPatientM.UpdatePatient();
-
+            addPatientM.UpdatePatient();           
+            containingVm.Items.Remove(containingVm.Items.Single(i => i.ID == Patient.ID));
+            containingVm.Items.Add(Patient);
             GoBack();
         }
 
