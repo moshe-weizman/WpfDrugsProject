@@ -16,12 +16,18 @@ namespace Drugs2020.PL.Models
         public PatientManagementModel()
         {
             bl = new BLImplementation();
-            Patients = bl.GetAllPatients();
+            SyncWithDb();
         }
 
         internal void SyncWithDb()
         {
             Patients = bl.GetAllPatients();
+        }
+
+        internal void RemoveFromDb(Patient patient)
+        {
+            bl.DeletePatient(patient.ID);
+            SyncWithDb();
         }
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

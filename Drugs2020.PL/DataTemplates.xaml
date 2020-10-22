@@ -22,6 +22,9 @@
     <DataTemplate DataType="{x:Type viewModels:AddPatientViewModel}">
         <views:AddPatient />
     </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:UpdatePatientViewModel}">
+        <views:AddPatient />
+    </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ActionsMenuViewModel}">
         <views:ActionsMenu />
     </DataTemplate>

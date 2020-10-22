@@ -51,22 +51,23 @@ namespace Drugs2020.PL.ViewModels
 
         public void OpenEditingScreen(object selectedPatient)
         {
-            throw new NotImplementedException();
+            containingShellVm.PatientsVm = new UpdatePatientViewModel(this, selectedPatient as Patient) ;
         }
 
         public void RemoveItemFromDb(object selectedPatient)
         {
-            throw new NotImplementedException();
+            Patient patient = selectedPatient as Patient;
+            patientManagementM.RemoveFromDb(patient);
+            Items.Remove(patient);
         }
 
         public bool IsUserSureToDelete()
         {
-            throw new NotImplementedException();
+            return new DeleteDecisionViewmodel("patient").Decision;
         }
 
         public void GetItem(string id)
         {
-            throw new NotImplementedException();
         }
 
         public void ReturnToContaining()
