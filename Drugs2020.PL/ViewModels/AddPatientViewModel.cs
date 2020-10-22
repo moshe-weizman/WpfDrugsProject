@@ -46,7 +46,6 @@ namespace Drugs2020.PL.ViewModels
         public void UpdateExistingItem()
         {
             addPatientM.UpdatePatient();
-            containingVm.Items;
 
             GoBack();
         }
