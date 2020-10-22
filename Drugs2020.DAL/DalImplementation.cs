@@ -1,6 +1,7 @@
 ﻿using Drugs2020.BLL.BE;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 
@@ -70,7 +71,10 @@ namespace Drugs2020.DAL
         {
             return ctx.Patients.Find(id);
         }
-        List<Patient> GetAllPatients() { return null; }
+        public List<Patient> GetAllPatients() 
+        {
+           return ctx.Patients.Where(s => s.FirstName != null).ToList();
+        }
         #endregion
 
         #region Physician
@@ -95,7 +99,7 @@ namespace Drugs2020.DAL
         {
             return ctx.Physicians.Find(id);
         }
-        List<Physician> GetAllPhysicians() { return null; }
+        public List<Physician> GetAllPhysicians() { return null; }
 
         #endregion
 
@@ -121,24 +125,8 @@ namespace Drugs2020.DAL
         {
             return ctx.Drugs.Find(IdCode);
         }
-        List<Drug> GetAllDrugs() { return null; }
-
-        List<Patient> IDal.GetAllPatients()
-        {
-            throw new NotImplementedException();
-        }
-
-        List<Physician> IDal.GetAllPhysicians()
-        {
-            throw new NotImplementedException();
-        }
-
-        List<Drug> IDal.GetAllDrugs()
-        {
-            throw new NotImplementedException();
-        }
-
-        #endregion
+        public List<Drug> GetAllDrugs() { return null; }
+ #endregion
     }
 
 }
