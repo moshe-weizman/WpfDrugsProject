@@ -81,6 +81,7 @@
     <Compile Include="Commands\EditingItemCommand.cs" />
     <Compile Include="Models\PhysiciansManagementModel.cs" />
     <Compile Include="Models\UpdatePatientModel.cs" />
+    <Compile Include="Models\UpdatePhysicianModel.cs" />
     <Compile Include="ViewModels\IUpdateInDb.cs" />
     <Compile Include="Commands\ScreenReplacementCommand.cs" />
     <Compile Include="Commands\UpdateInDbCommand.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="ViewModels\AddMedicalRecordViewModel.cs" />
     <Compile Include="ViewModels\PhysiciansManagementViewModel.cs" />
     <Compile Include="ViewModels\UpdatePatientViewModel.cs" />
+    <Compile Include="ViewModels\UpdatePhysicianViewModel.cs" />
     <Compile Include="Views\ActionsMenu.xaml.cs">
       <DependentUpon>ActionsMenu.xaml</DependentUpon>
     </Compile>
@@ -165,6 +167,9 @@
     </Compile>
     <Compile Include="Views\PhysicianShell.xaml.cs">
       <DependentUpon>PhysicianShell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SaveDrug.xaml.cs">
+      <DependentUpon>SaveDrug.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -273,6 +278,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PhysicianShell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SaveDrug.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

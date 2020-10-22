@@ -49,7 +49,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void OpenEditingScreen(object selectedPhysician)
         {
-            //containingShellVm.PhysiciansVm = new UpdatePhysicianViewModel(this, selectedPhysician as Physician);
+            containingShellVm.PhysiciansTabVm = new UpdatePhysicianViewModel(this, selectedPhysician as Physician);
         }
 
         public void RemoveItemFromDb(object selectedPhysician)

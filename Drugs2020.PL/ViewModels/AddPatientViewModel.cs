@@ -12,7 +12,7 @@ namespace Drugs2020.PL.ViewModels
 
         private PatientsManagementViewModel containingVm;
         public AddToDbCommand UpdateDbCommand { get; set; }
-
+        public bool IsNewPatient { get; }
         public BackCommand BackCommand { get; set; }
         public Patient Patient
         {
@@ -26,6 +26,7 @@ namespace Drugs2020.PL.ViewModels
             addPatientM = new AddPatientModel();
             this.containingVm = containingVm;
             UpdateDbCommand = new AddToDbCommand(this);
+            IsNewPatient = true;
             BackCommand = new BackCommand(this);
             Patient = new Patient();           
         }

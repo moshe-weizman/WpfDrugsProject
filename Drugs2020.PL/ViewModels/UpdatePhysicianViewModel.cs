@@ -9,28 +9,28 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class UpdatePatientViewModel : IUpdateInDb , IGoBackScreenVM, IViewModel
+    class UpdatePhysicianViewModel : IUpdateInDb, IGoBackScreenVM, IViewModel
     {
-        private UpdatePatientModel updatePatientM;
+        private UpdatePhysicianModel updatePhysicianM;
 
-        private PatientsManagementViewModel containingVm;
+        private PhysiciansManagementViewModel containingVm;
         public UpdateInDbCommand UpdateDbCommand { get; set; }
-        public bool IsNewPatient { get; }
+        public bool IsNewPhysician { get; }
         public BackCommand BackCommand { get; set; }
-        public Patient Patient
+        public Physician Physician
         {
-            get { return updatePatientM.Patient; }
-            set { updatePatientM.Patient = value; }
+            get { return updatePhysicianM.Physician; }
+            set { updatePhysicianM.Physician = value; }
         }
         public Array SexEnumValues => Enum.GetValues(typeof(Sex));
 
-        public UpdatePatientViewModel(PatientsManagementViewModel containingVm, Patient patientToUpdate)
+        public UpdatePhysicianViewModel(PhysiciansManagementViewModel containingVm, Physician physicianToUpdate)
         {
-            updatePatientM = new UpdatePatientModel();
+            updatePhysicianM = new UpdatePhysicianModel();
             this.containingVm = containingVm;
-            Patient = patientToUpdate;
+            Physician = physicianToUpdate;
             UpdateDbCommand = new UpdateInDbCommand(this);
-            IsNewPatient = false;
+            IsNewPhysician = false;
             BackCommand = new BackCommand(this);
         }
 
@@ -38,9 +38,9 @@ namespace Drugs2020.PL.ViewModels
 
         public void UpdateInDb()
         {
-            updatePatientM.UpdatePatientInDb();
-            containingVm.Items.Remove(containingVm.Items.Single(i => i.ID == Patient.ID));
-            containingVm.Items.Add(Patient);
+            updatePhysicianM.UpdatePhysicianInDb();
+            containingVm.Items.Remove(containingVm.Items.Single(i => i.ID == Physician.ID));
+            containingVm.Items.Add(Physician);
             GoBack();
         }
 

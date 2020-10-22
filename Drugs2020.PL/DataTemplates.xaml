@@ -16,6 +16,9 @@
     <DataTemplate DataType="{x:Type entities:Patient}">
         <views:PatientDetails />
     </DataTemplate>
+    <DataTemplate DataType="{x:Type entities:Physician}">
+        <views:PatientDetails />
+    </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:PatientsManagementViewModel}">
         <views:DataManagement />
     </DataTemplate>
@@ -29,6 +32,9 @@
         <views:DataManagement />
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:AddPhysicianViewModel}">
+        <views:AddPhysician />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:UpdatePhysicianViewModel}">
         <views:AddPhysician />
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ActionsMenuViewModel}">

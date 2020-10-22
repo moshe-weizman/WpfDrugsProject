@@ -20,6 +20,7 @@
         <TextBox Name="Id"
                  Height="23"
                  TextWrapping="Wrap"
+                 IsEnabled="{Binding IsNewPhysician}"
                  Text="{Binding Physician.ID}" />
 
         <TextBlock TextWrapping="Wrap"

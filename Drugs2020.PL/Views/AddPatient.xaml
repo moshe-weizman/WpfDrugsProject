@@ -19,7 +19,8 @@
             <TextBox Name="Id"
                      Height="23"
                      TextWrapping="Wrap"
-                     Text="{Binding Patient.ID}" />
+                 IsEnabled="{Binding IsNewPatient}"
+                 Text="{Binding Patient.ID}" />
 
             <TextBlock TextWrapping="Wrap"
                        Text="First Name" />
