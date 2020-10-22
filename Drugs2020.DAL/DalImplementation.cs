@@ -1,5 +1,6 @@
 ﻿using Drugs2020.BLL.BE;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 
@@ -69,9 +70,10 @@ namespace Drugs2020.DAL
         {
             return ctx.Patients.Find(id);
         }
-#endregion
-        
-#region Physician
+        List<Patient> GetAllPatients() { return null; }
+        #endregion
+
+        #region Physician
         public void AddPhysician(Physician physician)
         {
             ctx.Physicians.Add(physician);
@@ -93,9 +95,11 @@ namespace Drugs2020.DAL
         {
             return ctx.Physicians.Find(id);
         }
-#endregion
-      
-#region Drug
+        List<Physician> GetAllPhysicians() { return null; }
+
+        #endregion
+
+        #region Drug
         public void AddDrug(Drug drug)
         {
             ctx.Drugs.Add(drug);
@@ -117,7 +121,9 @@ namespace Drugs2020.DAL
         {
             return ctx.Drugs.Find(IdCode);
         }
-#endregion
+        List<Drug> GetAllDrugs() { return null; }
+
+        #endregion
     }
 
 }
