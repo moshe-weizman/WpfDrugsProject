@@ -5,15 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:converters="clr-namespace:Drugs2020.PL.Converters"
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
-             mc:Ignorable="d"
-             d:DesignHeight="450"
-             d:DesignWidth="600">
+             mc:Ignorable="d">
     <UserControl.Resources>
         <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
     </UserControl.Resources>
 
 
-    <StackPanel Margin="5"
+    <StackPanel Margin="10"
                 Grid.Column="0">
         <TextBlock  TextWrapping="Wrap"
                     Text="Identification Code:" />
@@ -43,11 +41,54 @@
                  Height="23"
                  TextWrapping="Wrap"
                  Text="{Binding Drug.GenericName}" />
+        <Expander 
+                  Header="Ingredients Composition:">
+            <StackPanel Margin="0, 10">
+                <TextBlock TextWrapping="Wrap"
+                           Text="Insert active ingredient details:" />
+                <TextBlock Text="Ingredient:"/>
+                <TextBox x:Name="Ingredient"
+                         Text="{Binding IngredientToAdd.Ingredient}"/>
+                <TextBlock Text="Quantity (MG):"/>
+                <StackPanel Orientation="Horizontal">
+                    
+                    <Button ToolTip="Save Ingredient"
+                            HorizontalAlignment="Left"
+                            Padding="0"
+                            Command="{Binding AddIngredientCommand}">
+                        <Button.CommandParameter>
+                            <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
+                                <Binding Path="Text"
+                                         ElementName="Ingredient" />
+                                <Binding Path="Text"
+                                         ElementName="Quantity" />
+                            </MultiBinding>
 
-        <TextBlock TextWrapping="Wrap"
-                   Text="Ingredients Composition:" />
+                        </Button.CommandParameter>
+                        <Image Source="/Images/icons8-checkmark-30.png"
+                               Stretch="UniformToFill" />
+                    </Button>
+                    <TextBox x:Name="Quantity"
+                             Text="{Binding IngredientToAdd.MgQuantity}" />
+                </StackPanel>
+                
+            </StackPanel>
+        </Expander>
+        <StackPanel Orientation="Horizontal">
+            <Button ToolTip="Delete Ingredient"
+                    HorizontalAlignment="Left"
+                   Padding="0"
+                    Command="{Binding DeleteIngredientCommand}"
+                    CommandParameter="{Binding ElementName=Ingredients, Path=SelectedItem}">
+
+                <Image Source="/Images/icons8-delete-30.png"
+                       Stretch="UniformToFill" />
+            </Button>
+        </StackPanel>
         <ListView x:Name="Ingredients"
-                  ItemsSource="{Binding Drug.Composition}" />
+                  
+                  Grid.Column="1"
+                  ItemsSource="{Binding Ingredients}" />
 
         <Button Content="Save"
                 Command="{Binding UpdateDbCommand}"
@@ -62,9 +103,6 @@
                              ElementName="Manufacturer" />
                     <Binding Path="Text"
                              ElementName="GenericName" />
-                    <Binding 
-                             ElementName="Ingredients" />
-                    
                 </MultiBinding>
 
             </Button.CommandParameter>

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class AdminShellViewModel : INotifyPropertyChanged, IViewModel, IScreenReplacementVM
+    public class AdminShellViewModel : INotifyPropertyChanged, IViewModel, IScreenReplacementVM
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private IViewModel patientsTabVm; 
@@ -57,6 +57,7 @@ namespace Drugs2020.PL.ViewModels
         }
         private PatientsManagementViewModel patientsManagementVm;
         private PhysiciansManagementViewModel physiciansManagementVm;
+        private DrugsManagementViewModel drugssManagementVm;
 
         public AdminShellViewModel()
         {
@@ -64,6 +65,8 @@ namespace Drugs2020.PL.ViewModels
             patientsTabVm = patientsManagementVm;
             physiciansManagementVm = new PhysiciansManagementViewModel(this);
             physiciansTabVm = physiciansManagementVm;
+            drugssManagementVm = new DrugsManagementViewModel(this);
+            drugsTabVm = drugssManagementVm;
         }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

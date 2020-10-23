@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace Drugs2020.PL.Commands
 {
-    class EditingItemCommand : ICommand
+    public class EditingItemCommand : ICommand
     {
         private IEdit vm;
         public event EventHandler CanExecuteChanged

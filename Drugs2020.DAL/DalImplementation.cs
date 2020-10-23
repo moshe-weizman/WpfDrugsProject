@@ -125,7 +125,7 @@ namespace Drugs2020.DAL
         {
             return ctx.Drugs.Find(IdCode);
         }
-        public List<Drug> GetAllDrugs() { return null; }
+        public List<Drug> GetAllDrugs() { return ctx.Drugs.Where(s => s.Name != null).ToList(); }
  #endregion
     }
 

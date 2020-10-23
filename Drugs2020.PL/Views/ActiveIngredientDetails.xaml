@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="Drugs2020.PL.Views.ActiveIngredientDetails"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Drugs2020.PL.Views"
+             mc:Ignorable="d" >
+    <StackPanel Orientation="Horizontal">
+        <TextBlock TextWrapping="Wrap"
+                   Text="{Binding Ingredient , StringFormat= Ingredient: {0}}"
+                   Margin="20,20,0,20" />
+        <TextBlock TextWrapping="Wrap"
+                   Text="{Binding MgQuantity , StringFormat=Quantity (mg): {0}}"
+                   Margin="20,20,0,20" />
+    </StackPanel>
+</UserControl>

@@ -4,11 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
-             mc:Ignorable="d"
-             d:DesignHeight="450"
-             d:DesignWidth="800">
-    <StackPanel Orientation="Vertical">
-        <DockPanel LastChildFill="False">
+             mc:Ignorable="d">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <DockPanel LastChildFill="False" Grid.Row="0">
             <Button ToolTip="Add"
                     Command="{Binding AddCommand}"
                     DockPanel.Dock="Left">
@@ -37,9 +39,11 @@
                      DockPanel.Dock="Right" />
         </DockPanel>
         <ListView x:Name="itemList"
-                  
+                  Grid.Row="1"                 
                   ItemsSource="{Binding Items}"
-                  ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                  ScrollViewer.CanContentScroll="True"/>
-    </StackPanel>
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.CanContentScroll="True"
+                  />
+    </Grid>
 </UserControl>

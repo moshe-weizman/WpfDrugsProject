@@ -76,12 +76,17 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\AddingItemCommand.cs" />
+    <Compile Include="Commands\AddIngredientToDrugCommand.cs" />
     <Compile Include="Commands\BackCommand.cs" />
     <Compile Include="Commands\DeleteItemCommand.cs" />
     <Compile Include="Commands\EditingItemCommand.cs" />
+    <Compile Include="Models\DrugsManagementModel.cs" />
     <Compile Include="Models\PhysiciansManagementModel.cs" />
     <Compile Include="Models\UpdatePatientModel.cs" />
     <Compile Include="Models\UpdatePhysicianModel.cs" />
+    <Compile Include="ViewModels\AddDrugViewModel.cs" />
+    <Compile Include="ViewModels\DrugsManagementViewModel.cs" />
+    <Compile Include="ViewModels\IAddIngrediantToDrug.cs" />
     <Compile Include="ViewModels\IUpdateInDb.cs" />
     <Compile Include="Commands\ScreenReplacementCommand.cs" />
     <Compile Include="Commands\UpdateInDbCommand.cs" />
@@ -126,6 +131,9 @@
     <Compile Include="Views\ActionsMenu.xaml.cs">
       <DependentUpon>ActionsMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ActiveIngredientDetails.xaml.cs">
+      <DependentUpon>ActiveIngredientDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddMedicalFile.xaml.cs">
       <DependentUpon>AddMedicalFile.xaml</DependentUpon>
     </Compile>
@@ -140,6 +148,9 @@
     </Compile>
     <Compile Include="Views\AdminShell.xaml.cs">
       <DependentUpon>AdminShell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DrugDetails.xaml.cs">
+      <DependentUpon>DrugDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -225,6 +236,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ActiveIngredientDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AddMedicalFile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -244,6 +259,10 @@
     <Page Include="Views\AdminShell.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DrugDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Login.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -319,6 +338,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\icons8-health-checkup-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8-checkmark-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8-checkmark-30.png" />
+    <Resource Include="Images\icons8-delete-30.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />

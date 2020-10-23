@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace Drugs2020.PL.Commands
 {
-    class SearchItemCommand : ICommand
+    public class SearchItemCommand : ICommand
     {
 
         private ISearch searchVm;

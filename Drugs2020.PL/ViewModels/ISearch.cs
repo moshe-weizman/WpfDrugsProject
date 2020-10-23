@@ -2,7 +2,7 @@
 
 namespace Drugs2020.PL.ViewModels
 {
-    interface ISearch
+    public interface ISearch
     {
         void GetItem(string id);
     }

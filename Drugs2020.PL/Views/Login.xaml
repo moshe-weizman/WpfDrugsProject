@@ -6,9 +6,7 @@
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
              xmlns:Converters ="clr-namespace:Drugs2020.PL.Converters"
              xmlns:viewmodels="clr-namespace:Drugs2020.PL.ViewModels"
-             mc:Ignorable="d"
-             d:DesignHeight="450"
-             d:DesignWidth="800">
+             mc:Ignorable="d">
     <UserControl.Resources>
         <Converters:FieldsTextToBoolConverter x:Key="fieldsTextToBoolConverter" />
     </UserControl.Resources>
