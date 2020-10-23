@@ -44,7 +44,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void OpenEditingScreen(object selectedDrug)
         {
-           // containingShellVm.DrugsTabVm = new UpdateDrugViewModel(this, selectedDrug as Drug);
+            containingShellVm.DrugsTabVm = new UpdateDrugViewModel(this, selectedDrug as Drug);
         }
 
         public void RemoveItemFromDb(object selectedDrug)

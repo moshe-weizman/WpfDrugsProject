@@ -38,15 +38,19 @@
     <DataTemplate DataType="{x:Type viewModels:AddPhysicianViewModel}">
         <views:AddPhysician />
     </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:UpdatePhysicianViewModel}">
+        <views:AddPhysician />
+    </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:DrugsManagementViewModel}">
         <views:DataManagement />
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:AddDrugViewModel}">
         <views:SaveDrug/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:UpdatePhysicianViewModel}">
-        <views:AddPhysician />
+    <DataTemplate DataType="{x:Type viewModels:UpdateDrugViewModel}">
+        <views:SaveDrug />
     </DataTemplate>
+    
     <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
     
     <!--Physician Templates-->

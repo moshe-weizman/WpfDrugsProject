@@ -82,6 +82,7 @@
     <Compile Include="Commands\EditingItemCommand.cs" />
     <Compile Include="Models\DrugsManagementModel.cs" />
     <Compile Include="Models\PhysiciansManagementModel.cs" />
+    <Compile Include="Models\UpdateDrugModel.cs" />
     <Compile Include="Models\UpdatePatientModel.cs" />
     <Compile Include="Models\UpdatePhysicianModel.cs" />
     <Compile Include="ViewModels\AddDrugViewModel.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="ViewModels\PhysicianPanelViewModel.cs" />
     <Compile Include="ViewModels\AddMedicalRecordViewModel.cs" />
     <Compile Include="ViewModels\PhysiciansManagementViewModel.cs" />
+    <Compile Include="ViewModels\UpdateDrugViewModel.cs" />
     <Compile Include="ViewModels\UpdatePatientViewModel.cs" />
     <Compile Include="ViewModels\UpdatePhysicianViewModel.cs" />
     <Compile Include="Views\ActionsMenu.xaml.cs">

@@ -4,7 +4,6 @@ using Drugs2020.PL.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -12,22 +11,21 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class AddDrugViewModel : INotifyPropertyChanged, IAddToDb, IGoBackScreenVM, IViewModel, IAddIngrediantToDrug, IDelete
+    class UpdateDrugViewModel : INotifyPropertyChanged, IUpdateInDb, IGoBackScreenVM, IViewModel, IAddIngrediantToDrug, IDelete
     {
-        private AddDrugModel addDrugM;
+        private UpdateDrugModel updateDrugM;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private DrugsManagementViewModel containingVm;
-        public event PropertyChangedEventHandler PropertyChanged;
-        public AddToDbCommand UpdateDbCommand { get; set; }
-        
+        public UpdateInDbCommand UpdateDbCommand { get; set; }
         public bool IsNewDrug { get; }
         public BackCommand BackCommand { get; set; }
         public AddIngredientToDrugCommand AddIngredientCommand { get; set; }
         public DeleteItemCommand DeleteIngredientCommand { get; set; }
         public Drug Drug
         {
-            get { return addDrugM.Drug; }
-            set { addDrugM.Drug = value; }
+            get { return updateDrugM.Drug; }
+            set { updateDrugM.Drug = value; }
         }
         private ActiveIngredient ingredientToAdd;
         public ActiveIngredient IngredientToAdd
@@ -40,60 +38,42 @@ namespace Drugs2020.PL.ViewModels
                     PropertyChanged(this, new PropertyChangedEventArgs("IngredientToAdd"));
             }
         }
-
         public ObservableCollection<ActiveIngredient> Ingredients { get; set; }
 
-        public AddDrugViewModel(DrugsManagementViewModel containingVm)
+        public UpdateDrugViewModel(DrugsManagementViewModel containingVm, Drug drugToUpdate)
         {
-            addDrugM = new AddDrugModel();
+            updateDrugM = new UpdateDrugModel();
             this.containingVm = containingVm;
-            UpdateDbCommand = new AddToDbCommand(this);
-            IsNewDrug = true;
+            Drug = drugToUpdate;
+            UpdateDbCommand = new UpdateInDbCommand(this);
+            IsNewDrug = false;
             BackCommand = new BackCommand(this);
             IngredientToAdd = new ActiveIngredient();
-            Ingredients = new ObservableCollection<ActiveIngredient>();
+            Ingredients = new ObservableCollection<ActiveIngredient>(drugToUpdate.Composition);
             AddIngredientCommand = new AddIngredientToDrugCommand(this);
             DeleteIngredientCommand = new DeleteItemCommand(this);
         }
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        public void AddIngredientToDrug()
+        public void UpdateInDb()
         {
-            Ingredients.Add(IngredientToAdd);
-            Drug.Composition.Add(IngredientToAdd);
-            IngredientToAdd = new ActiveIngredient();
-        }
-        public void AddItemToDb()
-        {
-            addDrugM.AddDrugToDb();
-            containingVm.Items.Add(Drug);
-            GoBack();
-        }
-
-        public bool ItemAlreadyExists()
-        {
-            return addDrugM.DoesDrugExist();
-        }
-
-        public void UpdateExistingItem()
-        {
+            updateDrugM.UpdatePatientInDb();
             containingVm.Items.Remove(containingVm.Items.Single(i => i.IdCode == Drug.IdCode));
             containingVm.Items.Add(Drug);
-           
-            addDrugM.UpdateDrug();
             GoBack();
-        }
-
-        public bool UserWantsToReplaceExistingItem()
-        {
-            ExistingItemDecisionViewModel existingItemDecision = new ExistingItemDecisionViewModel("Patient");
-            return existingItemDecision.Decision;
         }
 
         public void GoBack()
         {
             containingVm.ReturnToContaining();
+        }
+
+        public void AddIngredientToDrug()
+        {
+            Ingredients.Add(IngredientToAdd);
+            Drug.Composition.Add(IngredientToAdd);
+            IngredientToAdd = new ActiveIngredient();
         }
 
         public void RemoveItemFromDb(object ingredient)
