@@ -9,7 +9,9 @@ namespace Drugs2020.BLL
     public interface IBL
     {
         bool ValidatePassword(IUser user, string password);
+        List<Drug> GeTDrugsTakePatient(string id);
 
+        List<Drug> GetDrugsPreviouslyTakenPatient(string id);
         IUser IdentifyUser(string userID);
 
         void AddMedicalFileToPatient(MedicalFile medicalFile);

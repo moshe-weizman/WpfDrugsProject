@@ -57,8 +57,25 @@ namespace Drugs2020.BLL
         }
 
 
+        public List<Drug> GeTDrugsTakePatient(string id)//לממש את הפונקציה!!
+        {
+            return new List<Drug>()
+           {
+              new Drug("1433", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png"),
+                new Drug("44444", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png"),
+                new Drug("88", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png")
 
+           };
+        }
 
+       public List<Drug> GetDrugsPreviouslyTakenPatient(string id)//לממש את הפונקציה!!
+        {
+            return new List<Drug>()
+           {
+             new Drug("88", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png")
+
+           };
+        }
 
         #region Patient CRUD Functions
         public Patient GetPatient(string ID)

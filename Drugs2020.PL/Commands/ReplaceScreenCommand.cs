@@ -8,16 +8,16 @@ using System.Windows.Input;
 
 namespace Drugs2020.PL.Commands
 {
-    class AddingItemCommand : ICommand
+    class ReplaceScreenCommand : ICommand
     {
-        private IAdd vm;
+        private IReplaceScreen vm;
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public AddingItemCommand(IAdd vm)
+        public ReplaceScreenCommand(IReplaceScreen vm)
         {
             this.vm = vm;
         }
@@ -28,7 +28,7 @@ namespace Drugs2020.PL.Commands
 
         public void Execute(object parameter)
         {
-            vm.OpenAddingScreen();
+            vm.ReplaceScreen();
         }
     }
 }

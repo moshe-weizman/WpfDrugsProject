@@ -46,4 +46,7 @@
     <DataTemplate DataType="{x:Type viewModels:PhysicianShellViewModel}">
         <views:PhysicianShell/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:ConsumptionOfDrugsViewModel}">
+        <views:ConsumptionOfDrugs/>
+    </DataTemplate>
 </ResourceDictionary>

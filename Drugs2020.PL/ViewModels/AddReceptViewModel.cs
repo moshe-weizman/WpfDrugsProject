@@ -11,28 +11,26 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class AddReceptViewModel: IViewModel, IAddToDb , IGoBackScreenVM, INotifyPropertyChanged
+    class AddReceptViewModel: IViewModel, IAddToDb , INotifyPropertyChanged
     {
         private PhysicianShellViewModel containingVm;
        // private PhysicianShellModel patientModel;
-        private AddReceptModel addReceptModel;
+        private ReceptModel addReceptModel;
         public AddReceptViewModel(PhysicianShellViewModel containingVm, string patientId)
         {
+            addReceptModel = new ReceptModel(patientId);
             this.containingVm = containingVm;
             AddToDbCommand = new AddToDbCommand(this);
-            BackCommand = new BackCommand(this);
             DrugCollection = new ObservableCollection<Drug>(addReceptModel.DrugList);
-            addReceptModel = new AddReceptModel(patientId);
         }
 
         public Recept Recept { get { return addReceptModel.Recept; } set { addReceptModel.Recept = value; } }
         public ObservableCollection<Drug> DrugCollection { get; set; }
         public AddToDbCommand AddToDbCommand { get; set; }
-        public BackCommand BackCommand { get; set; }
-        public Drug SelectedDrug { get { return addReceptModel.Recept.Drug; }
+        public Drug SelectedDrug { 
             set 
             {
-                addReceptModel.Recept.Drug = value;
+                addReceptModel.Recept.IdCodeOfDrug = value.IdCode;
                 if(PropertyChanged!=null)
                     PropertyChanged(this, new PropertyChangedEventArgs("SelectedDrug"));
             }
@@ -44,12 +42,6 @@ namespace Drugs2020.PL.ViewModels
         {
             addReceptModel.AddRecept();
         }
-
-        public void GoBack()
-        {
-            containingVm.ReplaceUC(Screen.ADD_MEDICAL_RECORD);
-        }
-
         public bool ItemAlreadyExists()
         {
            return addReceptModel.ReceptAlreadyExists();

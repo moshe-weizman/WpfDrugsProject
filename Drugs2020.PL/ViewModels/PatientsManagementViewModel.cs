@@ -13,11 +13,11 @@ using System.Windows.Controls.Primitives;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PatientsManagementViewModel : IAdd, IEdit, IDelete, ISearch, IViewModel, IContainingVm
+    class PatientsManagementViewModel : IReplaceScreen, IEdit, IDelete, ISearch, IViewModel, IContainingVm
     {
         private PatientManagementModel patientManagementM;
         private AdminShellViewModel containingShellVm;
-        public AddingItemCommand AddCommand { get; set; }
+        public ReplaceScreenCommand AddCommand { get; set; }
         public EditingItemCommand EditCommand { get; set; }
         public DeleteItemCommand DeleteCommand { get; set; }
         public SearchItemCommand SearchCommand { get; set; }
@@ -29,7 +29,7 @@ namespace Drugs2020.PL.ViewModels
             Items = new ObservableCollection<Patient>(patientManagementM.Patients);
             Items.CollectionChanged += PatientsChanged;
             this.containingShellVm = shellViewModel;
-            AddCommand = new AddingItemCommand(this);
+            AddCommand = new ReplaceScreenCommand(this);
             EditCommand = new EditingItemCommand(this);
             DeleteCommand = new DeleteItemCommand(this);
             SearchCommand = new SearchItemCommand(this);
@@ -44,7 +44,7 @@ namespace Drugs2020.PL.ViewModels
         }
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        public void OpenAddingScreen()
+        public void ReplaceScreen()
         {
             containingShellVm.PatientsVm = new AddPatientViewModel(this);
         }

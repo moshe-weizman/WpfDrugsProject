@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.Models
 {
-    class AddReceptModel
+    class ReceptModel
     {
         private IBL bl;
         public Recept Recept { get; set; }
         public List<Drug> DrugList { get; set; }
-        public AddReceptModel(string id)
+        public ReceptModel(string id)
         {
             bl = new BLImplementation();
             Recept = new Recept(id);
