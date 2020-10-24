@@ -131,6 +131,12 @@
     <Compile Include="Views\ActionsMenu.xaml.cs">
       <DependentUpon>ActionsMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ActiveIngredientDetails.xaml.cs">
+      <DependentUpon>ActiveIngredientDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DrugDetails.xaml.cs">
+      <DependentUpon>DrugDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MedicalFile.xaml.cs">
       <DependentUpon>MedicalFile.xaml</DependentUpon>
     </Compile>
@@ -175,6 +181,9 @@
     </Compile>
     <Compile Include="Views\PhysicianShell.xaml.cs">
       <DependentUpon>PhysicianShell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SaveDrug.xaml.cs">
+      <DependentUpon>SaveDrug.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -225,6 +234,14 @@
     <Page Include="Views\ActionsMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ActiveIngredientDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DrugDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MedicalFile.xaml">
       <SubType>Designer</SubType>
@@ -285,6 +302,10 @@
     <Page Include="Views\PhysicianShell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SaveDrug.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

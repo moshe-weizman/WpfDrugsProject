@@ -4,17 +4,26 @@
                     xmlns:entities="clr-namespace:Drugs2020.BLL.BE;assembly=Drugs2020.BLL.BE"
                     xmlns:views="clr-namespace:Drugs2020.PL.Views"
                     xmlns:viewModels="clr-namespace:Drugs2020.PL.ViewModels">
-    <DataTemplate DataType="{x:Type viewModels:PatientSearchViewModel}">
-        <views:PatientSearch />
+    
+
+    <!--Entities Templates-->
+    <DataTemplate DataType="{x:Type entities:ActiveIngredient}">
+        <views:ActiveIngredientDetails />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:LogInViewModel}">
-        <views:Login />
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:AdminShellViewModel}">
-        <views:AdminShell />
+    <DataTemplate DataType="{x:Type entities:Drug}">
+        <views:DrugDetails />
     </DataTemplate>
     <DataTemplate DataType="{x:Type entities:Patient}">
         <views:PatientDetails />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type entities:Physician}">
+        <views:PatientDetails />
+    </DataTemplate>
+    <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+    <!--Admin Templates-->
+    <DataTemplate DataType="{x:Type viewModels:AdminShellViewModel}">
+        <views:AdminShell />
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:PatientsManagementViewModel}">
         <views:DataManagement />
@@ -25,6 +34,34 @@
     <DataTemplate DataType="{x:Type viewModels:UpdatePatientViewModel}">
         <views:AddPatient />
     </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:PhysiciansManagementViewModel}">
+        <views:DataManagement />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:AddPhysicianViewModel}">
+        <views:AddPhysician />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:UpdatePhysicianViewModel}">
+        <views:AddPhysician />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:DrugsManagementViewModel}">
+        <views:DataManagement />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:AddDrugViewModel}">
+        <views:SaveDrug />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:UpdateDrugViewModel}">
+        <views:SaveDrug />
+    </DataTemplate>
+
+    <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+    <!--Physician Templates-->
+    <DataTemplate DataType="{x:Type viewModels:PatientSearchViewModel}">
+        <views:PatientSearch />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:LogInViewModel}">
+        <views:Login />
+    </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ActionsMenuViewModel}">
         <views:ActionsMenu />
     </DataTemplate>
@@ -32,21 +69,22 @@
         <views:PhysicianPanel />
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:PatientDetailsViewModel}">
-        <views:PatientData/>
+        <views:PatientData />
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:MedicalFileViewModel}">
-        <views:AddMedicalFile/>
+        <views:AddMedicalFile />
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:AddMedicalRecordViewModel}">
-        <views:AddMedicalRecord/>
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:AddReceptViewModel}">
-        <views:AddRecept/>
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:PhysicianShellViewModel}">
-        <views:PhysicianShell/>
+        <views:AddMedicalRecord />
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ConsumptionOfDrugsViewModel}">
-        <views:ConsumptionOfDrugs/>
+        <views:ConsumptionOfDrugs />
     </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:AddReceptViewModel}">
+        <views:AddRecept />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:PhysicianShellViewModel}">
+        <views:PhysicianShell />
+    </DataTemplate>
+    <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 </ResourceDictionary>

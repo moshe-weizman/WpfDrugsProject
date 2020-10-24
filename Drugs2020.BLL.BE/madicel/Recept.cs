@@ -28,7 +28,7 @@ namespace Drugs2020.BLL.BE
             PatientID = patientID;
         }
 
-        public Recept(string patientID, int id, string idCodeOfDrug, string drugGenericName, int quantity, int days, DateTime treatmentEndDate)
+        public Recept(string patientID, int id, string idCodeOfDrug, string drugGenericName, int quantity, int days)
         {
             PatientID = patientID;
             ReceptId = id;
@@ -37,7 +37,6 @@ namespace Drugs2020.BLL.BE
             DrugGenericName = drugGenericName;
             Quantity = quantity;
             Days = days;
-            TreatmentEndDate = treatmentEndDate;
             ExpirationDate = Date.AddDays(Days);
         }
     }
