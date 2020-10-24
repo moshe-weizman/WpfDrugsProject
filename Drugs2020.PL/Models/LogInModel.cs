@@ -19,6 +19,7 @@ namespace Drugs2020.PL.Models
         {
             bl = new BLImplementation();
         }
+
         public void IdentifyUser()
         {
             User = bl.IdentifyUser(UserId);
@@ -27,5 +28,6 @@ namespace Drugs2020.PL.Models
         {
             return bl.ValidatePassword(User, Password);
         }
+
     }
 }

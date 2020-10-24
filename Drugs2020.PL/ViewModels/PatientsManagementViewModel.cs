@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,27 +14,43 @@ using System.Windows.Controls.Primitives;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PatientsManagementViewModel : IReplaceScreen, IEdit, IDelete, ISearch, IViewModel, IContainingVm
+    class PatientsManagementViewModel : INotifyPropertyChanged, IAdd, IEdit, IDelete, ISearch, IViewModel, IContainingVm
     {
         private PatientManagementModel patientManagementM;
         private AdminShellViewModel containingShellVm;
-        public ReplaceScreenCommand AddCommand { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public AddingItemCommand AddCommand { get; set; }
         public EditingItemCommand EditCommand { get; set; }
         public DeleteItemCommand DeleteCommand { get; set; }
         public SearchItemCommand SearchCommand { get; set; }
         public ObservableCollection<Patient> Items { get; set; }
-        
+        private Patient selectedItem;
+        public Patient SelectedItem { get
+            {
+                return selectedItem;
+            }
+            set
+            {
+                selectedItem = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("SelectedItem"));
+            }
+        }
         public PatientsManagementViewModel(AdminShellViewModel shellViewModel)
         {
             patientManagementM = new PatientManagementModel();
             Items = new ObservableCollection<Patient>(patientManagementM.Patients);
             Items.CollectionChanged += PatientsChanged;
             this.containingShellVm = shellViewModel;
-            AddCommand = new ReplaceScreenCommand(this);
+            AddCommand = new AddingItemCommand(this);
             EditCommand = new EditingItemCommand(this);
             DeleteCommand = new DeleteItemCommand(this);
             SearchCommand = new SearchItemCommand(this);
         }
+        
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         private void PatientsChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
@@ -43,8 +60,7 @@ namespace Drugs2020.PL.ViewModels
             }
         }
 
-        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        public void ReplaceScreen()
+        public void OpenAddingScreen()
         {
             containingShellVm.PatientsTabVm = new AddPatientViewModel(this);
         }
@@ -68,6 +84,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void GetItem(string id)
         {
+            SelectedItem = Items.SingleOrDefault(i => i.ID == id);
         }
 
         public void ReturnToContaining()

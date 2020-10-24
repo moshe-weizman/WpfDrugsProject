@@ -41,6 +41,7 @@
         <ListView x:Name="itemList"
                   Grid.Row="1"                 
                   ItemsSource="{Binding Items}"
+                  SelectedItem="{Binding SelectedItem}"
                   ScrollViewer.HorizontalScrollBarVisibility="Auto"
                   ScrollViewer.VerticalScrollBarVisibility="Auto"
                   ScrollViewer.CanContentScroll="True"
