@@ -8,36 +8,20 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.Models
 {
-    class AddDrugModel
+    class UpdateDrugModel
     {
         private IBL bl;
         public Drug Drug { get; set; }
 
-        public AddDrugModel()
+        public UpdateDrugModel()
         {
             this.Drug = new Drug();
-
             bl = new BLImplementation();
         }
 
-        public void AddDrugToDb()
-        {
-            bl.AddDrug(Drug);
-        }
-
-        public bool DoesDrugExist()
-        {
-            if (bl.GetPatient(Drug.IdCode) != null)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public void UpdateDrug()
+        public void UpdatePatientInDb()
         {
             bl.UpdateDrug(Drug.IdCode, Drug);
         }
     }
 }
-

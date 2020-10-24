@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace Drugs2020.PL.Commands
 {
-    class DeleteItemCommand : ICommand
+    public class DeleteItemCommand : ICommand
     {
         private IDelete vm;
         public event EventHandler CanExecuteChanged

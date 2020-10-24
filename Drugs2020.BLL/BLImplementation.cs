@@ -80,9 +80,7 @@ namespace Drugs2020.BLL
         #region Patient CRUD Functions
         public Patient GetPatient(string ID)
         {
-            return new Patient("1234", "Dudu", "Cohen", Sex.MALE, "0545678990", @"Moshe@gmail.com", "Elad", DateTime.Parse("12/10/1985"));
-
-            //return dal.GetPatient(ID);
+            return dal.GetPatient(ID);
         }
         public List<Patient> GetAllPatients()
         {
@@ -113,7 +111,7 @@ namespace Drugs2020.BLL
 
         public List<Physician> GetAllPhysicians()
         {
-            throw new NotImplementedException();
+            return dal.GetAllPhysicians();
         }
 
         public void AddPhysician(Physician physician)
@@ -157,12 +155,13 @@ namespace Drugs2020.BLL
 
         public List<Drug> GetAllDrugs()
         {
-            return new List<Drug>
-            {
-                new Drug("1433", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png"),
-                new Drug("44444", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png"),
-                new Drug("88", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png")
-            };
+            //return new List<Drug>
+            //{
+            //    new Drug("1433", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png"),
+            //    new Drug("44444", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png"),
+            //    new Drug("88", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png")
+            //};
+            return dal.GetAllDrugs();
         }
 
        

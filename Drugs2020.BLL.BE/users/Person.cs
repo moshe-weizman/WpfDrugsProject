@@ -17,7 +17,10 @@ namespace Drugs2020.BLL.BE
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
-        public int Age { get; set; }
+        public int Age
+        {
+            get { return DateTime.Now.Year - BirthDate.Year; }
+        }
         [NotMapped]
         public DateTime BirthDate { get; set; }
        
@@ -32,7 +35,7 @@ namespace Drugs2020.BLL.BE
             Email = email;
             Address = address;
             BirthDate = birthDate;
-            Age = DateTime.Now.Year - BirthDate.Year;
+            
         }
         protected Person()
         {

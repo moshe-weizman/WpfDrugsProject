@@ -16,5 +16,9 @@ namespace Drugs2020.BLL.BE
             Ingredient = ingredient;
             MgQuantity = mgQuantity;
         }
+
+        public ActiveIngredient()
+        {
+        }
     }
 }

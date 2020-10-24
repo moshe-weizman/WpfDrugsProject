@@ -1,0 +1,118 @@
+﻿<UserControl x:Class="Drugs2020.PL.Views.SaveDrug"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:converters="clr-namespace:Drugs2020.PL.Converters"
+             xmlns:local="clr-namespace:Drugs2020.PL.Views"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
+    </UserControl.Resources>
+
+
+    <StackPanel Margin="10"
+                Grid.Column="0">
+        <TextBlock  TextWrapping="Wrap"
+                    Text="Identification Code:" />
+        <TextBox Name="Id"
+                 Height="23"
+                 TextWrapping="Wrap"
+                 IsEnabled="{Binding IsNewDrug}"
+                 Text="{Binding Drug.IdCode}" />
+
+        <TextBlock TextWrapping="Wrap"
+                   Text="Commercial Name:" />
+        <TextBox Name="Name"
+                 Height="23"
+                 TextWrapping="Wrap"
+                 Text="{Binding Drug.Name}" />
+
+        <TextBlock TextWrapping="Wrap"
+                   Text="Manufacturer:" />
+        <TextBox Name="Manufacturer"
+                 Height="23"
+                 TextWrapping="Wrap"
+                 Text="{Binding Drug.Manufacturer}" />
+
+        <TextBlock TextWrapping="Wrap"
+                   Text="Generic Name:" />
+        <TextBox Name="GenericName"
+                 Height="23"
+                 TextWrapping="Wrap"
+                 Text="{Binding Drug.GenericName}" />
+        <Expander 
+                  Header="Ingredients Composition:">
+            <StackPanel Margin="0, 10">
+                <TextBlock TextWrapping="Wrap"
+                           Text="Insert active ingredient details:" />
+                <TextBlock Text="Ingredient:"/>
+                <TextBox x:Name="Ingredient"
+                         Text="{Binding IngredientToAdd.Ingredient}"/>
+                <TextBlock Text="Quantity (MG):"/>
+                <StackPanel Orientation="Horizontal">
+                    
+                    <Button ToolTip="Save Ingredient"
+                            HorizontalAlignment="Left"
+                            Padding="0"
+                            Command="{Binding AddIngredientCommand}">
+                        <Button.CommandParameter>
+                            <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
+                                <Binding Path="Text"
+                                         ElementName="Ingredient" />
+                                <Binding Path="Text"
+                                         ElementName="Quantity" />
+                            </MultiBinding>
+
+                        </Button.CommandParameter>
+                        <Image Source="/Images/icons8-checkmark-30.png"
+                               Stretch="UniformToFill" />
+                    </Button>
+                    <TextBox x:Name="Quantity"
+                             Text="{Binding IngredientToAdd.MgQuantity}" />
+                </StackPanel>
+                
+            </StackPanel>
+        </Expander>
+        <StackPanel Orientation="Horizontal">
+            <Button ToolTip="Delete Ingredient"
+                    HorizontalAlignment="Left"
+                   Padding="0"
+                    Command="{Binding DeleteIngredientCommand}"
+                    CommandParameter="{Binding ElementName=Ingredients, Path=SelectedItem}">
+
+                <Image Source="/Images/icons8-delete-30.png"
+                       Stretch="UniformToFill" />
+            </Button>
+        </StackPanel>
+        <ListView x:Name="Ingredients"
+                  
+                  Grid.Column="1"
+                  ItemsSource="{Binding Ingredients}" />
+
+        <Button Content="Save"
+                Command="{Binding UpdateDbCommand}"
+                Margin="10">
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
+                    <Binding Path="Text"
+                             ElementName="Id" />
+                    <Binding Path="Text"
+                             ElementName="Name" />
+                    <Binding Path="Text"
+                             ElementName="Manufacturer" />
+                    <Binding Path="Text"
+                             ElementName="GenericName" />
+                </MultiBinding>
+
+            </Button.CommandParameter>
+        </Button>
+
+
+        <Button Content="Back"
+                Command="{Binding BackCommand}"
+                Margin="10" />
+
+    </StackPanel>
+
+</UserControl>

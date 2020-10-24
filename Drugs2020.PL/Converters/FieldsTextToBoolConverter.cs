@@ -8,7 +8,7 @@ using System.Windows.Data;
 
 namespace Drugs2020.PL.Converters
 {
-    class FieldsTextToBoolConverter : IMultiValueConverter
+    public class FieldsTextToBoolConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {

@@ -3,6 +3,7 @@ using Drugs2020.PL.Commands;
 using Drugs2020.PL.Models;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
@@ -12,7 +13,7 @@ namespace Drugs2020.PL.ViewModels
 
         private PatientsManagementViewModel containingVm;
         public AddToDbCommand UpdateDbCommand { get; set; }
-
+        public bool IsNewPatient { get; }
         public BackCommand BackCommand { get; set; }
         public Patient Patient
         {
@@ -26,6 +27,7 @@ namespace Drugs2020.PL.ViewModels
             addPatientM = new AddPatientModel();
             this.containingVm = containingVm;
             UpdateDbCommand = new AddToDbCommand(this);
+            IsNewPatient = true;
             BackCommand = new BackCommand(this);
             Patient = new Patient();           
         }
@@ -44,12 +46,13 @@ namespace Drugs2020.PL.ViewModels
             return addPatientM.DoesPatientExist();
         }
 
-        public void UpdateExistingItem()
+        public async void UpdateExistingItem()
         {
-            addPatientM.UpdatePatient();           
             containingVm.Items.Remove(containingVm.Items.Single(i => i.ID == Patient.ID));
             containingVm.Items.Add(Patient);
             GoBack();
+            await Task.Run(() => addPatientM.UpdatePatient());
+            //to anounce for success
         }
 
         public bool UserWantsToReplaceExistingItem()

@@ -8,31 +8,33 @@ using System.Windows.Input;
 
 namespace Drugs2020.PL.Commands
 {
-    public class EditingItemCommand : ICommand
+    class AddIngredientToDrugCommand : ICommand
     {
-        private IEdit vm;
+        private IAddIngrediantToDrug vm;
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public EditingItemCommand(IEdit vm)
+        public AddIngredientToDrugCommand(IAddIngrediantToDrug vm)
         {
             this.vm = vm;
         }
         public bool CanExecute(object parameter)
         {
-            if (parameter == null)
+            bool result = false;
+            if (parameter != null)
             {
-                return false;
+                result = (bool)parameter;
             }
-            return true;
+            return result;
         }
 
         public void Execute(object parameter)
         {
-            vm.OpenEditingScreen(parameter);
+            vm.AddIngredientToDrug();
         }
     }
 }
+

@@ -24,5 +24,10 @@ namespace Drugs2020.BLL.BE
             Composition = composition;
             ImageUrl = imageUrl;
         }
+
+        public Drug()
+        {
+            Composition = new List<ActiveIngredient>();
+        }
     }
 }

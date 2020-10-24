@@ -46,12 +46,12 @@ namespace Drugs2020.PL.ViewModels
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         public void ReplaceScreen()
         {
-            containingShellVm.PatientsVm = new AddPatientViewModel(this);
+            containingShellVm.PatientsTabVm = new AddPatientViewModel(this);
         }
 
         public void OpenEditingScreen(object selectedPatient)
         {
-            containingShellVm.PatientsVm = new UpdatePatientViewModel(this, selectedPatient as Patient) ;
+            containingShellVm.PatientsTabVm = new UpdatePatientViewModel(this, selectedPatient as Patient) ;
         }
 
         public void RemoveItemFromDb(object selectedPatient)
@@ -72,7 +72,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void ReturnToContaining()
         {
-            containingShellVm.PatientsVm = this;
+            containingShellVm.PatientsTabVm = this;
         }
     }
 }
