@@ -12,7 +12,6 @@ namespace Drugs2020.PL.Commands
 {
     public class SearchItemCommand : ICommand
     {
-
         private ISearch searchVm;
 
         public SearchItemCommand(ISearch searchVm)

@@ -27,15 +27,25 @@ namespace Drugs2020.PL.ViewModels
      //   private PhysicianShellModel patientModel;
         public MainWidowViewModel()
         {
-          //  patientModel = new PhysicianShellModel();
-         //   MainWindowM = new MainWindowModel();
+            //  patientModel = new PhysicianShellModel();
+            //   MainWindowM = new MainWindowModel();
             logInVM = new LogInViewModel(this);
-            patientSearchVM = new PatientSearchViewModel(this);
-            adminShellVM = new AdminShellViewModel();
-           // physicianShellVM = new PhysicianShellViewModel(this, patientModel);
+
+            // physicianShellVM = new PhysicianShellViewModel(this, patientModel);
             LeftCurrentVm = logInVM;
+            VmInit();
         }
-      //  public MainWindowModel MainWindowM { get; set; }
+
+        private async void VmInit()
+        {
+            await Task.Run(() =>
+            {
+                patientSearchVM = new PatientSearchViewModel(this);
+                adminShellVM = new AdminShellViewModel();
+            });
+        }
+
+        //  public MainWindowModel MainWindowM { get; set; }
         public IViewModel RightCurrentVm 
         {
             get { return _RightCurrentVm; }
