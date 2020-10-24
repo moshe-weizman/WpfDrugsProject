@@ -24,7 +24,7 @@ namespace Drugs2020.PL.Models
             MedicalFile = bl.GetMedicalFile(patientId);
             if (MedicalFile == null)
                 MedicalFile = new MedicalFile(patientId);
-            DrugsTake = bl.GeTDrugsTakePatient(patientId);
+            DrugsTake = bl.GetDrugsTakenPatient(patientId);
             DrugsPreviouslyTaken =bl.GetDrugsPreviouslyTakenPatient(patientId);
 
         }

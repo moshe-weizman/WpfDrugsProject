@@ -27,6 +27,11 @@ namespace Drugs2020.DAL
         void UpdateDrug(Drug drug);
         void DeleteDrug(string id);
         List<Drug> GetAllDrugs();
+        void AddMedicalFile(MedicalFile medicalFile);
+        MedicalFile GetMedicalFile(string patientID);
+        void UpdateMedicalFile(string patientId, MedicalFile medicalFile);
+        void AddRecept(Recept recept);
+        List<Recept> GetAllReceptsOfPatient(string id);
         #endregion
     }
 }

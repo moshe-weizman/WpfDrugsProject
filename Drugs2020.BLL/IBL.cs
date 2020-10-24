@@ -9,7 +9,7 @@ namespace Drugs2020.BLL
     public interface IBL
     {
         bool ValidatePassword(IUser user, string password);
-        List<Drug> GeTDrugsTakePatient(string id);
+        List<Drug> GetDrugsTakenPatient(string id);
 
         List<Drug> GetDrugsPreviouslyTakenPatient(string id);
         IUser IdentifyUser(string userID);
@@ -17,7 +17,7 @@ namespace Drugs2020.BLL
         void AddMedicalFileToPatient(MedicalFile medicalFile);
         void UpdateMedicalFile(string patientId, MedicalFile medicalFile);
         void AddRecept(Recept recept);
-        Recept GetAllReceptOfPatient(string id);
+        List<Recept> GetAllReceptsOfPatient(string id);
         MedicalFile GetMedicalFile(string patientID);
         #region Patient CRUD Functions
         void AddPatient(Patient patient);
