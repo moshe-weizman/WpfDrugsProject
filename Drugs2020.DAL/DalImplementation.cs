@@ -1,6 +1,7 @@
 ﻿using Drugs2020.BLL.BE;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -125,8 +126,13 @@ namespace Drugs2020.DAL
         {
             return ctx.Drugs.Find(IdCode);
         }
-        public List<Drug> GetAllDrugs() { return ctx.Drugs.Where(s => s.Name != null).ToList(); }
- #endregion
+        public List<Drug> GetAllDrugs()
+        {
+            return ctx.Drugs.
+                 Where(s => s.IdCode != null)
+               .Include(s => s.Composition).ToList();
+        }
+        #endregion
     }
 
 }
