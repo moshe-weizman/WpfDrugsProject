@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="Drugs2020.PL.Views.ConsumptionOfDrugs"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Drugs2020.PL.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel Height="Auto">
+        <TabControl Height="Auto">
+            <TabItem Header="Present">
+                <Grid Background="#FFE5E5E5">
+
+                    <StackPanel>
+                        <ListView  ScrollViewer.CanContentScroll="True" HorizontalAlignment="Left" Height="Auto"  VerticalAlignment="Top" Width="Auto" ItemsSource="{Binding DrugsTake}">
+                            <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}"/>
+                                    <TextBlock Text="{Binding GenericName}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Past">
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel>
+                        <ListView HorizontalAlignment="Left" Height="Auto"  VerticalAlignment="Top" Width="Auto" ItemsSource="{Binding DrugsPreviouslyTaken}"  ScrollViewer.CanContentScroll="True">
+                            <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}"/>
+                                    <TextBlock Text="{Binding GenericName}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button Content="Back" Command="{Binding BackCommand}" Margin="10"/> 
+
+    </StackPanel>
+</UserControl>

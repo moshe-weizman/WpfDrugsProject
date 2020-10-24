@@ -14,7 +14,7 @@
         <StackPanel  Margin="5"  VerticalAlignment="Center" >
 
             <TextBlock TextWrapping="Wrap"
-                       Text="Physician ID:" />
+                       Text="User ID:" />
             <TextBox Name="TextBoxID"
                      Height="23"
                      TextWrapping="Wrap"

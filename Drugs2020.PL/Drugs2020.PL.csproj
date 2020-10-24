@@ -75,32 +75,22 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Commands\AddingItemCommand.cs" />
-    <Compile Include="Commands\AddIngredientToDrugCommand.cs" />
+    <Compile Include="Commands\ReplaceScreenCommand.cs" />
     <Compile Include="Commands\BackCommand.cs" />
     <Compile Include="Commands\DeleteItemCommand.cs" />
     <Compile Include="Commands\EditingItemCommand.cs" />
-    <Compile Include="Models\DrugsManagementModel.cs" />
-    <Compile Include="Models\PhysiciansManagementModel.cs" />
-    <Compile Include="Models\UpdateDrugModel.cs" />
     <Compile Include="Models\UpdatePatientModel.cs" />
-    <Compile Include="Models\UpdatePhysicianModel.cs" />
-    <Compile Include="ViewModels\AddDrugViewModel.cs" />
-    <Compile Include="ViewModels\DrugsManagementViewModel.cs" />
-    <Compile Include="ViewModels\IAddIngrediantToDrug.cs" />
+    <Compile Include="ViewModels\ConsumptionOfDrugsViewModel.cs" />
     <Compile Include="ViewModels\IUpdateInDb.cs" />
     <Compile Include="Commands\ScreenReplacementCommand.cs" />
     <Compile Include="Commands\UpdateInDbCommand.cs" />
     <Compile Include="Models\AddDrugModel.cs" />
     <Compile Include="Models\AddPhysicianModel.cs" />
-    <Compile Include="Models\AddReceptModel.cs" />
+    <Compile Include="Models\ReceptModel.cs" />
     <Compile Include="Models\MedicalFileModel.cs" />
     <Compile Include="Models\PatientManagementModel.cs" />
     <Compile Include="Screen.cs" />
     <Compile Include="ViewModels\ActionsMenuViewModel.cs" />
-    <Compile Include="ViewModels\ConsumptionOfDrugs.xaml.cs">
-      <DependentUpon>ConsumptionOfDrugs.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\IContainingVm.cs" />
     <Compile Include="ViewModels\MedicalFileViewModel.cs" />
     <Compile Include="ViewModels\AddPatientViewModel.cs" />
@@ -109,7 +99,7 @@
     <Compile Include="ViewModels\AdminShellViewModel.cs" />
     <Compile Include="ViewModels\DeleteDecisionViewmodel.cs" />
     <Compile Include="ViewModels\ExistingItemDecisionViewModel.cs" />
-    <Compile Include="ViewModels\IAdd.cs" />
+    <Compile Include="ViewModels\IReplaceScreen.cs" />
     <Compile Include="ViewModels\IAddToDb.cs" />
     <Compile Include="ViewModels\IEdit.cs" />
     <Compile Include="ViewModels\IGoBackScreenVM.cs" />
@@ -126,18 +116,12 @@
     <Compile Include="ViewModels\PhysicianShellViewModel.cs" />
     <Compile Include="ViewModels\PhysicianPanelViewModel.cs" />
     <Compile Include="ViewModels\AddMedicalRecordViewModel.cs" />
-    <Compile Include="ViewModels\PhysiciansManagementViewModel.cs" />
-    <Compile Include="ViewModels\UpdateDrugViewModel.cs" />
     <Compile Include="ViewModels\UpdatePatientViewModel.cs" />
-    <Compile Include="ViewModels\UpdatePhysicianViewModel.cs" />
     <Compile Include="Views\ActionsMenu.xaml.cs">
       <DependentUpon>ActionsMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ActiveIngredientDetails.xaml.cs">
-      <DependentUpon>ActiveIngredientDetails.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\AddMedicalFile.xaml.cs">
-      <DependentUpon>AddMedicalFile.xaml</DependentUpon>
+    <Compile Include="Views\MedicalFile.xaml.cs">
+      <DependentUpon>MedicalFile.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AddPatient.xaml.cs">
       <DependentUpon>AddPatient.xaml</DependentUpon>
@@ -151,8 +135,8 @@
     <Compile Include="Views\AdminShell.xaml.cs">
       <DependentUpon>AdminShell.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DrugDetails.xaml.cs">
-      <DependentUpon>DrugDetails.xaml</DependentUpon>
+    <Compile Include="Views\ConsumptionOfDrugs.xaml.cs">
+      <DependentUpon>ConsumptionOfDrugs.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -180,9 +164,6 @@
     </Compile>
     <Compile Include="Views\PhysicianShell.xaml.cs">
       <DependentUpon>PhysicianShell.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SaveDrug.xaml.cs">
-      <DependentUpon>SaveDrug.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -230,19 +211,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewModels\ConsumptionOfDrugs.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\ActionsMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ActiveIngredientDetails.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\AddMedicalFile.xaml">
+    <Page Include="Views\MedicalFile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -262,7 +235,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\DrugDetails.xaml">
+    <Page Include="Views\ConsumptionOfDrugs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -302,10 +275,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SaveDrug.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Drugs2020.BLL.BE\Drugs2020.BLL.BE.csproj">
@@ -340,13 +309,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\icons8-health-checkup-100.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\icons8-checkmark-48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\icons8-checkmark-30.png" />
-    <Resource Include="Images\icons8-delete-30.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />

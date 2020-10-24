@@ -4,24 +4,17 @@
                     xmlns:entities="clr-namespace:Drugs2020.BLL.BE;assembly=Drugs2020.BLL.BE"
                     xmlns:views="clr-namespace:Drugs2020.PL.Views"
                     xmlns:viewModels="clr-namespace:Drugs2020.PL.ViewModels">
-    <!--Entities Templates-->
-    <DataTemplate DataType="{x:Type entities:ActiveIngredient}">
-        <views:ActiveIngredientDetails />
+    <DataTemplate DataType="{x:Type viewModels:PatientSearchViewModel}">
+        <views:PatientSearch />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type entities:Drug}">
-        <views:DrugDetails />
+    <DataTemplate DataType="{x:Type viewModels:LogInViewModel}">
+        <views:Login />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:AdminShellViewModel}">
+        <views:AdminShell />
     </DataTemplate>
     <DataTemplate DataType="{x:Type entities:Patient}">
         <views:PatientDetails />
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type entities:Physician}">
-        <views:PatientDetails />
-    </DataTemplate>
-    <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-    
-    <!--Admin Templates-->
-    <DataTemplate DataType="{x:Type viewModels:AdminShellViewModel}">
-        <views:AdminShell />
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:PatientsManagementViewModel}">
         <views:DataManagement />
@@ -31,34 +24,6 @@
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:UpdatePatientViewModel}">
         <views:AddPatient />
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:PhysiciansManagementViewModel}">
-        <views:DataManagement />
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:AddPhysicianViewModel}">
-        <views:AddPhysician />
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:UpdatePhysicianViewModel}">
-        <views:AddPhysician />
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:DrugsManagementViewModel}">
-        <views:DataManagement />
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:AddDrugViewModel}">
-        <views:SaveDrug/>
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:UpdateDrugViewModel}">
-        <views:SaveDrug />
-    </DataTemplate>
-    
-    <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-    
-    <!--Physician Templates-->
-    <DataTemplate DataType="{x:Type viewModels:PatientSearchViewModel}">
-        <views:PatientSearch />
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:LogInViewModel}">
-        <views:Login />
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModels:ActionsMenuViewModel}">
         <views:ActionsMenu />
@@ -81,5 +46,7 @@
     <DataTemplate DataType="{x:Type viewModels:PhysicianShellViewModel}">
         <views:PhysicianShell/>
     </DataTemplate>
-    <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+    <DataTemplate DataType="{x:Type viewModels:ConsumptionOfDrugsViewModel}">
+        <views:ConsumptionOfDrugs/>
+    </DataTemplate>
 </ResourceDictionary>

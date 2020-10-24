@@ -37,8 +37,7 @@
             </Button.CommandParameter>
 
         </Button>
-        <Button Content="Back" d:LayoutOverrides="Height" Command="{Binding BackCommand}" Margin="10"/>
-
+        <Button Content="Patient list of medications" Margin="10" Command="{Binding ReplaceScreenCommand}" />
 
 
     </StackPanel>

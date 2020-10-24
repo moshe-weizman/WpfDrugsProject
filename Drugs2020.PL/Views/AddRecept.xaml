@@ -11,7 +11,7 @@
     <StackPanel>
         <TextBlock TextWrapping="Wrap" Text="Drug:"/>
 
-        <ComboBox SelectedItem="{Binding SelectedDrug}" >
+        <ComboBox ItemsSource="{Binding DrugCollection}" SelectedItem="{Binding SelectedDrug}" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -55,7 +55,6 @@
             </Button.CommandParameter>
         </Button>
         
-        <Button Content="Back" d:LayoutOverrides="Height" Margin="10" Command="{Binding BackCommand}"/>
 
 
     </StackPanel>

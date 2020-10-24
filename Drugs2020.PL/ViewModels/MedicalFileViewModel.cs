@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class MedicalFileViewModel: IViewModel, IAddToDb , IGoBackScreenVM , INotifyPropertyChanged
+    class MedicalFileViewModel: IViewModel, IAddToDb  , INotifyPropertyChanged, IReplaceScreen, IContainingVm
     {
         private PhysicianShellViewModel containingShellVm;
         private MedicalFileModel medicalFileM;
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public BackCommand BackCommand { get; set; }
+        public ReplaceScreenCommand ReplaceScreenCommand { get; set; }
         public AddToDbCommand AddToDbCommand { get; set; }
         public MedicalFile MedicalFile
         {
@@ -34,7 +34,7 @@ namespace Drugs2020.PL.ViewModels
             this.containingShellVm = containingShellVm;
             medicalFileM = new MedicalFileModel(patientId);
             AddToDbCommand = new AddToDbCommand(this);
-            BackCommand = new BackCommand(this);
+            ReplaceScreenCommand = new ReplaceScreenCommand(this);
         }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -61,9 +61,16 @@ namespace Drugs2020.PL.ViewModels
             medicalFileM.UpdateMedicalFile();
         }
 
-        public void GoBack()
+        
+
+        public void ReturnToContaining()
         {
-            containingShellVm.ReplaceUC(Screen.ADD_MEDICAL_RECORD);
+            containingShellVm.MedicalFileTab = this;
+        }
+
+        public void ReplaceScreen()
+        {
+            containingShellVm.MedicalFileTab = new ConsumptionOfDrugsViewModel(this, MedicalFile.PatientId);
         }
     }
 }

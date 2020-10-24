@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    public interface IAdd
+    public interface IReplaceScreen
     {
-        void OpenAddingScreen();
+        void ReplaceScreen();
     }
 }

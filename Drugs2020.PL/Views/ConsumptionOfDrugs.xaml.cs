@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Drugs2020.PL.ViewModels
+namespace Drugs2020.PL.Views
 {
     /// <summary>
     /// Interaction logic for ConsumptionOfDrugs.xaml

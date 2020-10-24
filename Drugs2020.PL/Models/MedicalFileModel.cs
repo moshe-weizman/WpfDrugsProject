@@ -13,6 +13,10 @@ namespace Drugs2020.PL.Models
         private IBL bl;
 
         public MedicalFile MedicalFile { get; set; }
+
+        public List<Drug> DrugsPreviouslyTaken { get; set; }
+
+        public List<Drug> DrugsTake { get; set; }
         public MedicalFileModel(string patientId)
         {
             bl = new BLImplementation();
@@ -20,6 +24,9 @@ namespace Drugs2020.PL.Models
             MedicalFile = bl.GetMedicalFile(patientId);
             if (MedicalFile == null)
                 MedicalFile = new MedicalFile(patientId);
+            DrugsTake = bl.GeTDrugsTakePatient(patientId);
+            DrugsPreviouslyTaken =bl.GetDrugsPreviouslyTakenPatient(patientId);
+
         }
 
         internal void AddMedicalFileToDb()
