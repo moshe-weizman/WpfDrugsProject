@@ -75,12 +75,20 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Commands\AddIngredientToDrugCommand.cs" />
     <Compile Include="Commands\ReplaceScreenCommand.cs" />
     <Compile Include="Commands\BackCommand.cs" />
     <Compile Include="Commands\DeleteItemCommand.cs" />
     <Compile Include="Commands\EditingItemCommand.cs" />
+    <Compile Include="Models\DrugsManagementModel.cs" />
+    <Compile Include="Models\PhysiciansManagementModel.cs" />
+    <Compile Include="Models\UpdateDrugModel.cs" />
     <Compile Include="Models\UpdatePatientModel.cs" />
+    <Compile Include="Models\UpdatePhysicianModel.cs" />
+    <Compile Include="ViewModels\AddDrugViewModel.cs" />
     <Compile Include="ViewModels\ConsumptionOfDrugsViewModel.cs" />
+    <Compile Include="ViewModels\DrugsManagementViewModel.cs" />
+    <Compile Include="ViewModels\IAddIngrediantToDrug.cs" />
     <Compile Include="ViewModels\IUpdateInDb.cs" />
     <Compile Include="Commands\ScreenReplacementCommand.cs" />
     <Compile Include="Commands\UpdateInDbCommand.cs" />
@@ -116,7 +124,10 @@
     <Compile Include="ViewModels\PhysicianShellViewModel.cs" />
     <Compile Include="ViewModels\PhysicianPanelViewModel.cs" />
     <Compile Include="ViewModels\AddMedicalRecordViewModel.cs" />
+    <Compile Include="ViewModels\PhysiciansManagementViewModel.cs" />
+    <Compile Include="ViewModels\UpdateDrugViewModel.cs" />
     <Compile Include="ViewModels\UpdatePatientViewModel.cs" />
+    <Compile Include="ViewModels\UpdatePhysicianViewModel.cs" />
     <Compile Include="Views\ActionsMenu.xaml.cs">
       <DependentUpon>ActionsMenu.xaml</DependentUpon>
     </Compile>

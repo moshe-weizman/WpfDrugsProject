@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace Drugs2020.PL.Commands
 {
-    class ReplaceScreenCommand : ICommand
+    public class ReplaceScreenCommand : ICommand
     {
         private IReplaceScreen vm;
         public event EventHandler CanExecuteChanged

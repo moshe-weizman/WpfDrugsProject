@@ -14,20 +14,22 @@ using System.Windows.Controls.Primitives;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PatientsManagementViewModel : INotifyPropertyChanged, IAdd, IEdit, IDelete, ISearch, IViewModel, IContainingVm
+    class PatientsManagementViewModel : INotifyPropertyChanged, IReplaceScreen, IEdit, IDelete, ISearch, IViewModel, IContainingVm
     {
         private PatientManagementModel patientManagementM;
         private AdminShellViewModel containingShellVm;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public AddingItemCommand AddCommand { get; set; }
+        public ReplaceScreenCommand AddCommand { get; set; }
         public EditingItemCommand EditCommand { get; set; }
         public DeleteItemCommand DeleteCommand { get; set; }
         public SearchItemCommand SearchCommand { get; set; }
         public ObservableCollection<Patient> Items { get; set; }
         private Patient selectedItem;
-        public Patient SelectedItem { get
+        public Patient SelectedItem
+        {
+            get
             {
                 return selectedItem;
             }
@@ -44,12 +46,12 @@ namespace Drugs2020.PL.ViewModels
             Items = new ObservableCollection<Patient>(patientManagementM.Patients);
             Items.CollectionChanged += PatientsChanged;
             this.containingShellVm = shellViewModel;
-            AddCommand = new AddingItemCommand(this);
+            AddCommand = new ReplaceScreenCommand(this);
             EditCommand = new EditingItemCommand(this);
             DeleteCommand = new DeleteItemCommand(this);
             SearchCommand = new SearchItemCommand(this);
         }
-        
+
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         private void PatientsChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -60,14 +62,9 @@ namespace Drugs2020.PL.ViewModels
             }
         }
 
-        public void OpenAddingScreen()
-        {
-            containingShellVm.PatientsTabVm = new AddPatientViewModel(this);
-        }
-
         public void OpenEditingScreen(object selectedPatient)
         {
-            containingShellVm.PatientsTabVm = new UpdatePatientViewModel(this, selectedPatient as Patient) ;
+            containingShellVm.PatientsTabVm = new UpdatePatientViewModel(this, selectedPatient as Patient);
         }
 
         public void RemoveItemFromDb(object selectedPatient)
@@ -90,6 +87,11 @@ namespace Drugs2020.PL.ViewModels
         public void ReturnToContaining()
         {
             containingShellVm.PatientsTabVm = this;
+        }
+
+        public void ReplaceScreen()
+        {
+            containingShellVm.PatientsTabVm = new AddPatientViewModel(this);
         }
     }
 }
