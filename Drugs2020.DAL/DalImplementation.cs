@@ -12,44 +12,6 @@ namespace Drugs2020.DAL
     {
         private PharmacyContext ctx = new PharmacyContext();
 
-#if false
-        //maybe it need asinc in the calling func.
-        public async void AddPatientAsync(Patient patient)
-        {
-            await Task.Run(() =>
-            {
-                ctx.Patients.Add(patient);
-                ctx.SaveChanges();
-            });
-        }
-#endif
-#if false
-        //maybe it need asinc in the calling func.
-        public async Task<bool> AddPatientAsync(Patient patient)
-        {           
-            bool result =true;
-            try {
-                await Task.Run(() =>
-                    {
-                        ctx.Patients.Add(patient);
-                        ctx.SaveChanges();
-                    }); 
-            }
-            catch (Exception ex)
-            { 
-                result = false; 
-            }
-            return result;
-        }
-#endif
-#if false
-         public void AddPatient2(Patient patient)
-        {
-            ctx.Patients.AddAsync(patient);
-            ctx.SaveChangesAsync();
-        }
-#endif
-
         #region Patient
         public void AddPatient(Patient patient)
         {
@@ -72,9 +34,9 @@ namespace Drugs2020.DAL
         {
             return ctx.Patients.Find(id);
         }
-        public List<Patient> GetAllPatients() 
+        public List<Patient> GetAllPatients()
         {
-           return ctx.Patients.Where(s => s.FirstName != null).ToList();
+            return ctx.Patients.Where(s => s.FirstName != null).ToList();
         }
         #endregion
 
@@ -132,18 +94,18 @@ namespace Drugs2020.DAL
                  Where(s => s.IdCode != null)
                .Include(s => s.Composition).ToList();
         }
+        #endregion
 
+        #region MedicalFile  
         public void AddMedicalFile(MedicalFile medicalFile)
         {
             ctx.MedicalFiles.Add(medicalFile);
             ctx.SaveChanges();
         }
-
         public MedicalFile GetMedicalFile(string patientID)
         {
             return ctx.MedicalFiles.Find(patientID);
         }
-
         public void UpdateMedicalFile(string patientId, MedicalFile medicalFile)
         {
             ctx.MedicalFiles.Remove(ctx.MedicalFiles.Find(patientId));
@@ -151,26 +113,25 @@ namespace Drugs2020.DAL
             ctx.MedicalFiles.Add(medicalFile);
             ctx.SaveChanges();
         }
+        #endregion
 
+        #region Recept
         public void AddRecept(Recept recept)
         {
             ctx.Recepts.Add(recept);
             ctx.SaveChanges();
         }
-
         public List<Recept> GetAllReceptsOfPatient(string id)
         {
-            throw new NotImplementedException();
+            return ctx.Recepts.Where(r => r.PatientID == id).ToList();
         }
-
         public List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate)
         {
-            throw new NotImplementedException();
+            return ctx.Recepts.Where(r => (r.Date >= startDate) && (r.Date <= endDate)).ToList();
         }
-
         public List<Recept> GetAllReceptsByDrug(string drugIdCode)
         {
-            throw new NotImplementedException();
+            return ctx.Recepts.Where(r => r.DrugGenericName == ctx.Drugs.Find(drugIdCode).Name).ToList();
         }
         #endregion
     }
