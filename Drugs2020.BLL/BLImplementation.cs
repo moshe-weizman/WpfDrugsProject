@@ -11,6 +11,7 @@ namespace Drugs2020.BLL
     {
         IDal dal = new DalImplementation();
 
+        #region Login
         public bool ValidatePassword(IUser user, string password)
         {
             bool result = false;
@@ -20,7 +21,6 @@ namespace Drugs2020.BLL
             }
             return result;
         }
-
         public IUser IdentifyUser(string userID)
         {
             switch (userID)
@@ -32,7 +32,10 @@ namespace Drugs2020.BLL
             }
             return null;
         }
-        
+
+        #endregion
+
+        #region Medical Record
         public void AddMediclRecordToPatient(MedicalRecord medicalRecord)
         {
             dal.AddMediclRecordToPatient(medicalRecord);
@@ -40,15 +43,13 @@ namespace Drugs2020.BLL
 
         public void UpdateMedicalRecord(string medicalRecordID, MedicalRecord medicalRecord)
         {
-            dal.UpdateMedicalRecord( medicalRecordID,  medicalRecord);
+            dal.UpdateMedicalRecord(medicalRecordID, medicalRecord);
         }
         public bool MedicalRecordAlreadyExists(MedicalRecord medicalRecord)
         {
-            throw new NotImplementedException();
+            return false;
         }
-
-
-
+        #endregion
 
         #region Medical File Functions
         public void AddMedicalFileToPatient(MedicalFile medicalFile)
