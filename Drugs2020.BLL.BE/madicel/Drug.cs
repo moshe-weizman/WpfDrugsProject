@@ -12,22 +12,17 @@ namespace Drugs2020.BLL.BE
         public string Name { get; set; }
         public string Manufacturer { get; set; }
         public string GenericName { get; set; }
-        public List<ActiveIngredient> Composition { get; set; }
         public string ImageUrl { get; set; }
 
-        public Drug(string idCode, string name, string manufacturer, string genericName, List<ActiveIngredient> composition, string imageUrl)
+        public Drug(string idCode, string name, string manufacturer, string genericName, string imageUrl)
         {
             IdCode = idCode;
             Name = name;
             Manufacturer = manufacturer;
             GenericName = genericName;
-            Composition = composition;
             ImageUrl = imageUrl;
         }
 
-        public Drug()
-        {
-            Composition = new List<ActiveIngredient>();
-        }
+        public Drug(){}
     }
 }

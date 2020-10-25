@@ -23,7 +23,7 @@ namespace Drugs2020.PL.Models
 
         public void AddMedicalRecordToDb()
         {
-            bl.AddMediclRecordToPatient(MedicalRecord);
+          //  bl.AddMediclRecordToPatient(MedicalRecord);
         }
 
         public bool MedicalRecordAlreadyExists()

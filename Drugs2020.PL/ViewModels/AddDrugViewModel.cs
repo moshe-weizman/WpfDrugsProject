@@ -60,8 +60,9 @@ namespace Drugs2020.PL.ViewModels
 
         public void AddIngredientToDrug()
         {
+            IngredientToAdd.DrugIdCode = Drug.IdCode;
             Ingredients.Add(IngredientToAdd);
-            Drug.Composition.Add(IngredientToAdd);
+            addDrugM.Ingredients.Add(IngredientToAdd);
             IngredientToAdd = new ActiveIngredient();
         }
         public void AddItemToDb()
@@ -100,7 +101,7 @@ namespace Drugs2020.PL.ViewModels
         {
             ActiveIngredient activeIngredient = ingredient as ActiveIngredient;
             Ingredients.Remove(activeIngredient);
-            Drug.Composition.Remove(activeIngredient);
+         //   Drug.Composition.Remove(activeIngredient);
         }
 
         public bool IsUserSureToDelete()

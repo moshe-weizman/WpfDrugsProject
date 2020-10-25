@@ -49,7 +49,7 @@ namespace Drugs2020.PL.ViewModels
             IsNewDrug = false;
             BackCommand = new BackCommand(this);
             IngredientToAdd = new ActiveIngredient();
-            Ingredients = new ObservableCollection<ActiveIngredient>(drugToUpdate.Composition);
+           // Ingredients = new ObservableCollection<ActiveIngredient>(drugToUpdate.Composition);
             AddIngredientCommand = new AddIngredientToDrugCommand(this);
             DeleteIngredientCommand = new DeleteItemCommand(this);
         }
@@ -72,7 +72,7 @@ namespace Drugs2020.PL.ViewModels
         public void AddIngredientToDrug()
         {
             Ingredients.Add(IngredientToAdd);
-            Drug.Composition.Add(IngredientToAdd);
+        //    Drug.Composition.Add(IngredientToAdd);
             IngredientToAdd = new ActiveIngredient();
         }
 
@@ -80,7 +80,7 @@ namespace Drugs2020.PL.ViewModels
         {
             ActiveIngredient activeIngredient = ingredient as ActiveIngredient;
             Ingredients.Remove(activeIngredient);
-            Drug.Composition.Remove(activeIngredient);
+          //  Drug.Composition.Remove(activeIngredient);
         }
 
         public bool IsUserSureToDelete()

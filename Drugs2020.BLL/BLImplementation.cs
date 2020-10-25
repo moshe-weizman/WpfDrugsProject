@@ -46,16 +46,6 @@ namespace Drugs2020.BLL
         {
             throw new NotImplementedException();
         }
-        public List<MedicalRecord> GetAllMedicalRecordsOfPatient(string patientId)
-        {
-            // return dal.GetAllMedicalRecordsOfPatient(patientId);
-            return new List<MedicalRecord>()
-          {
-              new MedicalRecord("4321", "12", "oohhh", "ooohhh", "mmmmmm", "hahahah"),
-               new MedicalRecord("421", "12", "oohhh", "ooohhh", "mmmmmm", "hahahah")
-          };
-        }
-
 
 
 
@@ -98,9 +88,9 @@ namespace Drugs2020.BLL
         {
             return new List<Drug>()
            {
-              new Drug("1433", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png"),
-                new Drug("44444", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png"),
-                new Drug("88", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png")
+              new Drug("1433", "mosheroni", "pakter", "acamoli",  @"Drugs2020.PL\Images\icons8-pill-90.png"),
+                new Drug("44444", "mosheroni", "pakter", "acamoli", @"Drugs2020.PL\Images\icons8-pill-90.png"),
+                new Drug("88", "mosheroni", "pakter", "acamoli", @"Drugs2020.PL\Images\icons8-pill-90.png")
 
            };
         }
@@ -109,16 +99,19 @@ namespace Drugs2020.BLL
         {
             return new List<Drug>()
            {
-             new Drug("88", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png")
+             new Drug("88", "mosheroni", "pakter", "acamoli", @"Drugs2020.PL\Images\icons8-pill-90.png")
 
            };
         }
-
-        public void CreatePDF(Recept recept)
+        public List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate)
         {
-            throw new NotImplementedException();
+            return dal.GetAllReceptsByDate(startDate, endDate);
         }
 
+        public List<Recept> GetAllReceptsByDrug(string drugIdCode)
+        {
+            return dal.GetAllReceptsByDrug(drugIdCode);
+        }
         #endregion
 
         #region Patient CRUD Functions
@@ -208,19 +201,28 @@ namespace Drugs2020.BLL
             //};
             return dal.GetAllDrugs();
         }
+        #endregion
 
-        public List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate)
+        #region ActiveIngredient CRUD Functions
+        public void AddActiveIngredient(ActiveIngredient ingredient)
         {
-            return dal.GetAllReceptsByDate(startDate, endDate);
+            dal.AddActiveIngredient( ingredient);
         }
 
-        public List<Recept> GetAllReceptsByDrug(string drugIdCode)
+        public List<ActiveIngredient> GetActiveIngredientsOfDrug(string DrugIdCode)
         {
-            return dal.GetAllReceptsByDrug(drugIdCode);
+            return dal.GetActiveIngredientsOfDrug(DrugIdCode);
         }
 
-       
+        public void UpdateActiveIngredient(ActiveIngredient ingredient)
+        {
+            dal.UpdateActiveIngredient(ingredient);
+        }
 
+        public void DeleteActiveIngredient(ActiveIngredient ingredient)
+        {
+            dal.DeleteActiveIngredient(ingredient);
+        }
 
         #endregion
     }
