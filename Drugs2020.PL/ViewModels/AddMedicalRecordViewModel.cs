@@ -11,12 +11,12 @@ namespace Drugs2020.PL.ViewModels
 {
     class AddMedicalRecordViewModel: IAddToDb, IGoBackScreenVM, IViewModel
     {
-        private MedicalFileModel medicalFileModel;
+        private MedicalRecordModel medicalRecordModel;
         private PhysicianShellViewModel containingVm;
 
         public AddMedicalRecordViewModel(PhysicianShellViewModel containingVm, string patientId)
         {
-            this.medicalFileModel = new MedicalFileModel(patientId);
+            this.medicalRecordModel = new MedicalRecordModel(patientId);
             this.containingVm = containingVm;
             BackCommand = new BackCommand(this);
             AddToDbCommand = new AddToDbCommand(this);
@@ -26,11 +26,11 @@ namespace Drugs2020.PL.ViewModels
         public AddToDbCommand AddToDbCommand { get; set; }
         public BackCommand BackCommand { get; set; }
 
-        public MedicalRecord MedicalRecord{ set; get; }
+        public MedicalRecord MedicalRecord{ set { medicalRecordModel.MedicalRecord=value; } get {return medicalRecordModel.MedicalRecord; } }
 
         public void AddItemToDb()
         {
-            throw new NotImplementedException();
+            medicalRecordModel.AddMedicalRecordToDb();
         }
 
         public void GoBack()
@@ -40,20 +40,22 @@ namespace Drugs2020.PL.ViewModels
 
         public bool ItemAlreadyExists()
         {
-            return true;
+          return  medicalRecordModel.MedicalRecordAlreadyExists();
         }
 
        
 
         public void UpdateExistingItem()
         {
-            medicalFileModel.MedicalFile.MedicalRecords.Add(MedicalRecord);
-            medicalFileModel.UpdateMedicalFile();
+            medicalRecordModel.UpdateMedicalRecord();
+            //medicalRecordModel.MedicalFile.MedicalRecords.Add(MedicalRecord);
+            //medicalRecordModel.UpdateMedicalFile();
         }
 
         public bool UserWantsToReplaceExistingItem()
         {
-            return true;
+            ExistingItemDecisionViewModel decision = new ExistingItemDecisionViewModel("medical record");
+            return decision.Decision;
         }
     }
 }

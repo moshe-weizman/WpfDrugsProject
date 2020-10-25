@@ -13,7 +13,6 @@ namespace Drugs2020.PL.Models
         private IBL bl;
 
         public MedicalFile MedicalFile { get; set; }
-
         public List<Recept> AllRecepts { get; set; }
         public MedicalFileModel(string patientId)
         {
@@ -25,19 +24,21 @@ namespace Drugs2020.PL.Models
             AllRecepts = bl.GetAllReceptsOfPatient(patientId);
         }
 
-        internal void AddMedicalFileToDb()
+        public void AddMedicalFileToDb()
         {
             bl.AddMedicalFileToPatient(MedicalFile);
         }
 
-        internal bool MedicalFileAlreadyExists()
+        public bool MedicalFileAlreadyExists()
         {
-            throw new NotImplementedException();
+            return bl.MedicalFileAlreadyExists(MedicalFile);
         }
 
-        internal void UpdateMedicalFile()
+        public void UpdateMedicalFile()
         {
             bl.UpdateMedicalFile(MedicalFile.PatientId, MedicalFile);
         }
+
+       
     }
 }

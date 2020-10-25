@@ -82,6 +82,7 @@
     <Compile Include="Commands\EditingItemCommand.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Models\DrugsManagementModel.cs" />
+    <Compile Include="Models\MedicalRecordModel.cs" />
     <Compile Include="Models\PhysiciansManagementModel.cs" />
     <Compile Include="Models\UpdateDrugModel.cs" />
     <Compile Include="Models\UpdatePatientModel.cs" />

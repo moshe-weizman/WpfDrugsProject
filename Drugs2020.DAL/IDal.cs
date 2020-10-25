@@ -31,9 +31,11 @@ namespace Drugs2020.DAL
         void AddMedicalFile(MedicalFile medicalFile);
         MedicalFile GetMedicalFile(string patientID);
         void UpdateMedicalFile(string patientId, MedicalFile medicalFile);
+        void AddMediclRecordToPatient(MedicalRecord medicalRecord);
         void AddRecept(Recept recept);
         List<Recept> GetAllReceptsOfPatient(string id);
         List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate);
+        void UpdateMedicalRecord(string medicalRecordID, MedicalRecord medicalRecord);
         List<Recept> GetAllReceptsByDrug(string drugIdCode);
         #endregion
     }

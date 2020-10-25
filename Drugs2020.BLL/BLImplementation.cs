@@ -32,12 +32,33 @@ namespace Drugs2020.BLL
             }
             return null;
         }
+        
+        public void AddMediclRecordToPatient(MedicalRecord medicalRecord)
+        {
+            dal.AddMediclRecordToPatient(medicalRecord);
+        }
+
+        public void UpdateMedicalRecord(string medicalRecordID, MedicalRecord medicalRecord)
+        {
+            dal.UpdateMedicalRecord( medicalRecordID,  medicalRecord);
+        }
+        public bool MedicalRecordAlreadyExists(MedicalRecord medicalRecord)
+        {
+            throw new NotImplementedException();
+        }
+
+
 
 
         #region Medical File Functions
         public void AddMedicalFileToPatient(MedicalFile medicalFile)
         {
             dal.AddMedicalFile(medicalFile);
+        }
+
+        public bool MedicalFileAlreadyExists(MedicalFile medicalFile)
+        {
+            throw new NotImplementedException();
         }
 
         public MedicalFile GetMedicalFile(string patientID)
@@ -182,6 +203,7 @@ namespace Drugs2020.BLL
             return dal.GetAllReceptsByDrug(drugIdCode);
         }
 
+       
 
         #endregion
     }

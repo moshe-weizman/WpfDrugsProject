@@ -17,9 +17,13 @@ namespace Drugs2020.BLL
         void AddMedicalFileToPatient(MedicalFile medicalFile);
         void UpdateMedicalFile(string patientId, MedicalFile medicalFile);
         void AddRecept(Recept recept);
+        void AddMediclRecordToPatient(MedicalRecord medicalRecord);
         List<Recept> GetAllReceptsOfPatient(string id);
+        bool MedicalRecordAlreadyExists(MedicalRecord medicalRecord);
         List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate);
         List<Recept> GetAllReceptsByDrug(string drugIdCode);
+        bool MedicalFileAlreadyExists(MedicalFile medicalFile);
+        void UpdateMedicalRecord(string medicalRecordID, MedicalRecord medicalRecord);
         MedicalFile GetMedicalFile(string patientID);
         #region Patient CRUD Functions
         void AddPatient(Patient patient);

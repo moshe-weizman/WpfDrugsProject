@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Drugs2020.BLL.BE
 {
@@ -11,6 +12,7 @@ namespace Drugs2020.BLL.BE
         public string PatientId { get; set; }
         public double Weight { get; set; }
         public double Height { get; set; }
+        [NotMapped]
         public List<MedicalRecord> MedicalRecords { get; set; }
         public string ChronicIllness { get; set; }
         public string DrugAllergy { get; set; }

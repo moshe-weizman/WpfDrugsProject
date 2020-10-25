@@ -12,6 +12,16 @@ namespace Drugs2020.DAL
     {
         private PharmacyContext ctx = new PharmacyContext();
 
+        public void AddMediclRecordToPatient(MedicalRecord medicalRecord)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateMedicalRecord(string medicalRecordID, MedicalRecord medicalRecord)
+        {
+            throw new NotImplementedException();
+        }
+
         #region Patient
         public void AddPatient(Patient patient)
         {
@@ -106,6 +116,7 @@ namespace Drugs2020.DAL
         {
             return ctx.MedicalFiles.Find(patientID);
         }
+
         public void UpdateMedicalFile(string patientId, MedicalFile medicalFile)
         {
             ctx.MedicalFiles.Remove(ctx.MedicalFiles.Find(patientId));
@@ -133,6 +144,9 @@ namespace Drugs2020.DAL
         {
             return ctx.Recepts.Where(r => r.DrugGenericName == ctx.Drugs.Find(drugIdCode).Name).ToList();
         }
+
+       
+
         #endregion
     }
 
