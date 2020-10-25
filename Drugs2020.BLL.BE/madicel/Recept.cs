@@ -29,6 +29,7 @@ namespace Drugs2020.BLL.BE
             Date = DateTime.Today;
 
         }
+        public Recept(){}
 
         public Recept(string patientID, int id, string idCodeOfDrug, string drugGenericName, int quantity, int days, DateTime dateTime)
         {
