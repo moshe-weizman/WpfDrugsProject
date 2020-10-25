@@ -170,7 +170,17 @@ namespace Drugs2020.BLL
             return dal.GetAllDrugs();
         }
 
-       
+        public List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate)
+        {
+            return dal.GetAllReceptsByDate(startDate, endDate);
+        }
+
+        public List<Recept> GetAllReceptsByDrug(string drugIdCode)
+        {
+            return dal.GetAllReceptsByDrug(drugIdCode);
+        }
+
+
         #endregion
     }
 }

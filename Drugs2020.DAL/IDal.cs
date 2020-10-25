@@ -1,4 +1,5 @@
 ﻿using Drugs2020.BLL.BE;
+using System;
 using System.Collections.Generic;
 
 namespace Drugs2020.DAL
@@ -32,6 +33,8 @@ namespace Drugs2020.DAL
         void UpdateMedicalFile(string patientId, MedicalFile medicalFile);
         void AddRecept(Recept recept);
         List<Recept> GetAllReceptsOfPatient(string id);
+        List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate);
+        List<Recept> GetAllReceptsByDrug(string drugIdCode);
         #endregion
     }
 }
