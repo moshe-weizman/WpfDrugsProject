@@ -34,9 +34,9 @@ namespace Drugs2020.DAL
         {
             return ctx.Patients.Find(id);
         }
-        public List<Patient> GetAllPatients() 
+        public List<Patient> GetAllPatients()
         {
-           return ctx.Patients.Where(s => s.FirstName != null).ToList();
+            return ctx.Patients.Where(s => s.FirstName != null).ToList();
         }
         #endregion
 
@@ -123,11 +123,11 @@ namespace Drugs2020.DAL
         }
         public List<Recept> GetAllReceptsOfPatient(string id)
         {
-            return ctx.Recepts.Where(r => r.PatientID==id).ToList();
+            return ctx.Recepts.Where(r => r.PatientID == id).ToList();
         }
         public List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate)
         {
-            return ctx.Recepts.Where(r =>( r.Date >= startDate)&&(r.Date<= endDate)).ToList();
+            return ctx.Recepts.Where(r => (r.Date >= startDate) && (r.Date <= endDate)).ToList();
         }
         public List<Recept> GetAllReceptsByDrug(string drugIdCode)
         {
