@@ -96,7 +96,21 @@
                   Grid.Column="1"
                   ItemsSource="{Binding Ingredients}" />
         <TextBlock Text="Drug Image:" />
-        
+        <StackPanel Orientation="Horizontal">
+            <TextBox x:Name="ImageUrl"
+                     Text="{Binding Drug.ImageUrl}"
+                     Margin="10"
+                     Width="180" />
+            <Button Content="Browse"
+                    Command="{Binding FileDialogCommand}"
+                    Margin="10"
+                    HorizontalAlignment="Right" />
+        </StackPanel>
+        <Image Source="{Binding ElementName=ImageUrl, Path=Text}"
+               Stretch="UniformToFill" 
+               Width="200"
+               Height="150"/>
+
 
         <Button Content="Save"
                 Command="{Binding UpdateDbCommand}"
