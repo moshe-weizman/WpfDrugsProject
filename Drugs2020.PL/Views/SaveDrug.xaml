@@ -93,7 +93,9 @@
         <ListView x:Name="Ingredients"
                   Grid.Column="1"
                   ItemsSource="{Binding Ingredients}" />
+        <TextBlock Text="Drug Image:" />
         
+
         <Button Content="Save"
                 Command="{Binding UpdateDbCommand}"
                 Margin="10">

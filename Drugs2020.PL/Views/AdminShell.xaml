@@ -14,7 +14,7 @@
                     Grid.ColumnSpan="3"
                     Grid.RowSpan="3">
             <DockPanel>
-
+                <!--here comes message banner for user-->
             </DockPanel>
             <TabControl TabStripPlacement="Left"
                         ScrollViewer.CanContentScroll="True"
