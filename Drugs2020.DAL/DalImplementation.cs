@@ -132,6 +132,41 @@ namespace Drugs2020.DAL
                  Where(s => s.IdCode != null)
                .Include(s => s.Composition).ToList();
         }
+
+        public void AddMedicalFile(MedicalFile medicalFile)
+        {
+            throw new NotImplementedException();
+        }
+
+        public MedicalFile GetMedicalFile(string patientID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateMedicalFile(string patientId, MedicalFile medicalFile)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddRecept(Recept recept)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Recept> GetAllReceptsOfPatient(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Recept> GetAllReceptsByDrug(string drugIdCode)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 

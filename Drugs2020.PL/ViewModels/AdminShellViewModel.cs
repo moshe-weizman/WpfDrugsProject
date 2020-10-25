@@ -11,6 +11,8 @@ namespace Drugs2020.PL.ViewModels
     public class AdminShellViewModel : INotifyPropertyChanged, IViewModel, IScreenReplacementVM
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        public bool IsDecisionMessageShown { get; set; }
+        public bool Decision { get; set; }
         private IViewModel patientsTabVm; 
         public IViewModel PatientsTabVm
         {
@@ -55,6 +57,7 @@ namespace Drugs2020.PL.ViewModels
                     PropertyChanged(this, new PropertyChangedEventArgs("StatisticsTabVm"));
             }
         }
+        private IViewModel DecisionMessageScreen;
         private PatientsManagementViewModel patientsManagementVm;
         private PhysiciansManagementViewModel physiciansManagementVm;
         private DrugsManagementViewModel drugssManagementVm;
@@ -71,6 +74,7 @@ namespace Drugs2020.PL.ViewModels
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
        
+        
 
         public void ReplaceScreen(Screen desiredScreen)
         {

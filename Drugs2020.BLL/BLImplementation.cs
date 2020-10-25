@@ -32,33 +32,37 @@ namespace Drugs2020.BLL
             }
             return null;
         }
+
+
+        #region Medical File Functions
         public void AddMedicalFileToPatient(MedicalFile medicalFile)
         {
-
+            dal.AddMedicalFile(medicalFile);
         }
 
         public MedicalFile GetMedicalFile(string patientID)
         {
-            return null;
+            return dal.GetMedicalFile(patientID); 
         }
 
         public void UpdateMedicalFile(string patientId, MedicalFile medicalFile)
         {
-            throw new NotImplementedException();
+            dal.UpdateMedicalFile(patientId, medicalFile);
         }
+        #endregion
 
+        #region Recept & Drugs-Taken Functions
         public void AddRecept(Recept recept)
         {
-            throw new NotImplementedException();
+            dal.AddRecept(recept);
         }
 
-        public Recept GetAllReceptOfPatient(string id)
+        public List<Recept> GetAllReceptsOfPatient(string id)
         {
-            throw new NotImplementedException();
+            return dal.GetAllReceptsOfPatient(id);
         }
 
-
-        public List<Drug> GeTDrugsTakePatient(string id)//לממש את הפונקציה!!
+        public List<Drug> GetDrugsTakenPatient(string id)//לממש את הפונקציה!!
         {
             return new List<Drug>()
            {
@@ -77,6 +81,7 @@ namespace Drugs2020.BLL
 
            };
         }
+        #endregion
 
         #region Patient CRUD Functions
         public Patient GetPatient(string ID)
@@ -165,7 +170,17 @@ namespace Drugs2020.BLL
             return dal.GetAllDrugs();
         }
 
-       
+        public List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate)
+        {
+            return dal.GetAllReceptsByDate(startDate, endDate);
+        }
+
+        public List<Recept> GetAllReceptsByDrug(string drugIdCode)
+        {
+            return dal.GetAllReceptsByDrug(drugIdCode);
+        }
+
+
         #endregion
     }
 }

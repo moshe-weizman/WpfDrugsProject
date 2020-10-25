@@ -50,6 +50,8 @@
                 <TextBox x:Name="Ingredient"
                          Text="{Binding IngredientToAdd.Ingredient}"/>
                 <TextBlock Text="Quantity (MG):"/>
+                <TextBox x:Name="Quantity"
+                         Text="{Binding IngredientToAdd.MgQuantity}" />
                 <StackPanel Orientation="Horizontal">
                     
                     <Button ToolTip="Save Ingredient"
@@ -68,27 +70,31 @@
                         <Image Source="/Images/icons8-checkmark-30.png"
                                Stretch="UniformToFill" />
                     </Button>
-                    <TextBox x:Name="Quantity"
-                             Text="{Binding IngredientToAdd.MgQuantity}" />
+                    <TextBlock Text="Add" VerticalAlignment="Center"/>
                 </StackPanel>
                 
             </StackPanel>
         </Expander>
-        <StackPanel Orientation="Horizontal">
-            <Button ToolTip="Delete Ingredient"
+        <StackPanel Orientation="Horizontal"
+                    Visibility="{Binding ElementName=Ingredients, Path=Visibility}">
+            <Button x:Name="AddIngredientButton"
+                ToolTip="Delete Ingredient"
                     HorizontalAlignment="Left"
-                   Padding="0"
+                    Padding="0"
                     Command="{Binding DeleteIngredientCommand}"
                     CommandParameter="{Binding ElementName=Ingredients, Path=SelectedItem}">
-
                 <Image Source="/Images/icons8-delete-30.png"
                        Stretch="UniformToFill" />
             </Button>
+            <TextBlock Text="Remove ingredient"
+                       IsEnabled="{Binding ElementName=AddIngredientButton, Path=IsEnabled}"
+                       VerticalAlignment="Center" />
         </StackPanel>
         <ListView x:Name="Ingredients"
-                  
                   Grid.Column="1"
                   ItemsSource="{Binding Ingredients}" />
+        <TextBlock Text="Drug Image:" />
+        
 
         <Button Content="Save"
                 Command="{Binding UpdateDbCommand}"
@@ -103,6 +109,8 @@
                              ElementName="Manufacturer" />
                     <Binding Path="Text"
                              ElementName="GenericName" />
+                    <Binding Path="HasItems"
+                             ElementName="Ingredients" />
                 </MultiBinding>
 
             </Button.CommandParameter>

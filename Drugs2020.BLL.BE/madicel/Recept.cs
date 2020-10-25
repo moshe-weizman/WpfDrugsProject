@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Drugs2020.BLL.BE
@@ -10,9 +11,15 @@ namespace Drugs2020.BLL.BE
         public string PatientID { get; set; }
         public DateTime Date { get; set; }
         public string IdCodeOfDrug { get; set; }
+        public string DrugGenericName { get; set; }
         public int Quantity { get; set; }
         public int Days { get; set; }
-        public DateTime TreatmentEndDate { get; set; }//לכאורה לא נצרך כי כבר יש שדה של ימים
+        [NotMapped]
+        public DateTime TreatmentEndDate { get
+            {
+                return Date.AddDays(Days);
+            }
+        }
         public DateTime ExpirationDate { get; set; }
 
         public Recept(string patientID)
@@ -21,15 +28,15 @@ namespace Drugs2020.BLL.BE
             PatientID = patientID;
         }
 
-        public Recept(string patientID, int id, string idCodeOfDrug, int quantity, int days, DateTime treatmentEndDate)
+        public Recept(string patientID, int id, string idCodeOfDrug, string drugGenericName, int quantity, int days)
         {
             PatientID = patientID;
             ReceptId = id;
             Date = DateTime.Today;
             IdCodeOfDrug = idCodeOfDrug;
+            DrugGenericName = drugGenericName;
             Quantity = quantity;
             Days = days;
-            TreatmentEndDate = treatmentEndDate;
             ExpirationDate = Date.AddDays(Days);
         }
     }

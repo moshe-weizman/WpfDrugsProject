@@ -31,7 +31,8 @@ namespace Drugs2020.PL.ViewModels
             set 
             {
                 addReceptModel.Recept.IdCodeOfDrug = value.IdCode;
-                if(PropertyChanged!=null)
+                addReceptModel.Recept.DrugGenericName = value.IdCode;
+                if (PropertyChanged!=null)
                     PropertyChanged(this, new PropertyChangedEventArgs("SelectedDrug"));
             }
         }

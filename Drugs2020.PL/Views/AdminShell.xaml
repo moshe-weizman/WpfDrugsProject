@@ -1,66 +1,84 @@
 ﻿<UserControl x:Class="Drugs2020.PL.Views.AdminShell"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:converters="clr-namespace:Drugs2020.PL.Converters"
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
              mc:Ignorable="d">
-    <TabControl TabStripPlacement="Left"
-                ScrollViewer.CanContentScroll="True"
-                Margin="0, 0, 0, 0">
-        <TabItem Name="patients"
-                 ScrollViewer.CanContentScroll="True"
-                 ToolTip="Patients">
-            <TabItem.Header>
-                <Grid>
-                    <Image Source="/Images/icons8-health-checkup-100.png"
-                           Stretch="None"
-                           Height="100"
-                           VerticalAlignment="Top" />
-                </Grid>
-            </TabItem.Header>
-            <TabItem.Content>
-                <ContentControl Content="{Binding PatientsTabVm}" ScrollViewer.CanContentScroll="True" />
-            </TabItem.Content>
-        </TabItem>
+    <UserControl.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Orientation="Vertical"
+                    Grid.ColumnSpan="3"
+                    Grid.RowSpan="3">
+            <DockPanel>
+                <!--here comes message banner for user-->
+            </DockPanel>
+            <TabControl TabStripPlacement="Left"
+                        ScrollViewer.CanContentScroll="True"
+                        Margin="0, 0, 0, 0">
+                <TabItem Name="patients"
+                         ScrollViewer.CanContentScroll="True"
+                         ToolTip="Patients">
+                    <TabItem.Header>
+                        <Grid>
+                            <Image Source="/Images/icons8-health-checkup-100.png"
+                                   Stretch="None"
+                                   Height="100"
+                                   VerticalAlignment="Top" />
+                        </Grid>
+                    </TabItem.Header>
+                    <TabItem.Content>
+                        <ContentControl Content="{Binding PatientsTabVm}"
+                                        ScrollViewer.CanContentScroll="True" />
+                    </TabItem.Content>
+                </TabItem>
 
-        <TabItem Name="physicians"
-                 ToolTip="Physicians">
-            <TabItem.Header>
-                <Grid>
-                    <Image Source="/Images/icons8-stethoscope-96.png"
-                           Stretch="None" />
-                </Grid>
-            </TabItem.Header>
-            <TabItem.Content>
-                <ContentControl Content="{Binding PhysiciansTabVm}" />
-            </TabItem.Content>
-        </TabItem>
+                <TabItem Name="physicians"
+                         ToolTip="Physicians">
+                    <TabItem.Header>
+                        <Grid>
+                            <Image Source="/Images/icons8-stethoscope-96.png"
+                                   Stretch="None" />
+                        </Grid>
+                    </TabItem.Header>
+                    <TabItem.Content>
+                        <ContentControl Content="{Binding PhysiciansTabVm}" />
+                    </TabItem.Content>
+                </TabItem>
 
-        <TabItem Name="drugs"
-                 ToolTip="Drugs">
-            <TabItem.Header>
-                <Grid>
-                    <Image Source="/Images/icons8-pill-90.png"
-                           Stretch="None" />
-                </Grid>
-            </TabItem.Header>
-            <TabItem.Content>
-                <ContentControl Content="{Binding DrugsTabVm}" />
-            </TabItem.Content>
-        </TabItem>
+                <TabItem Name="drugs"
+                         ToolTip="Drugs">
+                    <TabItem.Header>
+                        <Grid>
+                            <Image Source="/Images/icons8-pill-90.png"
+                                   Stretch="None" />
+                        </Grid>
+                    </TabItem.Header>
+                    <TabItem.Content>
+                        <ContentControl Content="{Binding DrugsTabVm}" />
+                    </TabItem.Content>
+                </TabItem>
 
-        <TabItem Name="statistics"
-                 ToolTip="Statistics">
-            <TabItem.Header>
-                <Grid>
-                    <Image Source="/Images/icons8-statistics-90.png"
-                           Stretch="None" />
-                </Grid>
-            </TabItem.Header>
-            <TabItem.Content>
-                <ContentControl Content="{Binding StatisticsTabVm}" />
-            </TabItem.Content>
-        </TabItem>
-    </TabControl>
+                <TabItem Name="statistics"
+                         ToolTip="Statistics">
+                    <TabItem.Header>
+                        <Grid>
+                            <Image Source="/Images/icons8-statistics-90.png"
+                                   Stretch="None" />
+                        </Grid>
+                    </TabItem.Header>
+                    <TabItem.Content>
+                        <ContentControl Content="{Binding StatisticsTabVm}" />
+                    </TabItem.Content>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+        <ContentControl x:Name="DecisionMessageScreen"
+                        Content="{Binding DecisionMessageScreen}"
+                        Visibility="{Binding IsDecisionMessageShown ,Converter={StaticResource BoolToVisibilityConverter}}" />
+    </Grid>
+    
 </UserControl>
