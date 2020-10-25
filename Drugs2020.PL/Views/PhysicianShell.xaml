@@ -72,6 +72,7 @@
                 </TabItem.Content>
             </TabItem>
         </TabControl>
+        <Button Content="EXIT" Command="{Binding }"/>
     </StackPanel>
     
 </UserControl>

@@ -17,7 +17,7 @@ namespace Drugs2020.BLL.BE
         [NotMapped]
         public DateTime TreatmentEndDate { get
             {
-                return Date.AddDays(Days);
+                return Date.AddDays(Days).Date;
             }
         }
         public DateTime ExpirationDate { get; set; }
@@ -26,13 +26,15 @@ namespace Drugs2020.BLL.BE
         {
             // לממש את הID 
             PatientID = patientID;
+            Date = DateTime.Today;
+
         }
 
-        public Recept(string patientID, int id, string idCodeOfDrug, string drugGenericName, int quantity, int days)
+        public Recept(string patientID, int id, string idCodeOfDrug, string drugGenericName, int quantity, int days, DateTime dateTime)
         {
             PatientID = patientID;
             ReceptId = id;
-            Date = DateTime.Today;
+            Date = dateTime;
             IdCodeOfDrug = idCodeOfDrug;
             DrugGenericName = drugGenericName;
             Quantity = quantity;
