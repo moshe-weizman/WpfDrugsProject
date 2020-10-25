@@ -12,22 +12,6 @@ namespace Drugs2020.DAL
     {
         private PharmacyContext ctx = new PharmacyContext();
 
-        public void AddMediclRecordToPatient(MedicalRecord medicalRecord)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateMedicalRecord(string medicalRecordID, MedicalRecord medicalRecord)
-        {
-            throw new NotImplementedException();
-        }
-        public List<MedicalRecord> GetAllMedicalRecordsOfPatient(string patientId)
-        {
-            throw new NotImplementedException();
-
-        }
-
-
         #region Patient
         public void AddPatient(Patient patient)
         {
@@ -107,8 +91,7 @@ namespace Drugs2020.DAL
         public List<Drug> GetAllDrugs()
         {
             return ctx.Drugs.
-                 Where(s => s.IdCode != null)
-               .Include(s => s.Composition).ToList();
+                 Where(s => s.IdCode != null).ToList();
         }
         #endregion
 
@@ -122,7 +105,6 @@ namespace Drugs2020.DAL
         {
             return ctx.MedicalFiles.Find(patientID);
         }
-
         public void UpdateMedicalFile(string patientId, MedicalFile medicalFile)
         {
             ctx.MedicalFiles.Remove(ctx.MedicalFiles.Find(patientId));
@@ -150,11 +132,51 @@ namespace Drugs2020.DAL
         {
             return ctx.Recepts.Where(r => r.DrugGenericName == ctx.Drugs.Find(drugIdCode).Name).ToList();
         }
+        #endregion
 
-       
+        #region MediclRecord
+        public void AddMediclRecordToPatient(MedicalRecord medicalRecord)
+        {
+            ctx.MedicalRecords.Add(medicalRecord);
+            ctx.SaveChanges();
+        }
+        public void UpdateMedicalRecord(string medicalRecordID, MedicalRecord medicalRecord)
+        {
+            ctx.MedicalRecords.Remove(ctx.MedicalRecords.Find(medicalRecord.MedicalRecordID));
+            ctx.SaveChanges();
+            ctx.MedicalRecords.Add(medicalRecord);
+            ctx.SaveChanges();
+        }
+        #endregion
 
+        #region ActiveIngredient
+        public void AddActiveIngredient(ActiveIngredient ingredient)
+        {
+            ctx.ActiveIngredients.Add(ingredient);
+            ctx.SaveChanges();
+        }
+        public List<ActiveIngredient> GetActiveIngredientsOfDrug(string drugIdCode)
+        {
+            return ctx.ActiveIngredients.Where(r => r.DrugIdCode == drugIdCode).ToList();
+        }
+        public void UpdateActiveIngredient(ActiveIngredient ingredient)
+        {
+            ctx.ActiveIngredients.Remove(ctx.ActiveIngredients.Find(ingredient));
+            ctx.SaveChanges();
+            ctx.ActiveIngredients.Add(ingredient);
+            ctx.SaveChanges();
+        }
+        public void DeleteActiveIngredient(ActiveIngredient ingredient)
+        {
+            ctx.ActiveIngredients.Remove(ctx.ActiveIngredients.Find(ingredient));
+            ctx.SaveChanges();
+        }
+
+        public List<MedicalRecord> GetAllMedicalRecordsOfPatient(string patientId)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 
 }
-

@@ -23,6 +23,7 @@ namespace Drugs2020.BLL
         List<Recept> GetAllReceptsByDrug(string drugIdCode);
         void CreatePDF(Recept recept);
         MedicalFile GetMedicalFile(string patientID);
+        bool MedicalFileAlreadyExists(MedicalFile medicalFile);
         bool MedicalRecordAlreadyExists(MedicalRecord medicalRecord);
         void UpdateMedicalRecord(string medicalRecordID, MedicalRecord medicalRecord);
         #region Patient CRUD Functions
