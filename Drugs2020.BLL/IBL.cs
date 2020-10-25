@@ -12,7 +12,7 @@ namespace Drugs2020.BLL
         IUser IdentifyUser(string userID);
 
         #region Recept
-        void AddRecept(Recept recept);
+        void AddRecept(Recept recept, List<string> drugsTakenPatient);
         List<Recept> GetAllReceptsOfPatient(string id);
         List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate);
         List<Recept> GetAllReceptsByDrug(string drugIdCode);
