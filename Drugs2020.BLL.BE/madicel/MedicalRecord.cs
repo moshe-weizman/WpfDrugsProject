@@ -12,6 +12,7 @@ namespace Drugs2020.BLL.BE
        [Key]
         public string MedicalRecordID { get; set; }
         public string PatientID { get; set; }
+        public string PhysicianID { get; set; }
         public string Problem { get; set; }
         public string Diagnose { get; set; }
         public string Treatment { get; set; }
@@ -24,14 +25,17 @@ namespace Drugs2020.BLL.BE
             Date = DateTime.Today;
         }
 
-        public MedicalRecord(string patientID)
+        public MedicalRecord(string patientID, string physicianID)
         {
             PatientID = patientID;
+            PhysicianID = physicianID;
             Date = DateTime.Today;
         }
 
-        public MedicalRecord(string problem, string diagnose, string treatment, string physicianNotes)
+        public MedicalRecord(string physicianID, string patientID,  string problem, string diagnose, string treatment, string physicianNotes)
         {
+            PatientID = patientID;
+            PhysicianID = physicianID;
             Date = DateTime.Today;
             Problem = problem;
             Diagnose = diagnose;

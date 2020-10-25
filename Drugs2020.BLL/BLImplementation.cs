@@ -46,6 +46,16 @@ namespace Drugs2020.BLL
         {
             throw new NotImplementedException();
         }
+        public List<MedicalRecord> GetAllMedicalRecordsOfPatient(string patientId)
+        {
+            // return dal.GetAllMedicalRecordsOfPatient(patientId);
+            return new List<MedicalRecord>()
+          {
+              new MedicalRecord("4321", "12", "oohhh", "ooohhh", "mmmmmm", "hahahah"),
+               new MedicalRecord("421", "12", "oohhh", "ooohhh", "mmmmmm", "hahahah")
+          };
+        }
+
 
 
 
@@ -103,6 +113,12 @@ namespace Drugs2020.BLL
 
            };
         }
+
+        public void CreatePDF(Recept recept)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #region Patient CRUD Functions
@@ -204,6 +220,7 @@ namespace Drugs2020.BLL
         }
 
        
+
 
         #endregion
     }

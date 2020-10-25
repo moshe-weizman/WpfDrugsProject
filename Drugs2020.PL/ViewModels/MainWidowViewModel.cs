@@ -29,7 +29,7 @@ namespace Drugs2020.PL.ViewModels
 
         private void VmInit()
         {
-            patientSearchVM = new PatientSearchViewModel(this);
+          //  patientSearchVM = new PatientSearchViewModel(this);
             adminShellVM = new AdminShellViewModel(this);
         }
 

@@ -41,7 +41,8 @@
 
             </Button.CommandParameter>
         </Button>
-        <Button Content="Back" d:LayoutOverrides="Height" Command="{Binding BackCommand}" Margin="10"/>
+        <Button Content="All Medical Records"  Margin="10"  d:LayoutOverrides="Height" Command="{Binding ReplaceScreenCommand}"/>
+
 
     </StackPanel>
 </UserControl>

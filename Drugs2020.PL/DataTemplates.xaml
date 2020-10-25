@@ -86,5 +86,8 @@
     <DataTemplate DataType="{x:Type viewModels:PhysicianShellViewModel}">
         <views:PhysicianShell />
     </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:HistoricalMedicalRecordsViewModel}">
+        <views:MedicalRecord />
+    </DataTemplate>
     <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 </ResourceDictionary>

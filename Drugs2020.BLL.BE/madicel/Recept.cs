@@ -9,30 +9,39 @@ namespace Drugs2020.BLL.BE
     {
         public int ReceptId { get; set; }
         public string PatientID { get; set; }
+        public string PhysicianID { get; set; }
+
         public DateTime Date { get; set; }
         public string IdCodeOfDrug { get; set; }
         public string DrugGenericName { get; set; }
         public int Quantity { get; set; }
         public int Days { get; set; }
+
         [NotMapped]
         public DateTime TreatmentEndDate { get
             {
                 return Date.AddDays(Days).Date;
             }
         }
-        public DateTime ExpirationDate { get; set; }
+        public DateTime ExpirationDate { get;  }
 
-        public Recept(string patientID)
+        public Recept(string patientID, string physicianID)
         {
             // לממש את הID 
             PatientID = patientID;
+            PhysicianID = physicianID;
             Date = DateTime.Today;
+            ExpirationDate = Date.AddMonths(2);
 
         }
-        public Recept(){}
+        public Recept(){
+            ExpirationDate = Date.AddMonths(2);
 
-        public Recept(string patientID, int id, string idCodeOfDrug, string drugGenericName, int quantity, int days, DateTime dateTime)
+        }
+
+        public Recept(string physicianID, string patientID, int id, string idCodeOfDrug, string drugGenericName, int quantity, int days, DateTime dateTime)
         {
+            PhysicianID = physicianID;
             PatientID = patientID;
             ReceptId = id;
             Date = dateTime;
@@ -40,7 +49,8 @@ namespace Drugs2020.BLL.BE
             DrugGenericName = drugGenericName;
             Quantity = quantity;
             Days = days;
-            ExpirationDate = Date.AddDays(Days);
+            ExpirationDate = Date.AddMonths(2);
+
         }
     }
 }

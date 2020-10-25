@@ -76,6 +76,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\AddIngredientToDrugCommand.cs" />
+    <Compile Include="Commands\CreatePDFCommand.cs" />
     <Compile Include="Commands\ReplaceScreenCommand.cs" />
     <Compile Include="Commands\BackCommand.cs" />
     <Compile Include="Commands\DeleteItemCommand.cs" />
@@ -90,7 +91,9 @@
     <Compile Include="ViewModels\AddDrugViewModel.cs" />
     <Compile Include="ViewModels\ConsumptionOfDrugsViewModel.cs" />
     <Compile Include="ViewModels\DrugsManagementViewModel.cs" />
+    <Compile Include="ViewModels\HistoricalMedicalRecordsViewModel.cs" />
     <Compile Include="ViewModels\IAddIngrediantToDrug.cs" />
+    <Compile Include="ViewModels\ICreatePDFVM.cs" />
     <Compile Include="ViewModels\IUpdateInDb.cs" />
     <Compile Include="Commands\ScreenReplacementCommand.cs" />
     <Compile Include="Commands\UpdateInDbCommand.cs" />

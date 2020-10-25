@@ -38,7 +38,6 @@
 
         </Button>
         <Button Content="Patient list of medications" Margin="10" Command="{Binding ReplaceScreenCommand}" />
-        <Button Content="All Medical Records"  Margin="10"  d:LayoutOverrides="Height"/>
 
 
     </StackPanel>

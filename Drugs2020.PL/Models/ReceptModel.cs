@@ -13,10 +13,10 @@ namespace Drugs2020.PL.Models
         private IBL bl;
         public Recept Recept { get; set; }
         public List<Drug> DrugList { get; set; }
-        public ReceptModel(string id)
+        public ReceptModel(string patientId, string physicianId)
         {
             bl = new BLImplementation();
-            Recept = new Recept(id);
+            Recept = new Recept(patientId, physicianId);
             DrugList = bl.GetAllDrugs();
 
         }
@@ -29,6 +29,11 @@ namespace Drugs2020.PL.Models
         public bool ReceptAlreadyExists()
         {
             return false;//צריך לממש את זה!!!
+        }
+
+        public void CreatePDF()
+        {
+            bl.CreatePDF(Recept);
         }
     }
 }

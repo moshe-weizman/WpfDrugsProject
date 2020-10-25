@@ -18,8 +18,10 @@ namespace Drugs2020.BLL
         void UpdateMedicalFile(string patientId, MedicalFile medicalFile);
         void AddRecept(Recept recept);
         void AddMediclRecordToPatient(MedicalRecord medicalRecord);
+        List<MedicalRecord> GetAllMedicalRecordsOfPatient(string patientId);
         List<Recept> GetAllReceptsOfPatient(string id);
         bool MedicalRecordAlreadyExists(MedicalRecord medicalRecord);
+        void CreatePDF(Recept recept);
         List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate);
         List<Recept> GetAllReceptsByDrug(string drugIdCode);
         bool MedicalFileAlreadyExists(MedicalFile medicalFile);

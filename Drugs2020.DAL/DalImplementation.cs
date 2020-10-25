@@ -21,6 +21,12 @@ namespace Drugs2020.DAL
         {
             throw new NotImplementedException();
         }
+        public List<MedicalRecord> GetAllMedicalRecordsOfPatient(string patientId)
+        {
+            throw new NotImplementedException();
+
+        }
+
 
         #region Patient
         public void AddPatient(Patient patient)

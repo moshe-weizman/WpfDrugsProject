@@ -15,7 +15,7 @@ namespace Drugs2020.PL.ViewModels
         private PhysicianShellViewModel containingShellVm;
         private MedicalFileModel medicalFileM;
         public event PropertyChangedEventHandler PropertyChanged;
-
+        private string physicianId;
         public ReplaceScreenCommand ReplaceScreenCommand { get; set; }
         public AddToDbCommand AddToDbCommand { get; set; }
         public MedicalFile MedicalFile
@@ -29,12 +29,13 @@ namespace Drugs2020.PL.ViewModels
                 }
             }
         }
-        public MedicalFileViewModel(PhysicianShellViewModel containingShellVm, string patientId)
+        public MedicalFileViewModel(PhysicianShellViewModel containingShellVm, string patientId,string physicianId)
         {
             this.containingShellVm = containingShellVm;
             medicalFileM = new MedicalFileModel(patientId);
             AddToDbCommand = new AddToDbCommand(this);
             ReplaceScreenCommand = new ReplaceScreenCommand(this);
+            this.physicianId = physicianId;
         }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

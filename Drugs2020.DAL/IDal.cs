@@ -37,6 +37,8 @@ namespace Drugs2020.DAL
         List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate);
         void UpdateMedicalRecord(string medicalRecordID, MedicalRecord medicalRecord);
         List<Recept> GetAllReceptsByDrug(string drugIdCode);
+        List<MedicalRecord> GetAllMedicalRecordsOfPatient(string patientId); 
+
         #endregion
     }
 }
