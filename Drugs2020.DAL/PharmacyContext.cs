@@ -11,6 +11,8 @@ namespace Drugs2020.DAL
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Physician> Physicians { get; set; }
         public DbSet<Drug> Drugs { get; set; }
+        public DbSet<MedicalFile> MedicalFiles { get; set; }
+        public DbSet<Recept> Recepts { get; set; }
     }
 }
 
