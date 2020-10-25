@@ -174,7 +174,7 @@ namespace Drugs2020.DAL
 
         public List<MedicalRecord> GetAllMedicalRecordsOfPatient(string patientId)
         {
-            throw new NotImplementedException();
+            return ctx.MedicalRecords.Where(s => s.PatientID == patientId).ToList();
         }
         #endregion
     }
