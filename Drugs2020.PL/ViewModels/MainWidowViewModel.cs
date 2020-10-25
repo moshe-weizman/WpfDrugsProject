@@ -11,27 +11,18 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class MainWidowViewModel : INotifyPropertyChanged, IViewModel
+    class MainWidowViewModel : INotifyPropertyChanged, IViewModel, IGoBackScreenVM
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
         private IViewModel _LeftCurrentVm;
-        private IViewModel _RightCurrentVm;
-
         private LogInViewModel logInVM;
         private PatientSearchViewModel patientSearchVM;
         private AdminShellViewModel adminShellVM;
-       // private PhysicianShellViewModel physicianShellVM;
-
-
-     //   private PhysicianShellModel patientModel;
+       
         public MainWidowViewModel()
         {
-            //  patientModel = new PhysicianShellModel();
-            //   MainWindowM = new MainWindowModel();
             logInVM = new LogInViewModel(this);
-
-            // physicianShellVM = new PhysicianShellViewModel(this, patientModel);
             LeftCurrentVm = logInVM;
             VmInit();
         }
@@ -39,22 +30,7 @@ namespace Drugs2020.PL.ViewModels
         private void VmInit()
         {
             patientSearchVM = new PatientSearchViewModel(this);
-            adminShellVM = new AdminShellViewModel();
-            //await Task.Run(() =>
-            //{
-            //    patientSearchVM = new PatientSearchViewModel(this);
-            //    adminShellVM = new AdminShellViewModel();
-            //});
-        }
-
-        //  public MainWindowModel MainWindowM { get; set; }
-        public IViewModel RightCurrentVm 
-        {
-            get { return _RightCurrentVm; }
-            set { _RightCurrentVm = value;
-                if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("RightCurrentVm"));
-            }
+            adminShellVM = new AdminShellViewModel(this);
         }
 
         public IViewModel LeftCurrentVm
@@ -77,14 +53,20 @@ namespace Drugs2020.PL.ViewModels
                     break;
                 case Screen.SEARCH_PATIENT_SCREEN:
                     LeftCurrentVm = patientSearchVM;
-                    RightCurrentVm = null;
                     break;
                 case Screen.ADMIN_SHELL:
                     LeftCurrentVm = adminShellVM;
-                    RightCurrentVm = null;
                     break;
                 default: break;
             }
+        }
+
+        public void GoBack()
+        {
+            logInVM.Password = "";
+            logInVM.UserId = "";
+            LeftCurrentVm = logInVM;
+
         }
     }
 }

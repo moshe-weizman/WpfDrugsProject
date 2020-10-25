@@ -13,8 +13,17 @@
         <StackPanel Orientation="Vertical"
                     Grid.ColumnSpan="3"
                     Grid.RowSpan="3">
-            <DockPanel>
-                <!--here comes message banner for user-->
+            <DockPanel Margin="10">
+                <Button Content="Sign Out"
+                        Command="{Binding SignOutCommand}" />
+                <TextBlock Text="{Binding UserName , StringFormat=Hello {0}}" 
+                           VerticalAlignment="Center"/>
+                <TextBlock Text=" | "
+                           VerticalAlignment="Center" />
+                <ProgressBar Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"
+                             VerticalAlignment="Center" />
+                <TextBlock Text="{Binding Message}"
+                           VerticalAlignment="Center" />
             </DockPanel>
             <TabControl TabStripPlacement="Left"
                         ScrollViewer.CanContentScroll="True"

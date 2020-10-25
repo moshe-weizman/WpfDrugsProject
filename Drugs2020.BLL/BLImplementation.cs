@@ -59,8 +59,8 @@ namespace Drugs2020.BLL
 
         public List<Recept> GetAllReceptsOfPatient(string id)
         {
-            // return dal.GetAllReceptsOfPatient(id);
-            return new List<Recept>() { new Recept("123", 12, "er12", "acmol", 12, 10, DateTime.Now), new Recept("123", 12, "op2", "advil", 12, 10, DateTime.Now) };
+             return dal.GetAllReceptsOfPatient(id);
+            //return new List<Recept>() { new Recept("123", 12, "er12", "acmol", 12, 10, DateTime.Now), new Recept("123", 12, "op2", "advil", 12, 10, DateTime.Now) };
         }
 
         public List<Drug> GetDrugsTakenPatient(string id)//לממש את הפונקציה!!

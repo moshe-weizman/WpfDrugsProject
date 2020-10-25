@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    interface IGoBackScreenVM
+    public interface IGoBackScreenVM
     {
         void GoBack();
 
