@@ -8,11 +8,16 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    public class AdminShellViewModel : INotifyPropertyChanged, IViewModel, IScreenReplacementVM
+    public class AdminShellViewModel : INotifyPropertyChanged, IViewModel, IScreenReplacementVM, IGoBackScreenVM
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        private IGoBackScreenVM containingVm;
         public bool IsDecisionMessageShown { get; set; }
         public bool Decision { get; set; }
+        public string UserName { get; set; }
+        public bool IsBusy { get; set; }
+        public string Message { get; set; }
+        public BackCommand SignOutCommand { get; set; }
         private IViewModel patientsTabVm; 
         public IViewModel PatientsTabVm
         {
@@ -62,8 +67,10 @@ namespace Drugs2020.PL.ViewModels
         private PhysiciansManagementViewModel physiciansManagementVm;
         private DrugsManagementViewModel drugssManagementVm;
 
-        public AdminShellViewModel()
+        public AdminShellViewModel(IGoBackScreenVM containingVm)
         {
+            this.containingVm = containingVm;
+            SignOutCommand = new BackCommand(this);
             patientsManagementVm = new PatientsManagementViewModel(this);
             patientsTabVm = patientsManagementVm;
             physiciansManagementVm = new PhysiciansManagementViewModel(this);
@@ -110,6 +117,11 @@ namespace Drugs2020.PL.ViewModels
                 default:
                     break;
             }
+        }
+
+        public void GoBack()
+        {
+            containingVm.GoBack();
         }
     }
 }

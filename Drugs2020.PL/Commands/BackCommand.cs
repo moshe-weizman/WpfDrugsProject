@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace Drugs2020.PL.Commands
 {
-    class BackCommand : ICommand
+    public class BackCommand : ICommand
     {
         private IGoBackScreenVM viewModel;
 
