@@ -135,22 +135,27 @@ namespace Drugs2020.DAL
 
         public void AddMedicalFile(MedicalFile medicalFile)
         {
-            throw new NotImplementedException();
+            ctx.MedicalFiles.Add(medicalFile);
+            ctx.SaveChanges();
         }
 
         public MedicalFile GetMedicalFile(string patientID)
         {
-            throw new NotImplementedException();
+            return ctx.MedicalFiles.Find(patientID);
         }
 
         public void UpdateMedicalFile(string patientId, MedicalFile medicalFile)
         {
-            throw new NotImplementedException();
+            ctx.MedicalFiles.Remove(ctx.MedicalFiles.Find(patientId));
+            ctx.SaveChanges();
+            ctx.MedicalFiles.Add(medicalFile);
+            ctx.SaveChanges();
         }
 
         public void AddRecept(Recept recept)
         {
-            throw new NotImplementedException();
+            ctx.Recepts.Add(recept);
+            ctx.SaveChanges();
         }
 
         public List<Recept> GetAllReceptsOfPatient(string id)
