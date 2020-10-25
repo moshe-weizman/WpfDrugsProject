@@ -218,6 +218,16 @@ namespace Drugs2020.BLL
             dal.DeleteActiveIngredient(ingredient);
         }
 
+        public List<MedicalRecord> GetAllMedicalRecordsOfPatient(string patientId)
+        {
+            return dal.GetAllMedicalRecordsOfPatient(patientId);
+        }
+
+        public void CreatePDF(Recept recept)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }
