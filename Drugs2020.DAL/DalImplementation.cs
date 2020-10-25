@@ -5,7 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
-
+    
 namespace Drugs2020.DAL
 {
     public class DalImplementation : IDal
