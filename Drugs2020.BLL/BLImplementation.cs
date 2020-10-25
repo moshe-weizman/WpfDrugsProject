@@ -88,9 +88,9 @@ namespace Drugs2020.BLL
         {
             return new List<Drug>()
            {
-              new Drug("1433", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png"),
-                new Drug("44444", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png"),
-                new Drug("88", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png")
+              new Drug("1433", "mosheroni", "pakter", "acamoli",  @"Drugs2020.PL\Images\icons8-pill-90.png"),
+                new Drug("44444", "mosheroni", "pakter", "acamoli", @"Drugs2020.PL\Images\icons8-pill-90.png"),
+                new Drug("88", "mosheroni", "pakter", "acamoli", @"Drugs2020.PL\Images\icons8-pill-90.png")
 
            };
         }
@@ -99,9 +99,18 @@ namespace Drugs2020.BLL
         {
             return new List<Drug>()
            {
-             new Drug("88", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png")
+             new Drug("88", "mosheroni", "pakter", "acamoli", @"Drugs2020.PL\Images\icons8-pill-90.png")
 
            };
+        }
+        public List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate)
+        {
+            return dal.GetAllReceptsByDate(startDate, endDate);
+        }
+
+        public List<Recept> GetAllReceptsByDrug(string drugIdCode)
+        {
+            return dal.GetAllReceptsByDrug(drugIdCode);
         }
         #endregion
 
@@ -192,18 +201,30 @@ namespace Drugs2020.BLL
             //};
             return dal.GetAllDrugs();
         }
-
-        public List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate)
-        {
-            return dal.GetAllReceptsByDate(startDate, endDate);
-        }
-
-        public List<Recept> GetAllReceptsByDrug(string drugIdCode)
-        {
-            return dal.GetAllReceptsByDrug(drugIdCode);
-        }
-
        
+        
+        #region ActiveIngredient CRUD Functions
+        public void AddActiveIngredient(ActiveIngredient ingredient)
+        {
+            dal.AddActiveIngredient( ingredient);
+        }
+
+        public List<ActiveIngredient> GetActiveIngredientsOfDrug(string DrugIdCode)
+        {
+            return dal.GetActiveIngredientsOfDrug(DrugIdCode);
+        }
+
+        public void UpdateActiveIngredient(ActiveIngredient ingredient)
+        {
+            dal.UpdateActiveIngredient(ingredient);
+        }
+
+        public void DeleteActiveIngredient(ActiveIngredient ingredient)
+        {
+            dal.DeleteActiveIngredient(ingredient);
+        }
+
+
 
         #endregion
     }

@@ -60,8 +60,9 @@ namespace Drugs2020.PL.ViewModels
 
         public void AddIngredientToDrug()
         {
+            IngredientToAdd.DrugIdCode = Drug.IdCode;
             Ingredients.Add(IngredientToAdd);
-            Drug.Composition.Add(IngredientToAdd);
+            addDrugM.Ingredients.Add(IngredientToAdd);
             IngredientToAdd = new ActiveIngredient();
         }
         public void AddItemToDb()

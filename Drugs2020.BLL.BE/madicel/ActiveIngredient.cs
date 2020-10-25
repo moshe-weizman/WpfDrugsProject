@@ -7,18 +7,18 @@ namespace Drugs2020.BLL.BE
 {
     public class ActiveIngredient
     {
-        [Key]
+        public int ID { get; set; }
+        public string DrugIdCode { get; set; }
         public string Ingredient { get; set; }
         public double MgQuantity { get; set; }
 
-        public ActiveIngredient(string ingredient, double mgQuantity)
+        public ActiveIngredient(string drugIdCode, string ingredient, double mgQuantity)
         {
+            DrugIdCode = drugIdCode;
             Ingredient = ingredient;
             MgQuantity = mgQuantity;
         }
 
-        public ActiveIngredient()
-        {
-        }
+        public ActiveIngredient() {}
     }
 }

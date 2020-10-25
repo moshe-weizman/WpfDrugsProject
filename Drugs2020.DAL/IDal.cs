@@ -28,24 +28,17 @@ namespace Drugs2020.DAL
         void UpdateDrug(Drug drug);
         void DeleteDrug(string id);
         List<Drug> GetAllDrugs();
-        #endregion
-
-        #region MedicalFile
         void AddMedicalFile(MedicalFile medicalFile);
         MedicalFile GetMedicalFile(string patientID);
         void UpdateMedicalFile(string patientId, MedicalFile medicalFile);
-        #endregion
-
-        #region Recept
         void AddRecept(Recept recept);
         List<Recept> GetAllReceptsOfPatient(string id);
         List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate);
         List<Recept> GetAllReceptsByDrug(string drugIdCode);
-        #endregion
-
-        #region MediclRecord
-        void AddMediclRecordToPatient(MedicalRecord medicalRecord);
-        void UpdateMedicalRecord(string medicalRecordID, MedicalRecord medicalRecord);
+        void AddActiveIngredient(ActiveIngredient ingredient);
+        List<ActiveIngredient> GetActiveIngredientsOfDrug(string drugIdCode);
+        void UpdateActiveIngredient(ActiveIngredient ingredient);
+        void DeleteActiveIngredient(ActiveIngredient ingredient);
         #endregion
     }
 }

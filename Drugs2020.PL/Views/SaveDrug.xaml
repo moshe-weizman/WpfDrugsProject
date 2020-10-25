@@ -64,6 +64,8 @@
                                          ElementName="Ingredient" />
                                 <Binding Path="Text"
                                          ElementName="Quantity" />
+                                <Binding Path="Text"
+                                         ElementName="Id" />
                             </MultiBinding>
 
                         </Button.CommandParameter>

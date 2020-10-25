@@ -12,16 +12,18 @@ namespace Drugs2020.PL.Models
     {
         private IBL bl;
         public Drug Drug { get; set; }
+        public List<ActiveIngredient> Ingredients { get; set; }
 
         public AddDrugModel()
         {
             this.Drug = new Drug();
-
+            Ingredients = new List<ActiveIngredient>();
             bl = new BLImplementation();
         }
 
         public void AddDrugToDb()
         {
+            Ingredients.ForEach(i => bl.AddActiveIngredient(i));
             bl.AddDrug(Drug);
         }
 
