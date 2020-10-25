@@ -74,11 +74,17 @@ namespace Drugs2020.BLL
         #endregion
 
         #region Recept & Drugs-Taken Functions
-        public void AddRecept(Recept recept)
+        public void AddRecept(Recept recept, List<string> drugsTakenPatient)
         {
-            dal.AddRecept(recept);
+            if(checkConflicts(recept.IdCodeOfDrug, drugsTakenPatient))
+                 dal.AddRecept(recept);
+
         }
 
+        public bool checkConflicts(string recept, List<string> drugsTakenPatient)
+        {
+            return true;
+        }
         public List<Recept> GetAllReceptsOfPatient(string id)
         {
              return dal.GetAllReceptsOfPatient(id);
