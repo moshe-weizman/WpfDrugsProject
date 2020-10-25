@@ -201,8 +201,8 @@ namespace Drugs2020.BLL
             //};
             return dal.GetAllDrugs();
         }
-       
-        
+        #endregion
+
         #region ActiveIngredient CRUD Functions
         public void AddActiveIngredient(ActiveIngredient ingredient)
         {
@@ -223,8 +223,6 @@ namespace Drugs2020.BLL
         {
             dal.DeleteActiveIngredient(ingredient);
         }
-
-
 
         #endregion
     }

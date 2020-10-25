@@ -101,7 +101,7 @@ namespace Drugs2020.PL.ViewModels
         {
             ActiveIngredient activeIngredient = ingredient as ActiveIngredient;
             Ingredients.Remove(activeIngredient);
-            Drug.Composition.Remove(activeIngredient);
+         //   Drug.Composition.Remove(activeIngredient);
         }
 
         public bool IsUserSureToDelete()

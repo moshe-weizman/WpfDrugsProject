@@ -91,8 +91,7 @@ namespace Drugs2020.DAL
         public List<Drug> GetAllDrugs()
         {
             return ctx.Drugs.
-                 Where(s => s.IdCode != null)
-               .Include(s => s.Composition).ToList();
+                 Where(s => s.IdCode != null).ToList();
         }
         #endregion
 
@@ -146,6 +145,30 @@ namespace Drugs2020.DAL
             ctx.MedicalRecords.Remove(ctx.MedicalRecords.Find(medicalRecord.MedicalRecordID));
             ctx.SaveChanges();
             ctx.MedicalRecords.Add(medicalRecord);
+            ctx.SaveChanges();
+        }
+        #endregion
+
+        #region ActiveIngredient
+        public void AddActiveIngredient(ActiveIngredient ingredient)
+        {
+            ctx.ActiveIngredients.Add(ingredient);
+            ctx.SaveChanges();
+        }
+        public List<ActiveIngredient> GetActiveIngredientsOfDrug(string drugIdCode) 
+        {
+            return ctx.ActiveIngredients.Where(r => r.DrugIdCode == drugIdCode).ToList();
+        }
+        public void UpdateActiveIngredient(ActiveIngredient ingredient)
+        {
+            ctx.ActiveIngredients.Remove(ctx.ActiveIngredients.Find(ingredient));
+            ctx.SaveChanges();
+            ctx.ActiveIngredients.Add(ingredient);
+            ctx.SaveChanges();
+        }
+        public void DeleteActiveIngredient(ActiveIngredient ingredient)
+        {
+            ctx.ActiveIngredients.Remove(ctx.ActiveIngredients.Find(ingredient));
             ctx.SaveChanges();
         }
         #endregion
