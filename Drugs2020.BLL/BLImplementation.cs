@@ -87,8 +87,8 @@ namespace Drugs2020.BLL
         #region Patient CRUD Functions
         public Patient GetPatient(string ID)
         {
-            //  return dal.GetPatient(ID);
-            return new Patient("1", "mor", "cohen", Sex.FEMALE, "0500000000", "email", "elad", DateTime.Now);
+             return dal.GetPatient(ID);
+           // return new Patient("1", "mor", "cohen", Sex.FEMALE, "0500000000", "email", "elad", DateTime.Now);
         }
         public List<Patient> GetAllPatients()
         {

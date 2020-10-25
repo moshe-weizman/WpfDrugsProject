@@ -5,22 +5,37 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PhysiciansManagementViewModel : IReplaceScreen, IEdit, IDelete, ISearch, IViewModel, IContainingVm
+    class PhysiciansManagementViewModel : INotifyPropertyChanged, IReplaceScreen, IEdit, IDelete, ISearch, IViewModel, IContainingVm
     {
         private PhysiciansManagementModel physiciansManagementM;
         private AdminShellViewModel containingShellVm;
+        public event PropertyChangedEventHandler PropertyChanged;
         public ReplaceScreenCommand AddCommand { get; set; }
         public EditingItemCommand EditCommand { get; set; }
         public DeleteItemCommand DeleteCommand { get; set; }
         public SearchItemCommand SearchCommand { get; set; }
         public ObservableCollection<Physician> Items { get; set; }
-
+        private Physician selectedItem;
+        public Physician SelectedItem
+        {
+            get
+            {
+                return selectedItem;
+            }
+            set
+            {
+                selectedItem = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("SelectedItem"));
+            }
+        }
         public PhysiciansManagementViewModel(AdminShellViewModel shellViewModel)
         {
             physiciansManagementM = new PhysiciansManagementModel();
@@ -66,6 +81,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void GetItem(string id)
         {
+            SelectedItem = Items.SingleOrDefault(i => i.ID == id);
         }
 
         public void ReturnToContaining()
