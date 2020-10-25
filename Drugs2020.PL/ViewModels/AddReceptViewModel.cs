@@ -11,19 +11,20 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class AddReceptViewModel: IViewModel, IAddToDb , INotifyPropertyChanged
+    class AddReceptViewModel: IViewModel, IAddToDb , INotifyPropertyChanged, ICreatePDFVM
     {
         private PhysicianShellViewModel containingVm;
        // private PhysicianShellModel patientModel;
         private ReceptModel addReceptModel;
-        public AddReceptViewModel(PhysicianShellViewModel containingVm, string patientId)
+        public AddReceptViewModel(PhysicianShellViewModel containingVm, string patientId,string physicianId)
         {
-            addReceptModel = new ReceptModel(patientId);
+            addReceptModel = new ReceptModel(patientId, physicianId);
             this.containingVm = containingVm;
             AddToDbCommand = new AddToDbCommand(this);
             DrugCollection = new ObservableCollection<Drug>(addReceptModel.DrugList);
+            OperationCommand = new CreatePDFCommand(this);
         }
-
+        public CreatePDFCommand OperationCommand { get; set; }
         public Recept Recept { get { return addReceptModel.Recept; } set { addReceptModel.Recept = value; } }
         public ObservableCollection<Drug> DrugCollection { get; set; }
         public AddToDbCommand AddToDbCommand { get; set; }
@@ -43,6 +44,12 @@ namespace Drugs2020.PL.ViewModels
         {
             addReceptModel.AddRecept();
         }
+
+        public void DoPDF()
+        {
+            addReceptModel.CreatePDF();
+        }
+
         public bool ItemAlreadyExists()
         {
            return addReceptModel.ReceptAlreadyExists();

@@ -17,10 +17,15 @@ namespace Drugs2020.BLL
         void AddMedicalFileToPatient(MedicalFile medicalFile);
         void UpdateMedicalFile(string patientId, MedicalFile medicalFile);
         void AddRecept(Recept recept);
+        void AddMediclRecordToPatient(MedicalRecord medicalRecord);
+        List<MedicalRecord> GetAllMedicalRecordsOfPatient(string patientId);
         List<Recept> GetAllReceptsOfPatient(string id);
-        
+        bool MedicalRecordAlreadyExists(MedicalRecord medicalRecord);
+        void CreatePDF(Recept recept);
         List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate);
         List<Recept> GetAllReceptsByDrug(string drugIdCode);
+        bool MedicalFileAlreadyExists(MedicalFile medicalFile);
+        void UpdateMedicalRecord(string medicalRecordID, MedicalRecord medicalRecord);
         MedicalFile GetMedicalFile(string patientID);
         #region Patient CRUD Functions
         void AddPatient(Patient patient);
@@ -44,13 +49,6 @@ namespace Drugs2020.BLL
         List<Drug> GetAllDrugs();
         void UpdateDrug(string id, Drug updatedDrug);
         void DeleteDrug(string id);
-        #endregion
-
-        #region ActiveIngredient CRUD Functions
-        void AddActiveIngredient(ActiveIngredient ingredient);
-        List<ActiveIngredient> GetActiveIngredientsOfDrug(string DrugIdCode);
-        void UpdateActiveIngredient(ActiveIngredient ingredient);
-        void DeleteActiveIngredient(ActiveIngredient ingredient);
         #endregion
     }
 }

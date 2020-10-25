@@ -9,23 +9,28 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class AddMedicalRecordViewModel: IAddToDb, IGoBackScreenVM, IViewModel
+    class AddMedicalRecordViewModel: IAddToDb, IGoBackScreenVM, IViewModel, IContainingVm, IReplaceScreen
     {
         private MedicalRecordModel medicalRecordModel;
         private PhysicianShellViewModel containingVm;
-
-        public AddMedicalRecordViewModel(PhysicianShellViewModel containingVm, string patientId)
+        private string patientId;
+        private string physicianId;
+        public AddMedicalRecordViewModel(PhysicianShellViewModel containingVm, string patientId,string physicianId)
         {
-            this.medicalRecordModel = new MedicalRecordModel(patientId);
+            this.medicalRecordModel = new MedicalRecordModel(patientId, physicianId);
             this.containingVm = containingVm;
             BackCommand = new BackCommand(this);
             AddToDbCommand = new AddToDbCommand(this);
             MedicalRecord = new MedicalRecord();
+            this.patientId = patientId;
+            this.physicianId = physicianId;
+            ReplaceScreenCommand = new ReplaceScreenCommand(this);
+
         }
 
         public AddToDbCommand AddToDbCommand { get; set; }
         public BackCommand BackCommand { get; set; }
-
+        public ReplaceScreenCommand ReplaceScreenCommand { get; set; }
         public MedicalRecord MedicalRecord{ set { medicalRecordModel.MedicalRecord=value; } get {return medicalRecordModel.MedicalRecord; } }
 
         public void AddItemToDb()
@@ -44,18 +49,26 @@ namespace Drugs2020.PL.ViewModels
         }
 
        
-
         public void UpdateExistingItem()
         {
             medicalRecordModel.UpdateMedicalRecord();
-            //medicalRecordModel.MedicalFile.MedicalRecords.Add(MedicalRecord);
-            //medicalRecordModel.UpdateMedicalFile();
+            
         }
 
         public bool UserWantsToReplaceExistingItem()
         {
             ExistingItemDecisionViewModel decision = new ExistingItemDecisionViewModel("medical record");
             return decision.Decision;
+        }
+
+        public void ReturnToContaining()
+        {
+            containingVm.AddMedicalRecordTab = this;
+        }
+
+        public void ReplaceScreen()
+        {
+            containingVm.AddMedicalRecordTab = new HistoricalMedicalRecordsViewModel(this, patientId, physicianId);
         }
     }
 }

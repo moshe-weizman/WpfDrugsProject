@@ -12,17 +12,18 @@ namespace Drugs2020.PL.Models
     {
         IBL bl;
         public MedicalRecord MedicalRecord { get; set; }
-
-        public MedicalRecordModel(string patientId)
+        public List<MedicalRecord> MedicalRecordsList { get; set; }
+        public MedicalRecordModel(string patientId,string physicianId)
         {
-            MedicalRecord = new MedicalRecord(patientId);
             bl = new BLImplementation();
+            MedicalRecord = new MedicalRecord(patientId, physicianId);
+            MedicalRecordsList = bl.GetAllMedicalRecordsOfPatient(patientId);
 
         }
 
         public void AddMedicalRecordToDb()
         {
-            bl.AddMediclRecordToPatient(MedicalRecord);
+          //  bl.AddMediclRecordToPatient(MedicalRecord);
         }
 
         public bool MedicalRecordAlreadyExists()

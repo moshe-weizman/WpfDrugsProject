@@ -218,8 +218,6 @@ namespace Drugs2020.BLL
             dal.DeleteActiveIngredient(ingredient);
         }
 
-
-
         #endregion
     }
 }
