@@ -22,7 +22,7 @@ namespace Drugs2020.PL.Models
             MedicalFile = bl.GetMedicalFile(patientId);
             if (MedicalFile == null)
                 MedicalFile = new MedicalFile(patientId);
-            AllRecepts = bl.GetAllReceptOfPatient(patientId);
+            AllRecepts = bl.GetAllReceptsOfPatient(patientId);
         }
 
         internal void AddMedicalFileToDb()

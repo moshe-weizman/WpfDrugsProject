@@ -59,7 +59,8 @@ namespace Drugs2020.BLL
 
         public List<Recept> GetAllReceptsOfPatient(string id)
         {
-            return dal.GetAllReceptsOfPatient(id);
+            // return dal.GetAllReceptsOfPatient(id);
+            return new List<Recept>() { new Recept("123", 12, "er12", "acmol", 12, 10), new Recept("123", 12, "op2", "advil", 12, 10) };
         }
 
         public List<Drug> GetDrugsTakenPatient(string id)//לממש את הפונקציה!!
@@ -86,7 +87,8 @@ namespace Drugs2020.BLL
         #region Patient CRUD Functions
         public Patient GetPatient(string ID)
         {
-            return dal.GetPatient(ID);
+            //  return dal.GetPatient(ID);
+            return new Patient("1", "mor", "cohen", Sex.FEMALE, "0500000000", "email", "elad", DateTime.Now);
         }
         public List<Patient> GetAllPatients()
         {

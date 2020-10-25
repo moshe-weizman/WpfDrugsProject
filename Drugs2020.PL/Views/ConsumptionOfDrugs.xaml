@@ -16,8 +16,8 @@
                             <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <TextBlock Text="{Binding Name}"/>
-                                    <TextBlock Text="{Binding GenericName}"/>
+                                    <TextBlock Text="{Binding DrugGenericName}"/>
+                                    <TextBlock Text="{Binding TreatmentEndDate}"/>
                                 </StackPanel>
                             </DataTemplate>
                             </ListView.ItemTemplate>
@@ -33,8 +33,8 @@
                             <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <TextBlock Text="{Binding Name}"/>
-                                    <TextBlock Text="{Binding GenericName}"/>
+                                    <TextBlock Text="{Binding DrugGenericName}"/>
+                                    <TextBlock Text="{Binding TreatmentEndDate}"/>
                                 </StackPanel>
                             </DataTemplate>
                             </ListView.ItemTemplate>

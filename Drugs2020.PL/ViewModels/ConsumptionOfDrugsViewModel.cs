@@ -7,14 +7,14 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Linq;
 namespace Drugs2020.PL.ViewModels
 {
     class ConsumptionOfDrugsViewModel: IViewModel, IGoBackScreenVM
     {
         private MedicalFileModel medicalFileModel;
-        public ObservableCollection<Drug> DrugsPreviouslyTaken { get; }
-        public ObservableCollection<Drug> DrugsTake { get; set; }
+        public ObservableCollection<Recept> DrugsPreviouslyTaken { get; }
+        public ObservableCollection<Recept> DrugsTake { get; set; }
         public BackCommand BackCommand { get; set; }
 
         private IContainingVm containingVm;
@@ -22,8 +22,8 @@ namespace Drugs2020.PL.ViewModels
         {
             medicalFileModel = new MedicalFileModel(patientId);
             this.containingVm = containingVm;
-            DrugsPreviouslyTaken = new ObservableCollection<Drug>(medicalFileModel.DrugsPreviouslyTaken);
-            DrugsTake = new ObservableCollection<Drug>(medicalFileModel.DrugsTake);
+            DrugsPreviouslyTaken = new ObservableCollection<Recept>(medicalFileModel.AllRecepts.Where(x=> x.TreatmentEndDate < DateTime.Now));
+            DrugsTake = new ObservableCollection<Recept>(medicalFileModel.AllRecepts.Where(x => x.TreatmentEndDate >= DateTime.Now));
             BackCommand = new BackCommand(this);
         }
 
