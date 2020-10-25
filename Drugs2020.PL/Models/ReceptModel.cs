@@ -13,17 +13,22 @@ namespace Drugs2020.PL.Models
         private IBL bl;
         public Recept Recept { get; set; }
         public List<Drug> DrugList { get; set; }
+        public List<Recept> AllRecepts { get; set; }
+
         public ReceptModel(string patientId, string physicianId)
         {
             bl = new BLImplementation();
             Recept = new Recept(patientId, physicianId);
             DrugList = bl.GetAllDrugs();
+            AllRecepts = bl.GetAllReceptsOfPatient(patientId);
 
         }
 
         public void AddRecept()
         {
-            bl.AddRecept(Recept);
+            
+            bl.AddRecept(Recept, AllRecepts.Select(x => x.IdCodeOfDrug).ToList());
+            
         }
 
         public bool ReceptAlreadyExists()
