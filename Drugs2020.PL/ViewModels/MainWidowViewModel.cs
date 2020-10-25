@@ -36,13 +36,15 @@ namespace Drugs2020.PL.ViewModels
             VmInit();
         }
 
-        private async void VmInit()
+        private void VmInit()
         {
-            await Task.Run(() =>
-            {
-                patientSearchVM = new PatientSearchViewModel(this);
-                adminShellVM = new AdminShellViewModel();
-            });
+            patientSearchVM = new PatientSearchViewModel(this);
+            adminShellVM = new AdminShellViewModel();
+            //await Task.Run(() =>
+            //{
+            //    patientSearchVM = new PatientSearchViewModel(this);
+            //    adminShellVM = new AdminShellViewModel();
+            //});
         }
 
         //  public MainWindowModel MainWindowM { get; set; }

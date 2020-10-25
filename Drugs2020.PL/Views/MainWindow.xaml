@@ -8,8 +8,8 @@
         xmlns:uc="clr-namespace:Drugs2020.PL.Views"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="450"
-        Width="800">
+        Height="700"
+        Width="600">
     <Window.DataContext>
         <vm:MainWidowViewModel/>
     </Window.DataContext>
@@ -17,18 +17,12 @@
         <!--<local:MyConverter x:Key="myConverter" />-->
     </Window.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50*" />
-            <ColumnDefinition Width="30*" />
-        </Grid.ColumnDefinitions>
+       
         <Image Source="/Images/medicine.jpg"
                Stretch="UniformToFill"
-               Grid.Column="1"
                Margin="5" />
-        <ContentControl Content="{Binding LeftCurrentVm}"
-                        Grid.Column="0" />
-        <ContentControl Content="{Binding RightCurrentVm}"
-                        Grid.Column="1" />
+        <ContentControl Content="{Binding LeftCurrentVm}"/>
+        <ContentControl Content="{Binding RightCurrentVm}" />
 
     </Grid>
 </Window>
