@@ -193,16 +193,10 @@ namespace Drugs2020.BLL
 
         public List<Drug> GetAllDrugs()
         {
-            //return new List<Drug>
-            //{
-            //    new Drug("1433", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png"),
-            //    new Drug("44444", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png"),
-            //    new Drug("88", "mosheroni", "pakter", "acamoli", new List<ActiveIngredient>(), @"Drugs2020.PL\Images\icons8-pill-90.png")
-            //};
             return dal.GetAllDrugs();
         }
-       
-        
+        #endregion
+
         #region ActiveIngredient CRUD Functions
         public void AddActiveIngredient(ActiveIngredient ingredient)
         {
