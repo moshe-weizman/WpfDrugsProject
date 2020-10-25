@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class AddDrugViewModel : INotifyPropertyChanged, IAddToDb, IGoBackScreenVM, IViewModel, IAddIngrediantToDrug, IDelete
+    class AddDrugViewModel : INotifyPropertyChanged, IAddToDb, IGoBackScreenVM, IViewModel, IAddIngrediantToDrug, IDelete, IBrowse
     {
         private AddDrugModel addDrugM;
 
         private DrugsManagementViewModel containingVm;
         public event PropertyChangedEventHandler PropertyChanged;
         public AddToDbCommand UpdateDbCommand { get; set; }
-        
+        public OpenFileDialogCommand FileDialogCommand { get; set; }
         public bool IsNewDrug { get; }
         public BackCommand BackCommand { get; set; }
         public AddIngredientToDrugCommand AddIngredientCommand { get; set; }
@@ -54,6 +54,7 @@ namespace Drugs2020.PL.ViewModels
             Ingredients = new ObservableCollection<ActiveIngredient>();
             AddIngredientCommand = new AddIngredientToDrugCommand(this);
             DeleteIngredientCommand = new DeleteItemCommand(this);
+            FileDialogCommand = new OpenFileDialogCommand(this);
         }
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -107,6 +108,11 @@ namespace Drugs2020.PL.ViewModels
         public bool IsUserSureToDelete()
         {
             return new DeleteDecisionViewmodel("active ingredient").Decision;
+        }
+
+        public void SavePath(string path)
+        {
+            Drug.ImageUrl = path;
         }
     }
 }
