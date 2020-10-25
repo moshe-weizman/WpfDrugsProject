@@ -26,20 +26,6 @@ namespace Drugs2020.BLL.BE
         public DateTime BirthDate { get; set; }
 
 
-        //public int Age
-        //{
-        //    get
-        //    {
-        //        if (BirthDate.HasValue == true)
-        //        {
-        //            return DateTime.Now.Year - BirthDate.Value.Year;
-        //        }
-        //        else return 0;
-        //    }
-        //}
-        //[NotMapped]
-        //public DateTime? BirthDate { get; set; }
-
         public Person(string id, string fNamen, string lName, Sex sex, string phone, string email, string address, DateTime birthDate)
         {
             ID = id;
