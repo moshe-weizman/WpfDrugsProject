@@ -157,6 +157,16 @@ namespace Drugs2020.DAL
         {
             throw new NotImplementedException();
         }
+
+        public List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Recept> GetAllReceptsByDrug(string drugIdCode)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 
