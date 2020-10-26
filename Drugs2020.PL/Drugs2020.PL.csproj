@@ -84,6 +84,7 @@
     <Compile Include="Commands\EditingItemCommand.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Models\DrugsManagementModel.cs" />
+    <Compile Include="Models\DrugStatisticsModel.cs" />
     <Compile Include="Models\MedicalRecordModel.cs" />
     <Compile Include="Models\PhysiciansManagementModel.cs" />
     <Compile Include="Models\UpdateDrugModel.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="ViewModels\AddDrugViewModel.cs" />
     <Compile Include="ViewModels\ConsumptionOfDrugsViewModel.cs" />
     <Compile Include="ViewModels\DrugsManagementViewModel.cs" />
+    <Compile Include="ViewModels\DrugStatisticsViewModel.cs" />
     <Compile Include="ViewModels\HistoricalMedicalRecordsViewModel.cs" />
     <Compile Include="ViewModels\IAddIngrediantToDrug.cs" />
     <Compile Include="ViewModels\IBrowse.cs" />
@@ -146,6 +148,9 @@
     </Compile>
     <Compile Include="Views\DrugDetails.xaml.cs">
       <DependentUpon>DrugDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DrugStatistics.xaml.cs">
+      <DependentUpon>DrugStatistics.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MedicalFile.xaml.cs">
       <DependentUpon>MedicalFile.xaml</DependentUpon>
@@ -259,6 +264,10 @@
     <Page Include="Views\DrugDetails.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DrugStatistics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MedicalFile.xaml">
       <SubType>Designer</SubType>
