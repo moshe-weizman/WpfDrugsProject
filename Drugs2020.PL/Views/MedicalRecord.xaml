@@ -23,5 +23,7 @@
             </ListView.ItemTemplate>
         </ListView>
         <Button Content="Back" VerticalAlignment="Bottom" Command="{Binding BackCommand}" />
+        
+           
     </StackPanel>
 </UserControl>
