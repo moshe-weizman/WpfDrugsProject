@@ -18,6 +18,7 @@ namespace Drugs2020.PL.Models
         public LogInModel()
         {
             bl = new BLImplementation();
+            //var testRoniKingWooYeah = bl.GetDictionaryForReceptsByDate(DateTime.Parse("1/1/2020"), DateTime.Now.Date);
         }
 
         public void IdentifyUser()

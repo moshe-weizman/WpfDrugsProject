@@ -2,6 +2,7 @@
 using Drugs2020.DAL;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
@@ -11,6 +12,14 @@ namespace Drugs2020.BLL
     {
         IDal dal = new DalImplementation();
         IPDF PDF = new SaveAsPDF();
+        public Dictionary<string, int> GetDictionaryForReceptsByDate(DateTime startDate, DateTime endDate)
+        {
+            List<Recept> recepts = GetAllReceptsByDate(startDate, endDate);
+            Dictionary<string, int> result = recepts.ToDictionary(
+                x => x.DrugGenericName,
+                x => recepts.Count(recept => recept.DrugGenericName == x.DrugGenericName));
+            return result;
+        }
 
         #region Login
         public bool ValidatePassword(IUser user, string password)
