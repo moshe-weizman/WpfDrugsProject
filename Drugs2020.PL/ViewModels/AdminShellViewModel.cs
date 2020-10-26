@@ -66,7 +66,7 @@ namespace Drugs2020.PL.ViewModels
         private PatientsManagementViewModel patientsManagementVm;
         private PhysiciansManagementViewModel physiciansManagementVm;
         private DrugsManagementViewModel drugssManagementVm;
-
+        private DrugStatisticsViewModel drugsStatisticsVm;
         public AdminShellViewModel(IGoBackScreenVM containingVm)
         {
             this.containingVm = containingVm;
@@ -77,6 +77,8 @@ namespace Drugs2020.PL.ViewModels
             physiciansTabVm = physiciansManagementVm;
             drugssManagementVm = new DrugsManagementViewModel(this);
             drugsTabVm = drugssManagementVm;
+            drugsStatisticsVm = new DrugStatisticsViewModel();
+            statisticsTabVm = drugsStatisticsVm;
         }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

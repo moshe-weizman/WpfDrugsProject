@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
              xmlns:Converters ="clr-namespace:Drugs2020.PL.Converters"
              xmlns:viewmodels="clr-namespace:Drugs2020.PL.ViewModels"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             >
     <UserControl.Resources>
         <Converters:FieldsTextToBoolConverter x:Key="fieldsTextToBoolConverter" />
     </UserControl.Resources>
@@ -34,6 +35,7 @@
             <Button Content="Log in"
                     Width="60"
                     Padding="0"
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
                     Command="{Binding LogInUserCommand}" Margin="15">
                 <Button.CommandParameter>
                     <MultiBinding Converter="{StaticResource fieldsTextToBoolConverter}">

@@ -11,7 +11,7 @@
         Height="700"
         Width="600">
     <Window.DataContext>
-        <vm:MainWidowViewModel />
+        <vm:MainWidowViewModel/>
     </Window.DataContext>
     <Grid>
         <ContentControl Content="{Binding LeftCurrentVm}" />
