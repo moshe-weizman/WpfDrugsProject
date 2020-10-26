@@ -11,18 +11,9 @@
         Height="700"
         Width="600">
     <Window.DataContext>
-        <vm:MainWidowViewModel/>
+        <vm:MainWidowViewModel />
     </Window.DataContext>
-    <Window.Resources>
-        <!--<local:MyConverter x:Key="myConverter" />-->
-    </Window.Resources>
     <Grid>
-       
-        <Image Source="/Images/medicine.jpg"
-               Stretch="UniformToFill"
-               Margin="5" />
-        <ContentControl Content="{Binding LeftCurrentVm}"/>
-        <ContentControl Content="{Binding RightCurrentVm}" />
-
+        <ContentControl Content="{Binding LeftCurrentVm}" />
     </Grid>
 </Window>
