@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Drugs2020.BLL.BE
 {
@@ -13,6 +14,8 @@ namespace Drugs2020.BLL.BE
         public string MedicalRecordID { get; set; }
         public string PatientID { get; set; }
         public string PhysicianID { get; set; }
+        [NotMapped]
+        public string PhysicianName { get; set; }
         public string Problem { get; set; }
         public string Diagnose { get; set; }
         public string Treatment { get; set; }
@@ -22,11 +25,13 @@ namespace Drugs2020.BLL.BE
 
         public MedicalRecord()
         {
+            MedicalRecordID = DateTime.Now.ToString();
             Date = DateTime.Today;
         }
 
         public MedicalRecord(string patientID, string physicianID)
         {
+            MedicalRecordID = DateTime.Now.ToString();
             PatientID = patientID;
             PhysicianID = physicianID;
             Date = DateTime.Today;

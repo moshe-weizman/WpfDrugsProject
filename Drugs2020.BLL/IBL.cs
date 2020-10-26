@@ -28,6 +28,7 @@ namespace Drugs2020.BLL
         #endregion
 
         #region MedicalRecord
+        void AddMediclRecordToPatient(MedicalRecord medicalRecord);
         bool MedicalRecordAlreadyExists(MedicalRecord medicalRecord);
         void UpdateMedicalRecord(string medicalRecordID, MedicalRecord medicalRecord);
         #endregion

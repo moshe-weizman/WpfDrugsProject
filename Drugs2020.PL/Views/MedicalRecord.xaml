@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <ListView  ScrollViewer.CanContentScroll="True" HorizontalAlignment="Center" Height="Auto"  VerticalAlignment="Top" Width="Auto" ItemsSource="{Binding MedicalRecordsCollection}">
+        <ListView   ScrollViewer.CanContentScroll="True" HorizontalAlignment="Center" Height="Auto"  VerticalAlignment="Top" Width="Auto" ItemsSource="{Binding MedicalRecordsCollection}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -16,9 +16,12 @@
                         <TextBlock Text="{Binding Diagnose, StringFormat= Diagnose:{0}}"/>
                         <TextBlock Text="{Binding Treatment, StringFormat= Treatment:{0}}"/>
                         <TextBlock Text="{Binding PhysicianNotes, StringFormat= Physician Notes:{0}}"/>
+                        <TextBlock Text="{Binding PhysicianName, StringFormat= Physician Name:{0}}"/>
+
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button Content="Back" VerticalAlignment="Bottom" Command="{Binding BackCommand}" />
     </StackPanel>
 </UserControl>

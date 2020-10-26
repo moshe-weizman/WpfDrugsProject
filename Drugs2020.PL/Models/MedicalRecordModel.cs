@@ -17,13 +17,15 @@ namespace Drugs2020.PL.Models
         {
             bl = new BLImplementation();
             MedicalRecord = new MedicalRecord(patientId, physicianId);
-            MedicalRecordsList = bl.GetAllMedicalRecordsOfPatient(patientId);
+            MedicalRecordsList = bl.GetAllMedicalRecordsOfPatient(MedicalRecord.PatientID);
+            MedicalRecordsList.ForEach(x => x.PhysicianName = bl.GetPhysician(x.PhysicianID).FirstName);
+
 
         }
 
         public void AddMedicalRecordToDb()
         {
-          //  bl.AddMediclRecordToPatient(MedicalRecord);
+            bl.AddMediclRecordToPatient(MedicalRecord);
         }
 
         public bool MedicalRecordAlreadyExists()
@@ -35,5 +37,7 @@ namespace Drugs2020.PL.Models
         {
             bl.UpdateMedicalRecord(MedicalRecord.MedicalRecordID, MedicalRecord);
         }
+
+       
     }
 }

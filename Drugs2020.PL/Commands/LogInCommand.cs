@@ -40,7 +40,7 @@ namespace Drugs2020.PL.Commands
             logInViewModel.IdentifyUser();                 
             if (logInViewModel.User != null && logInViewModel.ValidatePassword()) //צריך להשתמש בתפסית חריגה במקום
             {              
-                logInViewModel.LogUserIn(parameter as string);
+                logInViewModel.LogUserIn();
             }
             else
             {

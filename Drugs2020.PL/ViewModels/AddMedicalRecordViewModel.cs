@@ -21,7 +21,6 @@ namespace Drugs2020.PL.ViewModels
             this.containingVm = containingVm;
             BackCommand = new BackCommand(this);
             AddToDbCommand = new AddToDbCommand(this);
-            MedicalRecord = new MedicalRecord();
             this.patientId = patientId;
             this.physicianId = physicianId;
             ReplaceScreenCommand = new ReplaceScreenCommand(this);

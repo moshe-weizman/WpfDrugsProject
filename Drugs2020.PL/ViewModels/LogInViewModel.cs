@@ -45,10 +45,10 @@ namespace Drugs2020.PL.ViewModels
         {
             return logInModel.ValidatePassword();
         }
-        public void LogUserIn(string physicianId)
+        public void LogUserIn()
         {
             if (User is Physician)
-                containingVm.LeftCurrentVm= new PatientSearchViewModel(containingVm, physicianId);
+                containingVm.LeftCurrentVm= new PatientSearchViewModel(containingVm, logInModel.UserId);
             else
                 containingVm.ReplaceUC(Screen.ADMIN_SHELL);
         }

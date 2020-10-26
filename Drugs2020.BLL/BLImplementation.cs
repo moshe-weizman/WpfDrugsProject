@@ -45,7 +45,7 @@ namespace Drugs2020.BLL
         {
             dal.UpdateMedicalRecord(medicalRecordID, medicalRecord);
         }
-        public bool MedicalRecordAlreadyExists(MedicalRecord medicalRecord)
+        public bool MedicalRecordAlreadyExists(MedicalRecord medicalRecord)//לכאורה צריך לא לממש אותה
         {
             return false;
         }
@@ -59,7 +59,9 @@ namespace Drugs2020.BLL
 
         public bool MedicalFileAlreadyExists(MedicalFile medicalFile)
         {
-            throw new NotImplementedException();
+            if (dal.GetMedicalFile(medicalFile.PatientId) == null)
+                return false;
+            return true;
         }
 
         public MedicalFile GetMedicalFile(string patientID)

@@ -16,8 +16,8 @@
                             <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <TextBlock Text="{Binding DrugGenericName}"/>
-                                    <TextBlock Text="{Binding TreatmentEndDate}"/>
+                                        <TextBlock Text="{Binding DrugGenericName, StringFormat= Drug Generic Name: {0}}"/>
+                                        <TextBlock Text="{Binding TreatmentEndDate , StringFormat= Treatment End Date: {0}}"/>
                                 </StackPanel>
                             </DataTemplate>
                             </ListView.ItemTemplate>
