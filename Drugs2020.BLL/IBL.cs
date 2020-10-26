@@ -13,6 +13,7 @@ namespace Drugs2020.BLL
 
         #region Recept
         void AddRecept(Recept recept, List<string> drugsTakenPatient);
+        Dictionary<string, int> GetDictionaryForReceptsByDate(DateTime dateTime, DateTime date);
         List<Recept> GetAllReceptsOfPatient(string id);
         List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate);
         List<Recept> GetAllReceptsByDrug(string drugIdCode);
