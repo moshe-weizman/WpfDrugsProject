@@ -83,7 +83,7 @@ namespace Drugs2020.BLL
                 dal.AddRecept(recept);
         }
 
-        public bool checkConflicts(string recept, List<string> drugsTakenPatient)
+        public bool checkConflicts(string IdCodeOfDrug, List<string> drugsTakenPatient)
         {
             DrugConflictTest drugConflictTest = new DrugConflictTest();
             drugConflictTest.ConflictTest(drugsTakenPatient);
@@ -96,25 +96,6 @@ namespace Drugs2020.BLL
             //return new List<Recept>() { new Recept("123", 12, "er12", "acmol", 12, 10, DateTime.Now), new Recept("123", 12, "op2", "advil", 12, 10, DateTime.Now) };
         }
 
-        public List<Drug> GetDrugsTakenPatient(string id)//לממש את הפונקציה!!
-        {
-            return new List<Drug>()
-           {
-              new Drug("1433", "mosheroni", "pakter", "acamoli",  @"Drugs2020.PL\Images\icons8-pill-90.png"),
-                new Drug("44444", "mosheroni", "pakter", "acamoli", @"Drugs2020.PL\Images\icons8-pill-90.png"),
-                new Drug("88", "mosheroni", "pakter", "acamoli", @"Drugs2020.PL\Images\icons8-pill-90.png")
-
-           };
-        }
-
-       public List<Drug> GetDrugsPreviouslyTakenPatient(string id)//לממש את הפונקציה!!
-        {
-            return new List<Drug>()
-           {
-             new Drug("88", "mosheroni", "pakter", "acamoli", @"Drugs2020.PL\Images\icons8-pill-90.png")
-
-           };
-        }
         public List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate)
         {
             return dal.GetAllReceptsByDate(startDate, endDate);
