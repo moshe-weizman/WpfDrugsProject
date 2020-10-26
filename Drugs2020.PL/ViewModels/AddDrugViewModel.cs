@@ -29,6 +29,19 @@ namespace Drugs2020.PL.ViewModels
             get { return addDrugM.Drug; }
             set { addDrugM.Drug = value; }
         }
+        private string imageUrl;
+
+        public string ImageUrl
+        {
+            get { return imageUrl; }
+            set 
+            { 
+                imageUrl = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("ImageUrl"));
+            }
+        }
+
         private ActiveIngredient ingredientToAdd;
         public ActiveIngredient IngredientToAdd
         {
@@ -68,6 +81,7 @@ namespace Drugs2020.PL.ViewModels
         }
         public void AddItemToDb()
         {
+            addDrugM.Drug.ImageUrl = ImageUrl;
             addDrugM.AddDrugToDb();
             containingVm.Items.Add(Drug);
             GoBack();
@@ -112,7 +126,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void SavePath(string path)
         {
-            Drug.ImageUrl = path;
+            ImageUrl = path;
         }
     }
 }

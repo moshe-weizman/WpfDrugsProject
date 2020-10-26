@@ -33,7 +33,9 @@ namespace Drugs2020.PL.Commands
 
         public void Execute(object parameter)
         {
-            string path = new OpenFileDialog().FileName;
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.ShowDialog();
+            string path = openFile.FileName;
             viewModel.SavePath(path);
         }
     }

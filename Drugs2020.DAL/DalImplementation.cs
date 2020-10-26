@@ -168,7 +168,7 @@ namespace Drugs2020.DAL
         }
         public void DeleteActiveIngredient(ActiveIngredient ingredient)
         {
-            ctx.ActiveIngredients.Remove(ctx.ActiveIngredients.Find(ingredient));
+            ctx.ActiveIngredients.Remove(ctx.ActiveIngredients.Find(ingredient.ID));
             ctx.SaveChanges();
         }
 

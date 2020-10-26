@@ -97,8 +97,8 @@
                   ItemsSource="{Binding Ingredients}" />
         <TextBlock Text="Drug Image:" />
         <StackPanel Orientation="Horizontal">
-            <TextBox x:Name="ImageUrl"
-                     Text="{Binding Drug.ImageUrl}"
+            <TextBox x:Name="Url"
+                     Text="{Binding ImageUrl}"
                      Margin="10"
                      Width="180" />
             <Button Content="Browse"
@@ -106,7 +106,7 @@
                     Margin="10"
                     HorizontalAlignment="Right" />
         </StackPanel>
-        <Image Source="{Binding ElementName=ImageUrl, Path=Text}"
+        <Image Source="{Binding ImageUrl}"
                Stretch="UniformToFill" 
                Width="200"
                Height="150"/>
