@@ -15,9 +15,10 @@ namespace Drugs2020.BLL
         public Dictionary<string, int> GetDictionaryForReceptsByDate(DateTime startDate, DateTime endDate)
         {
             List<Recept> recepts = GetAllReceptsByDate(startDate, endDate);
-            Dictionary<string, int> result = recepts.ToDictionary(
-                x => x.DrugGenericName,
-                x => recepts.Count(recept => recept.DrugGenericName == x.DrugGenericName));
+            Dictionary<string, int> result = recepts
+                .GroupBy(x => x.DrugGenericName)
+                .ToDictionary(group => group.Key,
+                group => group.Count());
             return result;
         }
 
