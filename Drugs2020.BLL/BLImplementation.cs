@@ -95,7 +95,7 @@ namespace Drugs2020.BLL
         public bool checkConflicts(string IdCodeOfDrug, List<string> drugsTakenPatient)
         {
             DrugConflictTest drugConflictTest = new DrugConflictTest();
-            drugConflictTest.ConflictTest(drugsTakenPatient);
+            drugConflictTest.ConflictTest(IdCodeOfDrug, drugsTakenPatient);
             return true;
         }
 

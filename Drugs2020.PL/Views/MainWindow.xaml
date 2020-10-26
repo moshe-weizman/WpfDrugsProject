@@ -4,6 +4,7 @@
         xmlns:vm="clr-namespace:Drugs2020.PL.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Drugs2020.PL"
         xmlns:uc="clr-namespace:Drugs2020.PL.Views"
         mc:Ignorable="d"
@@ -14,7 +15,11 @@
         <vm:MainWidowViewModel/>
     </Window.DataContext>
     <Window.Resources>
-        <!--<local:MyConverter x:Key="myConverter" />-->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ButtonStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
     <Grid>
        
@@ -22,7 +27,7 @@
                Stretch="UniformToFill"
                Margin="5" />
         <ContentControl Content="{Binding LeftCurrentVm}"/>
-        <ContentControl Content="{Binding RightCurrentVm}" />
+        <ContentControl Content="{Binding RightCurrentVm}"/>
 
     </Grid>
 </Window>

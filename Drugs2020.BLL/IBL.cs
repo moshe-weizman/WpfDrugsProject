@@ -54,8 +54,7 @@ namespace Drugs2020.BLL
         void AddDrug(Drug drug);
         Drug GetDrug(string id);
         List<Drug> GetAllDrugs();
-        List<Drug> GetDrugsTakenPatient(string id);
-        List<Drug> GetDrugsPreviouslyTakenPatient(string id);
+      
         void UpdateDrug(string id, Drug updatedDrug);
         void DeleteDrug(string id);
         #endregion

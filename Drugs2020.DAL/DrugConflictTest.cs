@@ -9,7 +9,7 @@ namespace Drugs2020.DAL
 {
     public class DrugConflictTest
     {
-        public string ConflictTest(List<string> drugsTakenPatient)
+        public string ConflictTest(string IdCodeOfNewDrug, List<string> drugsTakenPatient)
         {
             if ((drugsTakenPatient==null) ||(drugsTakenPatient.Count() < 2))
                 return null;
@@ -19,6 +19,7 @@ namespace Drugs2020.DAL
             {
                 uri += (i==0?"":"+") + drugsTakenPatient.ElementAt(i);
             }
+            uri += "+" + IdCodeOfNewDrug;
            // var uri = @"https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=207106+152923+656659";
 
             var client = new RestClient(uri);
