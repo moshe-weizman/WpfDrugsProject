@@ -10,6 +10,7 @@ namespace Drugs2020.BLL
     public class BLImplementation : IBL
     {
         IDal dal = new DalImplementation();
+        IPDF PDF = new SaveAsPDF();
 
         #region Login
         public bool ValidatePassword(IUser user, string password)
@@ -234,7 +235,7 @@ namespace Drugs2020.BLL
 
         public void CreatePDF(Recept recept)
         {
-            throw new NotImplementedException();
+            PDF.SavaPDF(recept.ToString());
         }
 
         #endregion

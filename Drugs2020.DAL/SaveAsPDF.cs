@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.DAL
 {
-    public class SaveAsPDF
+    public class SaveAsPDF:IPDF
     {
-        public void func()
+        public void SavaPDF(string data)
         {
             PdfDocument document = new PdfDocument();
             PdfPage page = document.AddPage();
             XGraphics gfx = XGraphics.FromPdfPage(page);
             XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
             gfx.DrawString(
-                "Hello, World!", font, XBrushes.Black,
+                data, font, XBrushes.Black,
                 new XRect(0, 0, page.Width, page.Height),
                 XStringFormat.Center
                 );
-            string filename = "HelloWorld.pdf";
+            string filename = "recept.pdf";
             document.Save(filename);
             Process.Start(filename);
         }
