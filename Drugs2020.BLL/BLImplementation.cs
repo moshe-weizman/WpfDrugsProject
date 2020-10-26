@@ -80,14 +80,16 @@ namespace Drugs2020.BLL
         public void AddRecept(Recept recept, List<string> drugsTakenPatient)
         {
             if(checkConflicts(recept.IdCodeOfDrug, drugsTakenPatient))
-                 dal.AddRecept(recept);
-
+                dal.AddRecept(recept);
         }
 
         public bool checkConflicts(string recept, List<string> drugsTakenPatient)
         {
+            DrugConflictTest drugConflictTest = new DrugConflictTest();
+            drugConflictTest.ConflictTest(drugsTakenPatient);
             return true;
         }
+
         public List<Recept> GetAllReceptsOfPatient(string id)
         {
              return dal.GetAllReceptsOfPatient(id);

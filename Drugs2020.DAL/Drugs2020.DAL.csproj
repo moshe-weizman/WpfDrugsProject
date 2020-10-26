@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DalImplementation.cs" />
+    <Compile Include="DrugConflictTest.cs" />
     <Compile Include="GoogleDrive.cs" />
     <Compile Include="ICloudForImage.cs" />
     <Compile Include="IDal.cs" />
