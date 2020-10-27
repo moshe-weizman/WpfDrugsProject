@@ -17,6 +17,7 @@ namespace Drugs2020.BLL
         List<Recept> GetAllReceptsOfPatient(string id);
         List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate);
         List<Recept> GetAllReceptsByDrug(string drugIdCode);
+        Dictionary<string, int> GetDictionaryForReceptsByDrug(string chosenDrug);
         void CreatePDF(Recept recept);
         #endregion
 

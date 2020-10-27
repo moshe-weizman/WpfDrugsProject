@@ -6,29 +6,37 @@
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
              xmlns:Converters ="clr-namespace:Drugs2020.PL.Converters"
              xmlns:viewmodels="clr-namespace:Drugs2020.PL.ViewModels"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             >
     <UserControl.Resources>
         <Converters:FieldsTextToBoolConverter x:Key="fieldsTextToBoolConverter" />
     </UserControl.Resources>
 
-        <StackPanel  Margin="5"  VerticalAlignment="Center" >
+        <StackPanel Width="180" Margin="5"  VerticalAlignment="Center" >
 
             <TextBlock TextWrapping="Wrap"
-                       Text="User ID:" />
-        <TextBox Name="TextBoxID" 
+                       Text="User ID:"
+                   Margin="15" />
+            <TextBox Name="TextBoxID"
                      Height="23"
                      TextWrapping="Wrap"
-                     Text="{Binding UserId}" />
+                 Text="{Binding UserId}"
+                 Margin="15" />
 
             <TextBlock TextWrapping="Wrap"
-                       Text="Password" />
+                   Text="Password"
+                   Margin="15" />
             <TextBox Name="PasswordTextBox"
                      Height="23"
                      TextWrapping="Wrap"
-                     Text="{Binding Password}" />
+                 Text="{Binding Password}"
+                 Margin="15" />
 
             <Button Content="Log in"
-                    Command="{Binding LogInUserCommand}" Margin="10" >
+                    Width="60"
+                    Padding="0"
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                    Command="{Binding LogInUserCommand}" Margin="15">
                 <Button.CommandParameter>
                     <MultiBinding Converter="{StaticResource fieldsTextToBoolConverter}">
                         <Binding Path="Text"
