@@ -40,7 +40,7 @@
         <TextBlock TextWrapping="Wrap" Text="Days:"/>
         <TextBox x:Name="DaysTextBox" Height="23" TextWrapping="Wrap" Text="{Binding Recept.Days}"/>
 
-        <Button Style="{StaticResource ButtonStyle}" Content="Create PDF File" d:LayoutOverrides="Height" Margin="10" Command="{Binding OperationCommand}"/>
+        <Button Content="Create PDF File" d:LayoutOverrides="Height" Margin="10" Command="{Binding OperationCommand}"/>
         
         <Button Content="Add Recept" d:LayoutOverrides="Height" Margin="10" Command="{Binding AddToDbCommand}">
             <Button.CommandParameter>

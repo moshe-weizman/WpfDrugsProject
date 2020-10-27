@@ -16,16 +16,16 @@ namespace Drugs2020.PL.ViewModels
             get { return drugStatisticsM.ReceptsByDate; }
             set { drugStatisticsM.ReceptsByDate = value; }
         }
-        public Dictionary<string, int> ReceptsByDate
-        {
-            get { return drugStatisticsM.ReceptsByDate; }
-            set { drugStatisticsM.ReceptsByDate = value; }
-        }
-        public Dictionary<string, int> ReceptsByDate
-        {
-            get { return drugStatisticsM.ReceptsByDate; }
-            set { drugStatisticsM.ReceptsByDate = value; }
-        }
+        //public Dictionary<string, int> ReceptsByDate
+        //{
+        //    get { return drugStatisticsM.ReceptsByDate; }
+        //    set { drugStatisticsM.ReceptsByDate = value; }
+        //}
+        //public Dictionary<string, int> ReceptsByDate
+        //{
+        //    get { return drugStatisticsM.ReceptsByDate; }
+        //    set { drugStatisticsM.ReceptsByDate = value; }
+        //}
 
         public DrugStatisticsViewModel()
         {
