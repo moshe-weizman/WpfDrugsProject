@@ -7,7 +7,7 @@
              mc:Ignorable="d">
     <UserControl.Resources>
         <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
-        
+
     </UserControl.Resources>
     <StackPanel>
         <TextBlock TextWrapping="Wrap" Text="Drug:"/>
@@ -36,12 +36,12 @@
 
         <TextBlock TextWrapping="Wrap" Text="Quantity:"/>
         <TextBox x:Name="QuantityTextBox"  Height="23" TextWrapping="Wrap" Text="{Binding Recept.Quantity}"/>
-        
+
         <TextBlock TextWrapping="Wrap" Text="Days:"/>
         <TextBox x:Name="DaysTextBox" Height="23" TextWrapping="Wrap" Text="{Binding Recept.Days}"/>
 
-        <Button Style="{StaticResource ButtonStyle}" Content="Create PDF File" d:LayoutOverrides="Height" Margin="10" Command="{Binding OperationCommand}"/>
-        
+        <Button  Content="Create PDF File" Margin="10" Command="{Binding OperationCommand}" />
+
         <Button Content="Add Recept" d:LayoutOverrides="Height" Margin="10" Command="{Binding AddToDbCommand}">
             <Button.CommandParameter>
                 <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
@@ -55,7 +55,7 @@
 
             </Button.CommandParameter>
         </Button>
-        
+
 
 
     </StackPanel>

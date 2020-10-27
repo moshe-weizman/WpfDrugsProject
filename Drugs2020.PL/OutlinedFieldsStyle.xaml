@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Drugs2020.PL"
+                     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+
+    <Style x:Key="OutlinedFieldsStyle" BasedOn="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" TargetType="TextBox">
+       
+        <Setter Property="VerticalAlignment" Value="Top"/>
+
+        <Setter Property="Height" Value="100"/>
+        <Setter Property="AcceptsReturn" Value="True"/>
+        <Setter Property="TextWrapping"  Value="Wrap"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="materialDesign:HintAssist.Hint"  Value="{Binding Path=Name}"/>
+        <Setter Property="IsEnabled" Value="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
+
+        </Style>
+</ResourceDictionary>

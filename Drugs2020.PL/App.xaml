@@ -11,7 +11,12 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
                 <ResourceDictionary Source="DataTemplates.xaml" />
+                <ResourceDictionary Source="ButtonStyle.xaml"/>
+                <ResourceDictionary Source="OutlinedFieldsStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+           
+                    
+                
         </ResourceDictionary>
     </Application.Resources>
 </Application>

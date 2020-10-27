@@ -11,7 +11,7 @@
         <StackPanel Margin="5" VerticalAlignment="Center"  Grid.Column="0">
         <TextBlock Text="Patient ID:"
                    TextWrapping="Wrap" />
-        <TextBox x:Name="PatientIDTextBox"
+        <TextBox x:Name="PatientIDTextBox" 
                  Text="{Binding PatientId}"
                  Height="23"
                  TextWrapping="Wrap" />
@@ -19,7 +19,7 @@
                 Command="{Binding PatientSelectionCommand}" Margin="10"
                 CommandParameter="{Binding Text, ElementName=PatientIDTextBox}"
                 Content="Search" />
-            <Button Content="Back" Command="{Binding BackCommand}" Margin="10"/>
+            <Button Content="Back" Command="{Binding BackCommand}" Margin="10" />
 
         </StackPanel>
     
