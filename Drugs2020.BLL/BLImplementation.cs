@@ -21,6 +21,16 @@ namespace Drugs2020.BLL
                 group => group.Count());
             return result;
         }
+        public Dictionary<string, int> GetDictionaryForReceptsByDrug(string chosenDrug)
+        {
+            List<Recept> recepts = GetAllReceptsByDrug(chosenDrug);
+            Dictionary<string, int> result = recepts
+                .GroupBy(x => x.Date.ToShortDateString())
+                .ToDictionary(group => group.Key,
+                group => group.Count());
+            return result;
+        }
+
 
         #region Login
         public bool ValidatePassword(IUser user, string password)
@@ -230,7 +240,6 @@ namespace Drugs2020.BLL
         {
             PDF.SavaPDF(recept.ToString());
         }
-
         #endregion
     }
 }

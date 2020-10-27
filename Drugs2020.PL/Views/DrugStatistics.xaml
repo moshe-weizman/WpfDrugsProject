@@ -12,12 +12,7 @@
         <DVC:Chart Name="MyChart"
                    Width="400"
                    Height="250">
-            <DVC:Chart.PlotAreaStyle>
-                <Style TargetType="Grid">
-                    <Setter Property="Background"
-                            Value="White" />
-                </Style>
-            </DVC:Chart.PlotAreaStyle>
+            
             <DVC:Chart.LegendStyle>
                 <Style TargetType="Control">
                     <Setter Property="Width"
@@ -31,7 +26,7 @@
                               ItemsSource="{Binding ReceptsByDate}"
                               IndependentValueBinding="{Binding Key}"
                               DependentValueBinding="{Binding Value}">
-                <DVC:ColumnSeries.DataPointStyle>
+                <!--<DVC:ColumnSeries.DataPointStyle>
                     <Style TargetType="DVC:ColumnDataPoint">
                         <Setter Property="Background"
                                 Value="#ff217346" />
@@ -42,7 +37,7 @@
 
                     </Style>
 
-                </DVC:ColumnSeries.DataPointStyle>
+                </DVC:ColumnSeries.DataPointStyle>-->
             </DVC:ColumnSeries>
         </DVC:Chart>
     </Grid>
