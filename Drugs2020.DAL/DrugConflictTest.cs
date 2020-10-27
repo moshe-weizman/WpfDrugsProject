@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
 using RestSharp;
 using DataFormat = RestSharp.DataFormat;
 using Newtonsoft.Json;
+using System.Xml;
 
 namespace Drugs2020.DAL
 {
-    public class DrugConflictTest
+    public class DrugConflictTest: IDrugsConflict
     {
         public string ConflictTest(string IdCodeOfNewDrug, List<string> drugsTakenPatient)
         {
@@ -55,9 +55,28 @@ namespace Drugs2020.DAL
             }
             return resultText;
         }
+       
+        public int ResolveRxcuiFromName(string name)
+        {
+            XmlDocument drugsNums = new XmlDocument();
+            drugsNums.Load("mainxml.xml");
 
+            int result = 0;
+            XmlElement root = drugsNums.DocumentElement;
+            XmlNodeList nodes = root.SelectNodes("minConcept"); // You can also use XPath here
+            foreach (XmlNode node in nodes)
+            {
+                XmlNodeList properties = node.ChildNodes;
+                if (properties[1].InnerText == name)
+                {
+                    result = int.Parse(properties[0].InnerText);
+                    break;
+                }
+            }
+            return result;
+        }
     }
-
+    #region helper class
     public class UserInput
     {
         public List<string> sources { get; set; }
@@ -117,5 +136,5 @@ namespace Drugs2020.DAL
         public UserInput userInput { get; set; }
         public List<FullInteractionTypeGroup> fullInteractionTypeGroup { get; set; }
     }
-
+    #endregion
 }
