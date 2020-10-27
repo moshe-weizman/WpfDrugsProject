@@ -97,17 +97,16 @@ namespace Drugs2020.BLL
         #endregion
 
         #region Recept & Drugs-Taken Functions
-        public void AddRecept(Recept recept, List<string> drugsTakenPatient)
+        public void AddRecept(Recept recept)
         {
-            //if(checkConflicts(recept.IdCodeOfDrug, drugsTakenPatient))
                 dal.AddRecept(recept);
         }
 
-        public bool checkConflicts(string IdCodeOfDrug, List<string> drugsTakenPatient)
+        public string checkConflicts(string IdCodeOfDrug, List<string> drugsTakenPatient)
         {
             DrugConflictTest drugConflictTest = new DrugConflictTest();
-            drugConflictTest.ConflictTest(IdCodeOfDrug, drugsTakenPatient);
-            return true;
+            string result = drugConflictTest.ConflictTest(IdCodeOfDrug, drugsTakenPatient);
+            return result;
         }
 
         public List<Recept> GetAllReceptsOfPatient(string id)
