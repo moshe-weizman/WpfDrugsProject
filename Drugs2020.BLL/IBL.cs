@@ -12,7 +12,8 @@ namespace Drugs2020.BLL
         IUser IdentifyUser(string userID);
 
         #region Recept
-        void AddRecept(Recept recept, List<string> drugsTakenPatient);
+        void AddRecept(Recept recept);
+        string checkConflicts(string IdCodeOfDrug, List<string> drugsTakenPatient);
         Dictionary<string, int> GetDictionaryForReceptsByDate(DateTime dateTime, DateTime date);
         List<Recept> GetAllReceptsOfPatient(string id);
         List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate);

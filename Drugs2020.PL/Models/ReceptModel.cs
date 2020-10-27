@@ -14,10 +14,13 @@ namespace Drugs2020.PL.Models
         public Recept Recept { get; set; }
         public List<Drug> DrugList { get; set; }
         public List<Recept> AllRecepts { get; set; }
+        public string Conflicts { get; set; }
+        private string patientId;
 
         public ReceptModel(string patientId, string physicianId)
         {
             bl = new BLImplementation();
+            this.patientId = patientId;
             Recept = new Recept(patientId, physicianId);
             DrugList = bl.GetAllDrugs();
             AllRecepts = bl.GetAllReceptsOfPatient(patientId);
@@ -26,9 +29,10 @@ namespace Drugs2020.PL.Models
 
         public void AddRecept()
         {
-            
-            bl.AddRecept(Recept, AllRecepts.Select(x => x.IdCodeOfDrug).ToList());
-            
+            Conflicts = bl.checkConflicts(Recept.IdCodeOfDrug, AllRecepts.Select(x => x.IdCodeOfDrug).ToList());
+            //לתת לו להחליט אם רוצה להוסיף
+            bl.AddRecept(Recept);
+            AllRecepts = bl.GetAllReceptsOfPatient(patientId);
         }
 
         public bool ReceptAlreadyExists()
