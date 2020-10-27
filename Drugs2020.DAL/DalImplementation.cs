@@ -130,7 +130,8 @@ namespace Drugs2020.DAL
         }
         public List<Recept> GetAllReceptsByDrug(string drugIdCode)
         {
-            return ctx.Recepts.Where(r => r.DrugGenericName == ctx.Drugs.Find(drugIdCode).Name).ToList();
+            //string name = ctx.Drugs.Find(drugIdCode).Name;
+            return ctx.Recepts.Where(r => r.IdCodeOfDrug == drugIdCode).ToList();
         }
         #endregion
 

@@ -99,7 +99,7 @@ namespace Drugs2020.BLL
         #region Recept & Drugs-Taken Functions
         public void AddRecept(Recept recept, List<string> drugsTakenPatient)
         {
-            if(checkConflicts(recept.IdCodeOfDrug, drugsTakenPatient))
+            //if(checkConflicts(recept.IdCodeOfDrug, drugsTakenPatient))
                 dal.AddRecept(recept);
         }
 

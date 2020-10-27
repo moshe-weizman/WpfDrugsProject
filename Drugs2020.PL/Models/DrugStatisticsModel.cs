@@ -18,6 +18,7 @@ namespace Drugs2020.PL.Models
         {
             bl = new BLImplementation();
             ReceptsByDate = bl.GetDictionaryForReceptsByDate(DateTime.Parse("1/1/2020"), DateTime.Now.Date);
+            ChosenDrug = "323232";
             ReceptsByDrug = bl.GetDictionaryForReceptsByDrug(ChosenDrug);
 
         }
