@@ -12,12 +12,11 @@ namespace Drugs2020.PL.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private IGoBackScreenVM containingVm;
-        public bool IsDecisionMessageShown { get; set; }
-        public bool Decision { get; set; }
         public string UserName { get; set; }
         public bool IsBusy { get; set; }
         public string Message { get; set; }
         public BackCommand SignOutCommand { get; set; }
+        public IViewModel DecisionMessage { get; set; }
         private IViewModel patientsTabVm; 
         public IViewModel PatientsTabVm
         {
