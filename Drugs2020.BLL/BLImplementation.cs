@@ -241,5 +241,12 @@ namespace Drugs2020.BLL
             PDF.SavaPDF(recept.ToString());
         }
         #endregion
+
+        #region Utility
+        private int CalcAge(DateTime birth)
+        {
+            return 770;
+        }
+        #endregion
     }
 }

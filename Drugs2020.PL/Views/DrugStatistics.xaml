@@ -9,8 +9,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <DVC:Chart Name="MyChart"
-                   Width="400"
+        <DVC:Chart Width="400"
                    Height="250">
             
             <DVC:Chart.LegendStyle>
