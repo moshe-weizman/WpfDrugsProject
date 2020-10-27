@@ -95,6 +95,7 @@
     <Compile Include="PharmacyContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveAsPDF.cs" />
+    <Compile Include="SeedData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
