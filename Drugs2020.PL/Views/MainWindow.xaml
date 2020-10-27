@@ -4,6 +4,7 @@
         xmlns:vm="clr-namespace:Drugs2020.PL.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Drugs2020.PL"
         xmlns:uc="clr-namespace:Drugs2020.PL.Views"
         mc:Ignorable="d"
@@ -13,7 +14,16 @@
     <Window.DataContext>
         <vm:MainWidowViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+        
+    </Window.Resources>
     <Grid>
-        <ContentControl Content="{Binding LeftCurrentVm}" />
+       
+        <Image Source="/Images/medicine.jpg"
+               Stretch="UniformToFill"
+               Margin="5" />
+        <ContentControl Content="{Binding LeftCurrentVm}"/>
+        <ContentControl Content="{Binding RightCurrentVm}"/>
+
     </Grid>
 </Window>
