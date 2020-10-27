@@ -36,15 +36,15 @@ namespace Drugs2020.DAL
             #region madicel 
             #region Drug   
             IList<Drug> defaultSDrugs = new List<Drug>();
-            defaultSDrugs.Add(new Drug() { IdCode = "9478", Name = "Rulid", GenericName = "Roxithromycin", Manufacturer = "Sanofi Winthrop Industrie, France", ImageUrl = ""});
-            defaultSDrugs.Add(new Drug() { IdCode = "235743", Name = "Glucophage Caplets", GenericName = "Metformin Hydrochloride", Manufacturer = "Teva Pharmaceutical Industries Ltd, Israel", ImageUrl = "" });
-            defaultSDrugs.Add(new Drug() { IdCode = "212446", Name = "Azenil Capsules", GenericName = "Azithromycin", Manufacturer = "Haupt Pharma Latina S.r.l, Italy", ImageUrl = "" });
-            defaultSDrugs.Add(new Drug() { IdCode = "206812", Name = "Etopan", GenericName = "Etodolac", Manufacturer = "Taro Pharmaceutical Industries", ImageUrl = "" });
-            defaultSDrugs.Add(new Drug() { IdCode = "1111639", Name = "Copaxone", GenericName = "Glatiramer Acetate", Manufacturer = "Teva Pharmaceutical Industries Ltd, Israel", ImageUrl = "" });
-            defaultSDrugs.Add(new Drug() { IdCode = "979093", Name = "Plaquenil", GenericName = "Hydroxychloroquine Sulphate", Manufacturer = "Sanofi Winthrop Industrie, France", ImageUrl = "" });
-            defaultSDrugs.Add(new Drug() { IdCode = "1091142", Name = "Ritalin", GenericName = "Methylphenidate Hydrochloride", Manufacturer = "Novartis Pharma Stein AG Switzerland", ImageUrl = "" });
+            defaultSDrugs.Add(new Drug() { IdCode = "9478", Name = "Rulid", GenericName = "Roxithromycin", Manufacturer = "Sanofi", ImageUrl = ""});
+            defaultSDrugs.Add(new Drug() { IdCode = "235743", Name = "Glucophage Caplets", GenericName = "Metformin Hydrochloride", Manufacturer = "Teva", ImageUrl = "" });
+            defaultSDrugs.Add(new Drug() { IdCode = "212446", Name = "Azenil Capsules", GenericName = "Azithromycin", Manufacturer = "Pfizer", ImageUrl = "" });
+            defaultSDrugs.Add(new Drug() { IdCode = "206812", Name = "Etopan", GenericName = "Etodolac", Manufacturer = "Taro", ImageUrl = "" });
+            defaultSDrugs.Add(new Drug() { IdCode = "1111639", Name = "Copaxone", GenericName = "Glatiramer Acetate", Manufacturer = "Teva", ImageUrl = "" });
+            defaultSDrugs.Add(new Drug() { IdCode = "979093", Name = "Plaquenil", GenericName = "Hydroxychloroquine Sulphate", Manufacturer = "Sanofi", ImageUrl = "" });
+            defaultSDrugs.Add(new Drug() { IdCode = "1091142", Name = "Ritalin", GenericName = "Methylphenidate Hydrochloride", Manufacturer = "Novartis", ImageUrl = "" });
             defaultSDrugs.Add(new Drug() { IdCode = "731532", Name = "Advil Forte 400", GenericName = "Ibuprofen", Manufacturer = "Wyeth Lederle", ImageUrl = "" });
-            defaultSDrugs.Add(new Drug() { IdCode = "314209", Name = "Rizalt Tablets", GenericName = "Rizatriptan", Manufacturer = "Merck Sharp & Dohme Corp., USA", ImageUrl = "" });
+            defaultSDrugs.Add(new Drug() { IdCode = "314209", Name = "Rizalt Tablets", GenericName = "Rizatriptan", Manufacturer = "MSD", ImageUrl = "" });
             context.Drugs.AddRange(defaultSDrugs);
             #endregion
 
