@@ -4,15 +4,14 @@ using System.Data.Entity;
 namespace Drugs2020.DAL
 {
     public class PharmacyContext : DbContext
-    {                                                           
-        public PharmacyContext() : base("test_25")
-        {
-            //Database.SetInitializer(new SeedData());
-        }
-
+    {
+        public PharmacyContext() : base("test_26")
+        {}
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Physician> Physicians { get; set; }
-       
+        public DbSet<Admin> Admins { get; set; }
+
+
         public DbSet<Drug> Drugs { get; set; }
         public DbSet<MedicalFile> MedicalFiles { get; set; }
         public DbSet<Recept> Recepts { get; set; }

@@ -6,13 +6,27 @@
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel Height="Auto">
+    <Grid>
+        <StackPanel Height="Auto">
         <TabControl Height="Auto">
             <TabItem Header="Present">
                 <Grid Background="#FFE5E5E5">
 
                     <StackPanel>
-                        <ListView  ScrollViewer.CanContentScroll="True" HorizontalAlignment="Left" Height="Auto"  VerticalAlignment="Top" Width="Auto" ItemsSource="{Binding DrugsTake}">
+                        <ListView 
+  ItemsSource="{Binding DrugsTake}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn
+        DisplayMemberBinding="{Binding DrugGenericName}"
+        Header="Drug Generic Name" />
+                                    <GridViewColumn
+        DisplayMemberBinding="{Binding TreatmentEndDate}"
+        Header="Treatment End Date" />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <!--<ListView  ScrollViewer.CanContentScroll="True" HorizontalAlignment="Left" Height="Auto"  VerticalAlignment="Top" Width="Auto" ItemsSource="{Binding DrugsTake}">
                             <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
@@ -21,7 +35,7 @@
                                 </StackPanel>
                             </DataTemplate>
                             </ListView.ItemTemplate>
-                        </ListView>
+                        </ListView>-->
                     </StackPanel>
                 </Grid>
             </TabItem>
@@ -29,7 +43,20 @@
             <TabItem Header="Past">
                 <Grid Background="#FFE5E5E5">
                     <StackPanel>
-                        <ListView HorizontalAlignment="Left" Height="Auto"  VerticalAlignment="Top" Width="Auto" ItemsSource="{Binding DrugsPreviouslyTaken}"  ScrollViewer.CanContentScroll="True">
+                        <ListView 
+  ItemsSource="{Binding DrugsPreviouslyTaken}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn
+        DisplayMemberBinding="{Binding DrugGenericName}"
+        Header="Drug Generic Name" />
+                                    <GridViewColumn
+        DisplayMemberBinding="{Binding TreatmentEndDate}"
+        Header="Treatment End Date" />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <!--<ListView HorizontalAlignment="Left" Height="Auto"  VerticalAlignment="Top" Width="Auto" ItemsSource="{Binding DrugsPreviouslyTaken}"  ScrollViewer.CanContentScroll="True">
                             <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
@@ -38,12 +65,13 @@
                                 </StackPanel>
                             </DataTemplate>
                             </ListView.ItemTemplate>
-                        </ListView>
+                        </ListView>-->
                     </StackPanel>
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button Content="Back" Command="{Binding BackCommand}" Margin="10"/> 
 
     </StackPanel>
+    <Button Content="Back" Command="{Binding BackCommand}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Bottom"/>
+   </Grid>
 </UserControl>

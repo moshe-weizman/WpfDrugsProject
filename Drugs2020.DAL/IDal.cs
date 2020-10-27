@@ -7,6 +7,8 @@ namespace Drugs2020.DAL
 {
     public interface IDal
     {
+        IUser IdentifyUser(string userID);
+
         #region Patient CRUD Functions
         void AddPatient(Patient patient);
         Patient GetPatient(string id);

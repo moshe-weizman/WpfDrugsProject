@@ -7,7 +7,41 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <ListView   ScrollViewer.CanContentScroll="True" HorizontalAlignment="Center" Height="Auto"  VerticalAlignment="Top" Width="Auto" ItemsSource="{Binding MedicalRecordsCollection}">
+        <ListView 
+  ItemsSource="{Binding MedicalRecordsCollection}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn
+        DisplayMemberBinding="{Binding Date}"
+        Header="Date" />
+                    <GridViewColumn
+        DisplayMemberBinding="{Binding Problem}"
+        Header="Problem" />
+                    <GridViewColumn
+        DisplayMemberBinding="{Binding Diagnose}"
+        Header="Diagnose" />
+                    <GridViewColumn
+        DisplayMemberBinding="{Binding Treatment}"
+        Header="Treatment" />
+                    <GridViewColumn
+        DisplayMemberBinding="{Binding PhysicianNotes}"
+        Header="Physician Notes" />
+                    <GridViewColumn
+        DisplayMemberBinding="{Binding PhysicianName}"
+        Header="Physician Name" />
+                    <GridViewColumn>
+                        <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                                <Button Content="Edit" IsEnabled="{Binding AbleEdit}" />
+                        </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+        
+    
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <!--<ListView   ScrollViewer.CanContentScroll="True" HorizontalAlignment="Center" Height="Auto"  VerticalAlignment="Top" Width="Auto" ItemsSource="{Binding MedicalRecordsCollection}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -21,7 +55,7 @@
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
+        </ListView>-->
         <Button Content="Back" VerticalAlignment="Bottom" Command="{Binding BackCommand}" />
         
            

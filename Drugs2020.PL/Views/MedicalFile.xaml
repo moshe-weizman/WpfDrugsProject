@@ -16,10 +16,10 @@
         <TextBox x:Name="Height" Height="23" TextWrapping="Wrap" Text="{Binding MedicalFile.Height}"/>
 
         <TextBlock TextWrapping="Wrap" Text="Chronic Illness:"/>
-        <TextBox x:Name="ChronicIllness" Height="23" TextWrapping="Wrap" Text="{Binding MedicalFile.ChronicIllness}"/>
+        <TextBox x:Name="ChronicIllness" Style="{StaticResource OutlinedFieldsStyle}"  TextWrapping="Wrap" Text="{Binding MedicalFile.ChronicIllness}"/>
 
         <TextBlock TextWrapping="Wrap" Text="Drug Allergy:"/>
-        <TextBox x:Name="DrugAllergy" Height="23" TextWrapping="Wrap" Text="{Binding MedicalFile.DrugAllergy}"/>
+        <TextBox x:Name="DrugAllergy" Style="{StaticResource OutlinedFieldsStyle}"  TextWrapping="Wrap" Text="{Binding MedicalFile.DrugAllergy}"/>
 
         <Button Content="Add/Update" Command="{Binding AddToDbCommand}" Margin="10" d:LayoutOverrides="Height">
             <Button.CommandParameter>

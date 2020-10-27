@@ -17,7 +17,7 @@
             <TextBlock TextWrapping="Wrap"
                        Text="User ID:"
                    Margin="15" />
-            <TextBox Name="TextBoxID"
+        <TextBox Name="TextBoxID" 
                      Height="23"
                      TextWrapping="Wrap"
                  Text="{Binding UserId}"
