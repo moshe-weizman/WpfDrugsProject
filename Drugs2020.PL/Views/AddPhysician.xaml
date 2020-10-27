@@ -67,6 +67,14 @@
                    Text="Birth Date:" />
         <DatePicker Name="BirthDate"
                     SelectedDate="{Binding Physician.BirthDate}" />
+        
+        <TextBlock TextWrapping="Wrap"
+                   Text="Password:" />
+        <TextBox Name="Password"
+                 Height="23"
+                 TextWrapping="Wrap"
+                 Text="{Binding Physician.Password}" />
+        
         <Button Content="Save"
                 Command="{Binding UpdateDbCommand}" Margin="10">
             <Button.CommandParameter>
@@ -85,6 +93,8 @@
                              ElementName="Email" />
                     <Binding Path="Text"
                              ElementName="BirthDate" />
+                    <Binding Path="Text"
+                             ElementName="Password" />
                 </MultiBinding>
 
             </Button.CommandParameter>

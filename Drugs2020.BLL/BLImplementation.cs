@@ -23,12 +23,13 @@ namespace Drugs2020.BLL
         }
         public Dictionary<string, int> GetDictionaryForReceptsByDrug(string chosenDrug)
         {
-            List<Recept> recepts = GetAllReceptsByDrug(chosenDrug);
-            Dictionary<string, int> result = recepts
-                .GroupBy(x => x.Date.ToShortDateString())
-                .ToDictionary(group => group.Key,
-                group => group.Count());
-            return result;
+            //List<Recept> recepts = GetAllReceptsByDrug(chosenDrug);
+            //Dictionary<string, int> result = recepts
+            //    .GroupBy(x => x.Date.ToShortDateString())
+            //    .ToDictionary(group => group.Key,
+            //    group => group.Count());
+            //return result;
+            return null;
         }
 
 
@@ -44,14 +45,18 @@ namespace Drugs2020.BLL
         }
         public IUser IdentifyUser(string userID)
         {
-            switch (userID)
-            {
-                case "1234":
-                    return new Admin("1234", "Mose", "Weizman", Sex.MALE, "0545678990", @"Moshe@gmail.com", "1234", "Elad", DateTime.Parse("12/10/1985"));
-                case "4321":
-                    return new Physician("4321", "Mose", "Weizman", Sex.MALE, "0545678990", @"Moshe@gmail.com", "4321", "Elad", DateTime.Parse("12/10/1985"));
-            }
-            return null;
+           return dal.IdentifyUser(userID);
+            //switch (userID)
+            //{
+            //    case "1234":
+            //        return new Admin("1234", "Mose", "Weizman", Sex.MALE, "0545678990", @"Moshe@gmail.com", "1234", "Elad", DateTime.Parse("12/10/1985"));
+            //    case "4321":
+            //        return new Physician("4321", "Mose", "Weizman", Sex.MALE, "0545678990", @"Moshe@gmail.com", "4321", "Elad", DateTime.Parse("12/10/1985"));
+            //    case "1":
+            //        return new Physician("1", "Mose", "Weizman", Sex.MALE, "0545678990", @"Moshe@gmail.com", "1", "Elad", DateTime.Parse("12/10/1985"));
+
+            //}
+            //return null;
         }
 
         #endregion
@@ -99,7 +104,7 @@ namespace Drugs2020.BLL
         #region Recept & Drugs-Taken Functions
         public void AddRecept(Recept recept, List<string> drugsTakenPatient)
         {
-            if(checkConflicts(recept.IdCodeOfDrug, drugsTakenPatient))
+         //   if(checkConflicts(recept.IdCodeOfDrug, drugsTakenPatient))
                 dal.AddRecept(recept);
         }
 

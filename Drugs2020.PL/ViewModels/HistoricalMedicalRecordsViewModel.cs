@@ -16,7 +16,6 @@ namespace Drugs2020.PL.ViewModels
 
         private MedicalRecordModel medicalRecordM;
         private IContainingVm containingVm;
-
         public BackCommand BackCommand { get; set; }
         public HistoricalMedicalRecordsViewModel(IContainingVm containingVm, string patientId, string physicianId)
         {
@@ -25,7 +24,6 @@ namespace Drugs2020.PL.ViewModels
             MedicalRecordsCollection = new ObservableCollection<MedicalRecord>(medicalRecordM.MedicalRecordsList);
             BackCommand = new BackCommand(this);
         }
-
         public void GoBack()
         {
             containingVm.ReturnToContaining();

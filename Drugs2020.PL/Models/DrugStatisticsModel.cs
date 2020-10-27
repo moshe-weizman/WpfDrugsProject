@@ -17,8 +17,8 @@ namespace Drugs2020.PL.Models
         public DrugStatisticsModel()
         {
             bl = new BLImplementation();
-            ReceptsByDate = bl.GetDictionaryForReceptsByDate(DateTime.Parse("1/1/2020"), DateTime.Now.Date);
-            ReceptsByDrug = bl.GetDictionaryForReceptsByDrug(ChosenDrug);
+          //  ReceptsByDate = bl.GetDictionaryForReceptsByDate(DateTime.Parse("1/1/2020"), DateTime.Now.Date);
+          //  ReceptsByDrug = bl.GetDictionaryForReceptsByDrug(ChosenDrug);
 
         }
     }

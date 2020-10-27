@@ -11,6 +11,15 @@ namespace Drugs2020.DAL
     public class DalImplementation : IDal
     {
         private PharmacyContext ctx = new PharmacyContext();
+        public IUser IdentifyUser(string userID)
+        {     
+            IUser User= ctx.Physicians.Find(userID);
+            if (User == null)
+               // ctx.Admins.Add(new Admin("1234", "or", "or", Sex.MALE, "05000000", "no", "1234", "elad", DateTime.Today));
+                User = ctx.Admins.Find(userID);
+            return User;
+
+        }
 
         #region Patient
         public void AddPatient(Patient patient)
@@ -176,6 +185,7 @@ namespace Drugs2020.DAL
         {
             return ctx.MedicalRecords.Where(s => s.PatientID == patientId).ToList();
         }
+
         #endregion
     }
 

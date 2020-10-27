@@ -16,6 +16,8 @@ namespace Drugs2020.BLL.BE
         public string PhysicianID { get; set; }
         [NotMapped]
         public string PhysicianName { get; set; }
+        [NotMapped]
+        public bool AbleEdit { get; set; }
         public string Problem { get; set; }
         public string Diagnose { get; set; }
         public string Treatment { get; set; }

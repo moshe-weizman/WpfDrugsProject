@@ -36,6 +36,7 @@
             </Button>
             <TextBox x:Name="searchTextBox"
                      Width="150"
+                      Height="50"
                      DockPanel.Dock="Right" />
         </DockPanel>
         <ListView x:Name="itemList"

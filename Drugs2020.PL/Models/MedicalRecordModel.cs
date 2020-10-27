@@ -19,7 +19,7 @@ namespace Drugs2020.PL.Models
             MedicalRecord = new MedicalRecord(patientId, physicianId);
             MedicalRecordsList = bl.GetAllMedicalRecordsOfPatient(MedicalRecord.PatientID);
             MedicalRecordsList.ForEach(x => x.PhysicianName = bl.GetPhysician(x.PhysicianID).FirstName);
-
+            MedicalRecordsList.Where(x => x.PhysicianID == physicianId).All(x => x.AbleEdit = true);
 
         }
 
