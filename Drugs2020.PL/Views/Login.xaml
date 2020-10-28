@@ -18,16 +18,18 @@
                        Text="User ID:"
                    Margin="15" />
         <TextBox Name="TextBoxID" 
-                     Height="23"
+                     Height="40"
+                 
                      TextWrapping="Wrap"
                  Text="{Binding UserId}"
-                 Margin="15" />
+                 Margin="15" 
+                 />
 
             <TextBlock TextWrapping="Wrap"
                    Text="Password"
                    Margin="15" />
             <TextBox Name="PasswordTextBox"
-                     Height="23"
+                     Height="40"
                      TextWrapping="Wrap"
                  Text="{Binding Password}"
                  Margin="15" />

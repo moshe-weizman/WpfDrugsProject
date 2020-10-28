@@ -10,10 +10,10 @@
     </UserControl.Resources>
     <StackPanel>
         <TextBlock TextWrapping="Wrap" Text="Weight:"/>
-        <TextBox x:Name="Weight"  Height="23" TextWrapping="Wrap" Text="{Binding MedicalFile.Weight}"/>
+        <TextBox x:Name="Weight"  Height="40" TextWrapping="Wrap" Text="{Binding MedicalFile.Weight}"/>
 
         <TextBlock TextWrapping="Wrap" Text="Height:"/>
-        <TextBox x:Name="Height" Height="23" TextWrapping="Wrap" Text="{Binding MedicalFile.Height}"/>
+        <TextBox x:Name="Height" Height="40" TextWrapping="Wrap" Text="{Binding MedicalFile.Height}"/>
 
         <TextBlock TextWrapping="Wrap" Text="Chronic Illness:"/>
         <TextBox x:Name="ChronicIllness" Style="{StaticResource OutlinedFieldsStyle}"  TextWrapping="Wrap" Text="{Binding MedicalFile.ChronicIllness}"/>

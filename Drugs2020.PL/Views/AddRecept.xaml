@@ -35,10 +35,10 @@
 
 
         <TextBlock TextWrapping="Wrap" Text="Quantity:"/>
-        <TextBox x:Name="QuantityTextBox"  Height="23" TextWrapping="Wrap" Text="{Binding Recept.Quantity}"/>
+        <TextBox x:Name="QuantityTextBox"  Height="40" TextWrapping="Wrap" Text="{Binding Recept.Quantity}"/>
 
         <TextBlock TextWrapping="Wrap" Text="Days:"/>
-        <TextBox x:Name="DaysTextBox" Height="23" TextWrapping="Wrap" Text="{Binding Recept.Days}"/>
+        <TextBox x:Name="DaysTextBox" Height="40" TextWrapping="Wrap" Text="{Binding Recept.Days}"/>
 
         <Button  Content="Create PDF File" Margin="10" Command="{Binding OperationCommand}" />
 

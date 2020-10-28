@@ -13,6 +13,8 @@
                 <ResourceDictionary Source="DataTemplates.xaml" />
                 <ResourceDictionary Source="ButtonStyle.xaml"/>
                 <ResourceDictionary Source="OutlinedFieldsStyle.xaml"/>
+                <ResourceDictionary Source="ConboBoxStyle.xaml"/>
+                
             </ResourceDictionary.MergedDictionaries>
            
                     

@@ -100,12 +100,12 @@
             <TextBox x:Name="Url"
                      Text="{Binding ImageUrl}"
                      Margin="10"
-                      Height="23"
+                      Height="40"
                      Width="180" />
             <Button Content="Browse"
                     Command="{Binding FileDialogCommand}"
                     Margin="10"
-                     Height="23"
+                     Height="40"
                     HorizontalAlignment="Right" />
         </StackPanel>
         <Image Source="{Binding ImageUrl}"
