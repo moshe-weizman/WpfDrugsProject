@@ -17,10 +17,10 @@ namespace Drugs2020.PL.ViewModels
         private MedicalRecordModel medicalRecordM;
         private IContainingVm containingVm;
         public BackCommand BackCommand { get; set; }
-        public HistoricalMedicalRecordsViewModel(IContainingVm containingVm, string patientId, string physicianId)
+        public HistoricalMedicalRecordsViewModel(IContainingVm containingVm, string patientId, Physician physician)
         {
             this.containingVm = containingVm;
-            this.medicalRecordM = new MedicalRecordModel(patientId, physicianId);
+            this.medicalRecordM = new MedicalRecordModel(patientId, physician);
             MedicalRecordsCollection = new ObservableCollection<MedicalRecord>(medicalRecordM.MedicalRecordsList);
             BackCommand = new BackCommand(this);
         }

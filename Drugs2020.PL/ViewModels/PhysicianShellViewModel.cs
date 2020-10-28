@@ -20,19 +20,7 @@ namespace Drugs2020.PL.ViewModels
         private ConsumptionOfDrugsViewModel consumptionOfDrugsVM;
         private HistoricalMedicalRecordsViewModel historicalMedicalRecordsVM;
         private PatientSearchViewModel patientSearchVM;
-
-        private IViewModel currentVM;
-        public IViewModel CurrentVM
-        {
-            get { return currentVM; }
-            set
-            {
-                currentVM = value;
-                if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("CurrentVM"));
-            }
-        }
-
+        public Physician PhysicianUser { get; set; }
         private IViewModel personalDetailsTab;
         public IViewModel PersonalDetailsTab
         {
@@ -77,13 +65,15 @@ namespace Drugs2020.PL.ViewModels
                     PropertyChanged(this, new PropertyChangedEventArgs("AddMedicalRecordTab"));
             }
         }
-        private string physicianId;
-        public PhysicianShellViewModel(MainWidowViewModel containingVm, string patientId,string physicianId)
+
+        public PhysicianShellViewModel(MainWidowViewModel containingVm, string patientId,Physician physicianUser)
         {
-            this.physicianId = physicianId;
-            
-            patientSearchVM = new PatientSearchViewModel(containingVm, physicianId);
-            Init(patientId);
+            patientDetailsVM = new PatientDetailsViewModel(this, patientId);
+            medicalFileVM = new MedicalFileViewModel(this, patientId, physicianUser);
+            addMedicalRecordVM = new AddMedicalRecordViewModel(this, patientId, physicianUser);
+            addReceptVM = new AddReceptViewModel(this, patientId, physicianUser);
+            patientSearchVM = new PatientSearchViewModel(containingVm, physicianUser);
+
             PersonalDetailsTab = patientDetailsVM;
             AddReceptTab = addReceptVM;
             AddMedicalRecordTab = addMedicalRecordVM;

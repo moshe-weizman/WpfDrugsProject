@@ -25,11 +25,11 @@ namespace Drugs2020.BLL.BE
         }
         public DateTime ExpirationDate { get;  }
 
-        public Recept(string patientID, string physicianID)
+        public Recept(string patientID, Physician physician)
         {
             // לממש את הID 
             PatientID = patientID;
-            PhysicianID = physicianID;
+            PhysicianID = physician.ID;
             Date = DateTime.Today;
             ExpirationDate = Date.AddMonths(2);
 

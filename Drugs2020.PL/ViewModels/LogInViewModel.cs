@@ -48,9 +48,9 @@ namespace Drugs2020.PL.ViewModels
         public void LogUserIn()
         {
             if (User is Physician)
-                containingVm.LeftCurrentVm= new PatientSearchViewModel(containingVm, logInModel.UserId);
+                containingVm.CurrentVm = new PatientSearchViewModel(containingVm, User as Physician);
             else
-                containingVm.ReplaceUC(Screen.ADMIN_SHELL);
+                containingVm.CurrentVm = new AdminShellViewModel(containingVm, User as Admin);
         }
     }
 }

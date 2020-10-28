@@ -15,47 +15,38 @@ namespace Drugs2020.PL.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private IViewModel _LeftCurrentVm;
+        
         private LogInViewModel logInVM;
-        private PatientSearchViewModel patientSearchVM;
-        private AdminShellViewModel adminShellVM;
        
+        
+        private IViewModel currentVm;
+        public IViewModel CurrentVm
+        {
+            get { return currentVm; }
+            set 
+            { 
+                currentVm = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("CurrentVm"));
+            }
+        }
         public MainWidowViewModel()
         {
             logInVM = new LogInViewModel(this);
-            LeftCurrentVm = logInVM;
-            VmInit();
+            CurrentVm = logInVM;
         }
 
-        private void VmInit()
-        {
-          //  patientSearchVM = new PatientSearchViewModel(this);
-            adminShellVM = new AdminShellViewModel(this);
-        }
-
-        public IViewModel LeftCurrentVm
-        {
-            get { return _LeftCurrentVm; }
-            set 
-            { 
-                _LeftCurrentVm = value;
-                if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("LeftCurrentVm"));
-            }
-        }
-
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         public void ReplaceUC(Screen currentVM)
         {
             switch (currentVM)
             {
                 case Screen.LOGIN_SCREEN:
-                    LeftCurrentVm = logInVM;
+                    CurrentVm = logInVM;
                     break;
                 case Screen.SEARCH_PATIENT_SCREEN:
-                    LeftCurrentVm = patientSearchVM;
                     break;
                 case Screen.ADMIN_SHELL:
-                    LeftCurrentVm = adminShellVM;
                     break;
                 default: break;
             }
@@ -65,7 +56,7 @@ namespace Drugs2020.PL.ViewModels
         {
             logInVM.Password = "";
             logInVM.UserId = "";
-            LeftCurrentVm = logInVM;
+            CurrentVm = logInVM;
 
         }
     }

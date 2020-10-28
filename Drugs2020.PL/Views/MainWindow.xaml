@@ -22,8 +22,7 @@
         <Image Source="/Images/medicine.jpg"
                Stretch="UniformToFill"
                Margin="5" />
-        <ContentControl Content="{Binding LeftCurrentVm}"/>
-        <ContentControl Content="{Binding RightCurrentVm}"/>
+        <ContentControl Content="{Binding CurrentVm}" />
 
     </Grid>
 </Window>

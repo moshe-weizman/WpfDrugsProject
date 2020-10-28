@@ -13,13 +13,13 @@ namespace Drugs2020.PL.Models
         IBL bl;
         public MedicalRecord MedicalRecord { get; set; }
         public List<MedicalRecord> MedicalRecordsList { get; set; }
-        public MedicalRecordModel(string patientId,string physicianId)
+        public MedicalRecordModel(string patientId, Physician physicianUser)
         {
             bl = new BLImplementation();
-            MedicalRecord = new MedicalRecord(patientId, physicianId);
+            MedicalRecord = new MedicalRecord(patientId, physicianUser);
             MedicalRecordsList = bl.GetAllMedicalRecordsOfPatient(MedicalRecord.PatientID);
             MedicalRecordsList.ForEach(x => x.PhysicianName = bl.GetPhysician(x.PhysicianID).FirstName);
-            MedicalRecordsList.Where(x => x.PhysicianID == physicianId).All(x => x.AbleEdit = true);
+            MedicalRecordsList.Where(x => x.PhysicianID == physicianUser.ID).All(x => x.AbleEdit = true);
 
         }
 

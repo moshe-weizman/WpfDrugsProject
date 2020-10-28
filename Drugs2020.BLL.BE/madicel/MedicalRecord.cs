@@ -31,11 +31,11 @@ namespace Drugs2020.BLL.BE
             Date = DateTime.Today;
         }
 
-        public MedicalRecord(string patientID, string physicianID)
+        public MedicalRecord(string patientID, Physician physician)
         {
             MedicalRecordID = DateTime.Now.ToString();
             PatientID = patientID;
-            PhysicianID = physicianID;
+            PhysicianID = physician.ID;
             Date = DateTime.Today;
         }
 
