@@ -24,7 +24,6 @@ namespace Drugs2020.PL.ViewModels
 
         private PhysicianShellModel physicianShellModel;
         public SearchItemCommand SearchCommand { get; set; }
-
         public BackCommand SignOutCommand { get; set; }
         public Physician PhysicianUser { get; set; }
 
@@ -51,18 +50,18 @@ namespace Drugs2020.PL.ViewModels
                     PropertyChanged(this, new PropertyChangedEventArgs("CurrentVM"));
             }
         }
-        public string PateintID { 
-            get
-            { 
-                return physicianShellModel.CurrentPatient.ID; 
-            } 
-            set 
-            { 
-                physicianShellModel.CurrentPatient.ID = value;
-                if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("PateintID"));
-            } 
-        }
+        //public string PateintID { 
+        //    get
+        //    { 
+        //        return physicianShellModel.CurrentPatient.ID; 
+        //    } 
+        //    set 
+        //    { 
+        //        physicianShellModel.CurrentPatient.ID = value;
+        //        if (PropertyChanged != null)
+        //            PropertyChanged(this, new PropertyChangedEventArgs("PateintID"));
+        //    } 
+        //}
         private MainWidowViewModel containingVm;
         public PhysicianShellViewModel(MainWidowViewModel containingVm , Physician physicianUser)
         {
@@ -82,6 +81,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void Init(string patientId)
         {
+            physicianShellModel = new PhysicianShellModel(patientId);
             patientDetailsVM = new PatientDetailsViewModel(this, patientId);
             medicalFileVM = new MedicalFileViewModel(this, patientId, PhysicianUser);
             addMedicalRecordVM = new AddMedicalRecordViewModel(this, patientId, PhysicianUser);
