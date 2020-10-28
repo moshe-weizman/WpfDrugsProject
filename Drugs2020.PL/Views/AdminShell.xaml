@@ -14,7 +14,7 @@
         <StackPanel Orientation="Vertical"
                     Grid.ColumnSpan="3"
                     Grid.RowSpan="3">
-            <local:ShellHeader UserName="{Binding UserName , StringFormat=Hello {0}}"
+            <local:ShellHeader 
                                SignOutCommand="{Binding SignOutCommand}"
                                ProgressBarVisibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"
                                Message="{Binding Message}"

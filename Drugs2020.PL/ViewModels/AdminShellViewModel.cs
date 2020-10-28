@@ -13,7 +13,6 @@ namespace Drugs2020.PL.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private IGoBackScreenVM containingVm;
-        public string UserName { get; set; }
         public bool IsBusy { get; set; }
         public string Message { get; set; }
         public BackCommand SignOutCommand { get; set; }
@@ -71,7 +70,7 @@ namespace Drugs2020.PL.ViewModels
         {
             this.containingVm = containingVm;
             SignOutCommand = new BackCommand(this);
-            UserName = user.GetName();
+           
             Message = "";
             patientsManagementVm = new PatientsManagementViewModel(this);
             patientsTabVm = patientsManagementVm;

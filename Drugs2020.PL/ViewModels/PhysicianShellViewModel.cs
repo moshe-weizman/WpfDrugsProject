@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PhysicianShellViewModel : INotifyPropertyChanged, IViewModel, IContainingVm
+    class PhysicianShellViewModel : INotifyPropertyChanged, IViewModel, IContainingVm, IScreenReplacementVM
     {
         public event PropertyChangedEventHandler PropertyChanged;
         
@@ -20,78 +20,59 @@ namespace Drugs2020.PL.ViewModels
         private ConsumptionOfDrugsViewModel consumptionOfDrugsVM;
         private HistoricalMedicalRecordsViewModel historicalMedicalRecordsVM;
         private PatientSearchViewModel patientSearchVM;
+
+        private PhysicianShellModel physicianShellModel;
         public Physician PhysicianUser { get; set; }
-        private IViewModel personalDetailsTab;
-        public IViewModel PersonalDetailsTab
+
+        private IViewModel currentVM;
+        public IViewModel CurrentVM
         {
-            get { return personalDetailsTab; }
+            get { return currentVM; }
             set
             {
-                personalDetailsTab = value;
+                currentVM = value;
                 if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("PersonalDetailsTab"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("CurrentVM"));
             }
         }
-        private IViewModel medicalFileTab; 
-        public IViewModel MedicalFileTab
-        {
-            get { return medicalFileTab; }
-            set
-            {
-                medicalFileTab = value;
+        public string PateintID { 
+            get
+            { 
+                return physicianShellModel.CurrentPatient.ID; 
+            } 
+            set 
+            { 
+                physicianShellModel.CurrentPatient.ID = value;
                 if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("MedicalFileTab"));
-            }
-        }
-        private IViewModel addReceptTab;
-        public IViewModel AddReceptTab
-        {
-            get { return addReceptTab; }
-            set
-            {
-                addReceptTab = value;
-                if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("AddReceptTab"));
-            }
-        }
-        private IViewModel addMedicalRecordTab;
-        public IViewModel AddMedicalRecordTab
-        {
-            get { return addMedicalRecordTab; }
-            set
-            {
-                addMedicalRecordTab = value;
-                if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("AddMedicalRecordTab"));
-            }
+                    PropertyChanged(this, new PropertyChangedEventArgs("PateintID"));
+            } 
         }
 
         public PhysicianShellViewModel(MainWidowViewModel containingVm, string patientId,Physician physicianUser)
         {
-            patientDetailsVM = new PatientDetailsViewModel(this, patientId);
-            medicalFileVM = new MedicalFileViewModel(this, patientId, physicianUser);
-            addMedicalRecordVM = new AddMedicalRecordViewModel(this, patientId, physicianUser);
-            addReceptVM = new AddReceptViewModel(this, patientId, physicianUser);
-            patientSearchVM = new PatientSearchViewModel(containingVm, physicianUser);
-
-            PersonalDetailsTab = patientDetailsVM;
-            AddReceptTab = addReceptVM;
-            AddMedicalRecordTab = addMedicalRecordVM;
-            MedicalFileTab = medicalFileVM;
+            physicianShellModel = new PhysicianShellModel();
+            Init(patientId);
+            //patientSearchVM = new PatientSearchViewModel(containingVm, physicianUser);
+            this.PhysicianUser = physicianUser;
+            CurrentVM = null;
+            //PersonalDetailsTab = patientDetailsVM;
+            //AddReceptTab = addReceptVM;
+            //AddMedicalRecordTab = addMedicalRecordVM;
+            //MedicalFileTab = medicalFileVM;
         }
 
         public void Init(string patientId)
         {
             patientDetailsVM = new PatientDetailsViewModel(this, patientId);
-            medicalFileVM = new MedicalFileViewModel(this, patientId, physicianId);
-            addMedicalRecordVM = new AddMedicalRecordViewModel(this, patientId, physicianId);
-            addReceptVM = new AddReceptViewModel(this, patientId, physicianId);
+            medicalFileVM = new MedicalFileViewModel(this, patientId, PhysicianUser);
+            addMedicalRecordVM = new AddMedicalRecordViewModel(this, patientId, PhysicianUser);
+            addReceptVM = new AddReceptViewModel(this, patientId, PhysicianUser);
             consumptionOfDrugsVM = new ConsumptionOfDrugsViewModel(this, patientId);
-            historicalMedicalRecordsVM = new HistoricalMedicalRecordsViewModel(this, patientId, physicianId);
+            historicalMedicalRecordsVM = new HistoricalMedicalRecordsViewModel(this, patientId, PhysicianUser);
         }
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        public void ReplaceUC(Screen currentVM)
+        public void ReplaceScreen(Screen currentVM)
         {
             switch (currentVM)
             {
@@ -123,9 +104,10 @@ namespace Drugs2020.PL.ViewModels
             }
         }
 
+       
         //public void GetItem(string id)?
         //{
-           
+
         //}
     }
     

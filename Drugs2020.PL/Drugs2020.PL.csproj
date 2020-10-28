@@ -94,7 +94,6 @@
     <Compile Include="Models\UpdateDrugModel.cs" />
     <Compile Include="Models\UpdatePatientModel.cs" />
     <Compile Include="Models\UpdatePhysicianModel.cs" />
-    <Compile Include="ViewModels\ActionsMeneOfPhysicianViewModel.cs" />
     <Compile Include="ViewModels\AddDrugViewModel.cs" />
     <Compile Include="ViewModels\ConsumptionOfDrugsViewModel.cs" />
     <Compile Include="ViewModels\DecisionMessageViewModel.cs" />

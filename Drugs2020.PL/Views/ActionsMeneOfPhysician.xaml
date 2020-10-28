@@ -7,12 +7,5 @@
              xmlns:local1="clr-namespace:Drugs2020.PL"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel Grid.Column="0" Margin="5">
-
-        <Button Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.PATIENT_DATA }" Content="PATIENT DATA" HorizontalContentAlignment="Center" Margin="20,20,0,20"  Height="60" />
-        <Button Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_MEDICAL_RECORD}" Content="ADD MEDICAL RECORD" Margin="20,20,0,20" Height="60"  HorizontalContentAlignment="Center"/>
-        <Button Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_RECEPT}" Content="ADD RECEPT" Margin="20,20,0,20" HorizontalContentAlignment="Center" Height="60"  />
-        <Button Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_MEDICAL_FILE}" Content="MEDICAL FILE" HorizontalContentAlignment="Center" Margin="20,20,0,20" Height="60" />
-
-    </StackPanel>
+    
 </UserControl>

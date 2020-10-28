@@ -25,7 +25,7 @@ namespace Drugs2020.PL.Models
             bl = new BLImplementation();
             this.CurrentPatient = bl.GetPatient(id);
         }
-
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         public void GetPatient(string id)
         {
             CurrentPatient = bl.GetPatient(id);

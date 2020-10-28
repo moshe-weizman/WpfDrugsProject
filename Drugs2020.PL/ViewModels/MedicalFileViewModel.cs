@@ -66,12 +66,12 @@ namespace Drugs2020.PL.ViewModels
 
         public void ReturnToContaining()
         {
-            containingShellVm.MedicalFileTab = this;
+            
         }
 
         public void ReplaceScreen()
         {
-            containingShellVm.MedicalFileTab = new ConsumptionOfDrugsViewModel(this, MedicalFile.PatientId);
+
         }
     }
 }

@@ -39,7 +39,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void GoBack()
         {
-            containingVm.ReplaceUC(Screen.SEARCH_PATIENT_SCREEN);
+            containingVm.ReplaceScreen(Screen.SEARCH_PATIENT_SCREEN);
         }
 
         public bool ItemAlreadyExists()
@@ -62,12 +62,10 @@ namespace Drugs2020.PL.ViewModels
 
         public void ReturnToContaining()
         {
-            containingVm.AddMedicalRecordTab = this;
         }
 
         public void ReplaceScreen()
         {
-            containingVm.AddMedicalRecordTab = new HistoricalMedicalRecordsViewModel(this, patientId, physicianUser);
         }
     }
 }
