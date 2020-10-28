@@ -145,7 +145,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void GoBack()
         {
-            CurrentVM = new LogInViewModel(containingVm);
+            containingVm.ReplaceUC(Screen.LOGIN_SCREEN); 
         }
     }
     
