@@ -1,4 +1,5 @@
 ﻿using Drugs2020.BLL.BE;
+using Drugs2020.PL.Commands;
 using Drugs2020.PL.Models;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PhysicianShellViewModel : INotifyPropertyChanged, IViewModel, IContainingVm, IScreenReplacementVM
+    class PhysicianShellViewModel : INotifyPropertyChanged, IViewModel, IContainingVm, IScreenReplacementVM, ISearch, IGoBackScreenVM
     {
         public event PropertyChangedEventHandler PropertyChanged;
         
@@ -22,7 +23,22 @@ namespace Drugs2020.PL.ViewModels
         private PatientSearchViewModel patientSearchVM;
 
         private PhysicianShellModel physicianShellModel;
+        public SearchItemCommand SearchCommand { get; set; }
+
+        public BackCommand SignOutCommand { get; set; }
         public Physician PhysicianUser { get; set; }
+
+        public Patient PatientFound {
+            get
+            {
+                return physicianShellModel.CurrentPatient;
+            } 
+            set {
+                physicianShellModel.CurrentPatient = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("PatientFound"));
+            }
+        }
 
         private IViewModel currentVM;
         public IViewModel CurrentVM
@@ -47,13 +63,16 @@ namespace Drugs2020.PL.ViewModels
                     PropertyChanged(this, new PropertyChangedEventArgs("PateintID"));
             } 
         }
-
-        public PhysicianShellViewModel(MainWidowViewModel containingVm, string patientId,Physician physicianUser)
+        private MainWidowViewModel containingVm;
+        public PhysicianShellViewModel(MainWidowViewModel containingVm , Physician physicianUser)
         {
+            this.containingVm = containingVm;
+            SearchCommand = new SearchItemCommand(this);
+            SignOutCommand = new BackCommand(this);
             physicianShellModel = new PhysicianShellModel();
-            Init(patientId);
             //patientSearchVM = new PatientSearchViewModel(containingVm, physicianUser);
             this.PhysicianUser = physicianUser;
+            IsEnabledActionsMenu = false;
             CurrentVM = null;
             //PersonalDetailsTab = patientDetailsVM;
             //AddReceptTab = addReceptVM;
@@ -69,16 +88,24 @@ namespace Drugs2020.PL.ViewModels
             addReceptVM = new AddReceptViewModel(this, patientId, PhysicianUser);
             consumptionOfDrugsVM = new ConsumptionOfDrugsViewModel(this, patientId);
             historicalMedicalRecordsVM = new HistoricalMedicalRecordsViewModel(this, patientId, PhysicianUser);
+            IsEnabledActionsMenu = true;
         }
-
+        private bool isEnabledActionsMenu;
+        public bool IsEnabledActionsMenu
+        {
+            get { return isEnabledActionsMenu; }
+            set
+            {
+                isEnabledActionsMenu = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("IsEnabledActionsMenu"));
+            }
+        }
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         public void ReplaceScreen(Screen currentVM)
         {
             switch (currentVM)
             {
-                case Screen.SEARCH_PATIENT_SCREEN:
-                    CurrentVM = patientSearchVM;
-                    break;
                 case Screen.ADD_MEDICAL_FILE:
                     CurrentVM = medicalFileVM;
                     break;
@@ -104,11 +131,19 @@ namespace Drugs2020.PL.ViewModels
             }
         }
 
-       
-        //public void GetItem(string id)?
-        //{
+        public void GetItem(string patientId)
+        {
+            physicianShellModel.GetPatient(patientId);
+            if (PatientFound != null)
+            {
+                Init(patientId);
+            }
+        }
 
-        //}
+        public void GoBack()
+        {
+            CurrentVM = new LogInViewModel(containingVm);
+        }
     }
     
 }

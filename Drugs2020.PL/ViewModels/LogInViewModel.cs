@@ -48,7 +48,8 @@ namespace Drugs2020.PL.ViewModels
         public void LogUserIn()
         {
             if (User is Physician)
-                containingVm.CurrentVm = new PatientSearchViewModel(containingVm, User as Physician);
+
+                containingVm.InitPhysicianSell(User);
             else
                 containingVm.CurrentVm = new AdminShellViewModel(containingVm, User as Admin);
         }
