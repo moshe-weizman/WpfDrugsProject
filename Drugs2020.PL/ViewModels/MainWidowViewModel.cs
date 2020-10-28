@@ -17,7 +17,8 @@ namespace Drugs2020.PL.ViewModels
 
         
         private LogInViewModel logInVM;
-       
+        private PhysicianShellViewModel physicianShellVM;
+        private AdminShellViewModel adminShellVM;
         
         private IViewModel currentVm;
         public IViewModel CurrentVm
@@ -36,6 +37,17 @@ namespace Drugs2020.PL.ViewModels
             CurrentVm = logInVM;
         }
 
+        public void InitPhysicianSell(IUser user)
+        {
+            physicianShellVM = new PhysicianShellViewModel(this, (Physician)user);
+            CurrentVm = physicianShellVM;
+        }
+
+        public void InitAdminSell(IUser user)
+        {
+            adminShellVM = new AdminShellViewModel(this, (Admin)user);
+            CurrentVm = physicianShellVM;
+        }
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         public void ReplaceUC(Screen currentVM)
         {
@@ -44,7 +56,8 @@ namespace Drugs2020.PL.ViewModels
                 case Screen.LOGIN_SCREEN:
                     CurrentVm = logInVM;
                     break;
-                case Screen.SEARCH_PATIENT_SCREEN:
+                case Screen.PHYSICIAN_SHELL:
+                   
                     break;
                 case Screen.ADMIN_SHELL:
                     break;

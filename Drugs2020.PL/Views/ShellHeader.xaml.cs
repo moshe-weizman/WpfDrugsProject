@@ -141,7 +141,7 @@ namespace Drugs2020.PL.Views
 
         private void OnSearchInputChanged(DependencyPropertyChangedEventArgs e)
         {
-            SearchTextBox.Text = e.NewValue.ToString();
+                SearchTextBox.Text = e.NewValue.ToString();
         }
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         public static readonly DependencyProperty SearchCommandProperty =

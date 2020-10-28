@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PatientSearchViewModel : IViewModel, ISearch , IGoBackScreenVM 
+    class PatientSearchViewModel : IViewModel , IGoBackScreenVM 
     {
 
         private MainWidowViewModel containingShellVm;
@@ -20,7 +20,6 @@ namespace Drugs2020.PL.ViewModels
 
         public PatientSearchViewModel(MainWidowViewModel containingVm, Physician physicianUser)
         {
-            this.PatientSelectionCommand = new SearchItemCommand(this);
             this.BackCommand = new BackCommand(this);
             this.containingShellVm = containingVm;
             this.patientM = new PhysicianShellModel();
@@ -34,14 +33,14 @@ namespace Drugs2020.PL.ViewModels
             set { patientM.CurrentPatient = value; }
         }    
 
-        public void GetItem(string patientId)
-        {
-             patientM.GetPatient(patientId);
-            if (PatientFound != null)
-            {
-                containingShellVm.CurrentVm = new PhysicianShellViewModel(containingShellVm, patientId, PhysicianUser);
-            }
-        }
+        //public void GetItem(string patientId)
+        ////{
+        ////     patientM.GetPatient(patientId);
+        ////    if (PatientFound != null)
+        ////    {
+        ////        containingShellVm.CurrentVm = new PhysicianShellViewModel(containingShellVm, patientId, PhysicianUser);
+        ////    }
+        //}
 
         public void GoBack()
         {
