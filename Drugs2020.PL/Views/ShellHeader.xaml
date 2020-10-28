@@ -31,7 +31,7 @@
                     ToolTip="Search"
                     DockPanel.Dock="Right"
                     Command="{Binding SearchCommand}"
-                    CommandParameter="{Binding ElementName=searchTextBox, Path=Text}"
+                    CommandParameter="{Binding ElementName=SearchTextBox, Path=Text}"
                     VerticalAlignment="Center">
                 <Image Source="/Images/icons8-search-48.png" />
             </Button>
