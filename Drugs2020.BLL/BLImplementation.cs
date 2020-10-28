@@ -2,6 +2,7 @@
 using Drugs2020.DAL;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -11,7 +12,9 @@ namespace Drugs2020.BLL
     public class BLImplementation : IBL
     {
         IDal dal = new DalImplementation();
+        private ICloudForImage cloud = new GoogleDrive();
         IPDF PDF = new SaveAsPDF();
+        const string LOCAL_STORAGE_PATH = @"..\\ApplicationResorces";
         public Dictionary<string, int> GetDictionaryForReceptsByDate(DateTime startDate, DateTime endDate)
         {
             List<Recept> recepts = GetAllReceptsByDate(startDate, endDate);
@@ -189,7 +192,18 @@ namespace Drugs2020.BLL
 
         public void AddDrug(Drug drug)
         {
+            drug.ImageUrl = SaveFileLocally(drug.ImageUrl, "\\DrugImages", drug.IdCode + ".png");
+            //cloud.Upload(drug.ImageUrl);
             dal.AddDrug(drug);
+        }
+
+        private string SaveFileLocally(string filePath, string targetDirectoryName, string targetFileName)
+        {
+            string targetDirectory = LOCAL_STORAGE_PATH + targetDirectoryName;
+            Directory.CreateDirectory(targetDirectory);
+            string destinaion = Path.Combine(targetDirectory, targetFileName);
+            File.Copy(filePath, destinaion, true);
+            return destinaion;
         }
 
         public void UpdateDrug(string id, Drug updatedDrug)

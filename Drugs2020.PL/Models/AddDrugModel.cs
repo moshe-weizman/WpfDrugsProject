@@ -24,6 +24,7 @@ namespace Drugs2020.PL.Models
         public void AddDrugToDb()
         {
             Ingredients.ForEach(i => bl.AddActiveIngredient(i));
+
             bl.AddDrug(Drug);
         }
 
