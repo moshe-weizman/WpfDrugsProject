@@ -209,6 +209,9 @@
     <Compile Include="Views\SaveDrug.xaml.cs">
       <DependentUpon>SaveDrug.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ShellHeader.xaml.cs">
+      <DependentUpon>ShellHeader.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\AddToDbCommand.cs" />
@@ -370,6 +373,10 @@
     <Page Include="Views\SaveDrug.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ShellHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

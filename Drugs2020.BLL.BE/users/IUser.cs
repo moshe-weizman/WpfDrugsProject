@@ -7,5 +7,6 @@ namespace Drugs2020.BLL.BE
     public interface IUser
     {
         string GetPassword();
+        string GetName();
     }
 }

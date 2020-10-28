@@ -15,18 +15,19 @@ namespace Drugs2020.PL.ViewModels
         private MainWidowViewModel containingShellVm;
         public SearchItemCommand PatientSelectionCommand { get; set; }
         public BackCommand BackCommand { get; set; }
-        private string physicianId;
+        public Physician PhysicianUser;
         private PhysicianShellModel patientM;
 
-        public PatientSearchViewModel(MainWidowViewModel containingVm, string physicianId)
+        public PatientSearchViewModel(MainWidowViewModel containingVm, Physician physicianUser)
         {
             this.PatientSelectionCommand = new SearchItemCommand(this);
             this.BackCommand = new BackCommand(this);
             this.containingShellVm = containingVm;
             this.patientM = new PhysicianShellModel();
-            this.physicianId = physicianId;
+            this.PhysicianUser = physicianUser;
         }
         
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         public Patient PatientFound
         {
             get { return patientM.CurrentPatient; }
@@ -38,7 +39,7 @@ namespace Drugs2020.PL.ViewModels
              patientM.GetPatient(patientId);
             if (PatientFound != null)
             {
-                containingShellVm.LeftCurrentVm = new PhysicianShellViewModel(containingShellVm, patientId, physicianId);
+                containingShellVm.CurrentVm = new PhysicianShellViewModel(containingShellVm, patientId, PhysicianUser);
             }
         }
 

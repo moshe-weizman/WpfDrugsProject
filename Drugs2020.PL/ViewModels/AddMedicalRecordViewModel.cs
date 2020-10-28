@@ -14,15 +14,15 @@ namespace Drugs2020.PL.ViewModels
         private MedicalRecordModel medicalRecordModel;
         private PhysicianShellViewModel containingVm;
         private string patientId;
-        private string physicianId;
-        public AddMedicalRecordViewModel(PhysicianShellViewModel containingVm, string patientId,string physicianId)
+        private Physician physicianUser;
+        public AddMedicalRecordViewModel(PhysicianShellViewModel containingVm, string patientId, Physician physicianUser)
         {
-            this.medicalRecordModel = new MedicalRecordModel(patientId, physicianId);
+            this.medicalRecordModel = new MedicalRecordModel(patientId, physicianUser);
             this.containingVm = containingVm;
             BackCommand = new BackCommand(this);
             AddToDbCommand = new AddToDbCommand(this);
             this.patientId = patientId;
-            this.physicianId = physicianId;
+            this.physicianUser = physicianUser;
             ReplaceScreenCommand = new ReplaceScreenCommand(this);
 
         }
@@ -67,7 +67,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void ReplaceScreen()
         {
-            containingVm.AddMedicalRecordTab = new HistoricalMedicalRecordsViewModel(this, patientId, physicianId);
+            containingVm.AddMedicalRecordTab = new HistoricalMedicalRecordsViewModel(this, patientId, physicianUser);
         }
     }
 }

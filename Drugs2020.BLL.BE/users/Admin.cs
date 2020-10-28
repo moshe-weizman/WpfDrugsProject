@@ -12,13 +12,16 @@ namespace Drugs2020.BLL.BE
             Password = password;
         }
 
-        public Admin()
-        {
-        }
+        public Admin() { }
 
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         public string GetPassword()
         {
             return Password;
+        }
+        public string GetName()
+        {
+            return FirstName + " " + LastName;
         }
     }
 }

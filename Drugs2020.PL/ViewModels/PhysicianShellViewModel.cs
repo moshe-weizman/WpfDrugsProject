@@ -18,9 +18,7 @@ namespace Drugs2020.PL.ViewModels
         private AddMedicalRecordViewModel addMedicalRecordVM;
         private AddReceptViewModel addReceptVM;
         private PatientSearchViewModel patientSearchVM;
-
-
-
+        public Physician PhysicianUser { get; set; }
         private IViewModel personalDetailsTab;
         public IViewModel PersonalDetailsTab
         {
@@ -66,13 +64,13 @@ namespace Drugs2020.PL.ViewModels
             }
         }
 
-        public PhysicianShellViewModel(MainWidowViewModel containingVm, string patientId,string physicianId)
+        public PhysicianShellViewModel(MainWidowViewModel containingVm, string patientId,Physician physicianUser)
         {
             patientDetailsVM = new PatientDetailsViewModel(this, patientId);
-            medicalFileVM = new MedicalFileViewModel(this, patientId, physicianId);
-            addMedicalRecordVM = new AddMedicalRecordViewModel(this, patientId, physicianId);
-            addReceptVM = new AddReceptViewModel(this, patientId, physicianId);
-            patientSearchVM = new PatientSearchViewModel(containingVm, physicianId);
+            medicalFileVM = new MedicalFileViewModel(this, patientId, physicianUser);
+            addMedicalRecordVM = new AddMedicalRecordViewModel(this, patientId, physicianUser);
+            addReceptVM = new AddReceptViewModel(this, patientId, physicianUser);
+            patientSearchVM = new PatientSearchViewModel(containingVm, physicianUser);
 
             PersonalDetailsTab = patientDetailsVM;
             AddReceptTab = addReceptVM;

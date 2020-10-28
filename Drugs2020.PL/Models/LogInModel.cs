@@ -31,6 +31,5 @@ namespace Drugs2020.PL.Models
         {
             return bl.ValidatePassword(User, Password);
         }
-
     }
 }

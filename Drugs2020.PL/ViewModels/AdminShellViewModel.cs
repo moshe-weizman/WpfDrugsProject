@@ -1,4 +1,5 @@
-﻿using Drugs2020.PL.Commands;
+﻿using Drugs2020.BLL.BE;
+using Drugs2020.PL.Commands;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -66,10 +67,12 @@ namespace Drugs2020.PL.ViewModels
         private PhysiciansManagementViewModel physiciansManagementVm;
         private DrugsManagementViewModel drugssManagementVm;
         private DrugStatisticsViewModel drugsStatisticsVm;
-        public AdminShellViewModel(IGoBackScreenVM containingVm)
+        public AdminShellViewModel(IGoBackScreenVM containingVm, Admin user)
         {
             this.containingVm = containingVm;
             SignOutCommand = new BackCommand(this);
+            UserName = user.GetName();
+            Message = "";
             patientsManagementVm = new PatientsManagementViewModel(this);
             patientsTabVm = patientsManagementVm;
             physiciansManagementVm = new PhysiciansManagementViewModel(this);

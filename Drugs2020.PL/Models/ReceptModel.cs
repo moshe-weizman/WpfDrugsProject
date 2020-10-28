@@ -17,11 +17,11 @@ namespace Drugs2020.PL.Models
         public string Conflicts { get; set; }
         private string patientId;
 
-        public ReceptModel(string patientId, string physicianId)
+        public ReceptModel(string patientId, Physician physician)
         {
             bl = new BLImplementation();
             this.patientId = patientId;
-            Recept = new Recept(patientId, physicianId);
+            Recept = new Recept(patientId, physician);
             DrugList = bl.GetAllDrugs();
             AllRecepts = bl.GetAllReceptsOfPatient(patientId);
 

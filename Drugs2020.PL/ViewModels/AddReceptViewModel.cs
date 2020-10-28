@@ -26,9 +26,9 @@ namespace Drugs2020.PL.ViewModels
             }
         }
 
-        public AddReceptViewModel(PhysicianShellViewModel containingVm, string patientId,string physicianId)
+        public AddReceptViewModel(PhysicianShellViewModel containingVm, string patientId, Physician physician)
         {
-            addReceptModel = new ReceptModel(patientId, physicianId);
+            addReceptModel = new ReceptModel(patientId, physician);
             this.containingVm = containingVm;
             AddToDbCommand = new AddToDbCommand(this);
             DrugCollection = new ObservableCollection<Drug>(addReceptModel.DrugList);
