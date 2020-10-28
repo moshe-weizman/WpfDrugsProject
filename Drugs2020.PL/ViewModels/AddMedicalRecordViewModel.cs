@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class AddMedicalRecordViewModel: IAddToDb, IGoBackScreenVM, IViewModel, IContainingVm, IReplaceScreen
+    class AddMedicalRecordViewModel: IAddToDb,  IViewModel, IContainingVm
     {
         private MedicalRecordModel medicalRecordModel;
         private PhysicianShellViewModel containingVm;
@@ -19,17 +19,12 @@ namespace Drugs2020.PL.ViewModels
         {
             this.medicalRecordModel = new MedicalRecordModel(patientId, physicianUser);
             this.containingVm = containingVm;
-            BackCommand = new BackCommand(this);
             AddToDbCommand = new AddToDbCommand(this);
             this.patientId = patientId;
             this.physicianUser = physicianUser;
-            ReplaceScreenCommand = new ReplaceScreenCommand(this);
-
         }
 
         public AddToDbCommand AddToDbCommand { get; set; }
-        public BackCommand BackCommand { get; set; }
-        public ReplaceScreenCommand ReplaceScreenCommand { get; set; }
         public MedicalRecord MedicalRecord{ set { medicalRecordModel.MedicalRecord=value; } get {return medicalRecordModel.MedicalRecord; } }
 
         public void AddItemToDb()
@@ -37,10 +32,7 @@ namespace Drugs2020.PL.ViewModels
             medicalRecordModel.AddMedicalRecordToDb();
         }
 
-        public void GoBack()
-        {
-            containingVm.ReplaceScreen(Screen.SEARCH_PATIENT_SCREEN);
-        }
+        
 
         public bool ItemAlreadyExists()
         {
@@ -60,12 +52,7 @@ namespace Drugs2020.PL.ViewModels
             return decision.Decision;
         }
 
-        public void ReturnToContaining()
-        {
-        }
-
-        public void ReplaceScreen()
-        {
-        }
+       
+       
     }
 }

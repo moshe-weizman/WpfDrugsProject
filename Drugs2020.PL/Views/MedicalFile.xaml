@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Drugs2020.PL.Views" xmlns:converters="clr-namespace:Drugs2020.PL.Converters"
-             mc:Ignorable="d" >
+             mc:Ignorable="d" 
+             xmlns:local1="clr-namespace:Drugs2020.PL">
     <UserControl.Resources>
         <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
     </UserControl.Resources>
@@ -37,7 +38,8 @@
             </Button.CommandParameter>
 
         </Button>
-        <Button Content="Patient list of medications" Margin="10" Command="{Binding ReplaceScreenCommand}" />
+        <Button Content="Patient list of medications" Margin="10" Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.LIST_OF_DRUGS_TAKEN_BY_PATIENT }" />
+        <Button Content="All Medical Records"  Margin="10"  d:LayoutOverrides="Height"  Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.LIST_OF_MEDICAL_RECORDS }"/>
 
 
     </StackPanel>

@@ -17,8 +17,8 @@ namespace Drugs2020.PL.ViewModels
         public ObservableCollection<Recept> DrugsTake { get; set; }
         public BackCommand BackCommand { get; set; }
 
-        private IContainingVm containingVm;
-        public ConsumptionOfDrugsViewModel(IContainingVm containingVm, string patientId)
+        private PhysicianShellViewModel containingVm;
+        public ConsumptionOfDrugsViewModel(PhysicianShellViewModel containingVm, string patientId)
         {
             medicalFileModel = new MedicalFileModel(patientId);
             this.containingVm = containingVm;
@@ -29,7 +29,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void GoBack()
         {
-                
+            containingVm.ReplaceScreen(Screen.ADD_MEDICAL_FILE);
         }
     }
 }

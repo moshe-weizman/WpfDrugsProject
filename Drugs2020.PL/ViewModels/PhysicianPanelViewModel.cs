@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
+    //אפשר למחוק הכל!!!!!!!!1
+
     class PhysicianPanelViewModel : INotifyPropertyChanged, IViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;

@@ -15,9 +15,9 @@ namespace Drugs2020.PL.ViewModels
         public ObservableCollection<MedicalRecord> MedicalRecordsCollection { get; set; }
 
         private MedicalRecordModel medicalRecordM;
-        private IContainingVm containingVm;
+        private PhysicianShellViewModel containingVm;
         public BackCommand BackCommand { get; set; }
-        public HistoricalMedicalRecordsViewModel(IContainingVm containingVm, string patientId, Physician physician)
+        public HistoricalMedicalRecordsViewModel(PhysicianShellViewModel containingVm, string patientId, Physician physician)
         {
             this.containingVm = containingVm;
             this.medicalRecordM = new MedicalRecordModel(patientId, physician);
@@ -26,6 +26,7 @@ namespace Drugs2020.PL.ViewModels
         }
         public void GoBack()
         {
+            containingVm.ReplaceScreen(Screen.ADD_MEDICAL_FILE);
         }
     }
 }

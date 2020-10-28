@@ -20,7 +20,7 @@
                                ProgressBarVisibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"
                                Message="{Binding Message}"
                                SearchInput="{Binding PateintID}"
-                               SearchCommand="{Binding SearchCommand}"/>
+                               SearchCommand="{Binding SearchCommand}"      />
 
         <Grid Grid.Row="1">
         <Grid.ColumnDefinitions>

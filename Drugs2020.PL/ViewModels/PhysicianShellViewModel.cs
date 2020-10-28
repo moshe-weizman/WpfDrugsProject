@@ -23,6 +23,7 @@ namespace Drugs2020.PL.ViewModels
         private PatientSearchViewModel patientSearchVM;
 
         private PhysicianShellModel physicianShellModel;
+        public ScreenReplacementCommand ScreenReplacementCommand { get; set; }
         public SearchItemCommand SearchCommand { get; set; }
         public BackCommand SignOutCommand { get; set; }
         public Physician PhysicianUser { get; set; }
@@ -66,6 +67,7 @@ namespace Drugs2020.PL.ViewModels
         public PhysicianShellViewModel(MainWidowViewModel containingVm , Physician physicianUser)
         {
             this.containingVm = containingVm;
+            ScreenReplacementCommand = new ScreenReplacementCommand(this);
             SearchCommand = new SearchItemCommand(this);
             SignOutCommand = new BackCommand(this);
             physicianShellModel = new PhysicianShellModel();

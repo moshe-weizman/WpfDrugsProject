@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class MedicalFileViewModel: IViewModel, IAddToDb  , INotifyPropertyChanged, IReplaceScreen, IContainingVm
+    class MedicalFileViewModel: IViewModel, IAddToDb  , INotifyPropertyChanged, IContainingVm, IScreenReplacementVM
     {
         private PhysicianShellViewModel containingShellVm;
         private MedicalFileModel medicalFileM;
         public event PropertyChangedEventHandler PropertyChanged;
         private Physician physicianUser;
-        public ReplaceScreenCommand ReplaceScreenCommand { get; set; }
         public AddToDbCommand AddToDbCommand { get; set; }
+        public ScreenReplacementCommand ScreenReplacementCommand { get; set; }
         public MedicalFile MedicalFile
         {
             get { return medicalFileM.MedicalFile; }
@@ -34,7 +34,7 @@ namespace Drugs2020.PL.ViewModels
             this.containingShellVm = containingShellVm;
             medicalFileM = new MedicalFileModel(patientId);
             AddToDbCommand = new AddToDbCommand(this);
-            ReplaceScreenCommand = new ReplaceScreenCommand(this);
+            ScreenReplacementCommand = new ScreenReplacementCommand(this);
             this.physicianUser = physicianUser;
         }
 
@@ -61,17 +61,10 @@ namespace Drugs2020.PL.ViewModels
         {
             medicalFileM.UpdateMedicalFile();
         }
-
-        
-
-        public void ReturnToContaining()
+       
+        public void ReplaceScreen(Screen desiredScreen)
         {
-            
-        }
-
-        public void ReplaceScreen()
-        {
-
+            containingShellVm.ReplaceScreen(desiredScreen);
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
+    //אפשר למחוק הכל!!!!!!!!1
     class PatientSearchViewModel : IViewModel , IGoBackScreenVM 
     {
 
