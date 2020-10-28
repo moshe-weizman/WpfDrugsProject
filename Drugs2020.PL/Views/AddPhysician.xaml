@@ -9,14 +9,19 @@
     <UserControl.Resources>
         <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
     </UserControl.Resources>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"  />
+            <RowDefinition Height="Auto"  />
 
+        </Grid.RowDefinitions>
 
-    <StackPanel Margin="5"
+        <StackPanel Margin="5"
                 Grid.Column="0">
         <TextBlock  TextWrapping="Wrap"
                     Text="ID:" />
         <TextBox Name="Id"
-                 Height="23"
+                 Height="40"
                  TextWrapping="Wrap"
                  IsEnabled="{Binding IsNewPhysician}"
                  Text="{Binding Physician.ID}" />
@@ -24,35 +29,35 @@
         <TextBlock TextWrapping="Wrap"
                    Text="First Name" />
         <TextBox Name="FName"
-                 Height="23"
+                 Height="40"
                  TextWrapping="Wrap"
                  Text="{Binding Physician.FirstName}" />
 
         <TextBlock TextWrapping="Wrap"
                    Text="Last Name" />
         <TextBox Name="LName"
-                 Height="23"
+                 Height="40"
                  TextWrapping="Wrap"
                  Text="{Binding Physician.LastName}" />
 
         <TextBlock TextWrapping="Wrap"
                    Text="Phone:" />
         <TextBox Name="Phone"
-                 Height="23"
+                 Height="40"
                  TextWrapping="Wrap"
                  Text="{Binding Physician.Phone}" />
 
         <TextBlock TextWrapping="Wrap"
                    Text="Address:" />
         <TextBox Name="Address"
-                 Height="23"
+                 Height="40"
                  TextWrapping="Wrap"
                  Text="{Binding Physician.Address}" />
 
         <TextBlock TextWrapping="Wrap"
                    Text="Email:" />
         <TextBox Name="Email"
-                 Height="23"
+                 Height="40"
                  TextWrapping="Wrap"
                  Text="{Binding Physician.Email}" />
 
@@ -71,11 +76,13 @@
         <TextBlock TextWrapping="Wrap"
                    Text="Password:" />
         <TextBox Name="Password"
-                 Height="23"
+                 Height="40"
                  TextWrapping="Wrap"
                  Text="{Binding Physician.Password}" />
         
-        <Button Content="Save"
+      
+    </StackPanel>
+        <Button Content="Save" Grid.Row="1" HorizontalAlignment="Right"
                 Command="{Binding UpdateDbCommand}" Margin="10">
             <Button.CommandParameter>
                 <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
@@ -101,9 +108,8 @@
         </Button>
 
 
-        <Button Content="Back"
+        <Button Content="Back" Grid.Row="1" HorizontalAlignment="Left"
                 Command="{Binding BackCommand}" Margin="10"/>
 
-    </StackPanel>
-
+        </Grid>
 </UserControl>

@@ -9,44 +9,48 @@
     <UserControl.Resources>
         <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
     </UserControl.Resources>
-
-    
-        <StackPanel Margin="5" Grid.Column="0">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"  />
+            <RowDefinition Height="Auto"  />
+            
+        </Grid.RowDefinitions>
+        <StackPanel Margin="5" Grid.Column="0" Grid.Row="0"  >
             <TextBlock  TextWrapping="Wrap"
                         Text="ID:" />
             <TextBox Name="Id"
-                     Height="23"
+                     Height="40"
                      TextWrapping="Wrap"
                  IsEnabled="{Binding IsNewPatient}"
                  Text="{Binding Patient.ID}" />
 
             <TextBlock TextWrapping="Wrap"
                        Text="First Name" />
-            <TextBox Name="FName" Height="23"
+        <TextBox Name="FName" Height="40"
                      TextWrapping="Wrap"
                      Text="{Binding Patient.FirstName}" />
 
             <TextBlock TextWrapping="Wrap"
                        Text="Last Name" />
-            <TextBox Name="LName" Height="23"
+        <TextBox Name="LName" Height="40"
                      TextWrapping="Wrap"
                      Text="{Binding Patient.LastName}" />
 
             <TextBlock TextWrapping="Wrap"
                        Text="Phone:" />
-            <TextBox Name="Phone" Height="23"
+        <TextBox Name="Phone" Height="40"
                      TextWrapping="Wrap"
                      Text="{Binding Patient.Phone}" />
 
             <TextBlock TextWrapping="Wrap"
                        Text="Address:" />
-            <TextBox Name="Address" Height="23"
+            <TextBox Name="Address" Height="40"
                      TextWrapping="Wrap"
                      Text="{Binding Patient.Address}" />
 
             <TextBlock TextWrapping="Wrap"
                        Text="Email:" />
-            <TextBox Name="Email" Height="23"
+        <TextBox Name="Email" Height="40"
                      TextWrapping="Wrap"
                      Text="{Binding Patient.Email}" />
 
@@ -60,32 +64,34 @@
             <TextBlock TextWrapping="Wrap"
                        Text="Birth Date:" />
             <DatePicker Name="BirthDate" SelectedDate="{Binding Patient.BirthDate}" DisplayDate="" DisplayDateEnd="1/1/2021" DisplayDateStart="1/1/1900" />
-            <Button Content="ADD"
-                    Command="{Binding UpdateDbCommand}" Margin="10">
-                <Button.CommandParameter>
-                    <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
-                        <Binding Path="Text"
-                                 ElementName="Id" />
-                        <Binding Path="Text"
-                                 ElementName="FName" />
-                        <Binding Path="Text"
-                                 ElementName="LName" />
-                        <Binding Path="Text"
-                                 ElementName="Phone" />
-                        <Binding Path="Text"
-                                 ElementName="Address" />
-                        <Binding Path="Text"
-                                 ElementName="Email" />
-                        <Binding Path="Text"
-                                 ElementName="BirthDate" />
-                    </MultiBinding>
-
-                </Button.CommandParameter>
-            </Button>
-
-
-        <Button Content="Back" Command="{Binding BackCommand}" Margin="10"/>
+           
 
         </StackPanel>
-    
+        
+        <Button Content="Save" Grid.Row="1" HorizontalAlignment="Right"
+                    Command="{Binding UpdateDbCommand}" Margin="10">
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
+                    <Binding Path="Text"
+                                 ElementName="Id" />
+                    <Binding Path="Text"
+                                 ElementName="FName" />
+                    <Binding Path="Text"
+                                 ElementName="LName" />
+                    <Binding Path="Text"
+                                 ElementName="Phone" />
+                    <Binding Path="Text"
+                                 ElementName="Address" />
+                    <Binding Path="Text"
+                                 ElementName="Email" />
+                    <Binding Path="Text"
+                                 ElementName="BirthDate" />
+                </MultiBinding>
+
+            </Button.CommandParameter>
+        </Button>
+
+
+        <Button Grid.Row="1" HorizontalAlignment="Left" Content="Back" Command="{Binding BackCommand}" Margin="10" VerticalAlignment="Bottom"/>
+    </Grid>
 </UserControl>
