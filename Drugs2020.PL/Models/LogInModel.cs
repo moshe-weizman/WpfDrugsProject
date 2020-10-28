@@ -19,8 +19,8 @@ namespace Drugs2020.PL.Models
         {
             bl = new BLImplementation();
             //לא למחוק את ההערה, משמש לבדיקות קורונה במגזר הצ'רקסי
-            //bl.AddDrug(new Drug() { IdCode = "9478", Name = "Rulid", GenericName = "Roxithromycin", Manufacturer = "Sanofi", ImageUrl = @"C:\Users\ronip\OneDrive\Desktop\זגורי\פרויקט\DrugsImages\roxithromycin 150.png" });
-
+            //bl.AddDrug(new Drug() { IdCode = "19478", Name = "Rulid", GenericName = "Roxithromycin", Manufacturer = "Sanofi", ImageUrl = @"C:\Users\ronip\OneDrive\Desktop\זגורי\פרויקט\DrugsImages" });
+            //Drug drug = bl.GetDrug("19478");
         }
 
         public void IdentifyUser()

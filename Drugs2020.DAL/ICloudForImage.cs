@@ -12,5 +12,6 @@ namespace Drugs2020.DAL
         void Download(string name, string saveTo);
         void Rename(string newName, string oldName);
         void Remove(string name);
+        bool DoesFileExists(string name);
     }
 }

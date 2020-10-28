@@ -69,6 +69,7 @@ namespace Drugs2020.PL.Views
             SignOutButton.Command = e.NewValue as ICommand;
         }
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
         public static readonly DependencyProperty ProgressBarVisibilityProperty =
                 DependencyProperty.Register("ProgressBarVisibility", typeof(Visibility), typeof(ShellHeader), new
                    PropertyMetadata(default(Visibility), new PropertyChangedCallback(OnProgressBarVisibilityChanged)));
@@ -163,6 +164,29 @@ namespace Drugs2020.PL.Views
         private void OnSearchCommandChanged(DependencyPropertyChangedEventArgs e)
         {
             SearchButton.Command = e.NewValue as ICommand;
+        }
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        public static readonly DependencyProperty SearchControlsVisibilityProperty =
+         DependencyProperty.Register("SearchControlsVisibility", typeof(Visibility), typeof(ShellHeader), new
+            PropertyMetadata(default(Visibility), new PropertyChangedCallback(OnSearchControlsVisibilityChanged)));
+
+        public Visibility SearchControlsVisibility
+        {
+            get { return (Visibility)GetValue(SearchControlsVisibilityProperty); }
+            set { SetValue(SearchControlsVisibilityProperty, value); }
+        }
+
+        private static void OnSearchControlsVisibilityChanged(DependencyObject d,
+           DependencyPropertyChangedEventArgs e)
+        {
+            ShellHeader ShellHeaderControl = d as ShellHeader;
+            ShellHeaderControl.OnSearchControlsVisibilityChanged(e);
+        }
+
+        private void OnSearchControlsVisibilityChanged(DependencyPropertyChangedEventArgs e)
+        {
+            SearchTextBox.Visibility = (Visibility)e.NewValue;
+            SearchButton.Visibility = (Visibility)e.NewValue;
         }
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -5,8 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:converters="clr-namespace:Drugs2020.PL.Converters"
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" >
     <UserControl.Resources>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </UserControl.Resources>
@@ -28,7 +27,8 @@
             <TextBlock x:Name="MessageTextBlock" 
                        VerticalAlignment="Center"
                        Margin="10, 0" />
-            <Button x:Name="SearchButton" ToolTip="Search"
+            <Button x:Name="SearchButton" 
+                    ToolTip="Search"
                     DockPanel.Dock="Right"
                     Command="{Binding SearchCommand}"
                     CommandParameter="{Binding ElementName=searchTextBox, Path=Text}"
@@ -39,6 +39,7 @@
                      Width="150"
                      Height="50"
                      DockPanel.Dock="Right"
+                     HorizontalAlignment="Right"
                      VerticalAlignment="Center" />
         </DockPanel>
     </Grid>

@@ -14,7 +14,12 @@ namespace Drugs2020.BLL
         IDal dal = new DalImplementation();
         private ICloudForImage cloud = new GoogleDrive();
         IPDF PDF = new SaveAsPDF();
-        const string LOCAL_STORAGE_PATH = @"..\\ApplicationResorces";
+        const string LOCAL_STORAGE_PATH = @"..\ApplicationResources";
+        const string IMAGES_STORAGE_DIRECTORY = @"\DrugsImages";
+        const string IMAGES_FILES_EXTENSION = @".png";
+        const string DEFAULT_IMAGE_PATH = @"..\ApplicationResources\DrugsImages\default.png";
+        const string RECEPTS_PDF_STORAGE_DIRECTORY = @"\ReceptsPDF";
+        const string PDF_FILES_EXTENSION = @".pdf";
         public Dictionary<string, int> GetDictionaryForReceptsByDate(DateTime startDate, DateTime endDate)
         {
             List<Recept> recepts = GetAllReceptsByDate(startDate, endDate);
@@ -187,14 +192,44 @@ namespace Drugs2020.BLL
         #region Drug CRUD Functions
         public Drug GetDrug(string ID)
         {
-            return dal.GetDrug(ID);
+            Drug drug = dal.GetDrug(ID);
+            if (File.Exists(drug.ImageUrl))
+            {
+                return drug;
+            }
+            if (cloud.DoesFileExists(drug.IdCode + IMAGES_FILES_EXTENSION))
+            {
+                cloud.Download(drug.IdCode + IMAGES_FILES_EXTENSION, LOCAL_STORAGE_PATH + IMAGES_STORAGE_DIRECTORY);
+                string path = Path.Combine(LOCAL_STORAGE_PATH, IMAGES_STORAGE_DIRECTORY, drug.IdCode + IMAGES_FILES_EXTENSION);
+                drug.ImageUrl = path;
+                return drug;
+            }
+            drug.ImageUrl = DEFAULT_IMAGE_PATH;
+            return drug;
         }
 
         public void AddDrug(Drug drug)
         {
-            drug.ImageUrl = SaveFileLocally(drug.ImageUrl, "\\DrugImages", drug.IdCode + ".png");
-            //cloud.Upload(drug.ImageUrl);
+            if (File.Exists(drug.ImageUrl))
+            {
+                SaveImage(drug);
+            }
+            else
+            {
+                drug.ImageUrl = DEFAULT_IMAGE_PATH;
+            }
             dal.AddDrug(drug);
+        }
+
+        private void SaveImage(Drug drug)
+        {
+            string drugImageName = drug.IdCode + IMAGES_FILES_EXTENSION;
+            drug.ImageUrl = SaveFileLocally(drug.ImageUrl, IMAGES_STORAGE_DIRECTORY, drugImageName);
+            while (cloud.DoesFileExists(drugImageName))
+            {
+                cloud.Remove(drugImageName);
+            }
+            cloud.Upload(drug.ImageUrl);
         }
 
         private string SaveFileLocally(string filePath, string targetDirectoryName, string targetFileName)

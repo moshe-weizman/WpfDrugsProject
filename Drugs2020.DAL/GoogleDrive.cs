@@ -5,6 +5,7 @@ using System.IO;
 using System.Threading;
 using Google.Apis.Drive.v3;
 using System.Threading.Tasks;
+using System.Runtime.Remoting.Messaging;
 
 //using System.Web.MimeMapping.GetMimeMapping
 
@@ -31,7 +32,7 @@ namespace Drugs2020.DAL
 
         public UserCredential GetCredential()
         {
-            var credentialIn = "C:\\Users\\ipewz\\source\\repos\\drugsProject2020\\Drugs2020.DAL\\card.json";
+            var credentialIn = @"C:\Users\ronip\Source\Repos\WpfDrugsProject2020\Drugs2020.DAL\card.json";
             UserCredential credential;
 
             using (var stream = new FileStream(credentialIn, FileMode.Open, FileAccess.Read))
@@ -169,7 +170,7 @@ namespace Drugs2020.DAL
         {
             DriveService service = GetService();
             Google.Apis.Drive.v3.Data.File file = ListFiles(null, name);
-
+            
             service.Files.Delete(file.Id).Execute();
         }
 
@@ -236,6 +237,11 @@ namespace Drugs2020.DAL
             // outputstream.Position = 0;
         }
 
+        public bool DoesFileExists(string name)
+        {
+            Google.Apis.Drive.v3.Data.File file = ListFiles(null, name);
+            return (file != null);
+        }
         public void SaveStream(System.IO.MemoryStream stream, string saveTo)
         {
             using (System.IO.FileStream file = new System.IO.FileStream(saveTo, System.IO.FileMode.OpenOrCreate, System.IO.FileAccess.ReadWrite))
