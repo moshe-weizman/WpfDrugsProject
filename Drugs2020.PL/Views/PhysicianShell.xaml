@@ -5,8 +5,32 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
              mc:Ignorable="d">
-    <StackPanel Orientation="Vertical">
-        <!--<StackPanel Orientation="Horizontal"
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ContentControl Content="{Binding PersonalDetailsTab}" Grid.Row="0"/>
+
+        <Grid Grid.Row="1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+            <ContentControl Content="ActionsMeneOfPhysician" Grid.Column="0"/>
+            <ContentControl Content="{Binding CurrentVM}" Grid.Column="1"/>
+
+
+
+        </Grid>
+    </Grid>
+    
+    
+    
+    <!--<StackPanel Orientation="Vertical">
+        --><!--<StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Right">
             <TextBox x:Name="searchTextBox"
                      Width="150"
@@ -16,7 +40,7 @@
                     CommandParameter="{Binding ElementName=searchTextBox, Path=Text}">
                 <Image Source="/Images/icons8-search-48.png" />
             </Button>
-        </StackPanel>-->
+        </StackPanel>--><!--
         
         <TabControl TabStripPlacement="Left">
             <TabItem ToolTip="Patient Details">
@@ -72,6 +96,6 @@
                 </TabItem.Content>
             </TabItem>
         </TabControl>
-    </StackPanel>
+    </StackPanel>-->
     
 </UserControl>

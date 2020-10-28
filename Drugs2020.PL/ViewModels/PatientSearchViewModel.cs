@@ -38,6 +38,7 @@ namespace Drugs2020.PL.ViewModels
              patientM.GetPatient(patientId);
             if (PatientFound != null)
             {
+                
                 containingShellVm.LeftCurrentVm = new PhysicianShellViewModel(containingShellVm, patientId, physicianId);
             }
         }

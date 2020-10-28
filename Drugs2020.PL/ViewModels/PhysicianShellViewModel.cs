@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PhysicianShellViewModel : INotifyPropertyChanged, IViewModel
+    class PhysicianShellViewModel : INotifyPropertyChanged, IViewModel, IContainingVm
     {
         public event PropertyChangedEventHandler PropertyChanged;
         
@@ -17,9 +17,21 @@ namespace Drugs2020.PL.ViewModels
         private MedicalFileViewModel medicalFileVM;
         private AddMedicalRecordViewModel addMedicalRecordVM;
         private AddReceptViewModel addReceptVM;
+        private ConsumptionOfDrugsViewModel consumptionOfDrugsVM;
+        private HistoricalMedicalRecordsViewModel historicalMedicalRecordsVM;
         private PatientSearchViewModel patientSearchVM;
 
-
+        private IViewModel currentVM;
+        public IViewModel CurrentVM
+        {
+            get { return currentVM; }
+            set
+            {
+                currentVM = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("CurrentVM"));
+            }
+        }
 
         private IViewModel personalDetailsTab;
         public IViewModel PersonalDetailsTab
@@ -65,19 +77,27 @@ namespace Drugs2020.PL.ViewModels
                     PropertyChanged(this, new PropertyChangedEventArgs("AddMedicalRecordTab"));
             }
         }
-
+        private string physicianId;
         public PhysicianShellViewModel(MainWidowViewModel containingVm, string patientId,string physicianId)
+        {
+            this.physicianId = physicianId;
+            
+            patientSearchVM = new PatientSearchViewModel(containingVm, physicianId);
+            Init(patientId);
+            PersonalDetailsTab = patientDetailsVM;
+            AddReceptTab = addReceptVM;
+            AddMedicalRecordTab = addMedicalRecordVM;
+            MedicalFileTab = medicalFileVM;
+        }
+
+        public void Init(string patientId)
         {
             patientDetailsVM = new PatientDetailsViewModel(this, patientId);
             medicalFileVM = new MedicalFileViewModel(this, patientId, physicianId);
             addMedicalRecordVM = new AddMedicalRecordViewModel(this, patientId, physicianId);
             addReceptVM = new AddReceptViewModel(this, patientId, physicianId);
-            patientSearchVM = new PatientSearchViewModel(containingVm, physicianId);
-
-            PersonalDetailsTab = patientDetailsVM;
-            AddReceptTab = addReceptVM;
-            AddMedicalRecordTab = addMedicalRecordVM;
-            MedicalFileTab = medicalFileVM;
+            consumptionOfDrugsVM = new ConsumptionOfDrugsViewModel(this, patientId);
+            historicalMedicalRecordsVM = new HistoricalMedicalRecordsViewModel(this, patientId, physicianId);
         }
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -86,16 +106,28 @@ namespace Drugs2020.PL.ViewModels
             switch (currentVM)
             {
                 case Screen.SEARCH_PATIENT_SCREEN:
-                    break;
-                case Screen.ADD_PATIENT_SCREEN:
-                    break;
-                case Screen.ACTIONS_MENU:
+                    CurrentVM = patientSearchVM;
                     break;
                 case Screen.ADD_MEDICAL_FILE:
+                    CurrentVM = medicalFileVM;
                     break;
                 case Screen.ADD_MEDICAL_RECORD:
+                    CurrentVM = addMedicalRecordVM;
                     break;
                 case Screen.ADD_RECEPT:
+                    CurrentVM = addReceptVM;
+                    break;
+                case Screen.PATIENT_DATA:
+                    CurrentVM = patientDetailsVM;
+                        break;
+                case Screen.LIST_OF_DRUGS_TAKEN_BY_PATIENT:
+                    CurrentVM = consumptionOfDrugsVM;
+                    break;
+                case Screen.LIST_OF_MEDICAL_RECORDS:
+                    CurrentVM = historicalMedicalRecordsVM;
+                        break;
+                case Screen.EMPTY:
+                    CurrentVM= null;
                     break;
                 default: break;
             }

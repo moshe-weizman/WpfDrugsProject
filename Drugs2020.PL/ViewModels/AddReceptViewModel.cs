@@ -33,6 +33,7 @@ namespace Drugs2020.PL.ViewModels
             AddToDbCommand = new AddToDbCommand(this);
             DrugCollection = new ObservableCollection<Drug>(addReceptModel.DrugList);
             OperationCommand = new CreatePDFCommand(this);
+            IsEnabledPDF = false;
         }
         public CreatePDFCommand OperationCommand { get; set; }
         public Recept Recept { get { return addReceptModel.Recept; } set { addReceptModel.Recept = value; } }
@@ -53,8 +54,18 @@ namespace Drugs2020.PL.ViewModels
         public void AddItemToDb()
         {
             addReceptModel.AddRecept();
+            IsEnabledPDF = true;
         }
 
+        private bool isEnabledPDF;
+        public bool IsEnabledPDF {
+            get { return isEnabledPDF; } 
+            set {
+                isEnabledPDF = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("IsEnablePDF"));
+            } 
+        }
         public void DoPDF()
         {
             addReceptModel.CreatePDF();

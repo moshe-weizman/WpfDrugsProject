@@ -26,7 +26,6 @@ namespace Drugs2020.PL.ViewModels
         }
         public void GoBack()
         {
-            containingVm.ReturnToContaining();
         }
     }
 }

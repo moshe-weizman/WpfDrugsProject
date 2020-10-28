@@ -11,16 +11,16 @@
     </UserControl.Resources>
     <StackPanel>
         <TextBlock TextWrapping="Wrap" Text="Problem:"/>
-        <TextBox Style="{StaticResource OutlinedFieldsStyle}" x:Name="ProblemTextBox"   TextWrapping="Wrap" Text="{Binding MedicalRecord.Problem}"/>
+        <TextBox  x:Name="ProblemTextBox"   TextWrapping="Wrap" Text="{Binding MedicalRecord.Problem}"/>
 
         <TextBlock TextWrapping="Wrap" Text="Diagnose:"/>
-        <TextBox Style="{StaticResource OutlinedFieldsStyle}" x:Name="DiagnoseTextBox"   TextWrapping="Wrap" Text="{Binding MedicalRecord.Diagnose}"/>
+        <TextBox  x:Name="DiagnoseTextBox"   TextWrapping="Wrap" Text="{Binding MedicalRecord.Diagnose}"/>
 
         <TextBlock TextWrapping="Wrap" Text="Treatment:"/>
-        <TextBox Style="{StaticResource OutlinedFieldsStyle}" x:Name="TreatmentTextBox"   TextWrapping="Wrap" Text="{Binding MedicalRecord.Treatment}"/>
+        <TextBox  x:Name="TreatmentTextBox"   TextWrapping="Wrap" Text="{Binding MedicalRecord.Treatment}"/>
 
         <TextBlock TextWrapping="Wrap" Text="Notes:"/>
-        <TextBox Style="{StaticResource OutlinedFieldsStyle}"   x:Name="Notes"  TextWrapping="Wrap" Text="{Binding MedicalRecord.PhysicianNotes}"/>
+        <TextBox  x:Name="Notes"  TextWrapping="Wrap" Text="{Binding MedicalRecord.PhysicianNotes}"/>
 
 
        

@@ -8,6 +8,6 @@ namespace Drugs2020.PL.ViewModels
 {
     public interface IContainingVm
     {
-        void ReturnToContaining();
+      //  void ReturnToContaining();
     }
 }
