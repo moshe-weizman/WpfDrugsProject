@@ -25,9 +25,10 @@ namespace Drugs2020.PL.ViewModels
                     PropertyChanged(this, new PropertyChangedEventArgs("Conflicts"));
             }
         }
-
+        private string patientId;
         public AddReceptViewModel(PhysicianShellViewModel containingVm, string patientId, Physician physician)
         {
+            this.patientId = patientId;
             addReceptModel = new ReceptModel(patientId, physician);
             this.containingVm = containingVm;
             AddToDbCommand = new AddToDbCommand(this);
@@ -55,6 +56,7 @@ namespace Drugs2020.PL.ViewModels
         {
             addReceptModel.AddRecept();
             IsEnabledPDF = true;
+            
         }
 
         private bool isEnabledPDF;
@@ -63,7 +65,7 @@ namespace Drugs2020.PL.ViewModels
             set {
                 isEnabledPDF = value;
                 if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("IsEnablePDF"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("isEnabledPDF"));
             } 
         }
         public void DoPDF()

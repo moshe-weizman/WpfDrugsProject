@@ -41,7 +41,7 @@
         <TextBlock TextWrapping="Wrap" Text="Days:"/>
         <TextBox x:Name="DaysTextBox" Height="40" TextWrapping="Wrap" Text="{Binding Recept.Days}"/>
 
-        <Button IsEnabled="{Binding IsEnablePDF}" Content="Create PDF File" Margin="10" Command="{Binding OperationCommand}" />
+        <Button IsEnabled="{Binding IsEnabledPDF}" Content="Create PDF File" Margin="10" Command="{Binding OperationCommand}" />
 
         <Button Content="Add Recept" d:LayoutOverrides="Height" Margin="10" Command="{Binding AddToDbCommand}">
             <Button.CommandParameter>
