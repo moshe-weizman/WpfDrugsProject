@@ -37,7 +37,7 @@
             <Button Content="Log in"
                     Width="60"
                     Padding="0"
-                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                    
                     Command="{Binding LogInUserCommand}" Margin="15">
                 <Button.CommandParameter>
                     <MultiBinding Converter="{StaticResource fieldsTextToBoolConverter}">
