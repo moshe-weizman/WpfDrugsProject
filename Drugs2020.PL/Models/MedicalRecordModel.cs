@@ -38,6 +38,9 @@ namespace Drugs2020.PL.Models
             bl.UpdateMedicalRecord(MedicalRecord.MedicalRecordID, MedicalRecord);
         }
 
-       
+        public void GetMedicalRecord(string MedicalRecordID)
+        {
+          //  MedicalRecord= bl.getMedicalRecord(MedicalRecordID);
+        }
     }
 }

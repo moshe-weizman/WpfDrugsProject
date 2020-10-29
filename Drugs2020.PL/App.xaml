@@ -14,7 +14,10 @@
                 <ResourceDictionary Source="ButtonStyle.xaml"/>
                 <ResourceDictionary Source="OutlinedFieldsStyle.xaml"/>
                 <ResourceDictionary Source="ConboBoxStyle.xaml"/>
-                
+                <ResourceDictionary Source="LabelStyle.xaml"/>
+                <ResourceDictionary Source="TextBlockStyle.xaml"/>
+                <ResourceDictionary Source="UserControlStyle.xaml"/>
+
             </ResourceDictionary.MergedDictionaries>
            
                     

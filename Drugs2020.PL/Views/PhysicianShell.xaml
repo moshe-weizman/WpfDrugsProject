@@ -6,9 +6,10 @@
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
              xmlns:local1="clr-namespace:Drugs2020.PL"
              mc:Ignorable="d"
-             xmlns:converters="clr-namespace:Drugs2020.PL.Converters">
+             xmlns:converters="clr-namespace:Drugs2020.PL.Converters" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
     <UserControl.Resources>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -33,10 +34,16 @@
                 <Button IsEnabled="{Binding IsEnabledActionsMenu}" Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.PATIENT_DATA }" Content="PATIENT DATA" HorizontalContentAlignment="Center" Margin="20,20,0,20"  Height="60" />
                 <Button IsEnabled="{Binding IsEnabledActionsMenu}" Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_MEDICAL_RECORD}" Content="ADD MEDICAL RECORD" Margin="20,20,0,20" Height="60"  HorizontalContentAlignment="Center"/>
                 <Button IsEnabled="{Binding IsEnabledActionsMenu}" Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_RECEPT}" Content="ADD RECEPT" Margin="20,20,0,20" HorizontalContentAlignment="Center" Height="60"  />
-                <Button IsEnabled="{Binding IsEnabledActionsMenu}" Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_MEDICAL_FILE}" Content="MEDICAL FILE" HorizontalContentAlignment="Center" Margin="20,20,0,20" Height="60" />
+                <Button IsEnabled="{Binding IsEnabledActionsMenu}" Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_MEDICAL_FILE}"  HorizontalContentAlignment="Center" Margin="20,20,0,20" Height="60" >
+                    <Button.Content>
+                        MEDICAL FILE
+                        <!--<materialDesign:PackIcon Kind="MedicalBag"  />-->
+                    </Button.Content>
+                   
+                </Button>
 
             </StackPanel>
-            <ContentControl Content="{Binding CurrentVM}" Grid.Column="1"/>
+            <ContentControl Content="{Binding CurrentVM}" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="1"/>
 
 
 
@@ -45,73 +52,6 @@
     
     
     
-    <!--<StackPanel Orientation="Vertical">
-        --><!--<StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Right">
-            <TextBox x:Name="searchTextBox"
-                     Width="150"
-                     Margin="50,0,0,0" />
-            <Button ToolTip="Search"
-                    Command="{Binding SearchCommand}"
-                    CommandParameter="{Binding ElementName=searchTextBox, Path=Text}">
-                <Image Source="/Images/icons8-search-48.png" />
-            </Button>
-        </StackPanel>--><!--
-        
-        <TabControl TabStripPlacement="Left">
-            <TabItem ToolTip="Patient Details">
-                <TabItem.Header>
-                    <Grid>
-                        <Image Source="/Images/icons8-health-checkup-100.png"
-                               Stretch="None"
-                               Height="100"
-                               VerticalAlignment="Top" />
-                    </Grid>
-                </TabItem.Header>
-                <TabItem.Content>
-                    <ContentControl Content="{Binding PersonalDetailsTab}" />
-                </TabItem.Content>
-            </TabItem>
-
-            <TabItem 
-                     ToolTip="Medical File">
-                <TabItem.Header>
-                    <Grid>
-                        <Image Source="/Images/icons8-stethoscope-96.png"
-                               Stretch="None" />
-                    </Grid>
-                </TabItem.Header>
-                <TabItem.Content>
-                    <ContentControl Content="{Binding MedicalFileTab}" />
-                </TabItem.Content>
-            </TabItem>
-
-            <TabItem 
-                     ToolTip="Add Recept">
-                <TabItem.Header>
-                    <Grid>
-                        <Image Source="/Images/icons8-pill-90.png"
-                               Stretch="None" />
-                    </Grid>
-                </TabItem.Header>
-                <TabItem.Content>
-                    <ContentControl Content="{Binding AddReceptTab}" />
-                </TabItem.Content>
-            </TabItem>
-
-            <TabItem 
-                     ToolTip="Medical Record">
-                <TabItem.Header>
-                    <Grid>
-                        <Image Source="/Images/icons8-statistics-90.png"
-                               Stretch="None" />
-                    </Grid>
-                </TabItem.Header>
-                <TabItem.Content>
-                    <ContentControl Content="{Binding AddMedicalRecordTab}" />
-                </TabItem.Content>
-            </TabItem>
-        </TabControl>
-    </StackPanel>-->
+    
     
 </UserControl>

@@ -5,15 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
              xmlns:converters="clr-namespace:Drugs2020.PL.Converters"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d">
     <UserControl.Resources>
         <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
 
     </UserControl.Resources>
     <StackPanel>
-        <TextBlock TextWrapping="Wrap" Text="Drug:"/>
+       
 
-        <ComboBox ItemsSource="{Binding DrugCollection}" SelectedItem="{Binding SelectedDrug}" >
+        <ComboBox materialDesign:HintAssist.Hint="Drugs"  ItemsSource="{Binding DrugCollection}" SelectedItem="{Binding SelectedDrug}" HorizontalAlignment="Left" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -23,16 +24,7 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <!--<ListBox Height="100" ItemsSource="{Binding DrugCollection}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Name}"/>
-                        <TextBlock Text="{Binding GenericName}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>-->
+       
 
 
         <TextBlock TextWrapping="Wrap" Text="Quantity:"/>
@@ -41,7 +33,7 @@
         <TextBlock TextWrapping="Wrap" Text="Days:"/>
         <TextBox x:Name="DaysTextBox" Height="40" TextWrapping="Wrap" Text="{Binding Recept.Days}"/>
 
-        <Button IsEnabled="{Binding IsEnabledPDF}" Content="Create PDF File" Margin="10" Command="{Binding OperationCommand}" />
+        <Button Content="Create PDF File" Margin="10" Command="{Binding OperationCommand}" />
 
         <Button Content="Add Recept" d:LayoutOverrides="Height" Margin="10" Command="{Binding AddToDbCommand}">
             <Button.CommandParameter>

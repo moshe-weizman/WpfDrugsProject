@@ -10,7 +10,7 @@
         <Setter Property="IsEnabled" Value="{Binding Path=IsChecked, ElementName=MaterialDesignFilledComboBoxEnabledComboBox}"/>
         <Setter Property="materialDesign:HintAssist.Hint" Value="Some item"/>
         <Setter Property="Width" Value="256"/>
-        <Setter Property="Height" Value="60"/>
+        <Setter Property="Height" Value="65"/>
 
     </Style>
 </ResourceDictionary>

@@ -9,11 +9,12 @@
     <UserControl.Resources>
         <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
     </UserControl.Resources>
+    <ScrollViewer>
     <StackPanel>
-        <TextBlock TextWrapping="Wrap" Text="Weight:"/>
+        <TextBlock TextWrapping="Wrap" Text="Weight (kg):"/>
         <TextBox x:Name="Weight"  Height="40" TextWrapping="Wrap" Text="{Binding MedicalFile.Weight}"/>
 
-        <TextBlock TextWrapping="Wrap" Text="Height:"/>
+        <TextBlock TextWrapping="Wrap" Text="Height (cm.):"/>
         <TextBox x:Name="Height" Height="40" TextWrapping="Wrap" Text="{Binding MedicalFile.Height}"/>
 
         <TextBlock TextWrapping="Wrap" Text="Chronic Illness:"/>
@@ -43,4 +44,5 @@
 
 
     </StackPanel>
+    </ScrollViewer>
 </UserControl>

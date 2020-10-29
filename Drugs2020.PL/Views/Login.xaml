@@ -13,26 +13,26 @@
     </UserControl.Resources>
 
         <StackPanel Width="180" Margin="5"  VerticalAlignment="Center" >
-
-            <TextBlock TextWrapping="Wrap"
+        <Label Content="Log In" HorizontalAlignment="Center"  FontSize="22" />
+        <TextBlock TextWrapping="Wrap"
                        Text="User ID:"
-                   Margin="15" />
+                   Margin="10" />
         <TextBox Name="TextBoxID" 
                      Height="40"
                  
                      TextWrapping="Wrap"
                  Text="{Binding UserId}"
-                 Margin="15" 
+                 Margin="10" 
                  />
 
             <TextBlock TextWrapping="Wrap"
-                   Text="Password"
-                   Margin="15" />
+                   Text="Password:"
+                   Margin="10" />
             <TextBox Name="PasswordTextBox"
                      Height="40"
                      TextWrapping="Wrap"
                  Text="{Binding Password}"
-                 Margin="15" />
+                 Margin="10" />
 
             <Button Content="Log in"
                     Width="60"

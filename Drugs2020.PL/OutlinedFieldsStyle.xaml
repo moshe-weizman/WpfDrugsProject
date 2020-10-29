@@ -11,6 +11,7 @@
         <Setter Property="Height" Value="100"/>
         <Setter Property="AcceptsReturn" Value="True"/>
         <Setter Property="TextWrapping"  Value="Wrap"/>
+        <Setter Property="Margin" Value="5"/>
         <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="materialDesign:HintAssist.Hint"  Value="{Binding Path=Name}"/>
         <Setter Property="IsEnabled" Value="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
