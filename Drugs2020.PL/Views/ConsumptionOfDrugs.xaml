@@ -12,7 +12,7 @@
             <TabItem Header="Present">
                 <Grid Background="#FFE5E5E5">
 
-                    <StackPanel>
+                        <StackPanel>
                         <ListView 
   ItemsSource="{Binding DrugsTake}">
                             <ListView.View>

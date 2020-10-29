@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <StackPanel>
         <ListView 
-  ItemsSource="{Binding MedicalRecordsCollection}">
+  ItemsSource="{Binding MedicalRecordsCollection}" SelectedItem="{Binding SelectedMedicalRecord}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn
@@ -39,7 +39,7 @@
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                         <DataTemplate>
-                                <Button Content="Edit" IsEnabled="{Binding AbleEdit}" />
+                                    <Button Content="Edit" IsEnabled="{Binding AbleEdit}"  Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_MEDICAL_RECORD }"/>
                         </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

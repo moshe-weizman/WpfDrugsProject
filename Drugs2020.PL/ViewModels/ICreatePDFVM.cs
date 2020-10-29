@@ -9,5 +9,6 @@ namespace Drugs2020.PL.ViewModels
     public interface ICreatePDFVM
     {
         void DoPDF();
+        bool IsEnabledPDF { get; set; }
     }
 }

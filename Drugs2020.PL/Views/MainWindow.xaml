@@ -22,7 +22,9 @@
         <Image Source="/Images/medicine.jpg"
                Stretch="UniformToFill"
                Margin="5" />
-        <ContentControl Content="{Binding CurrentVm}" />
+        
+            <ContentControl Content="{Binding CurrentVm}" ScrollViewer.CanContentScroll="True" />
+        
 
     </Grid>
 </Window>

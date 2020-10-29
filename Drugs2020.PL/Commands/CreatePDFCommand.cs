@@ -22,7 +22,7 @@ namespace Drugs2020.PL.Commands
         }
         public bool CanExecute(object parameter)
         {
-            return true;
+            return operationVM.IsEnabledPDF;
         }
 
         public void Execute(object parameter)

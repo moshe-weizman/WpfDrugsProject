@@ -9,6 +9,7 @@
     <UserControl.Resources>
         <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
     </UserControl.Resources>
+    <ScrollViewer>
     <StackPanel>
         <TextBlock TextWrapping="Wrap" Text="Problem:"/>
         <TextBox  x:Name="ProblemTextBox"   TextWrapping="Wrap" Text="{Binding MedicalRecord.Problem}"/>
@@ -44,4 +45,5 @@
 
 
     </StackPanel>
+    </ScrollViewer>
 </UserControl>

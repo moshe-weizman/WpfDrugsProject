@@ -59,15 +59,8 @@ namespace Drugs2020.PL.ViewModels
             
         }
 
-        private bool isEnabledPDF;
-        public bool IsEnabledPDF {
-            get { return isEnabledPDF; } 
-            set {
-                isEnabledPDF = value;
-                if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("isEnabledPDF"));
-            } 
-        }
+        
+        public bool IsEnabledPDF {get; set; }
         public void DoPDF()
         {
             addReceptModel.CreatePDF();

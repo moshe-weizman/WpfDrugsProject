@@ -3,14 +3,18 @@ using Drugs2020.PL.Commands;
 using Drugs2020.PL.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class AddMedicalRecordViewModel: IAddToDb,  IViewModel, IContainingVm
+    class AddMedicalRecordViewModel:INotifyPropertyChanged,  IAddToDb,  IViewModel, IContainingVm
     {
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private MedicalRecordModel medicalRecordModel;
         private PhysicianShellViewModel containingVm;
         private string patientId;
@@ -25,7 +29,21 @@ namespace Drugs2020.PL.ViewModels
         }
 
         public AddToDbCommand AddToDbCommand { get; set; }
-        public MedicalRecord MedicalRecord{ set { medicalRecordModel.MedicalRecord=value; } get {return medicalRecordModel.MedicalRecord; } }
+        public MedicalRecord MedicalRecord{ 
+            set 
+            { 
+                medicalRecordModel.MedicalRecord=value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("MedicalRecord"));
+                }
+            } 
+            get
+            {
+                return medicalRecordModel.MedicalRecord;
+            } 
+        }
+
 
         public void AddItemToDb()
         {
