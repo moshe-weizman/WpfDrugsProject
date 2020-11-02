@@ -11,28 +11,32 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class HistoricalMedicalRecordsViewModel : IViewModel, IGoBackScreenVM, IScreenReplacementVM, INotifyPropertyChanged
+    class HistoricalMedicalRecordsViewModel : IViewModel, IGoBackScreenVM, INotifyPropertyChanged, IEdit
     {
         public ObservableCollection<MedicalRecord> MedicalRecordsCollection { get; set; }
 
         private MedicalRecordModel medicalRecordM;
         private PhysicianShellViewModel containingVm;
+        private string patientId;
+        private Physician physician;
 
         public event PropertyChangedEventHandler PropertyChanged;
-
         public BackCommand BackCommand { get; set; }
-
-        public ScreenReplacementCommand ScreenReplacementCommand { get; set; }
+        public EditingItemCommand EditingItemCommand { get; set; }
         public HistoricalMedicalRecordsViewModel(PhysicianShellViewModel containingVm, string patientId, Physician physician)
         {
             this.containingVm = containingVm;
             this.medicalRecordM = new MedicalRecordModel(patientId, physician);
             MedicalRecordsCollection = new ObservableCollection<MedicalRecord>(medicalRecordM.MedicalRecordsList);
             BackCommand = new BackCommand(this);
-            ScreenReplacementCommand = new ScreenReplacementCommand(this);
+            EditingItemCommand = new EditingItemCommand(this);
+            this.physician = physician;
+            this.patientId = patientId;
         }
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         public MedicalRecord SelectedMedicalRecord
         {
+            get { return medicalRecordM.MedicalRecord; }
             set
             {
                 medicalRecordM.MedicalRecord = value;
@@ -44,11 +48,11 @@ namespace Drugs2020.PL.ViewModels
         {
             containingVm.ReplaceScreen(Screen.ADD_MEDICAL_FILE);
         }
-
-        public void ReplaceScreen(Screen desiredScreen)
+        public void OpenEditingScreen(object item)
         {
-            containingVm.ReplaceScreen(desiredScreen);
-           
+            if(SelectedMedicalRecord.AbleEdit)
+                 containingVm.CurrentVM = new AddMedicalRecordViewModel(containingVm, patientId, physician, SelectedMedicalRecord);
+            //לממש פה הודעה למשתמש שבמקרה שהוא לא רשאי לערוך כי הוא לא הרופא שכתב את הרשומה הרפואית
         }
     }
 }

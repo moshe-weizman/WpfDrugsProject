@@ -7,14 +7,17 @@
              xmlns:local1="clr-namespace:Drugs2020.PL"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid >
+    <Grid x:Name="root" >
+       
         <Grid.RowDefinitions>
             <RowDefinition Height="*"  />
             <RowDefinition Height="Auto"  />
 
         </Grid.RowDefinitions>
+        <Button Visibility="Collapsed"  Command="{Binding EditingItemCommand}"  ></Button>
+
         <StackPanel>
-        <ListView 
+            <ListView x:Name="MedicalRecordsList" 
   ItemsSource="{Binding MedicalRecordsCollection}" SelectedItem="{Binding SelectedMedicalRecord}">
             <ListView.View>
                 <GridView>
@@ -39,7 +42,7 @@
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                         <DataTemplate>
-                                    <Button Content="Edit" IsEnabled="{Binding AbleEdit}"  Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_MEDICAL_RECORD }"/>
+                                    <Button Content="Edit" IsEnabled="{Binding AbleEdit}"  Command="{Binding ElementName=root , Path=DataContext.EditingItemCommand}" CommandParameter="{Binding  ElementName=MedicalRecordsList, Path=SelectedItem}"/>
                         </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

@@ -50,6 +50,7 @@ namespace Drugs2020.DAL
 
         #region MediclRecord
         void AddMediclRecordToPatient(MedicalRecord medicalRecord);
+        MedicalRecord GetMedicalRecord(string medicalRecordID);
         void UpdateMedicalRecord(string medicalRecordID, MedicalRecord medicalRecord);
         #endregion
 

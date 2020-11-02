@@ -44,6 +44,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="FluentWPF, Version=0.8.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentWPF.0.8.0\lib\net45\FluentWPF.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=1.2.7.1979, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.2.7\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
@@ -187,6 +190,9 @@
     </Compile>
     <Compile Include="Views\MedicalRecord.xaml.cs">
       <DependentUpon>MedicalRecord.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu.xaml.cs">
+      <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PatientData.xaml.cs">
       <DependentUpon>PatientData.xaml</DependentUpon>
@@ -358,6 +364,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MedicalRecord.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Menu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

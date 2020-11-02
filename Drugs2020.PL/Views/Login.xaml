@@ -11,10 +11,12 @@
     <UserControl.Resources>
         <Converters:FieldsTextToBoolConverter x:Key="fieldsTextToBoolConverter" />
     </UserControl.Resources>
+   
 
-        <StackPanel Width="180" Margin="5"  VerticalAlignment="Center" >
-        <Label Content="Log In" HorizontalAlignment="Center"  FontSize="22" />
-        <TextBlock TextWrapping="Wrap"
+    <StackPanel Width="180" Margin="5"  VerticalAlignment="Center">
+            <Label Content="Log In" HorizontalAlignment="Center"  FontSize="28" FontFamily="Microsoft JhengHei UI Light" />
+
+            <TextBlock TextWrapping="Wrap"
                        Text="User ID:"
                    Margin="10" />
         <TextBox Name="TextBoxID" 
@@ -50,10 +52,6 @@
                 </Button.CommandParameter>
 
             </Button>
-        
-
     </StackPanel>
-
-   
 
 </UserControl>

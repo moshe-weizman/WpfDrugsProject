@@ -10,6 +10,6 @@
         <Setter Property="Width" Value="Auto"/>
         <Setter Property="Background" Value="#FF2DA8A0"/>
         <Setter Property="materialDesign:ShadowAssist.ShadowDepth" Value="Depth3"/>
-        <Setter Property="FontFamily" Value="Sitka Small"/>
+        <Setter Property="FontFamily" Value="Microsoft JhengHei UI Light"/>
     </Style>
 </ResourceDictionary>

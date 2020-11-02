@@ -13,10 +13,13 @@ namespace Drugs2020.PL.Models
         IBL bl;
         public MedicalRecord MedicalRecord { get; set; }
         public List<MedicalRecord> MedicalRecordsList { get; set; }
-        public MedicalRecordModel(string patientId, Physician physicianUser)
+        public MedicalRecordModel(string patientId, Physician physicianUser, MedicalRecord MedicalRecordExists = null)
         {
             bl = new BLImplementation();
-            MedicalRecord = new MedicalRecord(patientId, physicianUser);
+            if (MedicalRecordExists == null)
+                MedicalRecord = new MedicalRecord(patientId, physicianUser);
+            else
+                MedicalRecord = MedicalRecordExists;
             MedicalRecordsList = bl.GetAllMedicalRecordsOfPatient(MedicalRecord.PatientID);
             MedicalRecordsList.ForEach(x => x.PhysicianName = bl.GetPhysician(x.PhysicianID).FirstName);
             MedicalRecordsList.Where(x => x.PhysicianID == physicianUser.ID).All(x => x.AbleEdit = true);
@@ -40,7 +43,7 @@ namespace Drugs2020.PL.Models
 
         public void GetMedicalRecord(string MedicalRecordID)
         {
-          //  MedicalRecord= bl.getMedicalRecord(MedicalRecordID);
+            MedicalRecord= bl.GetMedicalRecord(MedicalRecordID);
         }
     }
 }

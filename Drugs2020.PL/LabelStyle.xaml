@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Drugs2020.PL">
     <Style TargetType="Label">
-        <Setter Property="FontFamily" Value="Sitka Small"/>
+        <Setter Property="FontFamily" Value="Microsoft JhengHei UI Light"/>
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Margin" Value="5"/>

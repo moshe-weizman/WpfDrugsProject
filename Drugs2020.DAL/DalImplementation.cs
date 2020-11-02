@@ -317,6 +317,19 @@ namespace Drugs2020.DAL
                 throw new Exception("DalImplementation - AddMediclRecordToPatient " + ex);
             }
         }
+        public MedicalRecord GetMedicalRecord(string medicalRecordID)
+        {
+            try
+            {
+
+                return ctx.MedicalRecords.Find(medicalRecordID);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("DalImplementation - getMedicalRecord " + ex);
+            }
+        }
+
         public void UpdateMedicalRecord(string medicalRecordID, MedicalRecord medicalRecord)
         {
             try
@@ -395,6 +408,7 @@ namespace Drugs2020.DAL
             }
         }
 
+       
         #endregion
     }
 }

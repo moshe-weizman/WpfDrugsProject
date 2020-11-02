@@ -27,7 +27,7 @@
        
 
 
-        <Button Content="ADD" Command="{Binding AddToDbCommand}" d:LayoutOverrides="Height" Margin="10">
+        <Button Content="Add/Update" Command="{Binding AddToDbCommand}" d:LayoutOverrides="Height" Margin="10">
             <Button.CommandParameter>
                 <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
                     <Binding Path="Text"

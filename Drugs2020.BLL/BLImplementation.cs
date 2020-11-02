@@ -69,14 +69,19 @@ namespace Drugs2020.BLL
         {
             dal.AddMediclRecordToPatient(medicalRecord);
         }
-
+        public MedicalRecord GetMedicalRecord(string medicalRecordID)
+        {
+            return dal.GetMedicalRecord(medicalRecordID);
+        }
         public void UpdateMedicalRecord(string medicalRecordID, MedicalRecord medicalRecord)
         {
             dal.UpdateMedicalRecord(medicalRecordID, medicalRecord);
         }
-        public bool MedicalRecordAlreadyExists(MedicalRecord medicalRecord)//לכאורה צריך לא לממש אותה
+        public bool MedicalRecordAlreadyExists(MedicalRecord medicalRecord)
         {
-            return false;
+            if (dal.GetMedicalRecord(medicalRecord.MedicalRecordID) == null)
+                return false;
+            return true;
         }
         #endregion
 
@@ -295,6 +300,8 @@ namespace Drugs2020.BLL
         {
             return 770;
         }
+
+      
         #endregion
     }
 }

@@ -19,9 +19,12 @@ namespace Drugs2020.PL.ViewModels
         private PhysicianShellViewModel containingVm;
         private string patientId;
         private Physician physicianUser;
-        public AddMedicalRecordViewModel(PhysicianShellViewModel containingVm, string patientId, Physician physicianUser)
+        public AddMedicalRecordViewModel(PhysicianShellViewModel containingVm, string patientId, Physician physicianUser, MedicalRecord medicalRecordExists = null)
         {
-            this.medicalRecordModel = new MedicalRecordModel(patientId, physicianUser);
+            if(medicalRecordExists ==null)
+                this.medicalRecordModel = new MedicalRecordModel(patientId, physicianUser);
+            else
+                this.medicalRecordModel = new MedicalRecordModel(patientId, physicianUser, medicalRecordExists);
             this.containingVm = containingVm;
             AddToDbCommand = new AddToDbCommand(this);
             this.patientId = patientId;
