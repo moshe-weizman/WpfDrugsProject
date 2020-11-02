@@ -5,10 +5,10 @@
 
     <Style BasedOn="{StaticResource MaterialDesignRaisedButton}"  TargetType="Button">
         <Setter Property="Margin" Value="5"/>
-        <Setter Property="Height" Value="50" />
+        <Setter Property="Height" Value="Auto" />
         <Setter Property="materialDesign:ButtonAssist.CornerRadius" Value="10"/>
         <Setter Property="Width" Value="Auto"/>
-        <Setter Property="Background" Value="#FF2DA8A0"/>
+        <Setter Property="Background" Value="#233C4F"/>
         <Setter Property="materialDesign:ShadowAssist.ShadowDepth" Value="Depth3"/>
         <Setter Property="FontFamily" Value="Microsoft JhengHei UI Light"/>
     </Style>

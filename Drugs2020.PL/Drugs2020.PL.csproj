@@ -191,9 +191,6 @@
     <Compile Include="Views\MedicalRecord.xaml.cs">
       <DependentUpon>MedicalRecord.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Menu.xaml.cs">
-      <DependentUpon>Menu.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\PatientData.xaml.cs">
       <DependentUpon>PatientData.xaml</DependentUpon>
     </Compile>
@@ -364,10 +361,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MedicalRecord.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Menu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

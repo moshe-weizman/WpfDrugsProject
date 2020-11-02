@@ -6,13 +6,20 @@
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
              mc:Ignorable="d">
     <StackPanel>
-        <Label Content="ID: "/>
+        <Label Content="ID: " />
         <TextBlock TextWrapping="Wrap" FontSize="18" Text="{Binding CurrentPatient.ID }" Margin="5"  Height="60"/>
+        <Separator Background="Black"/>
         <Label Content="First Name: "/>
         <TextBlock TextWrapping="Wrap" FontSize="18" Text="{Binding CurrentPatient.FirstName }" Margin="5"  Height="60"/>
+        <Separator Background="Black"/>
+
         <Label Content="Last Name: "/>
         <TextBlock TextWrapping="Wrap" FontSize="18" Text="{Binding CurrentPatient.LastName }" Margin="5"  Height="60"/>
+        <Separator Background="Black"/>
+
         <Label Content="Age: "/>
         <TextBlock TextWrapping="Wrap" FontSize="18" Text="{Binding CurrentPatient.Age }" Margin="5"  Height="60"/>
+        <Separator Background="Black"/>
+
     </StackPanel>
 </UserControl>

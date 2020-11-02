@@ -7,7 +7,7 @@
     <Style BasedOn="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" TargetType="TextBox">
        
         <Setter Property="VerticalAlignment" Value="Top"/>
-
+        <Setter Property="Foreground" Value="White"/>
         <Setter Property="Height" Value="100"/>
         <Setter Property="AcceptsReturn" Value="True"/>
         <Setter Property="TextWrapping"  Value="Wrap"/>
@@ -15,6 +15,7 @@
         <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="materialDesign:HintAssist.Hint"  Value="{Binding Path=Name}"/>
         <Setter Property="IsEnabled" Value="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
+        <Setter Property="BorderBrush" Value="White"/>
 
-        </Style>
+    </Style>
 </ResourceDictionary>

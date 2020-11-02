@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:Drugs2020.PL"
         xmlns:uc="clr-namespace:Drugs2020.PL.Views"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="Prescription management"
         Height="600"
         Width="1080">
     <Window.DataContext>
@@ -17,11 +17,11 @@
     <Window.Resources>
         
     </Window.Resources>
-    <Grid>
+    <Grid Background="#14212B">
        
-        <Image Source="/Images/medicine.jpg"
+        <!--<Image Source="/Images/medicine.jpg"
                Stretch="UniformToFill"
-               Margin="5" />
+               Margin="5" />-->
         
             <ContentControl Content="{Binding CurrentVm}" ScrollViewer.CanContentScroll="True" />
         

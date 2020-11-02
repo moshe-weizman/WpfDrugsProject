@@ -11,9 +11,9 @@
     <UserControl.Resources>
         <Converters:FieldsTextToBoolConverter x:Key="fieldsTextToBoolConverter" />
     </UserControl.Resources>
-   
 
-    <StackPanel Width="180" Margin="5"  VerticalAlignment="Center">
+  
+    <StackPanel  Background="#1C2F3E" Width="180" Margin="5"  VerticalAlignment="Center">
             <Label Content="Log In" HorizontalAlignment="Center"  FontSize="28" FontFamily="Microsoft JhengHei UI Light" />
 
             <TextBlock TextWrapping="Wrap"
@@ -37,8 +37,7 @@
                  Margin="10" />
 
             <Button Content="Log in"
-                    Width="60"
-                    Padding="0"
+                    
                     
                     Command="{Binding LogInUserCommand}" Margin="15">
                 <Button.CommandParameter>
@@ -53,5 +52,4 @@
 
             </Button>
     </StackPanel>
-
 </UserControl>

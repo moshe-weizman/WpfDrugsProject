@@ -4,15 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:converters="clr-namespace:Drugs2020.PL.Converters"
-             xmlns:local="clr-namespace:Drugs2020.PL.Views"
+             xmlns:local="clr-namespace:Drugs2020.PL.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" >
     <UserControl.Resources>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </UserControl.Resources>
     <Grid>
         <DockPanel Margin="10">
-            <Button x:Name="SignOutButton" Content="Sign Out"
-                    Margin="10, 0" />
+            <Button x:Name="SignOutButton" 
+                    Margin="10" Background="Transparent" BorderBrush="Transparent" >
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Power" Margin="14" />
+                    <TextBlock Text="Sign Out" HorizontalAlignment="Center"   VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
             <TextBlock x:Name="UserNameTextBlock"
                        VerticalAlignment="Center"
                        Margin="10, 0" FontWeight="Bold" FontFamily="Microsoft JhengHei UI Light" FontSize="18" />
@@ -33,7 +38,9 @@
                     Command="{Binding SearchCommand}"
                     CommandParameter="{Binding ElementName=SearchTextBox, Path=Text}"
                     VerticalAlignment="Center">
-                <Image Source="/Images/icons8-search-48.png" />
+                <!--<Image Source="/Images/icons8-search-48.png" />-->
+                <materialDesign:PackIcon Kind="Search" Margin="10"   />
+
             </Button>
             <TextBox x:Name="SearchTextBox"
                      Width="150"

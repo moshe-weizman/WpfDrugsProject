@@ -9,49 +9,96 @@
              xmlns:converters="clr-namespace:Drugs2020.PL.Converters" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
     <UserControl.Resources>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
-        
+
     </UserControl.Resources>
-    <Grid>
+    <Grid Background="#1C2F3E">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <local:ShellHeader UserName="{Binding PhysicianUser.FirstName , StringFormat=Hello {0}}"
+        <local:ShellHeader Background="#14212B"  UserName="{Binding PhysicianUser.FirstName , StringFormat=Hello {0}}"
                                SignOutCommand="{Binding SignOutCommand}"
                                ProgressBarVisibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"
                                Message="{Binding Message}"
                                SearchInput="{Binding PateintID}"
                                SearchCommand="{Binding SearchCommand}"      />
+        <Separator Grid.Row="1" Background="#2196f3" />
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="1">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0"  Background="#14212B" >
 
-            <StackPanel Grid.Column="0" Margin="5">
-
-                <Button IsEnabled="{Binding IsEnabledActionsMenu}" Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.PATIENT_DATA }" Content="PATIENT DATA" HorizontalContentAlignment="Center" Margin="20,20,0,20"  Height="60" />
-                <Button IsEnabled="{Binding IsEnabledActionsMenu}" Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_MEDICAL_RECORD}" Content="ADD MEDICAL RECORD" Margin="20,20,0,20" Height="60"  HorizontalContentAlignment="Center"/>
-                <Button IsEnabled="{Binding IsEnabledActionsMenu}" Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_RECEPT}" Content="ADD RECEPT" Margin="20,20,0,20" HorizontalContentAlignment="Center" Height="60"  />
-                <Button IsEnabled="{Binding IsEnabledActionsMenu}" Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_MEDICAL_FILE}"  HorizontalContentAlignment="Center" Margin="20,20,0,20" Height="60" >
+                <Button Background="Transparent" BorderBrush="Transparent" IsEnabled="{Binding IsEnabledActionsMenu}" Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.PATIENT_DATA }"  HorizontalContentAlignment="Center" Margin="20"  Height="60" >
                     <Button.Content>
-                        MEDICAL FILE
-                        <!--<materialDesign:PackIcon Kind="MedicalBag"  />-->
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Person" Margin="15" />
+                            <TextBlock Text="Patient Data" HorizontalAlignment="Center"   VerticalAlignment="Center"/>
+                        </StackPanel>
                     </Button.Content>
-                   
                 </Button>
 
+                <Button  Background="Transparent" BorderBrush="Transparent" IsEnabled="{Binding IsEnabledActionsMenu}" Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_MEDICAL_RECORD}"  Margin="20" Height="60"  HorizontalContentAlignment="Center">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Receipt" Margin="15"/>
+                            <TextBlock Text="Medical Record"   VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button  Background="Transparent" BorderBrush="Transparent" IsEnabled="{Binding IsEnabledActionsMenu}" Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_RECEPT}"  Margin="20" HorizontalContentAlignment="Center" Height="60"  >
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="BottleTonicPlusOutline" Margin="15"/>
+                            <TextBlock Text="Add Recept"   VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+
+                <Button  Background="Transparent" BorderBrush="Transparent" IsEnabled="{Binding IsEnabledActionsMenu}" Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.ADD_MEDICAL_FILE}"  HorizontalContentAlignment="Center" Margin="20" Height="60" >
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="MedicalBag" Margin="15"/>
+                            <TextBlock Text="Medical File" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button.Content>
+
+                </Button>
+
+
+                <!--<GroupBox
+  Header="Comments"
+  Style="{DynamicResource MaterialDesignGroupBox}"
+  materialDesign:ColorZoneAssist.Background="Black"
+                   
+                    
+  Margin="20"
+  materialDesign:ShadowAssist.ShadowDepth="Depth3"
+  BorderThickness="0">
+                    <TextBlock
+    Margin="6,6,6,6"
+    TextWrapping="Wrap">
+                    </TextBlock>
+                </GroupBox>-->
+
+
             </StackPanel>
-            <ContentControl Content="{Binding CurrentVM}" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="1"/>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Rectangle VerticalAlignment="Stretch" Width="1" Margin="2" Stroke="#2196f3" />
+            </StackPanel>
+            <ContentControl  Content="{Binding CurrentVM}" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="2"/>
 
 
 
         </Grid>
     </Grid>
-    
-    
-    
-    
-    
+
+
+
+
+
 </UserControl>
