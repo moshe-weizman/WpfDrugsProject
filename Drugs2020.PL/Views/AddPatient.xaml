@@ -65,7 +65,11 @@
 
             <TextBlock TextWrapping="Wrap"
                        Text="Birth Date:" />
-            <DatePicker Name="BirthDate" SelectedDate="{Binding Patient.BirthDate}" DisplayDate="" DisplayDateEnd="1/1/2021" DisplayDateStart="1/1/1900" />
+            <DatePicker Name="BirthDate"
+                        SelectedDate="{Binding Patient.BirthDate}" 
+                        DisplayDate="{Binding TodayDate, Mode=OneWay}"
+                        DisplayDateEnd="{Binding TodayDate, Mode=OneWay}" 
+                        DisplayDateStart="1/1/1900" />
            
 
         </StackPanel>
