@@ -16,7 +16,7 @@ namespace Drugs2020.PL.ViewModels
         private UpdateDrugModel updateDrugM;
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private DrugsManagementViewModel containingVm;
+        private AdminShellViewModel containingVm;
         public UpdateInDbCommand UpdateDbCommand { get; set; }
         public bool IsNewDrug { get; }
         public BackCommand BackCommand { get; set; }
@@ -54,7 +54,7 @@ namespace Drugs2020.PL.ViewModels
         }
         public ObservableCollection<ActiveIngredient> Ingredients { get; set; }
 
-        public UpdateDrugViewModel(DrugsManagementViewModel containingVm, Drug drugToUpdate)
+        public UpdateDrugViewModel(AdminShellViewModel containingVm, Drug drugToUpdate)
         {
             updateDrugM = new UpdateDrugModel(drugToUpdate);
             this.containingVm = containingVm;
@@ -75,14 +75,14 @@ namespace Drugs2020.PL.ViewModels
         {
             updateDrugM.Drug.ImageUrl = ImageUrl;
             updateDrugM.UpdateDrugInDb();
-            containingVm.Items.Remove(containingVm.Items.Single(i => i.IdCode == Drug.IdCode));
-            containingVm.Items.Add(Drug);
+            //containingVm.Items.Remove(containingVm.Items.Single(i => i.IdCode == Drug.IdCode));
+           // containingVm.Items.Add(Drug);
             GoBack();
         }
 
         public void GoBack()
         {
-            containingVm.ReturnToContaining();
+            containingVm.ReplaceScreen(Screen.DRUGS_MANAGEMENT);
         }
 
         public void AddIngredientToDrug()

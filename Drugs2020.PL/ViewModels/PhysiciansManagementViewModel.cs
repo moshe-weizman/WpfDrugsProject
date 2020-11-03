@@ -12,16 +12,16 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PhysiciansManagementViewModel : INotifyPropertyChanged, IReplaceScreen, IEdit, IDelete, ISearch, IViewModel, IContainingVm
+    class PhysiciansManagementViewModel : INotifyPropertyChanged, IEdit, IDelete, ISearch, IViewModel, IContainingVm, IScreenReplacementVM
     {
         private PhysiciansManagementModel physiciansManagementM;
         private AdminShellViewModel containingShellVm;
         public event PropertyChangedEventHandler PropertyChanged;
-        public ReplaceScreenCommand AddCommand { get; set; }
         public EditingItemCommand EditCommand { get; set; }
         public DeleteItemCommand DeleteCommand { get; set; }
         public SearchItemCommand SearchCommand { get; set; }
-        public ObservableCollection<Physician> Items { get; set; }
+        public ScreenReplacementCommand ScreenReplacementCommand { get; set; }
+        public ObservableCollection<Physician> PhysiciansCollection { get; set; }
         private Physician selectedItem;
         public Physician SelectedItem
         {
@@ -39,13 +39,13 @@ namespace Drugs2020.PL.ViewModels
         public PhysiciansManagementViewModel(AdminShellViewModel shellViewModel)
         {
             physiciansManagementM = new PhysiciansManagementModel();
-            Items = new ObservableCollection<Physician>(physiciansManagementM.Physicians);
-            Items.CollectionChanged += PhysiciansChanged;
+            PhysiciansCollection = new ObservableCollection<Physician>(physiciansManagementM.Physicians);
+            PhysiciansCollection.CollectionChanged += PhysiciansChanged;
             this.containingShellVm = shellViewModel;
-            AddCommand = new ReplaceScreenCommand(this);
             EditCommand = new EditingItemCommand(this);
             DeleteCommand = new DeleteItemCommand(this);
             SearchCommand = new SearchItemCommand(this);
+            ScreenReplacementCommand = new ScreenReplacementCommand(this);
         }
 
         private void PhysiciansChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -57,21 +57,18 @@ namespace Drugs2020.PL.ViewModels
         }
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        public void ReplaceScreen()
-        {
-            containingShellVm.PhysiciansTabVm = new AddPhysicianViewModel(this);
-        }
+       
 
         public void OpenEditingScreen(object selectedPhysician)
         {
-            containingShellVm.PhysiciansTabVm = new UpdatePhysicianViewModel(this, selectedPhysician as Physician);
+            containingShellVm.CurrentVM = new UpdatePhysicianViewModel(containingShellVm, selectedPhysician as Physician);
         }
 
         public void RemoveItemFromDb(object selectedPhysician)
         {
             Physician physician = selectedPhysician as Physician;
             physiciansManagementM.RemoveFromDb(physician);
-            Items.Remove(physician);
+            PhysiciansCollection.Remove(physician);//בטוח שזה נצרך???
         }
 
         public bool IsUserSureToDelete()
@@ -81,12 +78,12 @@ namespace Drugs2020.PL.ViewModels
 
         public void GetItem(string id)
         {
-            SelectedItem = Items.SingleOrDefault(i => i.ID == id);
+            SelectedItem = PhysiciansCollection.SingleOrDefault(i => i.ID == id);
         }
 
-        public void ReturnToContaining()
+        public void ReplaceScreen(Screen desiredScreen)
         {
-            containingShellVm.PhysiciansTabVm = this;
+            containingShellVm.ReplaceScreen(desiredScreen);
         }
     }
 }

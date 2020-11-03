@@ -11,7 +11,7 @@ namespace Drugs2020.PL.ViewModels
     {
         private AddPatientModel addPatientM;
 
-        private PatientsManagementViewModel containingVm;
+        private AdminShellViewModel containingVm;
         public AddToDbCommand UpdateDbCommand { get; set; }
         public DateTime TodayDate { get; set; }
         public bool IsNewPatient { get; }
@@ -23,7 +23,7 @@ namespace Drugs2020.PL.ViewModels
         }
         public Array SexEnumValues => Enum.GetValues(typeof(Sex));
 
-        public AddPatientViewModel(PatientsManagementViewModel containingVm)
+        public AddPatientViewModel(AdminShellViewModel containingVm)
         {
             addPatientM = new AddPatientModel();
             this.containingVm = containingVm;
@@ -39,7 +39,7 @@ namespace Drugs2020.PL.ViewModels
         public void AddItemToDb()
         {
             addPatientM.AddPatientToDb();
-            containingVm.Items.Add(Patient);
+            //containingVm.Items.Add(Patient);
             GoBack();
         }
 
@@ -48,12 +48,13 @@ namespace Drugs2020.PL.ViewModels
             return addPatientM.DoesPatientExist();
         }
 
-        public async void UpdateExistingItem()
+        public void UpdateExistingItem()
         {
-            containingVm.Items.Remove(containingVm.Items.Single(i => i.ID == Patient.ID));
-            containingVm.Items.Add(Patient);
+            addPatientM.UpdatePatient();
+           // containingVm.Items.Remove(containingVm.Items.Single(i => i.ID == Patient.ID));
+           // containingVm.Items.Add(Patient);
             GoBack();
-            await Task.Run(() => addPatientM.UpdatePatient());
+          //  await Task.Run(() => addPatientM.UpdatePatient());
             //to anounce for success
         }
 
@@ -65,7 +66,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void GoBack()
         {
-            containingVm.ReturnToContaining();
+            containingVm.ReplaceScreen(Screen.PATIENTS_MANAGEMENT);
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace Drugs2020.PL.Commands
 {
-    class ScreenReplacementCommand : ICommand
+    public class ScreenReplacementCommand : ICommand
     {
         private IScreenReplacementVM viewModel;
 

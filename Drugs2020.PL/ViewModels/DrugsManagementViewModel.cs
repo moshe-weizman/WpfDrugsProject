@@ -8,15 +8,16 @@ using System.Linq;
 
 namespace Drugs2020.PL.ViewModels
 {
-    public class DrugsManagementViewModel : INotifyPropertyChanged, IReplaceScreen, IEdit, IDelete, ISearch, IViewModel, IContainingVm
+    public class DrugsManagementViewModel : INotifyPropertyChanged, IScreenReplacementVM, IEdit, IDelete, ISearch, IViewModel, IContainingVm
     {
         private DrugsManagementModel drugsManagementM;
         private AdminShellViewModel containingShellVm;
         public event PropertyChangedEventHandler PropertyChanged;
-        public ReplaceScreenCommand AddCommand { get; set; }
         public EditingItemCommand EditCommand { get; set; }
         public DeleteItemCommand DeleteCommand { get; set; }
         public SearchItemCommand SearchCommand { get; set; }
+        public ScreenReplacementCommand ScreenReplacementCommand { get; set; }
+
         public ObservableCollection<Drug> Items { get; set; }
         private Drug selectedItem;
         public Drug SelectedItem
@@ -39,10 +40,10 @@ namespace Drugs2020.PL.ViewModels
             Items = new ObservableCollection<Drug>(drugsManagementM.Drugs);
             Items.CollectionChanged += DrugsChanged;
             this.containingShellVm = shellViewModel;
-            AddCommand = new ReplaceScreenCommand(this);
             EditCommand = new EditingItemCommand(this);
             DeleteCommand = new DeleteItemCommand(this);
             SearchCommand = new SearchItemCommand(this);
+            ScreenReplacementCommand = new ScreenReplacementCommand(this);
         }
 
         private void DrugsChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -52,16 +53,10 @@ namespace Drugs2020.PL.ViewModels
                 drugsManagementM.SyncWithDb();
             }
         }
-
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        public void ReplaceScreen()
-        {
-            containingShellVm.DrugsTabVm = new AddDrugViewModel(this);
-        }
-
         public void OpenEditingScreen(object selectedDrug)
         {
-            containingShellVm.DrugsTabVm = new UpdateDrugViewModel(this, selectedDrug as Drug);
+            containingShellVm.CurrentVM = new UpdateDrugViewModel(containingShellVm, selectedDrug as Drug);
         }
 
         public void RemoveItemFromDb(object selectedDrug)
@@ -81,9 +76,9 @@ namespace Drugs2020.PL.ViewModels
             SelectedItem = Items.SingleOrDefault(i => i.IdCode == id);
         }
 
-        public void ReturnToContaining()
+        public void ReplaceScreen(Screen desiredScreen)
         {
-            containingShellVm.DrugsTabVm = this;
+            containingShellVm.ReplaceScreen(desiredScreen);
         }
     }
 }

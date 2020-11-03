@@ -14,7 +14,7 @@ namespace Drugs2020.PL.ViewModels
     {
         private AddPhysicianModel addPhysicianM;
 
-        private PhysiciansManagementViewModel containingVm;
+        private AdminShellViewModel containingVm;
         public AddToDbCommand UpdateDbCommand { get; set; }
         public bool IsNewPhysician { get;}
         public BackCommand BackCommand { get; set; }
@@ -25,7 +25,7 @@ namespace Drugs2020.PL.ViewModels
         }
         public Array SexEnumValues => Enum.GetValues(typeof(Sex));
 
-        public AddPhysicianViewModel(PhysiciansManagementViewModel containingShellVm)
+        public AddPhysicianViewModel(AdminShellViewModel containingShellVm)
         {
             addPhysicianM = new AddPhysicianModel();
             this.containingVm = containingShellVm;
@@ -39,7 +39,7 @@ namespace Drugs2020.PL.ViewModels
         public void AddItemToDb()
         {
             addPhysicianM.AddPhysicianToDb();
-            containingVm.Items.Add(Physician);
+           // containingVm.Items.Add(Physician);
             GoBack();
         }
 
@@ -51,8 +51,8 @@ namespace Drugs2020.PL.ViewModels
         public void UpdateExistingItem()
         {
             addPhysicianM.UpdatePhysician();
-            containingVm.Items.Remove(containingVm.Items.Single(i => i.ID == Physician.ID));
-            containingVm.Items.Add(Physician);
+           // containingVm.Items.Remove(containingVm.Items.Single(i => i.ID == Physician.ID));
+          //  containingVm.Items.Add(Physician);
             GoBack();
         }
 
@@ -64,7 +64,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void GoBack()
         {
-            containingVm.ReturnToContaining();
+            containingVm.ReplaceScreen(Screen.PHYSICIANS_MANAGEMENT);
         }
     }
 }

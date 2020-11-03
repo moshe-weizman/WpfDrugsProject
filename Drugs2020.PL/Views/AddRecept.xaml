@@ -11,13 +11,17 @@
         <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
 
     </UserControl.Resources>
-    <StackPanel>
-       
-
+    <StackPanel Margin="5">
+        
         <ComboBox materialDesign:HintAssist.Hint="Drugs"  ItemsSource="{Binding DrugCollection}" SelectedItem="{Binding SelectedDrug}" HorizontalAlignment="Left" >
+            <ComboBox.ItemContainerStyle>
+                <Style TargetType="ComboBoxItem">
+                    <Setter Property="Background" Value="#1C2F3E"/>
+                </Style>
+            </ComboBox.ItemContainerStyle>
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
+                    <StackPanel Background="#1C2F3E">
                         <TextBlock Text="{Binding Name}"/>
                         <TextBlock Text="{Binding GenericName}"/>
                     </StackPanel>

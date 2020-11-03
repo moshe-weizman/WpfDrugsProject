@@ -4,13 +4,107 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                           xmlns:local="clr-namespace:Drugs2020.PL.Views"
+             xmlns:local1="clr-namespace:Drugs2020.PL"
              xmlns:converters="clr-namespace:Drugs2020.PL.Converters"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d">
     <UserControl.Resources>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </UserControl.Resources>
     
-    <Grid>
+    
+    <Grid Background="#1C2F3E">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--<local:ShellHeader Background="#14212B"  UserName="{Binding Admin.FirstName , StringFormat=Hello {0}}"
+                               SignOutCommand="{Binding SignOutCommand}"
+                               ProgressBarVisibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"
+                               Message="{Binding Message}"
+                               SearchInput="{Binding PateintID}"
+                               SearchCommand="{Binding SearchCommand}"      />-->
+        <local:ShellHeader Background="#14212B"
+                               SignOutCommand="{Binding SignOutCommand}"
+                               ProgressBarVisibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"
+                               Message="{Binding Message}"
+                               SearchInput="{Binding SearchInput}"
+                               SearchCommand="{Binding SearchCommand}"/>
+        
+        <Separator Grid.Row="1" Background="#2196f3" />
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0"  Background="#14212B" >
+
+                <Button Background="Transparent" BorderBrush="Transparent"  Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.PATIENTS_MANAGEMENT }"  HorizontalContentAlignment="Center" Margin="20"  Height="60" >
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Person" Margin="15" />
+                            <TextBlock Text="Patients" HorizontalAlignment="Center"   VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+
+                <Button  Background="Transparent" BorderBrush="Transparent"  Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.PHYSICIANS_MANAGEMENT}"  Margin="20" Height="60"  HorizontalContentAlignment="Center">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Doctor" Margin="15"/>
+                            <TextBlock Text="physicians"   VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button  Background="Transparent" BorderBrush="Transparent"  Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.DRUGS_MANAGEMENT}"  Margin="20" HorizontalContentAlignment="Center" Height="60"  >
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="BottleTonicPlusOutline" Margin="15"/>
+                            <TextBlock Text="Drugs"   VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+
+                <Button  Background="Transparent" BorderBrush="Transparent"  Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.DATA}"  HorizontalContentAlignment="Center" Margin="20" Height="60" >
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Graph" Margin="15"/>
+                            <TextBlock Text="Statistics" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button.Content>
+
+                </Button>
+
+
+
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Rectangle VerticalAlignment="Stretch" Width="1" Margin="2" Stroke="#2196f3" />
+            </StackPanel>
+            <ContentControl  Content="{Binding CurrentVM}" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="2"/>
+            
+            <ContentControl x:Name="DecisionMessageScreen"
+                        Content="{Binding DecisionMessageScreen}"
+                        Visibility="{Binding IsDecisionMessageShown ,Converter={StaticResource BoolToVisibilityConverter}}" />
+
+
+        </Grid>
+    </Grid>
+
+
+
+
+
+
+
+
+
+
+
+    <!--<Grid>
         <StackPanel Orientation="Vertical"
                     Grid.ColumnSpan="3"
                     Grid.RowSpan="3">
@@ -83,6 +177,6 @@
         <ContentControl x:Name="DecisionMessageScreen"
                         Content="{Binding DecisionMessageScreen}"
                         Visibility="{Binding IsDecisionMessageShown ,Converter={StaticResource BoolToVisibilityConverter}}" />
-    </Grid>
+    </Grid>-->
     
 </UserControl>

@@ -51,7 +51,7 @@ namespace Drugs2020.PL.ViewModels
 
                 containingVm.InitPhysicianSell(User);
             else
-                containingVm.CurrentVm = new AdminShellViewModel(containingVm, User as Admin);
+                containingVm.InitAdminSell(User);
         }
     }
 }

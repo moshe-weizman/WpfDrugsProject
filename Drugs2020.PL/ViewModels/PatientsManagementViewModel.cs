@@ -14,14 +14,13 @@ using System.Windows.Controls.Primitives;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PatientsManagementViewModel : INotifyPropertyChanged, IReplaceScreen, IEdit, IDelete, ISearch, IViewModel, IContainingVm
+    class PatientsManagementViewModel : INotifyPropertyChanged, IEdit, IDelete, ISearch, IViewModel, IContainingVm, IScreenReplacementVM
     {
         private PatientManagementModel patientManagementM;
         private AdminShellViewModel containingShellVm;
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public ReplaceScreenCommand AddCommand { get; set; }
+        public ScreenReplacementCommand ScreenReplacementCommand { get; set; }
         public EditingItemCommand EditCommand { get; set; }
         public DeleteItemCommand DeleteCommand { get; set; }
         public SearchItemCommand SearchCommand { get; set; }
@@ -46,10 +45,10 @@ namespace Drugs2020.PL.ViewModels
             Items = new ObservableCollection<Patient>(patientManagementM.Patients);
             Items.CollectionChanged += PatientsChanged;
             this.containingShellVm = shellViewModel;
-            AddCommand = new ReplaceScreenCommand(this);
             EditCommand = new EditingItemCommand(this);
             DeleteCommand = new DeleteItemCommand(this);
             SearchCommand = new SearchItemCommand(this);
+            ScreenReplacementCommand = new ScreenReplacementCommand(this);
         }
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -64,7 +63,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void OpenEditingScreen(object selectedPatient)
         {
-            containingShellVm.PatientsTabVm = new UpdatePatientViewModel(this, selectedPatient as Patient);
+            containingShellVm.CurrentVM = new UpdatePatientViewModel(containingShellVm, selectedPatient as Patient);
         }
 
         public void RemoveItemFromDb(object selectedPatient)
@@ -84,14 +83,9 @@ namespace Drugs2020.PL.ViewModels
             SelectedItem = Items.SingleOrDefault(i => i.ID == id);
         }
 
-        public void ReturnToContaining()
+        public void ReplaceScreen(Screen desiredScreen)
         {
-            containingShellVm.PatientsTabVm = this;
-        }
-
-        public void ReplaceScreen()
-        {
-            containingShellVm.PatientsTabVm = new AddPatientViewModel(this);
+            containingShellVm.ReplaceScreen(desiredScreen);
         }
     }
 }

@@ -13,6 +13,5 @@
         <Setter Property="Height" Value="65"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="#14212B"/>
-
     </Style>
 </ResourceDictionary>

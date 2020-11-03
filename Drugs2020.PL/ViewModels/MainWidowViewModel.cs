@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class MainWidowViewModel : INotifyPropertyChanged, IViewModel, IGoBackScreenVM
+    public class MainWidowViewModel : INotifyPropertyChanged, IViewModel, IGoBackScreenVM
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -46,7 +46,7 @@ namespace Drugs2020.PL.ViewModels
         public void InitAdminSell(IUser user)
         {
             adminShellVM = new AdminShellViewModel(this, (Admin)user);
-            CurrentVm = physicianShellVM;
+            CurrentVm = adminShellVM;
         }
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         public void ReplaceUC(Screen currentVM)

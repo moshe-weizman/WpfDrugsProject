@@ -16,7 +16,7 @@ namespace Drugs2020.PL.ViewModels
     {
         private AddDrugModel addDrugM;
 
-        private DrugsManagementViewModel containingVm;
+        private AdminShellViewModel containingVm;
         public event PropertyChangedEventHandler PropertyChanged;
         public AddToDbCommand UpdateDbCommand { get; set; }
         public OpenFileDialogCommand FileDialogCommand { get; set; }
@@ -56,7 +56,7 @@ namespace Drugs2020.PL.ViewModels
 
         public ObservableCollection<ActiveIngredient> Ingredients { get; set; }
 
-        public AddDrugViewModel(DrugsManagementViewModel containingVm)
+        public AddDrugViewModel(AdminShellViewModel containingVm)
         {
             addDrugM = new AddDrugModel();
             this.containingVm = containingVm;
@@ -83,7 +83,7 @@ namespace Drugs2020.PL.ViewModels
         {
             addDrugM.Drug.ImageUrl = ImageUrl;
             addDrugM.AddDrugToDb();
-            containingVm.Items.Add(Drug);
+           // containingVm.Items.Add(Drug);
             GoBack();
         }
 
@@ -94,8 +94,8 @@ namespace Drugs2020.PL.ViewModels
 
         public void UpdateExistingItem()
         {
-            containingVm.Items.Remove(containingVm.Items.Single(i => i.IdCode == Drug.IdCode));
-            containingVm.Items.Add(Drug);
+            //containingVm.Items.Remove(containingVm.Items.Single(i => i.IdCode == Drug.IdCode));
+          //  containingVm.Items.Add(Drug);
            
             addDrugM.UpdateDrug();
             GoBack();
@@ -109,7 +109,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void GoBack()
         {
-            containingVm.ReturnToContaining();
+            containingVm.ReplaceScreen(Screen.DRUGS_MANAGEMENT);
         }
 
         public void RemoveItemFromDb(object ingredient)
