@@ -14,7 +14,7 @@ using System.Windows.Controls.Primitives;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PatientsManagementViewModel : INotifyPropertyChanged, IEdit, IDelete, ISearch, IViewModel, IContainingVm, IScreenReplacementVM
+    class PatientsManagementViewModel : INotifyPropertyChanged, IEdit, IDelete, ISearch, IViewModel, IContainingVm ,IScreenReplacementVM
     {
         private PatientManagementModel patientManagementM;
         private AdminShellViewModel containingShellVm;
@@ -85,7 +85,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void ReplaceScreen(Screen desiredScreen)
         {
-            containingShellVm.ReplaceScreen(desiredScreen);
+            containingShellVm.ReplaceScreen(Screen.ADD_PATIENT_SCREEN);
         }
     }
 }

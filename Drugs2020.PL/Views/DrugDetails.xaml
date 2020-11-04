@@ -6,6 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
              mc:Ignorable="d">
+    <ScrollViewer>
     <Grid>
         <materialDesign:Card Width="400" >
         <Grid>
@@ -13,13 +14,13 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Background="#1C2F3E">
                     <Label FontSize="20"
                            Content="{Binding Name , StringFormat=First Name: {0}}" />
                     <Label Content="{Binding IdCode , StringFormat=ID Code: {0}}" />
                 </StackPanel>
-            
-                <Grid Grid.Row="1">
+
+                <Grid Grid.Row="1" Background="#1C2F3E">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition />
@@ -36,6 +37,6 @@
         </materialDesign:Card>
  </Grid>
 
-
+    </ScrollViewer>
 
 </UserControl>

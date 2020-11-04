@@ -9,9 +9,9 @@
     <UserControl.Resources>
         <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
     </UserControl.Resources>
+    <ScrollViewer>
 
-
-    <StackPanel Margin="10"
+        <StackPanel Margin="10"
                 Grid.Column="0">
         <TextBlock  TextWrapping="Wrap"
                     Text="Identification Code:" />
@@ -41,9 +41,9 @@
                  Height="23"
                  TextWrapping="Wrap"
                  Text="{Binding Drug.GenericName}" />
-        <Expander 
+        <Expander Background="#1C2F3E"
                   Header="Ingredients Composition:">
-            <StackPanel Margin="0, 10">
+            <StackPanel Margin="0, 10" Background="#1C2F3E">
                 <TextBlock TextWrapping="Wrap"
                            Text="Insert active ingredient details:" />
                 <TextBlock Text="Ingredient:"/>
@@ -140,5 +140,5 @@
                 Margin="10" />
 
     </StackPanel>
-
+    </ScrollViewer>
 </UserControl>

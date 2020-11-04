@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local1="clr-namespace:Drugs2020.PL"
+
              xmlns:local="clr-namespace:Drugs2020.PL.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d">
     <Grid>
@@ -12,7 +14,7 @@
         </Grid.RowDefinitions>
         <DockPanel LastChildFill="False" Grid.Row="0">
             <Button ToolTip="Add"
-                    Command="{Binding AddCommand}"
+                    Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.EMPTY}"
                     DockPanel.Dock="Left">
                 <materialDesign:PackIcon Kind="PlusCircleOutline" />
             </Button>

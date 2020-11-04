@@ -17,7 +17,7 @@ namespace Drugs2020.DAL
             var uri = @"https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=";
             for (int i = 0; i < drugsTakenPatient.Count(); i++)
             {
-                uri += (i==0?"":"+") + drugsTakenPatient.ElementAt(i);
+                uri += (i==0?"":"+") + drugsTakenPatient.ElementAt(i);//משרשר לתוך הURI את הקודים שבליסט
             }
             uri += "+" + IdCodeOfNewDrug;
            // var uri = @"https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=207106+152923+656659";

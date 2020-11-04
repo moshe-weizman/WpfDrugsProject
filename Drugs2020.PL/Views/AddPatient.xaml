@@ -10,6 +10,7 @@
     <UserControl.Resources>
         <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
     </UserControl.Resources>
+    <ScrollViewer>
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="*"  />
@@ -65,7 +66,7 @@
 
             <TextBlock TextWrapping="Wrap"
                        Text="Birth Date:" />
-            <DatePicker Name="BirthDate"
+            <DatePicker Name="BirthDate" 
                         SelectedDate="{Binding Patient.BirthDate}" 
                         DisplayDate="{Binding TodayDate, Mode=OneWay}"
                         DisplayDateEnd="{Binding TodayDate, Mode=OneWay}" 
@@ -100,4 +101,5 @@
 
         <Button Grid.Row="1" HorizontalAlignment="Left" Content="Back" Command="{Binding BackCommand}" Margin="10" VerticalAlignment="Bottom"/>
     </Grid>
+    </ScrollViewer>
 </UserControl>

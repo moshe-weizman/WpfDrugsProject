@@ -78,7 +78,7 @@ namespace Drugs2020.PL.ViewModels
 
         public void ReplaceScreen(Screen desiredScreen)
         {
-            containingShellVm.ReplaceScreen(desiredScreen);
+            containingShellVm.ReplaceScreen(Screen.ADD_DRUG);
         }
     }
 }

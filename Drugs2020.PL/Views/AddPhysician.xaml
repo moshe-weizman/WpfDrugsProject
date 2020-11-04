@@ -9,6 +9,7 @@
     <UserControl.Resources>
         <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
     </UserControl.Resources>
+    <ScrollViewer>
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="*"  />
@@ -112,4 +113,5 @@
                 Command="{Binding BackCommand}" Margin="10"/>
 
         </Grid>
+    </ScrollViewer>
 </UserControl>

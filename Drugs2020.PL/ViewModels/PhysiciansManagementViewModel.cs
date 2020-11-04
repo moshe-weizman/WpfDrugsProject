@@ -21,7 +21,7 @@ namespace Drugs2020.PL.ViewModels
         public DeleteItemCommand DeleteCommand { get; set; }
         public SearchItemCommand SearchCommand { get; set; }
         public ScreenReplacementCommand ScreenReplacementCommand { get; set; }
-        public ObservableCollection<Physician> PhysiciansCollection { get; set; }
+        public ObservableCollection<Physician> Items { get; set; }
         private Physician selectedItem;
         public Physician SelectedItem
         {
@@ -39,8 +39,8 @@ namespace Drugs2020.PL.ViewModels
         public PhysiciansManagementViewModel(AdminShellViewModel shellViewModel)
         {
             physiciansManagementM = new PhysiciansManagementModel();
-            PhysiciansCollection = new ObservableCollection<Physician>(physiciansManagementM.Physicians);
-            PhysiciansCollection.CollectionChanged += PhysiciansChanged;
+            Items = new ObservableCollection<Physician>(physiciansManagementM.Physicians);
+            Items.CollectionChanged += PhysiciansChanged;
             this.containingShellVm = shellViewModel;
             EditCommand = new EditingItemCommand(this);
             DeleteCommand = new DeleteItemCommand(this);
@@ -68,7 +68,7 @@ namespace Drugs2020.PL.ViewModels
         {
             Physician physician = selectedPhysician as Physician;
             physiciansManagementM.RemoveFromDb(physician);
-            PhysiciansCollection.Remove(physician);//בטוח שזה נצרך???
+            Items.Remove(physician);//בטוח שזה נצרך???
         }
 
         public bool IsUserSureToDelete()
@@ -78,12 +78,12 @@ namespace Drugs2020.PL.ViewModels
 
         public void GetItem(string id)
         {
-            SelectedItem = PhysiciansCollection.SingleOrDefault(i => i.ID == id);
+            SelectedItem = Items.SingleOrDefault(i => i.ID == id);
         }
 
         public void ReplaceScreen(Screen desiredScreen)
         {
-            containingShellVm.ReplaceScreen(desiredScreen);
+            containingShellVm.ReplaceScreen(Screen.ADD_PHYSICIAN_SCREEN);
         }
     }
 }
