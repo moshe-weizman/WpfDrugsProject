@@ -18,7 +18,7 @@ namespace Drugs2020.PL.ViewModels
        // private PhysicianShellModel patientModel;
         private ReceptModel addReceptModel;
        
-        public string Conflicts
+        public List<string> Conflicts
         {
             get { return addReceptModel.Conflicts; }
             set { addReceptModel.Conflicts = value; 
@@ -41,13 +41,17 @@ namespace Drugs2020.PL.ViewModels
         public Recept Recept { get { return addReceptModel.Recept; } set { addReceptModel.Recept = value; } }
         public ObservableCollection<Drug> DrugCollection { get; set; }
         public AddToDbCommand AddToDbCommand { get; set; }
-        public Drug SelectedDrug { 
+        private Drug selectedDrug;
+        public Drug SelectedDrug {
+            
             set 
             {
                 addReceptModel.Recept.IdCodeOfDrug = value.IdCode;
                 addReceptModel.Recept.DrugGenericName = value.GenericName;
+                
                 if (PropertyChanged!=null)
                     PropertyChanged(this, new PropertyChangedEventArgs("SelectedDrug"));
+                Conflicts=addReceptModel.CheckConflicts(value.IdCode);
             }
         }
 

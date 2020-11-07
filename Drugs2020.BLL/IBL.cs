@@ -13,7 +13,7 @@ namespace Drugs2020.BLL
 
         #region Recept
         void AddRecept(Recept recept);
-        string checkConflicts(string IdCodeOfDrug, List<string> drugsTakenPatient);
+        List<string> checkConflicts(string IdCodeOfDrug, List<string> drugsTakenPatient);
         Dictionary<string, int> GetDictionaryForReceptsByDate(DateTime dateTime, DateTime date);
         List<Recept> GetAllReceptsOfPatient(string id);
         List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate);

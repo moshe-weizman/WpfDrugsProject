@@ -6,64 +6,91 @@
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
              xmlns:converters="clr-namespace:Drugs2020.PL.Converters"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d">
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+
+    mc:Ignorable="d">
     <UserControl.Resources>
         <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
 
     </UserControl.Resources>
-    <StackPanel Margin="5">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="380"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <ComboBox materialDesign:HintAssist.Hint="Drugs"  ItemsSource="{Binding DrugCollection}" SelectedItem="{Binding SelectedDrug}" HorizontalAlignment="Left" >
-            <!--<ComboBox.Resources>
+        <GroupBox Grid.Column="1"
+        Header="Conflicts" 
+                
+                
+  Style="{DynamicResource MaterialDesignGroupBox}"
+  Margin="16"
+  materialDesign:ColorZoneAssist.Mode="Custom"
+  materialDesign:ColorZoneAssist.Background="#14212B"
+  materialDesign:ColorZoneAssist.Foreground="White">
+            <TextBlock Text="{Binding Conflicts}" Foreground="White"/>
+
+        </GroupBox>
+        <StackPanel Margin="5" Grid.Column="0">
+
+            <ComboBox materialDesign:HintAssist.Hint="Drugs"  ItemsSource="{Binding DrugCollection}" SelectedItem="{Binding SelectedDrug}" HorizontalAlignment="Left" >
+                <!--<ComboBox.Resources>
                 <Style TargetType="ComboBoxItem">
                     <Setter Property="Background" Value="#1C2F3E"/>
                 </Style>
             </ComboBox.Resources>-->
 
-            <ComboBox.ItemContainerStyle>
-                <Style TargetType="{x:Type ComboBoxItem}">
-                    <Setter Property="Background" Value="#1C2F3E" />
-                </Style>
-            </ComboBox.ItemContainerStyle>
+                <ComboBox.ItemContainerStyle>
+                    <Style TargetType="{x:Type ComboBoxItem}">
+                        <Setter Property="Background" Value="#1C2F3E" />
+                    </Style>
+                </ComboBox.ItemContainerStyle>
 
 
 
-            <ComboBox.ItemTemplate>
-                
-                <DataTemplate>
-                    <StackPanel Background="#1C2F3E">
-                        <TextBlock Text="{Binding Name}"/>
-                        <TextBlock Text="{Binding GenericName}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-       
+                <ComboBox.ItemTemplate>
+
+                    <DataTemplate>
+                        <StackPanel Background="#1C2F3E">
+                            <TextBlock Text="{Binding Name}"/>
+                            <TextBlock Text="{Binding GenericName}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
 
-        <TextBlock TextWrapping="Wrap" Text="Quantity:"/>
-        <TextBox x:Name="QuantityTextBox"  Height="40" TextWrapping="Wrap" Text="{Binding Recept.Quantity}"/>
 
-        <TextBlock TextWrapping="Wrap" Text="Days:"/>
-        <TextBox x:Name="DaysTextBox" Height="40" TextWrapping="Wrap" Text="{Binding Recept.Days}"/>
+            <TextBlock TextWrapping="Wrap" Text="Quantity:"/>
 
-        <Button Content="Create PDF File" Margin="10" Command="{Binding OperationCommand}" />
+            <xctk:IntegerUpDown Background="#1C2F3E" Foreground="White"  Name="QuantityTextBox" Height="40" Text="{Binding Recept.Quantity}" />
 
-        <Button Content="Add Recept" d:LayoutOverrides="Height" Margin="10" Command="{Binding AddToDbCommand}">
-            <Button.CommandParameter>
-                <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
-                    <Binding Path="Text"
+            <!--<TextBox x:Name="QuantityTextBox"   Height="40" TextWrapping="Wrap" Text="{Binding Recept.Quantity}"/>-->
+
+            <TextBlock TextWrapping="Wrap" Text="Days:"/>
+            <xctk:IntegerUpDown Background="#1C2F3E" Foreground="White"  Name="DaysTextBox" Height="40" Text="{Binding Recept.Days}" />
+
+            <!--<TextBox x:Name="DaysTextBox" Height="40" TextWrapping="Wrap" Text="{Binding Recept.Days}"/>-->
+
+            <Button Content="Create PDF File" Margin="10" Command="{Binding OperationCommand}" />
+
+            <Button Content="Add Recept" d:LayoutOverrides="Height" Margin="10" Command="{Binding AddToDbCommand}">
+                <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
+                        <Binding Path="Text"
                                  ElementName="DrugTextBox" />
-                    <Binding Path="Text"
+                        <Binding Path="Text"
                                  ElementName="QuantityTextBox" />
-                    <Binding Path="Text"
+                        <Binding Path="Text"
                                  ElementName="DaysTextBox" />
-                </MultiBinding>
+                    </MultiBinding>
 
-            </Button.CommandParameter>
-        </Button>
+                </Button.CommandParameter>
+            </Button>
+            <local:ActionsMeneOfPhysician Height="100" Width="100"/>
 
 
 
-    </StackPanel>
+        </StackPanel>
+    </Grid>
 </UserControl>

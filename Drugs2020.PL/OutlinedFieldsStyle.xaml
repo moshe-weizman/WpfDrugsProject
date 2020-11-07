@@ -4,14 +4,15 @@
                      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
 
-    <Style BasedOn="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" TargetType="TextBox">
+    <Style BasedOn="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" TargetType="TextBox" >
        
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Height" Value="100"/>
         <Setter Property="AcceptsReturn" Value="True"/>
-        <Setter Property="TextWrapping"  Value="Wrap"/>
+        <!--<Setter Property="TextWrapping"  Value="Wrap"/>-->
         <Setter Property="Margin" Value="5"/>
+        <!--<Setter Property="materialDesign:TextFieldAssist." Value="White"/>-->
         <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="materialDesign:HintAssist.Hint"  Value="{Binding Path=Name}"/>
         <Setter Property="IsEnabled" Value="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />

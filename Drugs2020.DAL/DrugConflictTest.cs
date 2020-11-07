@@ -52,10 +52,12 @@ namespace Drugs2020.DAL
             List<string> result=new List<string>();
             for (int i = 0; i < drugsTakenPatient.Count(); i++)
             {
+                if (IdCodeOfNewDrug != drugsTakenPatient[i]) { 
                 var uri = @"https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=";
-                uri +=  IdCodeOfNewDrug;
+                uri += IdCodeOfNewDrug;
                 uri += "+" + drugsTakenPatient.ElementAt(i);
                 result.Add(ConflictTest22(uri));
+                }
             }
             return result;
         }
