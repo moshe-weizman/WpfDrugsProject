@@ -13,5 +13,12 @@
         <Setter Property="Height" Value="65"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="#14212B"/>
+        <Style.Triggers>
+            <Trigger Property="IsDropDownOpen" Value="True">
+                <Setter Property="Background" Value="#14212B" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
+
+  
 </ResourceDictionary>

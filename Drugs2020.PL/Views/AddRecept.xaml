@@ -12,14 +12,24 @@
 
     </UserControl.Resources>
     <StackPanel Margin="5">
-        
+
         <ComboBox materialDesign:HintAssist.Hint="Drugs"  ItemsSource="{Binding DrugCollection}" SelectedItem="{Binding SelectedDrug}" HorizontalAlignment="Left" >
-            <ComboBox.ItemContainerStyle>
+            <!--<ComboBox.Resources>
                 <Style TargetType="ComboBoxItem">
                     <Setter Property="Background" Value="#1C2F3E"/>
                 </Style>
+            </ComboBox.Resources>-->
+
+            <ComboBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ComboBoxItem}">
+                    <Setter Property="Background" Value="#1C2F3E" />
+                </Style>
             </ComboBox.ItemContainerStyle>
+
+
+
             <ComboBox.ItemTemplate>
+                
                 <DataTemplate>
                     <StackPanel Background="#1C2F3E">
                         <TextBlock Text="{Binding Name}"/>
