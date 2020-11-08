@@ -10,7 +10,6 @@ namespace Drugs2020.DAL
     public class DrugConflictTest: IDrugsConflict
     {
         public string ConflictTest22(string uri) {
-
             var client = new RestClient(uri);
             client.Timeout = -1;
             var request = new RestRequest(uri, DataFormat.Json);
@@ -18,38 +17,16 @@ namespace Drugs2020.DAL
             IRestResponse response = client.Execute(request);
             Root tagList = JsonConvert.DeserializeObject<Root>(response.Content);
 
-            //resultText.Text = response.Content;
-
-            //resultText.Text = drog1.Text + drog2.Text + drog3.Text;
-            string resultText = "";
-            foreach (var item1 in tagList.fullInteractionTypeGroup.ElementAt(0).fullInteractionType)
-            {
-                resultText=($"{item1.minConcept.ElementAt(0).name}");
-                // resultText += "drogs:";
-                //  resultText += "\n";
-                // foreach (var item2 in item1.minConcept)
-                // {
-                //     resultText += ($"{item2.name}");
-                //     resultText += "\n";
-                // }
-                //  resultText += "\n";
-                //  resultText += "problem:";
-                //  resultText += "\n";
-                //  foreach (var item2 in item1.interactionPair)
-                //  {
-                //      resultText += ($"{item2.description}");
-                //  }
-                //  resultText += "\n";
-                //  resultText += "\n";
-
-            }
-            return resultText;
+            return ($"{tagList.fullInteractionTypeGroup.ElementAt(0).fullInteractionType.ElementAt(0).minConcept.ElementAt(0).name}");
         }
+
         public List<string> ConflictTest2(string IdCodeOfNewDrug, List<string> drugsTakenPatient)
         {
             if ((drugsTakenPatient == null) || (drugsTakenPatient.Count() < 1))
                 return null;
+
             List<string> result=new List<string>();
+
             for (int i = 0; i < drugsTakenPatient.Count(); i++)
             {
                 if (IdCodeOfNewDrug != drugsTakenPatient[i]) { 
@@ -64,7 +41,7 @@ namespace Drugs2020.DAL
 
         public string ConflictTest(string IdCodeOfNewDrug, List<string> drugsTakenPatient)
         {
-            if ((drugsTakenPatient==null) ||(drugsTakenPatient.Count() < 2))
+            if ((drugsTakenPatient==null) ||(drugsTakenPatient.Count() < 1))
                 return null;
 
             var uri = @"https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=";
