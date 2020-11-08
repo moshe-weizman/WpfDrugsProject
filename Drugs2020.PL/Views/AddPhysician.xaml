@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
              xmlns:converters="clr-namespace:Drugs2020.PL.Converters"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
              mc:Ignorable="d">
     <UserControl.Resources>
         <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
@@ -17,7 +19,7 @@
 
         </Grid.RowDefinitions>
 
-        <StackPanel Margin="5"
+        <StackPanel Margin="5" Width="350"
                 Grid.Column="0">
         <TextBlock  TextWrapping="Wrap"
                     Text="ID:" />
@@ -66,15 +68,24 @@
                    Text="Sex:" />
         <ComboBox Name="SexComboBox"
                   Width="120"
+                    materialDesign:HintAssist.Hint="Sex"
                   ItemsSource="{Binding SexEnumValues}"
                   SelectedItem="{Binding Physician.Sex}" />
 
         <TextBlock TextWrapping="Wrap"
                    Text="Birth Date:" />
-        <DatePicker Name="BirthDate"
-                    SelectedDate="{Binding Physician.BirthDate}" />
         
-        <TextBlock TextWrapping="Wrap"
+                <DatePicker Name="BirthDate" Style="{StaticResource MaterialDesignOutlinedDatePicker}"   materialDesign:HintAssist.Hint="Pick Date"
+                           Foreground="White"
+                            Background="#14212B"
+                           
+                    SelectedDate="{Binding Physician.BirthDate}" 
+                        DisplayDate="{Binding TodayDate, Mode=OneWay}"
+                        DisplayDateEnd="{Binding TodayDate, Mode=OneWay}" 
+                        DisplayDateStart="1/1/1900" />
+
+
+                <TextBlock TextWrapping="Wrap"
                    Text="Password:" />
         <TextBox Name="Password"
                  Height="40"

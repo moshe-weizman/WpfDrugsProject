@@ -51,7 +51,7 @@
                 <ComboBox.ItemTemplate>
 
                     <DataTemplate>
-                        <StackPanel Background="#1C2F3E">
+                        <StackPanel Background="#14212B">
                             <TextBlock Text="{Binding Name}"/>
                             <TextBlock Text="{Binding GenericName}"/>
                         </StackPanel>

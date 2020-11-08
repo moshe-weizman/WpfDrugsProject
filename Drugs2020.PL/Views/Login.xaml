@@ -30,7 +30,12 @@
             <TextBlock TextWrapping="Wrap"
                    Text="Password:"
                    Margin="10" />
-            <TextBox Name="PasswordTextBox"
+        <!--<PasswordBox  Name="PasswordTextBox"
+    Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}"
+    VerticalAlignment="Top"  Margin="10"  TextInput="{Binding Password}"
+    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}"
+     />-->
+    <TextBox Name="PasswordTextBox"
                      Height="40"
                      TextWrapping="Wrap"
                  Text="{Binding Password}"
