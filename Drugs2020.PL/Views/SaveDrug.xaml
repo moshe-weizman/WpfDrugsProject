@@ -16,7 +16,7 @@
         <TextBlock  TextWrapping="Wrap"
                     Text="Identification Code:" />
         <TextBox Name="Id"
-                 Height="23"
+                Height="40"
                  TextWrapping="Wrap"
                  IsEnabled="{Binding IsNewDrug}"
                  Text="{Binding Drug.IdCode}" />
@@ -24,21 +24,21 @@
         <TextBlock TextWrapping="Wrap"
                    Text="Commercial Name:" />
         <TextBox Name="Name"
-                 Height="23"
+                 Height="40"
                  TextWrapping="Wrap"
                  Text="{Binding Drug.Name}" />
 
         <TextBlock TextWrapping="Wrap"
                    Text="Manufacturer:" />
         <TextBox Name="Manufacturer"
-                 Height="23"
+                 Height="40"
                  TextWrapping="Wrap"
                  Text="{Binding Drug.Manufacturer}" />
 
         <TextBlock TextWrapping="Wrap"
                    Text="Generic Name:" />
         <TextBox Name="GenericName"
-                 Height="23"
+                 Height="40"
                  TextWrapping="Wrap"
                  Text="{Binding Drug.GenericName}" />
         <Expander Background="#1C2F3E"

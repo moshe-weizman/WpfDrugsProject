@@ -33,7 +33,7 @@
         </GroupBox>
         <StackPanel Margin="5" Grid.Column="0">
 
-            <ComboBox materialDesign:HintAssist.Hint="Drugs"  ItemsSource="{Binding DrugCollection}" SelectedItem="{Binding SelectedDrug}" HorizontalAlignment="Left" >
+            <ComboBox materialDesign:HintAssist.Hint="Drugs"  ItemsSource="{Binding DrugCollection}" SelectedItem="{Binding SelectedDrug}" HorizontalAlignment="Center" >
                 <!--<ComboBox.Resources>
                 <Style TargetType="ComboBoxItem">
                     <Setter Property="Background" Value="#1C2F3E"/>
@@ -77,14 +77,11 @@
             <Button Content="Add Recept" d:LayoutOverrides="Height" Margin="10" Command="{Binding AddToDbCommand}">
                 <Button.CommandParameter>
                     <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
+                        
                         <Binding Path="Text"
                                  ElementName="DrugTextBox" />
-                        <Binding Path="Text"
-                                 ElementName="QuantityTextBox" />
-                        <Binding Path="Text"
-                                 ElementName="DaysTextBox" />
                     </MultiBinding>
-
+                   
                 </Button.CommandParameter>
             </Button>
             <local:ActionsMeneOfPhysician Height="100" Width="100"/>

@@ -37,7 +37,7 @@
                     <Binding Path="Text"
                                  ElementName="TreatmentTextBox" />
                     <Binding Path="Text"
-                                 ElementName="NotesTextBox" />
+                                 ElementName="Notes" />
                 </MultiBinding>
 
             </Button.CommandParameter>

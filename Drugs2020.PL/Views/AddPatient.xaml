@@ -66,14 +66,16 @@
 
             <TextBlock TextWrapping="Wrap"
                        Text="Birth Date:" />
-            <DatePicker Name="BirthDate" 
+                <DatePicker Name="BirthDate" Style="{StaticResource MaterialDesignOutlinedDatePicker}"   materialDesign:HintAssist.Hint="Pick Date"
+                           Foreground="White"
+                            Background="#14212B"
                         SelectedDate="{Binding Patient.BirthDate}" 
                         DisplayDate="{Binding TodayDate, Mode=OneWay}"
                         DisplayDateEnd="{Binding TodayDate, Mode=OneWay}" 
                         DisplayDateStart="1/1/1900" />
-           
+                
 
-        </StackPanel>
+            </StackPanel>
         
         <Button Content="Save" Grid.Row="1" HorizontalAlignment="Right"
                     Command="{Binding UpdateDbCommand}" Margin="10">

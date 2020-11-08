@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dragablz, Version=0.0.3.223, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dragablz.0.0.3.223\lib\net45\Dragablz.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -98,6 +101,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\AddIngredientToDrugCommand.cs" />
+    <Compile Include="Commands\ChangeListDisplayCommand.cs" />
     <Compile Include="Commands\CreatePDFCommand.cs" />
     <Compile Include="Commands\DecisionCommand.cs" />
     <Compile Include="Commands\OpenFileDialogCommand.cs" />
@@ -106,6 +110,7 @@
     <Compile Include="Commands\DeleteItemCommand.cs" />
     <Compile Include="Commands\EditingItemCommand.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="ListsTypes.cs" />
     <Compile Include="Models\DrugsManagementModel.cs" />
     <Compile Include="Models\DrugStatisticsModel.cs" />
     <Compile Include="Models\MedicalRecordModel.cs" />
@@ -114,6 +119,7 @@
     <Compile Include="Models\UpdatePatientModel.cs" />
     <Compile Include="Models\UpdatePhysicianModel.cs" />
     <Compile Include="ViewModels\AddDrugViewModel.cs" />
+    <Compile Include="ViewModels\IChangeListDisplayVM.cs" />
     <Compile Include="ViewModels\ConsumptionOfDrugsViewModel.cs" />
     <Compile Include="ViewModels\DecisionMessageViewModel.cs" />
     <Compile Include="ViewModels\DrugsManagementViewModel.cs" />

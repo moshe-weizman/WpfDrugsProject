@@ -115,6 +115,14 @@ namespace Drugs2020.BLL
                 dal.AddRecept(recept);
         }
 
+       
+        public void DeleteReceipt(Recept receipt)
+        {
+            dal.DeleteReceipt(receipt.ReceptId);
+        }
+
+
+
         public List<string> checkConflicts(string IdCodeOfDrug, List<string> drugsTakenPatient)
         {
             DrugConflictTest drugConflictTest = new DrugConflictTest();
@@ -300,7 +308,7 @@ namespace Drugs2020.BLL
             return 770;
         }
 
-      
+       
         #endregion
     }
 }

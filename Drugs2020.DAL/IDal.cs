@@ -41,6 +41,7 @@ namespace Drugs2020.DAL
 
         #region Recept
         void AddRecept(Recept recept);
+        void DeleteReceipt(string ReceptId);
         List<Recept> GetAllReceptsOfPatient(string id);
         List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate);
         List<Recept> GetAllReceptsByDrug(string drugIdCode);

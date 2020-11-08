@@ -268,6 +268,20 @@ namespace Drugs2020.DAL
                 throw new Exception("DalImplementation - AddRecept " + ex);
             }
         }
+        public void DeleteReceipt(string ReceptId)
+        {
+            try
+            {
+
+                ctx.Recepts.Remove(ctx.Recepts.Find(ReceptId));
+                ctx.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("DalImplementation - DeleteReceipt " + ex);
+            }
+        }
+
         public List<Recept> GetAllReceptsOfPatient(string id)
         {
             try
@@ -408,7 +422,8 @@ namespace Drugs2020.DAL
             }
         }
 
-       
+      
+
         #endregion
     }
 }

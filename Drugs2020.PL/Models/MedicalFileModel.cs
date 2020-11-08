@@ -39,6 +39,11 @@ namespace Drugs2020.PL.Models
             bl.UpdateMedicalFile(MedicalFile.PatientId, MedicalFile);
         }
 
-       
+        public void RemoveReceiptFromDb(Recept receipt)
+        {
+            bl.DeleteReceipt( receipt);
+        }
+
+
     }
 }

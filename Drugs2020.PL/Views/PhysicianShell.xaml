@@ -33,7 +33,7 @@
 
             <StackPanel Grid.Column="0"  Background="#14212B" >
 
-                <Button Background="Transparent" BorderBrush="Transparent" IsEnabled="{Binding IsEnabledActionsMenu}" Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.PATIENT_DATA }"  HorizontalContentAlignment="Center" Margin="20"  Height="60" >
+                <Button  Background="Transparent" BorderBrush="Transparent" IsEnabled="{Binding IsEnabledActionsMenu}" Command="{Binding ScreenReplacementCommand}" CommandParameter="{x:Static local1:Screen.PATIENT_DATA }"  HorizontalContentAlignment="Center" Margin="20"  Height="60" >
                     <Button.Content>
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Person" Margin="15" />

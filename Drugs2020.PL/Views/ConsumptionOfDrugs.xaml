@@ -5,15 +5,105 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="450" d:DesignWidth="800"
+                          xmlns:local1="clr-namespace:Drugs2020.PL">
     <Grid>
-        <StackPanel Height="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--<StackPanel Orientation="Horizontal" Grid.Row="0" >
+            <Button  Uid="0" Command="{Binding }" CommandParameter="{Binding ElementName=Present , Path=Uid}"  x:Name="Present" Background="Transparent" BorderBrush="Transparent"  />
+            <Button Uid="1" Command="{Binding }" CommandParameter="{Binding ElementName=Past , Path=Uid}" x:Name="Past" Background="Transparent" BorderBrush="Transparent" Content="Past" />
+
+        </StackPanel>-->
+        <StackPanel Grid.Row="0"
+  Orientation="Horizontal"
+  Margin="4">
+            <RadioButton Uid="0" x:Name="Present" Command="{Binding ChangeListDisplayCommand}" CommandParameter="{x:Static local1:ListsTypes.DRUGS_TAKE}"
+    Style="{StaticResource MaterialDesignTabRadioButton}"
+    Margin="4" materialDesign:ToggleButtonAssist.SwitchTrackOnBackground="#2196f3" 
+    IsChecked="True"
+    Content="Present" Height="80" Padding="5"/>
+
+            <RadioButton  materialDesign:ColorZoneAssist.Foreground="#2196f3" Uid="1" x:Name="Past" Command="{Binding ChangeListDisplayCommand}" CommandParameter="{x:Static local1:ListsTypes.DRUGS_PREVIOUSLY_TAKEN}" 
+    Style="{StaticResource MaterialDesignTabRadioButton}"
+    Margin="4" Height="80" 
+    IsChecked="False" Padding="5"
+    Content="Past" />
+
+        </StackPanel>
+
+        <Grid Grid.Row="1" >
+
+            <StackPanel>
+                <ListView x:Name="List" 
+  ItemsSource="{Binding ListDisplay}" SelectedItem="{Binding SelectedReceipt}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn
+        DisplayMemberBinding="{Binding DrugGenericName}"
+        Header="Drug Generic Name" />
+                            <GridViewColumn
+        DisplayMemberBinding="{Binding TreatmentEndDate}"
+        Header="Treatment End Date" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+            </StackPanel>
+        </Grid>
+
+        <!--<Grid Grid.Row="1">
+
+            <StackPanel>
+                <ListView x:Name="List" 
+  ItemsSource="{Binding DrugsTake}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn
+        DisplayMemberBinding="{Binding DrugGenericName}"
+        Header="Drug Generic Name" />
+                            <GridViewColumn
+        DisplayMemberBinding="{Binding TreatmentEndDate}"
+        Header="Treatment End Date" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+              
+            </StackPanel>
+        </Grid>
+
+
+        <Grid Grid.Row="1" Visibility="{Binding ElementName=Past, Path=CacheMode}" >
+                <StackPanel>
+                    <ListView 
+  ItemsSource="{Binding DrugsPreviouslyTaken}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn
+        DisplayMemberBinding="{Binding DrugGenericName}"
+        Header="Drug Generic Name" />
+                                <GridViewColumn
+        DisplayMemberBinding="{Binding TreatmentEndDate}"
+        Header="Treatment End Date" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                   
+                </StackPanel>
+            </Grid>-->
+
+
+        <!--<StackPanel Height="Auto">
         <TabControl Height="Auto">
             <TabItem Header="Present">
-                <Grid Background="#FFE5E5E5">
+                <Grid >
 
                         <StackPanel>
-                        <ListView 
+                        <ListView x:Name="List"
   ItemsSource="{Binding DrugsTake}">
                             <ListView.View>
                                 <GridView>
@@ -26,16 +116,7 @@
                                 </GridView>
                             </ListView.View>
                         </ListView>
-                        <!--<ListView  ScrollViewer.CanContentScroll="True" HorizontalAlignment="Left" Height="Auto"  VerticalAlignment="Top" Width="Auto" ItemsSource="{Binding DrugsTake}">
-                            <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel>
-                                        <TextBlock Text="{Binding DrugGenericName, StringFormat= Drug Generic Name: {0}}"/>
-                                        <TextBlock Text="{Binding TreatmentEndDate , StringFormat= Treatment End Date: {0}}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>-->
+                      
                     </StackPanel>
                 </Grid>
             </TabItem>
@@ -56,22 +137,15 @@
                                 </GridView>
                             </ListView.View>
                         </ListView>
-                        <!--<ListView HorizontalAlignment="Left" Height="Auto"  VerticalAlignment="Top" Width="Auto" ItemsSource="{Binding DrugsPreviouslyTaken}"  ScrollViewer.CanContentScroll="True">
-                            <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel>
-                                    <TextBlock Text="{Binding DrugGenericName}"/>
-                                    <TextBlock Text="{Binding TreatmentEndDate}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>-->
+                       
                     </StackPanel>
                 </Grid>
             </TabItem>
         </TabControl>
 
-    </StackPanel>
-    <Button Content="Back" Command="{Binding BackCommand}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Bottom"/>
-   </Grid>
+    </StackPanel>-->
+        <Button Grid.Row="2" Content="Back" Command="{Binding BackCommand}" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Bottom"/>
+        <Button Grid.Row="2" Content="Delete" Command="{Binding RemoveFromDb}" CommandParameter="{Binding ElementName=List, Path=SelectedItem}" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom"/>
+
+    </Grid>
 </UserControl>

@@ -7,7 +7,7 @@ namespace Drugs2020.BLL.BE
 {
     public class Recept
     {
-        public int ReceptId { get; set; }
+        public string ReceptId { get; set; }
         public string PatientID { get; set; }
         public string PhysicianID { get; set; }
 
@@ -27,7 +27,7 @@ namespace Drugs2020.BLL.BE
 
         public Recept(string patientID, Physician physician)
         {
-            // לממש את הID 
+            ReceptId= DateTime.Now.ToString();
             PatientID = patientID;
             PhysicianID = physician.ID;
             Date = DateTime.Today;
@@ -39,7 +39,7 @@ namespace Drugs2020.BLL.BE
 
         }
 
-        public Recept(string physicianID, string patientID, int id, string idCodeOfDrug, string drugGenericName, int quantity, int days, DateTime dateTime)
+        public Recept(string physicianID, string patientID, string id, string idCodeOfDrug, string drugGenericName, int quantity, int days, DateTime dateTime)
         {
             PhysicianID = physicianID;
             PatientID = patientID;

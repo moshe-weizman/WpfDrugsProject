@@ -27,6 +27,7 @@ namespace Drugs2020.PL.ViewModels
         public SearchItemCommand SearchCommand { get; set; }
         public BackCommand SignOutCommand { get; set; }
         public Physician PhysicianUser { get; set; }
+        public string Message { get; set; }
 
         public Patient PatientFound {
             get
