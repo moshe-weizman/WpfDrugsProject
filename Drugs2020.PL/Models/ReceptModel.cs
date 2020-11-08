@@ -24,7 +24,7 @@ namespace Drugs2020.PL.Models
             Recept = new Recept(patientId, physician);
             DrugList = bl.GetAllDrugs();
             AllRecepts = bl.GetAllReceptsOfPatient(patientId);
-
+            Conflicts = new List<string>();
         }
 
         public void AddRecept()
@@ -44,12 +44,13 @@ namespace Drugs2020.PL.Models
         {
             bl.CreatePDF(Recept);
         }
-        public List<string> CheckConflicts(string IdCodeOfDrug)
+        public string CheckConflicts(string IdCodeOfDrug)
         {
-             return Conflicts = bl.checkConflicts(IdCodeOfDrug, AllRecepts.Select(x => x.IdCodeOfDrug).ToList());
-
+            Conflicts = bl.checkConflicts(IdCodeOfDrug, AllRecepts.Select(x => x.IdCodeOfDrug).ToList());
+            var result = string.Join(",  ", Conflicts.ToArray());
+            return result;
         }
 
 
-}
+    }
 }

@@ -17,14 +17,20 @@ namespace Drugs2020.PL.ViewModels
         private PhysicianShellViewModel containingVm;
        // private PhysicianShellModel patientModel;
         private ReceptModel addReceptModel;
-       
-        public List<string> Conflicts
+        private string conflicts;
+        public string Conflicts
         {
-            get { return addReceptModel.Conflicts; }
-            set { addReceptModel.Conflicts = value; 
+            get {
+               
+                    return conflicts;
+            }
+            set
+            {
+                conflicts = value;
                 if (PropertyChanged != null)
                     PropertyChanged(this, new PropertyChangedEventArgs("Conflicts"));
             }
+            
         }
         private string patientId;
         public AddReceptViewModel(PhysicianShellViewModel containingVm, string patientId, Physician physician)
@@ -51,7 +57,7 @@ namespace Drugs2020.PL.ViewModels
                 
                 if (PropertyChanged!=null)
                     PropertyChanged(this, new PropertyChangedEventArgs("SelectedDrug"));
-                Conflicts=addReceptModel.CheckConflicts(value.IdCode);
+                Conflicts= addReceptModel.CheckConflicts(value.IdCode);
             }
         }
 
