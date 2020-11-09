@@ -36,11 +36,16 @@ namespace Drugs2020.PL.ViewModels
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        public void AddItemToDb()
+        public async void AddItemToDb()
         {
-            addPatientM.AddPatientToDb();
-            //containingVm.Items.Add(Patient);
-            GoBack();
+            containingVm.startProcessing("Adding to database");
+            await Task.Run(() =>
+            {
+                addPatientM.AddPatientToDb();
+                containingVm.finishProcessing("Success!");
+                GoBack();
+            });
+
         }
 
         public bool ItemAlreadyExists()
@@ -48,16 +53,17 @@ namespace Drugs2020.PL.ViewModels
             return addPatientM.DoesPatientExist();
         }
 
-        public void UpdateExistingItem()
+        public async void UpdateExistingItem()
         {
-            addPatientM.UpdatePatient();
-           // containingVm.Items.Remove(containingVm.Items.Single(i => i.ID == Patient.ID));
-           // containingVm.Items.Add(Patient);
-            GoBack();
-          //  await Task.Run(() => addPatientM.UpdatePatient());
-            //to anounce for success
+            containingVm.startProcessing("Updating on database");
+            await Task.Run(() =>
+            {
+                addPatientM.UpdatePatient();
+                containingVm.finishProcessing("Success!");
+                GoBack();
+            });
         }
-
+        
         public bool UserWantsToReplaceExistingItem()
         {
             ExistingItemDecisionViewModel existingItemDecision = new ExistingItemDecisionViewModel("Patient");

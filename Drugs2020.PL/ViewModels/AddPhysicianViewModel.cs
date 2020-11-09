@@ -36,11 +36,15 @@ namespace Drugs2020.PL.ViewModels
         }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        public void AddItemToDb()
+        public async void AddItemToDb()
         {
-            addPhysicianM.AddPhysicianToDb();
-           // containingVm.Items.Add(Physician);
-            GoBack();
+            containingVm.startProcessing("Adding to database");
+            await Task.Run(() =>
+            {
+                addPhysicianM.AddPhysicianToDb();
+                containingVm.finishProcessing("Success!");
+                GoBack();
+            });
         }
 
         public bool ItemAlreadyExists()
@@ -48,12 +52,15 @@ namespace Drugs2020.PL.ViewModels
             return addPhysicianM.DoesPhysicianExist();
         }
 
-        public void UpdateExistingItem()
+        public async void UpdateExistingItem()
         {
-            addPhysicianM.UpdatePhysician();
-           // containingVm.Items.Remove(containingVm.Items.Single(i => i.ID == Physician.ID));
-          //  containingVm.Items.Add(Physician);
-            GoBack();
+            containingVm.startProcessing("Updating on database");
+            await Task.Run(() =>
+            {
+                addPhysicianM.UpdatePhysician();
+                containingVm.finishProcessing("Success!");
+                GoBack();
+            });
         }
 
         public bool UserWantsToReplaceExistingItem()

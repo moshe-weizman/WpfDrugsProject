@@ -26,6 +26,8 @@
                                SearchInput="{Binding PateintID}"
                                SearchCommand="{Binding SearchCommand}"      />-->
         <local:ShellHeader Background="#14212B"
+                           UserName="{Binding Admin.FirstName , StringFormat=Hello {0}}"
+                           SearchControlsVisibility="Collapsed"
                                SignOutCommand="{Binding SignOutCommand}"
                                ProgressBarVisibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"
                                Message="{Binding Message}"

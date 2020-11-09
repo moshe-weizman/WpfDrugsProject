@@ -13,8 +13,31 @@ namespace Drugs2020.PL.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private MainWidowViewModel containingVm;
-        public bool IsBusy { get; set; }
-        public string Message { get; set; }
+        public Admin Admin { get; set; }
+        private bool isBusy;
+
+        public bool IsBusy
+        {
+            get { return isBusy; }
+            set {
+                isBusy = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("IsBusy"));
+            }
+        }
+
+        private string message;
+
+        public string Message
+        {
+            get { return message; }
+            set { 
+                message = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("Message"));
+            }
+        }
+
         public BackCommand SignOutCommand { get; set; }
         public IViewModel DecisionMessage { get; set; }
 
@@ -31,65 +54,7 @@ namespace Drugs2020.PL.ViewModels
                     PropertyChanged(this, new PropertyChangedEventArgs("CurrentVM"));
             }
         }
-        //private IViewModel patientsTabVm; 
-        //public IViewModel PatientsTabVm
-        //{
-        //    get { return patientsTabVm; }
-        //    set
-        //    {
-        //        patientsTabVm = value;
-        //        if (PropertyChanged != null)
-        //            PropertyChanged(this, new PropertyChangedEventArgs("PatientsTabVm"));
-        //    }
-        //}
-        //private IViewModel physiciansTabVm;
-        //public IViewModel PhysiciansTabVm
-        //{
-        //    get { return physiciansTabVm; }
-        //    set
-        //    {
-        //        physiciansTabVm = value;
-        //        if (PropertyChanged != null)
-        //            PropertyChanged(this, new PropertyChangedEventArgs("PhysiciansTabVm"));
-        //    }
-        //}
-        //private IViewModel drugsTabVm;
-        //public IViewModel DrugsTabVm
-        //{
-        //    get { return drugsTabVm; }
-        //    set
-        //    {
-        //        drugsTabVm = value;
-        //        if (PropertyChanged != null)
-        //            PropertyChanged(this, new PropertyChangedEventArgs("DrugsTabVm"));
-        //    }
-        //}
-        //private IViewModel statisticsTabVm;
-        //public IViewModel StatisticsTabVm
-        //{
-        //    get { return statisticsTabVm; }
-        //    set
-        //    {
-        //        statisticsTabVm = value;
-        //        if (PropertyChanged != null)
-        //            PropertyChanged(this, new PropertyChangedEventArgs("StatisticsTabVm"));
-        //    }
-        //}
-
-
-
-
-        //private bool isEnabledActionsMenu;
-        //public bool IsEnabledActionsMenu
-        //{
-        //    get { return isEnabledActionsMenu; }
-        //    set
-        //    {
-        //        isEnabledActionsMenu = value;
-        //        if (PropertyChanged != null)
-        //            PropertyChanged(this, new PropertyChangedEventArgs("IsEnabledActionsMenu"));
-        //    }
-        //}
+        
         private IViewModel DecisionMessageScreen;
         private PatientsManagementViewModel patientsManagementVm;
         private PhysiciansManagementViewModel physiciansManagementVm;
@@ -98,18 +63,14 @@ namespace Drugs2020.PL.ViewModels
         public AdminShellViewModel(MainWidowViewModel containingVm, Admin user)
         {
             this.containingVm = containingVm;
+            this.Admin = user;
             SignOutCommand = new BackCommand(this);
             ScreenReplacementCommand = new ScreenReplacementCommand(this);
              Message = "";
             patientsManagementVm = new PatientsManagementViewModel(this);
-           // patientsTabVm = patientsManagementVm;
             physiciansManagementVm = new PhysiciansManagementViewModel(this);
-           // physiciansTabVm = physiciansManagementVm;
             drugssManagementVm = new DrugsManagementViewModel(this);
-          //  drugsTabVm = drugssManagementVm;
             drugsStatisticsVm = new DrugStatisticsViewModel();
-            // statisticsTabVm = drugsStatisticsVm;
-           
             CurrentVM = null;
         }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -146,7 +107,21 @@ namespace Drugs2020.PL.ViewModels
                     break;
             }
         }
-
+        public void startProcessing(string message)
+        {
+            Message = message;
+            IsBusy = true;
+        }
+        public async void finishProcessing(string message)
+        {
+            await Task.Run(() =>
+            {
+                Message = message;
+                IsBusy = false;
+                System.Threading.Thread.Sleep(3000);
+                Message = "";
+            });  
+        }
         public void GoBack()
         {
             containingVm.GoBack();
