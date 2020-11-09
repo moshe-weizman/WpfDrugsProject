@@ -17,12 +17,16 @@ namespace Drugs2020.BLL
     {
         IDal dal = new DalImplementation();
         private ICloudForImage cloud = new GoogleDrive();
-        const string LOCAL_STORAGE_PATH = @"..\ApplicationResources";
-        const string IMAGES_STORAGE_DIRECTORY = @"\DrugsImages";
-        const string IMAGES_FILES_EXTENSION = @".png";
         const string DEFAULT_IMAGE_PATH = @"..\ApplicationResources\DrugsImages\default.png";
-        const string RECEPTS_PDF_STORAGE_DIRECTORY = @"\ReceptsPDF";
+        const string IMAGES_FILES_EXTENSION = @".png";
         const string PDF_FILES_EXTENSION = @".pdf";
+        string receptsStoragePath = Path.GetFullPath(@"..\ApplicationResources\ReceptsPDF");
+        string imagesStoragePath = Path.GetFullPath(@"..\ApplicationResources\DrugsImages");
+        public BLImplementation()
+        {
+
+            
+        }
         public Dictionary<string, int> GetDictionaryForReceptsByDate(DateTime startDate, DateTime endDate)
         {
             List<Recept> recepts = GetAllReceptsByDate(startDate, endDate);
@@ -122,7 +126,7 @@ namespace Drugs2020.BLL
        
         public void DeleteReceipt(Recept receipt)
         {
-            dal.DeleteReceipt(receipt.ReceptId);
+            dal.DeleteReceipt(receipt.ReceptId.ToString());
         }
 
 
@@ -215,8 +219,8 @@ namespace Drugs2020.BLL
             }
             if (cloud.DoesFileExists(drug.IdCode + IMAGES_FILES_EXTENSION))
             {
-                cloud.Download(drug.IdCode + IMAGES_FILES_EXTENSION, LOCAL_STORAGE_PATH + IMAGES_STORAGE_DIRECTORY);
-                string path = Path.Combine(LOCAL_STORAGE_PATH, IMAGES_STORAGE_DIRECTORY, drug.IdCode + IMAGES_FILES_EXTENSION);
+                cloud.Download(drug.IdCode + IMAGES_FILES_EXTENSION, imagesStoragePath);
+                string path = Path.Combine(imagesStoragePath, drug.IdCode + IMAGES_FILES_EXTENSION);
                 drug.ImageUrl = path;
                 return drug;
             }
@@ -240,7 +244,7 @@ namespace Drugs2020.BLL
         private void SaveImage(Drug drug)
         {
             string drugImageName = drug.IdCode + IMAGES_FILES_EXTENSION;
-            drug.ImageUrl = SaveFileLocally(drug.ImageUrl, IMAGES_STORAGE_DIRECTORY, drugImageName);
+            drug.ImageUrl = SaveFileLocally(drug.ImageUrl, imagesStoragePath, drugImageName);
             while (cloud.DoesFileExists(drugImageName))
             {
                 cloud.Remove(drugImageName);
@@ -248,9 +252,8 @@ namespace Drugs2020.BLL
             cloud.Upload(drug.ImageUrl);
         }
 
-        private string SaveFileLocally(string filePath, string targetDirectoryName, string targetFileName)
+        private string SaveFileLocally(string filePath, string targetDirectory, string targetFileName)
         {
-            string targetDirectory = LOCAL_STORAGE_PATH + targetDirectoryName;
             Directory.CreateDirectory(targetDirectory);
             string destinaion = Path.Combine(targetDirectory, targetFileName);
             File.Copy(filePath, destinaion, true);
