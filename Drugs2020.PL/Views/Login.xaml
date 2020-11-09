@@ -5,17 +5,27 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
              xmlns:Converters ="clr-namespace:Drugs2020.PL.Converters"
-             xmlns:viewmodels="clr-namespace:Drugs2020.PL.ViewModels"
+             xmlns:viewmodels="clr-namespace:Drugs2020.PL.ViewModels" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
              >
     <UserControl.Resources>
         <Converters:FieldsTextToBoolConverter x:Key="fieldsTextToBoolConverter" />
     </UserControl.Resources>
-
+    
   
-    <StackPanel  Background="#1C2F3E" Width="180" Margin="5"  VerticalAlignment="Center">
-            <Label Content="Log In" HorizontalAlignment="Center"  FontSize="28" FontFamily="Microsoft JhengHei UI Light" />
+        <!--<Grid >
+            --><!--<ProgressBar
+  Style="{StaticResource MaterialDesignCircularProgressBar}"
+  Value="0"
+  IsIndeterminate="True" />--><!--
+        </Grid>-->
+        <Grid >
+            <StackPanel  Background="#1C2F3E" Width="180" Margin="5"  VerticalAlignment="Center">
 
+
+            <Label Content="Log In" HorizontalAlignment="Center" Foreground="#2196f3"  FontSize="28" FontFamily="Microsoft JhengHei UI Light" />
+            <Border Background="White" Margin="10 20" CornerRadius="5" />
+            <StackPanel Margin="25">
             <TextBlock TextWrapping="Wrap"
                        Text="User ID:"
                    Margin="10" />
@@ -56,5 +66,7 @@
                 </Button.CommandParameter>
 
             </Button>
-    </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
 </UserControl>

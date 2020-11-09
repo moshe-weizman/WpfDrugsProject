@@ -1,11 +1,15 @@
 ﻿using Drugs2020.BLL.BE;
 using Drugs2020.DAL;
+using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using System.Diagnostics;
+using PdfSharp.Drawing;
+using PdfSharp.Drawing.Layout;
 
 namespace Drugs2020.BLL
 {
@@ -13,7 +17,6 @@ namespace Drugs2020.BLL
     {
         IDal dal = new DalImplementation();
         private ICloudForImage cloud = new GoogleDrive();
-        IPDF PDF = new SaveAsPDF();
         const string LOCAL_STORAGE_PATH = @"..\ApplicationResources";
         const string IMAGES_STORAGE_DIRECTORY = @"\DrugsImages";
         const string IMAGES_FILES_EXTENSION = @".png";
@@ -299,8 +302,99 @@ namespace Drugs2020.BLL
 
         public void CreatePDF(Recept recept)
         {
-            PDF.SavaPDF(recept.ToString());
+            PdfDocument document = new PdfDocument();
+            PdfPage page = document.AddPage();
+            XGraphics gfx = XGraphics.FromPdfPage(page);
+            //-------------------------------------------//-------------------------------------------
+
+            XFont font = new XFont("Times New Roman", 15, XFontStyle.Bold);
+            XTextFormatter tf = new XTextFormatter(gfx);
+            var lineColor = XPens.DarkGreen;
+            int y = 60;
+            //---------------------כותרת----------------
+
+            gfx.DrawString("madicel center ", new XFont("Times New Roman", 15, XFontStyle.Bold)
+                , XBrushes.Black, new XRect(page.Width / 2, 5, 5, 0), XStringFormats.TopCenter);
+
+            gfx.DrawString("recept No: " + recept.ReceptId, new XFont("Times New Roman", 15, XFontStyle.Bold)
+                , XBrushes.Black, new XRect(page.Width - 25, 5, 5, 0), XStringFormats.TopRight);
+
+            gfx.DrawString(recept.Date.ToString(), new XFont("Times New Roman", 15, XFontStyle.Bold)
+                , XBrushes.Black, new XRect(5, 5, 5, 0), XStringFormats.TopLeft);
+
+            gfx.DrawString("recept", new XFont("Times New Roman", 30, XFontStyle.Bold)
+                 , XBrushes.Black, new XRect(0, y, page.Width, 0), XStringFormats.Center);
+
+            //-------------------Physician------------------------
+            Physician Dr = GetPhysician(recept.PhysicianID);
+            string drName = "doctor " + Dr.FirstName + " " + Dr.LastName + ".\n" +
+                "phone: " + Dr.Phone + "\n" +
+                 "email: " + Dr.Email + "\n" +
+                  "address: " + Dr.Address;
+
+            //---------------------Patient---------------------- 
+            Patient patient = GetPatient(recept.PatientID);
+            string patientDetail = patient.Sex == Sex.MALE ? "Mr " : "Miss ";
+            patientDetail += patient.FirstName + " " + patient.LastName + ".\n";
+            patientDetail += "id: " + patient.ID + "\n" +
+            "sex: " + patient.Sex + "  Age: " + patient.Age + "\n" +
+            "address: " + patient.Address;
+
+            //----------------------Drug---------------------
+            Drug drug = GetDrug(recept.IdCodeOfDrug);
+            string receptDetail1 = "drug name: " + drug.Name + "\n" +
+                "generic name: " + drug.GenericName + "\n" +
+                "quantity: " + recept.Quantity + " in day for " + recept.Days;
+            receptDetail1 += recept.Days > 1 ? " day." : " days.";
+            string receptDetail2 = "code: " + drug.IdCode +
+                           "valid until: " + recept.ExpirationDate;
+            //-------------------------------------------
+
+            y += 30;
+
+            gfx.DrawRoundedRectangle(new XPen(XColors.RoyalBlue, Math.PI),
+               XBrushes.White, 15, y, 250, 100, 20, 20);
+
+            XRect rect = new XRect(25, y + 15, 200, 100);
+            // gfx.DrawRectangle(XBrushes.SeaShell, rect);
+            tf.Alignment = XParagraphAlignment.Left;
+            tf.DrawString(drName, font, XBrushes.Black, rect, XStringFormats.TopLeft);
+            //-------------------------------------------
+
+            gfx.DrawRoundedRectangle(new XPen(XColors.RoyalBlue, Math.PI),
+                XBrushes.White, page.Width / 3 + 140 - 15, y, 250, 100, 20, 20);
+
+            rect = new XRect(page.Width / 3 + 140, y + 15, 250, 220);
+            // gfx.DrawRectangle(XBrushes.SeaShell, rect);
+            tf.Alignment = XParagraphAlignment.Left;
+            tf.DrawString(patientDetail, font, XBrushes.Black, rect, XStringFormats.TopLeft);
+            //-------------------------------------------
+
+
+            y += 120;
+
+            gfx.DrawString("Drug: ", new XFont("Times New Roman", 20, XFontStyle.Bold)
+                , XBrushes.Black, new XRect(25, y, 5, 0), XStringFormats.TopLeft);
+
+            gfx.DrawRoundedRectangle(new XPen(XColors.RoyalBlue, Math.PI),
+                 XBrushes.White, 15, y + 30, 450, 80, 20, 20);
+
+            rect = new XRect(25, y + 40, 420, 100);
+            // gfx.DrawRectangle(XBrushes.SeaShell, rect);
+            tf.Alignment = XParagraphAlignment.Left;
+            tf.DrawString(receptDetail1, font, XBrushes.Black, rect, XStringFormats.TopLeft);
+
+            tf.Alignment = XParagraphAlignment.Right;
+            tf.DrawString(receptDetail2, font, XBrushes.Black, rect, XStringFormats.TopLeft);
+
+
+            //-------------------------------------------
+            string filename = "recept.pdf";
+            document.Save(filename);
+            Process.Start(filename);
         }
+
+
         #endregion
 
         #region Utility

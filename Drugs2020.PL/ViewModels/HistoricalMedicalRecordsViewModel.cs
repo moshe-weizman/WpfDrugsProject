@@ -48,11 +48,12 @@ namespace Drugs2020.PL.ViewModels
         {
             containingVm.ReplaceScreen(Screen.ADD_MEDICAL_FILE);
         }
-        public void OpenEditingScreen(object item)
+        public  void OpenEditingScreen(object item)
         {
-            if(SelectedMedicalRecord.AbleEdit)
-                 containingVm.CurrentVM = new AddMedicalRecordViewModel(containingVm, patientId, physician, SelectedMedicalRecord);
-            //לממש פה הודעה למשתמש שבמקרה שהוא לא רשאי לערוך כי הוא לא הרופא שכתב את הרשומה הרפואית
+            if (SelectedMedicalRecord.AbleEdit)
+                containingVm.CurrentVM = new AddMedicalRecordViewModel(containingVm, patientId, physician, SelectedMedicalRecord);
+            else
+               containingVm.ShowMessage("A doctor who did not create the medical record could not edit it");
         }
     }
 }

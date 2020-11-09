@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
@@ -27,7 +28,30 @@ namespace Drugs2020.PL.ViewModels
         public SearchItemCommand SearchCommand { get; set; }
         public BackCommand SignOutCommand { get; set; }
         public Physician PhysicianUser { get; set; }
-        //public string Message { get; set; }
+        private string message;
+        public string Message {
+            get
+            {
+                return message;
+            }
+            set
+            {
+                message = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("Message"));
+            }
+        }
+        private bool isBusy;
+        public bool IsBusy
+        {
+            get { return isBusy; }
+            set 
+            { 
+                isBusy = value; 
+                if(PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("IsBusy"));
+            }
+        }
 
         public Patient PatientFound {
             get
@@ -67,6 +91,8 @@ namespace Drugs2020.PL.ViewModels
         private MainWidowViewModel containingVm;
         public PhysicianShellViewModel(MainWidowViewModel containingVm , Physician physicianUser)
         {
+            Message = "";
+            IsBusy = false;
             this.containingVm = containingVm;
             ScreenReplacementCommand = new ScreenReplacementCommand(this);
             SearchCommand = new SearchItemCommand(this);
@@ -142,6 +168,15 @@ namespace Drugs2020.PL.ViewModels
             {
                 Init(patientId);
             }
+        }
+        public async void ShowMessage(string message)
+        {
+            await Task.Run(() =>
+            {
+                Message = message;
+                Thread.Sleep(3000);
+                Message = "";
+            });
         }
 
         public void GoBack()

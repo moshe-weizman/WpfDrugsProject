@@ -51,6 +51,7 @@ namespace Drugs2020.PL.ViewModels
         public void AddItemToDb()
         {
             medicalRecordModel.AddMedicalRecordToDb();
+            containingVm.ReplaceScreen(Screen.PATIENT_DATA);
         }
 
         
