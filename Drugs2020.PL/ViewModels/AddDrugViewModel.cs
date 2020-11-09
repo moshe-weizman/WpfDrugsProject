@@ -79,26 +79,32 @@ namespace Drugs2020.PL.ViewModels
             addDrugM.Ingredients.Add(IngredientToAdd);
             IngredientToAdd = new ActiveIngredient();
         }
-        public void AddItemToDb()
+        public async void AddItemToDb()
         {
             addDrugM.Drug.ImageUrl = ImageUrl;
-            addDrugM.AddDrugToDb();
-           // containingVm.Items.Add(Drug);
-            GoBack();
-        }
+            containingVm.startProcessing("Adding to database");
+            await Task.Run(() =>
+            {
+                addDrugM.AddDrugToDb();
+                containingVm.finishProcessing("Success!");
+                GoBack();
+            });
 
+        }
         public bool ItemAlreadyExists()
         {
             return addDrugM.DoesDrugExist();
         }
 
-        public void UpdateExistingItem()
+        public async void UpdateExistingItem()
         {
-            //containingVm.Items.Remove(containingVm.Items.Single(i => i.IdCode == Drug.IdCode));
-          //  containingVm.Items.Add(Drug);
-           
-            addDrugM.UpdateDrug();
-            GoBack();
+            containingVm.startProcessing("Updating on database");
+            await Task.Run(() =>
+            {
+                addDrugM.UpdateDrug();
+                containingVm.finishProcessing("Success!");
+                GoBack();
+            }); 
         }
 
         public bool UserWantsToReplaceExistingItem()

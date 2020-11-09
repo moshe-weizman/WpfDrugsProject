@@ -30,7 +30,7 @@ namespace Drugs2020.PL.Models
 
         public bool DoesDrugExist()
         {
-            if (bl.GetPatient(Drug.IdCode) != null)
+            if (bl.GetDrug(Drug.IdCode) != null)
             {
                 return true;
             }

@@ -16,7 +16,7 @@ namespace Drugs2020.DAL
 
         public DalImplementation()
         {
-          //  ctx.Admins.Add(new Admin("1234", "or", "or", Sex.MALE, "05000000", "no", "1234", "elad", DateTime.Today));
+            //ctx.Admins.Add(new Admin("1234", "or", "or", Sex.MALE, "05000000", "no", "1234", "elad", DateTime.Today));
 
         }
 

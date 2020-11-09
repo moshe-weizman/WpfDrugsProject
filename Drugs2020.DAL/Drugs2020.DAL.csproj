@@ -92,10 +92,8 @@
     <Compile Include="ICloudForImage.cs" />
     <Compile Include="IDal.cs" />
     <Compile Include="IDrugsConflict.cs" />
-    <Compile Include="IPDF.cs" />
     <Compile Include="PharmacyContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SaveAsPDF.cs" />
     <Compile Include="SeedData.cs" />
   </ItemGroup>
   <ItemGroup>
