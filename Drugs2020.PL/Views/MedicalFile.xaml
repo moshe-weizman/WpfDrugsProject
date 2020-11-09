@@ -5,17 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Drugs2020.PL.Views" xmlns:converters="clr-namespace:Drugs2020.PL.Converters"
              mc:Ignorable="d" 
-             xmlns:local1="clr-namespace:Drugs2020.PL">
+             xmlns:local1="clr-namespace:Drugs2020.PL" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
     <UserControl.Resources>
         <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
     </UserControl.Resources>
     <ScrollViewer>
-    <StackPanel>
+    <StackPanel Margin="10">
+            <StackPanel Orientation="Horizontal" Margin="5">
         <TextBlock TextWrapping="Wrap" Text="Weight (kg):"/>
-        <TextBox x:Name="Weight"  Height="40" TextWrapping="Wrap" Text="{Binding MedicalFile.Weight}"/>
+            <xctk:IntegerUpDown Background="#1C2F3E" Foreground="White"  Name="Weight" Height="40" Text="{Binding MedicalFile.Weight}" />
+
+            <!--<TextBox x:Name="Weight"  Height="40" TextWrapping="Wrap" Text="{Binding MedicalFile.Weight}"/>-->
 
         <TextBlock TextWrapping="Wrap" Text="Height (cm.):"/>
-        <TextBox x:Name="Height" Height="40" TextWrapping="Wrap" Text="{Binding MedicalFile.Height}"/>
+            <xctk:IntegerUpDown Background="#1C2F3E" Foreground="White"  Name="Height" Height="40" Text="{Binding MedicalFile.Height}" />
+            </StackPanel>
+            <!--<TextBox x:Name="Height" Height="40" TextWrapping="Wrap" Text="{Binding MedicalFile.Height}"/>-->
 
         <TextBlock TextWrapping="Wrap" Text="Chronic Illness:"/>
         <TextBox x:Name="ChronicIllness"   TextWrapping="Wrap" Text="{Binding MedicalFile.ChronicIllness}"/>
@@ -26,10 +31,7 @@
         <Button Content="Add/Update" Command="{Binding AddToDbCommand}" Margin="10" d:LayoutOverrides="Height">
             <Button.CommandParameter>
                 <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
-                    <Binding Path="Text"
-                                 ElementName="Weight" />
-                    <Binding Path="Text"
-                                 ElementName="Height" />
+                   
                     <Binding Path="Text"
                                  ElementName="ChronicIllness" />
                     <Binding Path="Text"

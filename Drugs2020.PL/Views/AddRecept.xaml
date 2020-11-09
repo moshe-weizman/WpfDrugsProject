@@ -15,7 +15,7 @@
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="380"/>
+            <ColumnDefinition Width="390"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -31,7 +31,7 @@
             <TextBlock Text="{Binding Conflicts}" Foreground="White"/>
 
         </GroupBox>
-        <StackPanel Margin="5" Grid.Column="0">
+        <StackPanel Margin="10" Grid.Column="0">
 
             <ComboBox materialDesign:HintAssist.Hint="Drugs"  ItemsSource="{Binding DrugCollection}" SelectedItem="{Binding SelectedDrug}" HorizontalAlignment="Center" >
                 <!--<ComboBox.Resources>

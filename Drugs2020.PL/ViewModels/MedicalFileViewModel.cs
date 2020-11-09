@@ -48,7 +48,6 @@ namespace Drugs2020.PL.ViewModels
         public bool ItemAlreadyExists()
         {
             return medicalFileM.MedicalFileAlreadyExists();
-          //  return true;
         }
 
         public bool UserWantsToReplaceExistingItem()

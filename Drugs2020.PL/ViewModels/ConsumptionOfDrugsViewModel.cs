@@ -78,9 +78,9 @@ namespace Drugs2020.PL.ViewModels
         public void RemoveItemFromDb(object item)
         {
             Recept recept = SelectedReceipt as Recept;
-            //if (DrugsPreviouslyTaken.Contains(recept)) 
-            //containingVm.Message = "An expired prescription cannot be deleted";
-         //   else
+            if (DrugsPreviouslyTaken.Contains(recept))
+                containingVm.Message = "An expired prescription cannot be deleted";
+            else
                 medicalFileModel.RemoveReceiptFromDb(recept);
         }
 
