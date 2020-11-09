@@ -68,9 +68,11 @@
                  Text="{Binding Password}"
                  Margin="10" />-->
                     
-                    <Button Content="Log in"
-                    
-                    
+                   
+            </StackPanel>
+            </Border>
+            <Button Content="Log in"
+
                     Command="{Binding LogInUserCommand}" Margin="25">
                 <Button.CommandParameter>
                     <MultiBinding Converter="{StaticResource fieldsTextToBoolConverter}">
@@ -83,8 +85,6 @@
                 </Button.CommandParameter>
 
             </Button>
-            </StackPanel>
-            </Border>
         </StackPanel>
        
     </Grid>
