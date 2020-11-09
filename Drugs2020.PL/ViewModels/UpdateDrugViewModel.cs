@@ -71,13 +71,16 @@ namespace Drugs2020.PL.ViewModels
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        public void UpdateInDb()
+        public async void UpdateInDb()
         {
-            updateDrugM.Drug.ImageUrl = ImageUrl;
-            updateDrugM.UpdateDrugInDb();
-            //containingVm.Items.Remove(containingVm.Items.Single(i => i.IdCode == Drug.IdCode));
-           // containingVm.Items.Add(Drug);
-            GoBack();
+            containingVm.startProcessing("Updating on database");
+            await Task.Run(() =>
+            {
+                updateDrugM.Drug.ImageUrl = ImageUrl;
+                updateDrugM.UpdateDrugInDb();
+                containingVm.finishProcessing("Success!");
+                GoBack();
+            });
         }
 
         public void GoBack()
@@ -99,14 +102,14 @@ namespace Drugs2020.PL.ViewModels
             updateDrugM.RemoveIngredient(activeIngredient);
         }
 
-        public bool IsUserSureToDelete()
-        {
-            return new DeleteDecisionViewmodel("active ingredient").Decision;
-        }
-
         public void SavePath(string path)
         {
             ImageUrl = path;
+        }
+
+        public void DeleteSelected(object ingredient)
+        {
+            containingVm.LetUserDecide("Are you sure you want to delete this ingredient from the system?", new Action(() => RemoveItemFromDb(ingredient)));
         }
     }
 }

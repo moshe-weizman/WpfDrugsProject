@@ -1,6 +1,7 @@
 ﻿using Drugs2020.BLL.BE;
 using Drugs2020.PL.Commands;
 using Drugs2020.PL.Models;
+using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -66,9 +67,10 @@ namespace Drugs2020.PL.ViewModels
             Items.Remove(drug);
         }
 
-        public bool IsUserSureToDelete()
+        public void DeleteSelected(object selectedDrug)
         {
-            return new DeleteDecisionViewmodel("drug").Decision;
+            containingShellVm.LetUserDecide("Are you sure you want to delete this drug from the system?", new Action(() => RemoveItemFromDb(selectedDrug)));
+            
         }
 
         public void GetItem(string id)

@@ -91,6 +91,10 @@
                 <Rectangle VerticalAlignment="Stretch" Width="1" Margin="2" Stroke="#2196f3" />
             </StackPanel>
             <ContentControl  Content="{Binding CurrentVM}" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="2"/>
+            <local:DecisionMessage Grid.ColumnSpan="3"
+                                   Message="{Binding DecisionMessage}"
+                                   DecisionCommand="{Binding DecisionCommand}"
+                                   DecisionMessageVisibility="{Binding IsDecisionMessageShown, Converter={StaticResource BoolToVisibilityConverter}}" />
 
 
 

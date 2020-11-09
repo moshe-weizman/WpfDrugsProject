@@ -54,40 +54,35 @@ namespace Drugs2020.PL.ViewModels
                 default: break;
             }
         }
-        private Recept selectedReceipt;
-
-
-        public Recept SelectedReceipt
-        {
-            get
-            {
-                return selectedReceipt;
-            }
-            set
-            {
-                selectedReceipt = value;
-                if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("SelectedReceipt"));
-            }
-        }
+        
         public void GoBack()
         {
             containingVm.ReplaceScreen(Screen.ADD_MEDICAL_FILE);
         }
 
-        public void RemoveItemFromDb(object item)
+        public void RemoveItemFromDb(object selectedPrescription)
         {
-            Recept recept = SelectedReceipt as Recept;
-            if (DrugsPreviouslyTaken.Contains(recept))
-                containingVm.Message = "An expired prescription cannot be deleted";
-            else
-                medicalFileModel.RemoveReceiptFromDb(recept);
+            
+                medicalFileModel.RemoveReceiptFromDb(selectedPrescription as Recept);
         }
 
         public bool IsUserSureToDelete()
         {
             return new DeleteDecisionViewmodel("receipt").Decision;
 
+        }
+
+        public void DeleteSelected(object selectedPrescription)
+        {
+            Recept recept = selectedPrescription as Recept;
+            if (DrugsPreviouslyTaken.Contains(recept))
+            {
+                containingVm.ShowMessage("An expired prescription cannot be deleted");
+            }
+            else
+            {
+                containingVm.LetUserDecide("Are you sure you want to delete this prescription from the system?", new Action(() => RemoveItemFromDb(selectedPrescription)));
+            }
         }
     }
 }

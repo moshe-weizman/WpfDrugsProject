@@ -63,10 +63,9 @@ namespace Drugs2020.PL.ViewModels
             });
         }
 
-        public bool UserWantsToReplaceExistingItem()
+        public void UserWantsToReplaceExistingItem()
         {
-            ExistingItemDecisionViewModel existingItemDecision = new ExistingItemDecisionViewModel("Physician");
-            return existingItemDecision.Decision;
+            containingVm.LetUserDecide("A physician with this ID already exists in the system. \nDo you want to override it?", new Action(UpdateExistingItem));
         }
 
         public void GoBack()

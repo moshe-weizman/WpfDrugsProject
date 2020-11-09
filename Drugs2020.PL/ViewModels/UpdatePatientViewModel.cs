@@ -36,12 +36,15 @@ namespace Drugs2020.PL.ViewModels
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        public void UpdateInDb()
+        public async void UpdateInDb()
         {
-            updatePatientM.UpdatePatientInDb();
-            //containingVm.Items.Remove(containingVm.Items.Single(i => i.ID == Patient.ID));
-           // containingVm.Items.Add(Patient);
-            GoBack();
+            containingVm.startProcessing("Updating on database");
+            await Task.Run(() =>
+            {
+                updatePatientM.UpdatePatientInDb();
+                containingVm.finishProcessing("Success!");
+                GoBack();
+            });
         }
 
         public void GoBack()

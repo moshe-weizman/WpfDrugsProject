@@ -121,7 +121,6 @@
     <Compile Include="ViewModels\AddDrugViewModel.cs" />
     <Compile Include="ViewModels\IChangeListDisplayVM.cs" />
     <Compile Include="ViewModels\ConsumptionOfDrugsViewModel.cs" />
-    <Compile Include="ViewModels\DecisionMessageViewModel.cs" />
     <Compile Include="ViewModels\DrugsManagementViewModel.cs" />
     <Compile Include="ViewModels\DrugStatisticsViewModel.cs" />
     <Compile Include="ViewModels\HistoricalMedicalRecordsViewModel.cs" />

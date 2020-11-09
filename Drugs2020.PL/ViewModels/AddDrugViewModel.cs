@@ -107,10 +107,9 @@ namespace Drugs2020.PL.ViewModels
             }); 
         }
 
-        public bool UserWantsToReplaceExistingItem()
+        public void UserWantsToReplaceExistingItem()
         {
-            ExistingItemDecisionViewModel existingItemDecision = new ExistingItemDecisionViewModel("Patient");
-            return existingItemDecision.Decision;
+            containingVm.LetUserDecide("A drug with this ID code already exists in the system. \nDo you want to override it?", new Action(UpdateExistingItem));
         }
 
         public void GoBack()
@@ -125,14 +124,14 @@ namespace Drugs2020.PL.ViewModels
             addDrugM.Ingredients.Remove(activeIngredient);
         }
 
-        public bool IsUserSureToDelete()
-        {
-            return new DeleteDecisionViewmodel("active ingredient").Decision;
-        }
-
         public void SavePath(string path)
         {
             ImageUrl = path;
+        }
+
+        public void DeleteSelected(object ingredient)
+        {
+            containingVm.LetUserDecide("Are you sure you want to delete this ingredient from the system?", new Action(() => RemoveItemFromDb(ingredient)));
         }
     }
 }

@@ -10,7 +10,6 @@ namespace Drugs2020.PL.ViewModels
     {
         void AddItemToDb();
         bool ItemAlreadyExists();
-        bool UserWantsToReplaceExistingItem();
-        void UpdateExistingItem();
+        void UserWantsToReplaceExistingItem();
     }
 }

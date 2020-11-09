@@ -55,9 +55,6 @@
     <DataTemplate DataType="{x:Type viewModels:DrugStatisticsViewModel}">
         <views:DrugStatistics />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModels:DecisionMessageViewModel}">
-        <views:DecisionMessage />
-    </DataTemplate>
 
 
     <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->

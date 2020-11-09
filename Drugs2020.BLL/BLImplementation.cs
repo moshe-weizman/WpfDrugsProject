@@ -209,6 +209,10 @@ namespace Drugs2020.BLL
         public Drug GetDrug(string ID)
         {
             Drug drug = dal.GetDrug(ID);
+            if (drug == null)
+            {
+                return null;
+            }
             if (File.Exists(drug.ImageUrl))
             {
                 return drug;
