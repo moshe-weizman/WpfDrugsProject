@@ -20,41 +20,43 @@
   IsIndeterminate="True" />--><!--
         </Grid>-->
         <Grid >
-            <StackPanel  Background="#1C2F3E" Width="180" Margin="5"  VerticalAlignment="Center">
+        <StackPanel  Background="#14212B" Width="330" Margin="50"  VerticalAlignment="Center" >
 
-
-            <Label Content="Log In" HorizontalAlignment="Center" Foreground="#2196f3"  FontSize="28" FontFamily="Microsoft JhengHei UI Light" />
-            <Border Background="White" Margin="10 20" CornerRadius="5" />
+            <TextBlock Text="Log In" HorizontalAlignment="Center" Foreground="White"  FontSize="28" FontFamily="Microsoft JhengHei UI Light"/>
+            <Border Background="#1C2F3E" Margin="10 20" CornerRadius="5" >
             <StackPanel Margin="25">
-            <TextBlock TextWrapping="Wrap"
+            <!--<TextBlock TextWrapping="Wrap"
                        Text="User ID:"
-                   Margin="10" />
-        <TextBox Name="TextBoxID" 
-                     Height="40"
+                   Margin="10" />-->
+                   
+                        <TextBox Name="TextBoxID" Width="180"   materialDesign:HintAssist.Hint="ID"
+                     Height="50"
                  
                      TextWrapping="Wrap"
                  Text="{Binding UserId}"
                  Margin="10" 
                  />
-
-            <TextBlock TextWrapping="Wrap"
+                    
+                
+                    <!--<TextBlock TextWrapping="Wrap"
                    Text="Password:"
-                   Margin="10" />
+                   Margin="10" />-->
         <!--<PasswordBox  Name="PasswordTextBox"
     Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}"
     VerticalAlignment="Top"  Margin="10"  TextInput="{Binding Password}"
     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}"
      />-->
-    <TextBox Name="PasswordTextBox"
-                     Height="40"
+                   
+                        <TextBox Name="PasswordTextBox"  Width="180"    materialDesign:HintAssist.Hint="Password"
+                     Height="50"
                      TextWrapping="Wrap"
                  Text="{Binding Password}"
                  Margin="10" />
-
-            <Button Content="Log in"
+                    
+                    <Button Content="Log in"
                     
                     
-                    Command="{Binding LogInUserCommand}" Margin="15">
+                    Command="{Binding LogInUserCommand}" Margin="25">
                 <Button.CommandParameter>
                     <MultiBinding Converter="{StaticResource fieldsTextToBoolConverter}">
                         <Binding Path="Text"
@@ -67,6 +69,8 @@
 
             </Button>
             </StackPanel>
+            </Border>
         </StackPanel>
+       
     </Grid>
 </UserControl>

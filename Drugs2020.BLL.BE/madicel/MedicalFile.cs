@@ -18,7 +18,6 @@ namespace Drugs2020.BLL.BE
         [NotMapped]
         public List<MedicalRecord> MedicalRecords { get; set; }
         
-    //  public List<Recept> ReceptsHistory { get; set; }
         public MedicalFile(string patientId, double weight, double height, List<MedicalRecord> medicalRecords, string chronicIllness, string drugAllergy)
         {
             this.PatientId = patientId;
