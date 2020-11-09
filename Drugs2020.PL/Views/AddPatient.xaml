@@ -20,7 +20,7 @@
         <StackPanel Margin="5" Grid.Column="0" Grid.Row="0"  >
             <TextBlock  TextWrapping="Wrap"
                         Text="ID:" />
-            <TextBox Name="Id"
+                <local:NumericTextBox Style="{StaticResource TextBoxStyle}" x:Name="Id" MaxLength="9"
                      Height="40"
                      TextWrapping="Wrap"
                  IsEnabled="{Binding IsNewPatient}"
@@ -29,18 +29,20 @@
             <TextBlock TextWrapping="Wrap"
                        Text="First Name" />
         <TextBox Name="FName" Height="40"
+                 Style="{StaticResource TextBoxStyle}"
                      TextWrapping="Wrap"
                      Text="{Binding Patient.FirstName}" />
 
             <TextBlock TextWrapping="Wrap"
                        Text="Last Name" />
-        <TextBox Name="LName" Height="40"
+        <TextBox Name="LName" Height="40" 
+                 Style="{StaticResource TextBoxStyle}"
                      TextWrapping="Wrap"
                      Text="{Binding Patient.LastName}" />
 
             <TextBlock TextWrapping="Wrap"
                        Text="Phone:" />
-        <TextBox Name="Phone" Height="40"
+                <local:NumericTextBox Style="{StaticResource TextBoxStyle}" x:Name="Phone" Height="40"
                      TextWrapping="Wrap"
                      Text="{Binding Patient.Phone}" />
 
@@ -53,6 +55,7 @@
             <TextBlock TextWrapping="Wrap"
                        Text="Email:" />
         <TextBox Name="Email" Height="40"
+                 Style="{StaticResource TextBoxStyle}"
                      TextWrapping="Wrap"
                      Text="{Binding Patient.Email}" />
 

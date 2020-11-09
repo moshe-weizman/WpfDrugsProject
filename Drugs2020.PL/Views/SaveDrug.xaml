@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:converters="clr-namespace:Drugs2020.PL.Converters"
-             xmlns:local="clr-namespace:Drugs2020.PL.Views"
+             xmlns:local="clr-namespace:Drugs2020.PL.Views" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d">
     <UserControl.Resources>
         <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
@@ -15,7 +15,7 @@
                 Grid.Column="0">
         <TextBlock  TextWrapping="Wrap"
                     Text="Identification Code:" />
-        <TextBox Name="Id"
+            <local:NumericTextBox x:Name="Id" Style="{StaticResource TextBoxStyle}"
                 Height="40"
                  TextWrapping="Wrap"
                  IsEnabled="{Binding IsNewDrug}"
@@ -23,21 +23,21 @@
 
         <TextBlock TextWrapping="Wrap"
                    Text="Commercial Name:" />
-        <TextBox Name="Name"
+            <TextBox Name="Name" Style="{StaticResource TextBoxStyle}"
                  Height="40"
                  TextWrapping="Wrap"
                  Text="{Binding Drug.Name}" />
 
         <TextBlock TextWrapping="Wrap"
                    Text="Manufacturer:" />
-        <TextBox Name="Manufacturer"
+            <TextBox Name="Manufacturer" Style="{StaticResource TextBoxStyle}"
                  Height="40"
                  TextWrapping="Wrap"
                  Text="{Binding Drug.Manufacturer}" />
 
         <TextBlock TextWrapping="Wrap"
                    Text="Generic Name:" />
-        <TextBox Name="GenericName"
+            <TextBox Name="GenericName" Style="{StaticResource TextBoxStyle}"
                  Height="40"
                  TextWrapping="Wrap"
                  Text="{Binding Drug.GenericName}" />
@@ -47,10 +47,10 @@
                 <TextBlock TextWrapping="Wrap"
                            Text="Insert active ingredient details:" />
                 <TextBlock Text="Ingredient:"/>
-                <TextBox x:Name="Ingredient"
+                    <TextBox x:Name="Ingredient" Style="{StaticResource TextBoxStyle}"
                          Text="{Binding IngredientToAdd.Ingredient}"/>
                 <TextBlock Text="Quantity (MG):"/>
-                <TextBox x:Name="Quantity"
+                    <xctk:IntegerUpDown x:Name="Quantity" Background="#1C2F3E" Foreground="White" 
                          Text="{Binding IngredientToAdd.MgQuantity}" />
                 <StackPanel Orientation="Horizontal">
                     
@@ -62,8 +62,7 @@
                             <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
                                 <Binding Path="Text"
                                          ElementName="Ingredient" />
-                                <Binding Path="Text"
-                                         ElementName="Quantity" />
+                               
                                 <Binding Path="Text"
                                          ElementName="Id" />
                             </MultiBinding>
@@ -97,7 +96,7 @@
                   ItemsSource="{Binding Ingredients}" />
         <TextBlock Text="Drug Image:" />
         <StackPanel Orientation="Horizontal">
-            <TextBox x:Name="Url"
+                <TextBox x:Name="Url" Style="{StaticResource TextBoxStyle}"
                      Text="{Binding ImageUrl}"
                      Margin="10"
                       Height="40"

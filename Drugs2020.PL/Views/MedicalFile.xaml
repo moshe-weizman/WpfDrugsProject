@@ -23,10 +23,10 @@
             <!--<TextBox x:Name="Height" Height="40" TextWrapping="Wrap" Text="{Binding MedicalFile.Height}"/>-->
 
         <TextBlock TextWrapping="Wrap" Text="Chronic Illness:"/>
-        <TextBox x:Name="ChronicIllness"   TextWrapping="Wrap" Text="{Binding MedicalFile.ChronicIllness}"/>
+        <TextBox x:Name="ChronicIllness"  Style="{StaticResource TextBoxStyle}" TextWrapping="Wrap" Text="{Binding MedicalFile.ChronicIllness}"/>
 
         <TextBlock TextWrapping="Wrap" Text="Drug Allergy:"/>
-        <TextBox x:Name="DrugAllergy"   TextWrapping="Wrap" Text="{Binding MedicalFile.DrugAllergy}"/>
+            <TextBox x:Name="DrugAllergy"  Style="{StaticResource TextBoxStyle}" TextWrapping="Wrap" Text="{Binding MedicalFile.DrugAllergy}"/>
 
         <Button Content="Add/Update" Command="{Binding AddToDbCommand}" Margin="10" d:LayoutOverrides="Height">
             <Button.CommandParameter>

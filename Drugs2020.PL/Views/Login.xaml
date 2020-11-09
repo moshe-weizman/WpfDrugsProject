@@ -28,7 +28,7 @@
             <!--<TextBlock TextWrapping="Wrap"
                        Text="User ID:"
                    Margin="10" />-->
-                    <TextBox Margin="15" Name="TextBoxID"
+                    <local:NumericTextBox Margin="15" x:Name="TextBoxID" MaxLength="9"
     Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" Foreground="White"
     VerticalAlignment="Top"
     AcceptsReturn="True"
@@ -53,7 +53,7 @@
     VerticalAlignment="Top"  Margin="10"  TextInput="{Binding Password}"
     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}"
      />-->
-                    <TextBox Margin="15" Name="PasswordTextBox" 
+                    <TextBox Margin="15" Name="PasswordTextBox"  MaxLength="16"
     Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" Foreground="White"
     VerticalAlignment="Top"
     AcceptsReturn="True"

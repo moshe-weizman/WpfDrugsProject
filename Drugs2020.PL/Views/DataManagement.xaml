@@ -45,7 +45,7 @@
                 <materialDesign:PackIcon Kind="Search" />
 
             </Button>
-            <TextBox x:Name="searchTextBox"
+            <local:NumericTextBox x:Name="searchTextBox" Style="{StaticResource TextBoxStyle}" MaxLength="9"
                      Width="150"
                      Height="50"
                      DockPanel.Dock="Right" />

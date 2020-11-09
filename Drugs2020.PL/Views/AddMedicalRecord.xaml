@@ -12,16 +12,16 @@
     <ScrollViewer>
     <StackPanel>
         <TextBlock TextWrapping="Wrap" Text="Problem:"/>
-        <TextBox  x:Name="ProblemTextBox"   TextWrapping="Wrap" Text="{Binding MedicalRecord.Problem}"/>
+            <local:AlphabetTextBox Style="{StaticResource TextBoxStyle}"  x:Name="ProblemTextBox"   TextWrapping="Wrap" Text="{Binding MedicalRecord.Problem}"/>
 
         <TextBlock TextWrapping="Wrap" Text="Diagnose:"/>
-        <TextBox  x:Name="DiagnoseTextBox"   TextWrapping="Wrap" Text="{Binding MedicalRecord.Diagnose}"/>
+            <local:AlphabetTextBox Style="{StaticResource TextBoxStyle}"  x:Name="DiagnoseTextBox"   TextWrapping="Wrap" Text="{Binding MedicalRecord.Diagnose}"/>
 
         <TextBlock TextWrapping="Wrap" Text="Treatment:"/>
-        <TextBox  x:Name="TreatmentTextBox"   TextWrapping="Wrap" Text="{Binding MedicalRecord.Treatment}"/>
+            <local:AlphabetTextBox Style="{StaticResource TextBoxStyle}"  x:Name="TreatmentTextBox"   TextWrapping="Wrap" Text="{Binding MedicalRecord.Treatment}"/>
 
         <TextBlock TextWrapping="Wrap" Text="Notes:"/>
-        <TextBox  x:Name="Notes"  TextWrapping="Wrap" Text="{Binding MedicalRecord.PhysicianNotes}"/>
+            <local:AlphabetTextBox Style="{StaticResource TextBoxStyle}"  x:Name="Notes"  TextWrapping="Wrap" Text="{Binding MedicalRecord.PhysicianNotes}"/>
 
 
        

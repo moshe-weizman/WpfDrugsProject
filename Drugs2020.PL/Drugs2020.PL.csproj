@@ -177,6 +177,7 @@
     <Compile Include="Views\ActiveIngredientDetails.xaml.cs">
       <DependentUpon>ActiveIngredientDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AlphabetTextBox.cs" />
     <Compile Include="Views\DecisionMessage.xaml.cs">
       <DependentUpon>DecisionMessage.xaml</DependentUpon>
     </Compile>
@@ -213,6 +214,7 @@
     <Compile Include="Views\MedicalRecord.xaml.cs">
       <DependentUpon>MedicalRecord.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\NumericTextBox.cs" />
     <Compile Include="Views\PatientData.xaml.cs">
       <DependentUpon>PatientData.xaml</DependentUpon>
     </Compile>

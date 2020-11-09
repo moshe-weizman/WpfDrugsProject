@@ -22,11 +22,11 @@
         <StackPanel Grid.Row="0"
   Orientation="Horizontal"
   Margin="4">
-            <RadioButton Uid="0" x:Name="Present" Command="{Binding ChangeListDisplayCommand}" CommandParameter="{x:Static local1:ListsTypes.DRUGS_TAKE}"
+            <RadioButton x:Name="Present" Command="{Binding ChangeListDisplayCommand}" CommandParameter="{x:Static local1:ListsTypes.DRUGS_TAKE}"
     Style="{StaticResource MaterialDesignTabRadioButton}"
     Margin="4" materialDesign:ToggleButtonAssist.SwitchTrackOnBackground="#2196f3" 
     IsChecked="True"
-    Content="Present" Height="80" Padding="5"/>
+    Content="Present" Height="60" Padding="5"/>
 
             <RadioButton  materialDesign:ColorZoneAssist.Foreground="#2196f3" Uid="1" x:Name="Past" Command="{Binding ChangeListDisplayCommand}" CommandParameter="{x:Static local1:ListsTypes.DRUGS_PREVIOUSLY_TAKEN}" 
     Style="{StaticResource MaterialDesignTabRadioButton}"

@@ -11,21 +11,19 @@ namespace Drugs2020.DAL
     public class DalImplementation : IDal
     {
 
-
         private PharmacyContext ctx = new PharmacyContext();
-
-        public DalImplementation()
-        {
-            //ctx.Admins.Add(new Admin("1234", "or", "or", Sex.MALE, "05000000", "no", "1234", "elad", DateTime.Today));
-
-        }
-
         public IUser IdentifyUser(string userID)
-        {     
-            IUser User= ctx.Physicians.Find(userID);
-            if (User == null)
-                User = ctx.Admins.Find(userID);
-            return User;
+        {
+            try
+            {
+                IUser User = ctx.Physicians.Find(userID);
+                if (User == null)
+                    User = ctx.Admins.Find(userID);
+                if (User == null)
+                    throw new KeyNotFoundException("Uder Not Found");
+                return User;
+            }
+            catch (KeyNotFoundException ex) { throw; }
 
         }
 
@@ -39,7 +37,7 @@ namespace Drugs2020.DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - AddPatient " + ex);
+                throw new Exception("Error adding Patient");
             }
         }
         public void DeletePatient(string id)
@@ -51,7 +49,7 @@ namespace Drugs2020.DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - DeletePatient " + ex);
+                throw new Exception("Error Deleteing Patient");
             }
         }
         public void UpdatePatient(Patient patient)
@@ -65,19 +63,24 @@ namespace Drugs2020.DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - UpdatePatient " + ex);
+                throw new Exception("Error Updating Patient");
             }
         }
         public Patient GetPatient(string id)
         {
             try
             {
-                return ctx.Patients.Find(id);
+                Patient patient= ctx.Patients.Find(id);
+                if(patient==null)
+                    throw new KeyNotFoundException(id+"of Patient not found");
+                return patient;
             }
-            catch (Exception ex)
+            catch (KeyNotFoundException e) { throw; }
+            catch (Exception e)
             {
-                throw new Exception("DalImplementation - GetPatient " + ex);
+                throw new Exception("Error to Get patient");
             }
+           
         }
         public List<Patient> GetAllPatients()
         {
@@ -87,7 +90,7 @@ namespace Drugs2020.DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - GetAllPatients " + ex);
+                throw new Exception("Error to Get List of patient");
             }
         }
         #endregion
@@ -102,7 +105,7 @@ namespace Drugs2020.DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - AddPhysician " + ex);
+                throw new Exception("Error adding Patient");
             }
         }
         public void DeletePhysician(string id)
@@ -115,7 +118,7 @@ namespace Drugs2020.DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - DeletePhysician " + ex);
+                throw new Exception("Error Delteing physician");
             }
         }
         public void UpdatePhysician(Physician physician)
@@ -129,18 +132,22 @@ namespace Drugs2020.DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - UpdatePhysician " + ex);
+                throw new Exception("Error Updating physician");
             }
         }
         public Physician GetPhysician(string id)
         {
             try
             {
-                return ctx.Physicians.Find(id);
+                Physician physician= ctx.Physicians.Find(id);
+                if (physician == null)
+                    throw new KeyNotFoundException(id+"of Physician not found");
+                return physician;
             }
+            catch(KeyNotFoundException e) { throw; }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - GetPhysician " + ex);
+                throw new Exception("Error to Get Physician");
             }
         }
         public List<Physician> GetAllPhysicians()
@@ -151,7 +158,7 @@ namespace Drugs2020.DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - GetAllPhysicians " + ex);
+                throw new Exception("Error to Get List of Physicians");
             }
         }
 
@@ -167,7 +174,7 @@ namespace Drugs2020.DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - AddDrug " + ex);
+                throw new Exception("Error adding drug");
             }
         }
         public void DeleteDrug(string id)
@@ -180,7 +187,7 @@ namespace Drugs2020.DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - DeleteDrug " + ex);
+                throw new Exception("Error Deleteing Drug");
             }
         }
         public void UpdateDrug(Drug drug)
@@ -194,7 +201,7 @@ namespace Drugs2020.DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - UpdateDrug " + ex);
+                throw new Exception("Error Updateing Drug ");
             }
         }
         public Drug GetDrug(string IdCode)
@@ -430,7 +437,7 @@ namespace Drugs2020.DAL
             }
         }
 
-      
+
 
         #endregion
     }

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLImplementation.cs" />
+    <Compile Include="CheckConflicts.cs" />
     <Compile Include="IBL.cs" />
     <Compile Include="SaveAndRetrive.cs" />
   </ItemGroup>

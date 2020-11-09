@@ -39,13 +39,13 @@
             <TextBlock x:Name="MessageTextBlock"
                        Grid.Row="0"
                        Grid.ColumnSpan="2" />
-            <Button x:Name="YesButton"
+            <Button x:Name="YesButton" Height="30"
                     Content="Yes"
                     CommandParameter="YES"
                     Grid.Column="0"
                     Grid.Row="1"
                     Padding="2" />
-            <Button x:Name="NoButton"
+            <Button x:Name="NoButton" Height="30"
                     Content="No"
                     CommandParameter="NO"
                     Grid.Column="1"

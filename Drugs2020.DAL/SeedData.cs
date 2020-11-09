@@ -22,11 +22,11 @@ namespace Drugs2020.DAL
             context.Patients.AddRange(defaultSPatient);
 
             #endregion
-            IList<Admin> defaultSAdmin = new List<Admin>();
-            defaultSAdmin.Add(new Admin() { FirstName = "Admin", LastName = "Adminovski", Address = "Yehoodah Hanassi 118, Elad", BirthDate = DateTime.Parse("22/4/1990"), Email = "admin1@gmail.com", ID = "1234", Phone = "0547488565", Sex = Sex.MALE, Password = "1234"});
-            context.Admins.AddRange(defaultSAdmin);
-            #region Admin   
 
+            #region Admin   
+            IList<Admin> defaultSAdmin = new List<Admin>();
+            defaultSAdmin.Add(new Admin() { FirstName = "Admin", LastName = "Adminovski", Address = "Yehoodah Hanassi 118, Elad", BirthDate = DateTime.Parse("22/4/1990"), Email = "admin1@gmail.com", ID = "1234", Phone = "0547488565", Sex = Sex.MALE, Password = "1234" });
+            context.Admins.AddRange(defaultSAdmin);
             #endregion
             #region Physician
             IList<Physician> defaultSPhysician = new List<Physician>();

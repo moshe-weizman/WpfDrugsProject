@@ -23,7 +23,7 @@
                 Grid.Column="0">
         <TextBlock  TextWrapping="Wrap"
                     Text="ID:" />
-        <TextBox Name="Id"
+                <local:NumericTextBox Style="{StaticResource TextBoxStyle}" x:Name="Id" MaxLength="9"
                  Height="40"
                  TextWrapping="Wrap"
                  IsEnabled="{Binding IsNewPhysician}"
@@ -31,7 +31,7 @@
 
         <TextBlock TextWrapping="Wrap"
                    Text="First Name" />
-        <TextBox Name="FName"
+                <TextBox Name="FName" Style="{StaticResource TextBoxStyle}"
                  Height="40"
                  TextWrapping="Wrap"
                  Text="{Binding Physician.FirstName}" />
@@ -39,13 +39,15 @@
         <TextBlock TextWrapping="Wrap"
                    Text="Last Name" />
         <TextBox Name="LName"
+                 Style="{StaticResource TextBoxStyle}"
                  Height="40"
                  TextWrapping="Wrap"
                  Text="{Binding Physician.LastName}" />
 
         <TextBlock TextWrapping="Wrap"
                    Text="Phone:" />
-        <TextBox Name="Phone"
+        <local:NumericTextBox x:Name="Phone"
+                 Style="{StaticResource TextBoxStyle}"
                  Height="40"
                  TextWrapping="Wrap"
                  Text="{Binding Physician.Phone}" />
@@ -53,6 +55,7 @@
         <TextBlock TextWrapping="Wrap"
                    Text="Address:" />
         <TextBox Name="Address"
+                 Style="{StaticResource TextBoxStyle}"
                  Height="40"
                  TextWrapping="Wrap"
                  Text="{Binding Physician.Address}" />
@@ -60,6 +63,7 @@
         <TextBlock TextWrapping="Wrap"
                    Text="Email:" />
         <TextBox Name="Email"
+                 Style="{StaticResource TextBoxStyle}"
                  Height="40"
                  TextWrapping="Wrap"
                  Text="{Binding Physician.Email}" />
@@ -87,7 +91,8 @@
 
                 <TextBlock TextWrapping="Wrap"
                    Text="Password:" />
-        <TextBox Name="Password"
+        <TextBox Name="Password" MaxLength="16"
+                 Style="{StaticResource TextBoxStyle}"
                  Height="40"
                  TextWrapping="Wrap"
                  Text="{Binding Physician.Password}" />
