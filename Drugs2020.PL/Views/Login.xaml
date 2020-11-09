@@ -28,14 +28,21 @@
             <!--<TextBlock TextWrapping="Wrap"
                        Text="User ID:"
                    Margin="10" />-->
-                   
-                        <TextBox Name="TextBoxID" Width="180"   materialDesign:HintAssist.Hint="ID"
+                    <TextBox Margin="15" Name="TextBoxID"
+    Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" Foreground="White"
+    VerticalAlignment="Top"
+    AcceptsReturn="True"
+    TextWrapping="Wrap"
+    MaxWidth="400"
+    materialDesign:HintAssist.Hint="ID" Text="{Binding UserId}"
+    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" />
+                
+                    <!--<TextBox Name="TextBoxID" Width="180"   materialDesign:HintAssist.Hint="ID"
                      Height="50"
-                 
                      TextWrapping="Wrap"
                  Text="{Binding UserId}"
                  Margin="10" 
-                 />
+                 />-->
                     
                 
                     <!--<TextBlock TextWrapping="Wrap"
@@ -46,12 +53,20 @@
     VerticalAlignment="Top"  Margin="10"  TextInput="{Binding Password}"
     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}"
      />-->
-                   
-                        <TextBox Name="PasswordTextBox"  Width="180"    materialDesign:HintAssist.Hint="Password"
+                    <TextBox Margin="15" Name="PasswordTextBox" 
+    Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" Foreground="White"
+    VerticalAlignment="Top"
+    AcceptsReturn="True"
+    TextWrapping="Wrap"
+    MaxWidth="400"
+    materialDesign:HintAssist.Hint="Passowrd"  Text="{Binding Password}"
+    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" />
+                
+                    <!--<TextBox Name="PasswordTextBox"  Width="180"    materialDesign:HintAssist.Hint="Password"
                      Height="50"
                      TextWrapping="Wrap"
                  Text="{Binding Password}"
-                 Margin="10" />
+                 Margin="10" />-->
                     
                     <Button Content="Log in"
                     
