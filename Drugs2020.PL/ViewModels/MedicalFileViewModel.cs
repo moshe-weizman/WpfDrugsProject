@@ -50,12 +50,6 @@ namespace Drugs2020.PL.ViewModels
             return medicalFileM.MedicalFileAlreadyExists();
         }
 
-        public bool UserWantsToReplaceExistingItem()
-        {
-            ExistingItemDecisionViewModel decision = new ExistingItemDecisionViewModel("medical file");
-            return decision.Decision;
-        }
-
         public void UpdateExistingItem()
         {
             medicalFileM.UpdateMedicalFile();
@@ -64,6 +58,11 @@ namespace Drugs2020.PL.ViewModels
         public void ReplaceScreen(Screen desiredScreen)
         {
             containingShellVm.ReplaceScreen(desiredScreen);
+        }
+
+        public void UserWantsToReplaceExistingItem()
+        {
+            containingShellVm.LetUserDecide("A medical file already exists in the system. \nDo you want to override it?", new Action(UpdateExistingItem));
         }
     }
 }

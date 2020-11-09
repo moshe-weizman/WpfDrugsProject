@@ -32,10 +32,7 @@ namespace Drugs2020.PL.Commands
 
         public void Execute(object parameter)
         {
-            if (vm.IsUserSureToDelete())
-            {
-                vm.RemoveItemFromDb(parameter);
-            }           
+            vm.DeleteSelected(parameter);
         }
     }
 }

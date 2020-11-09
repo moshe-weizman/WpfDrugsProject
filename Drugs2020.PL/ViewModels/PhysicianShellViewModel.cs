@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class PhysicianShellViewModel : INotifyPropertyChanged, IViewModel, IContainingVm, IScreenReplacementVM, ISearch, IGoBackScreenVM
+    class PhysicianShellViewModel : INotifyPropertyChanged, IViewModel, IContainingVm, IScreenReplacementVM, ISearch, IGoBackScreenVM, IDecide
     {
         public event PropertyChangedEventHandler PropertyChanged;
         
@@ -89,24 +89,7 @@ namespace Drugs2020.PL.ViewModels
         //    } 
         //}
         private MainWidowViewModel containingVm;
-        public PhysicianShellViewModel(MainWidowViewModel containingVm , Physician physicianUser)
-        {
-            Message = "";
-            IsBusy = false;
-            this.containingVm = containingVm;
-            ScreenReplacementCommand = new ScreenReplacementCommand(this);
-            SearchCommand = new SearchItemCommand(this);
-            SignOutCommand = new BackCommand(this);
-            physicianShellModel = new PhysicianShellModel();
-            //patientSearchVM = new PatientSearchViewModel(containingVm, physicianUser);
-            this.PhysicianUser = physicianUser;
-            IsEnabledActionsMenu = false;
-            CurrentVM = null;
-            //PersonalDetailsTab = patientDetailsVM;
-            //AddReceptTab = addReceptVM;
-            //AddMedicalRecordTab = addMedicalRecordVM;
-            //MedicalFileTab = medicalFileVM;
-        }
+
         private string patientId;
         public void Init(string patientId)
         {
@@ -121,6 +104,33 @@ namespace Drugs2020.PL.ViewModels
             IsEnabledActionsMenu = true;
         }
         private bool isEnabledActionsMenu;
+
+        private string decisionMessage;
+        public string DecisionMessage
+        {
+            get { return decisionMessage; }
+            set
+            {
+                decisionMessage = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("DecisionMessage"));
+            }
+        }
+
+        public DecisionCommand DecisionCommand { get; set; }
+
+        private bool isDecisionMessageShown;
+        public bool IsDecisionMessageShown
+        {
+            get { return isDecisionMessageShown; }
+            set
+            {
+                isDecisionMessageShown = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("IsDecisionMessageShown"));
+            }
+        }
+        private Action action;
         public bool IsEnabledActionsMenu
         {
             get { return isEnabledActionsMenu; }
@@ -130,6 +140,27 @@ namespace Drugs2020.PL.ViewModels
                 if (PropertyChanged != null)
                     PropertyChanged(this, new PropertyChangedEventArgs("IsEnabledActionsMenu"));
             }
+        }
+        public PhysicianShellViewModel(MainWidowViewModel containingVm, Physician physicianUser)
+        {
+            Message = "";
+            IsBusy = false;
+            IsDecisionMessageShown = false;
+            DecisionMessage = "";
+            DecisionCommand = new DecisionCommand(this);
+            this.containingVm = containingVm;
+            ScreenReplacementCommand = new ScreenReplacementCommand(this);
+            SearchCommand = new SearchItemCommand(this);
+            SignOutCommand = new BackCommand(this);
+            physicianShellModel = new PhysicianShellModel();
+            //patientSearchVM = new PatientSearchViewModel(containingVm, physicianUser);
+            this.PhysicianUser = physicianUser;
+            IsEnabledActionsMenu = false;
+            CurrentVM = null;
+            //PersonalDetailsTab = patientDetailsVM;
+            //AddReceptTab = addReceptVM;
+            //AddMedicalRecordTab = addMedicalRecordVM;
+            //MedicalFileTab = medicalFileVM;
         }
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         public void ReplaceScreen(Screen currentVM)
@@ -178,11 +209,27 @@ namespace Drugs2020.PL.ViewModels
                 Message = "";
             });
         }
+        public void LetUserDecide(string message, Action action)
+        {
+            DecisionMessage = message;
+            IsDecisionMessageShown = true;
+            this.action = action;
+        }
+        public void ExecuteDecision(bool decision)
+        {
+            if (decision)
+            {
+                action.Invoke();
+            }
+            IsDecisionMessageShown = false;
+        }
 
         public void GoBack()
         {
             containingVm.ReplaceUC(Screen.LOGIN_SCREEN); 
         }
+
+       
     }
     
 }

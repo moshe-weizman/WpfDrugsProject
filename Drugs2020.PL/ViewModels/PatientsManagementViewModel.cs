@@ -87,5 +87,10 @@ namespace Drugs2020.PL.ViewModels
         {
             containingShellVm.ReplaceScreen(Screen.ADD_PATIENT_SCREEN);
         }
+
+        public void DeleteSelected(object selectedPatient)
+        {
+            containingShellVm.LetUserDecide("Are you sure you want to delete this patient from the system?", new Action(() => RemoveItemFromDb(selectedPatient)));
+        }
     }
 }

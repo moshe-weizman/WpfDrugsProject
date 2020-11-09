@@ -54,27 +54,11 @@ namespace Drugs2020.PL.ViewModels
             containingVm.ReplaceScreen(Screen.PATIENT_DATA);
         }
 
-        
-
         public bool ItemAlreadyExists()
         {
-          return  medicalRecordModel.MedicalRecordAlreadyExists();
+          return false;
         }
 
-       
-        public void UpdateExistingItem()
-        {
-            medicalRecordModel.UpdateMedicalRecord();
-            
-        }
-
-        public bool UserWantsToReplaceExistingItem()
-        {
-            ExistingItemDecisionViewModel decision = new ExistingItemDecisionViewModel("medical record");
-            return decision.Decision;
-        }
-
-       
-       
+        void IAddToDb.UserWantsToReplaceExistingItem() { }
     }
 }

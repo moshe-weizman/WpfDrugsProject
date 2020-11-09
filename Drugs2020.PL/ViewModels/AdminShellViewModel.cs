@@ -81,10 +81,6 @@ namespace Drugs2020.PL.ViewModels
         }
         private Action action;
 
-        //private PatientsManagementViewModel patientsManagementVm;
-        //private PhysiciansManagementViewModel physiciansManagementVm;
-        //private DrugsManagementViewModel drugssManagementVm;
-        //private DrugStatisticsViewModel drugsStatisticsVm;
         public AdminShellViewModel(MainWidowViewModel containingVm, Admin user)
         {
             this.containingVm = containingVm;
@@ -95,10 +91,6 @@ namespace Drugs2020.PL.ViewModels
             DecisionMessage = "";
             IsDecisionMessageShown = false;
             DecisionCommand = new DecisionCommand(this);
-            //patientsManagementVm = new PatientsManagementViewModel(this);
-            //physiciansManagementVm = new PhysiciansManagementViewModel(this);
-            //drugssManagementVm = new DrugsManagementViewModel(this);
-            //drugsStatisticsVm = new DrugStatisticsViewModel();
             CurrentVM = null;
         }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -155,7 +147,7 @@ namespace Drugs2020.PL.ViewModels
             containingVm.GoBack();
         }
 
-        public void GiveUserToDecide(string message, Action action)
+        public void LetUserDecide(string message, Action action)
         {
             DecisionMessage = message;
             IsDecisionMessageShown = true;

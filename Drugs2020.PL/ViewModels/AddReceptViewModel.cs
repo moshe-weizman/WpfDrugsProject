@@ -15,7 +15,6 @@ namespace Drugs2020.PL.ViewModels
     class AddReceptViewModel: IViewModel, IAddToDb , INotifyPropertyChanged, ICreatePDFVM
     {
         private PhysicianShellViewModel containingVm;
-       // private PhysicianShellModel patientModel;
         private ReceptModel addReceptModel;
         private string conflicts;
         public string Conflicts
@@ -67,9 +66,7 @@ namespace Drugs2020.PL.ViewModels
         {
             addReceptModel.AddRecept();
             IsEnabledPDF = true;
-            
         }
-
         
         public bool IsEnabledPDF {get; set; }
         public void DoPDF()
@@ -79,17 +76,9 @@ namespace Drugs2020.PL.ViewModels
 
         public bool ItemAlreadyExists()
         {
-           return addReceptModel.ReceptAlreadyExists();
+           return false;
         }
-
-        public void UpdateExistingItem()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool UserWantsToReplaceExistingItem()
-        {
-            throw new NotImplementedException();
-        }
+       
+        void IAddToDb.UserWantsToReplaceExistingItem() { }
     }
 }

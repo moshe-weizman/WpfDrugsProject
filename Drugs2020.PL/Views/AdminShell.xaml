@@ -130,7 +130,7 @@
                              ScrollViewer.CanContentScroll="True"
                              ScrollViewer.VerticalScrollBarVisibility="Auto"
                              Grid.Column="2" />
-            <local:DecisionMessage Grid.Column="2"
+            <local:DecisionMessage Grid.ColumnSpan="3"
                                    Message="{Binding DecisionMessage}"
                                    DecisionCommand="{Binding DecisionCommand}"
                                    DecisionMessageVisibility="{Binding IsDecisionMessageShown, Converter={StaticResource BoolToVisibilityConverter}}" />

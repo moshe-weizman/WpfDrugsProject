@@ -41,9 +41,9 @@ namespace Drugs2020.PL.Commands
             {
                 addToDbViewModel.AddItemToDb();
             }
-            else if (addToDbViewModel.UserWantsToReplaceExistingItem())
+            else 
             {
-                addToDbViewModel.UpdateExistingItem();
+                addToDbViewModel.UserWantsToReplaceExistingItem();
             }
         }
     }
