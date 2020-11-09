@@ -321,12 +321,12 @@ namespace Drugs2020.BLL
             gfx.DrawString(recept.Date.ToString(), new XFont("Times New Roman", 15, XFontStyle.Bold)
                 , XBrushes.Black, new XRect(5, 5, 5, 0), XStringFormats.TopLeft);
 
-            gfx.DrawString("recept", new XFont("Times New Roman", 30, XFontStyle.Bold)
+            gfx.DrawString("Recept", new XFont("Times New Roman", 30, XFontStyle.Bold)
                  , XBrushes.Black, new XRect(0, y, page.Width, 0), XStringFormats.Center);
 
             //-------------------Physician------------------------
             Physician Dr = GetPhysician(recept.PhysicianID);
-            string drName = "doctor " + Dr.FirstName + " " + Dr.LastName + ".\n" +
+            string drName = "Doctor " + Dr.FirstName + " " + Dr.LastName + ".\n" +
                 "phone: " + Dr.Phone + "\n" +
                  "email: " + Dr.Email + "\n" +
                   "address: " + Dr.Address;
@@ -336,16 +336,16 @@ namespace Drugs2020.BLL
             string patientDetail = patient.Sex == Sex.MALE ? "Mr " : "Miss ";
             patientDetail += patient.FirstName + " " + patient.LastName + ".\n";
             patientDetail += "id: " + patient.ID + "\n" +
-            "sex: " + patient.Sex + "  Age: " + patient.Age + "\n" +
+            "sex: " + patient.Sex + "      Age: " + patient.Age + "\n" +
             "address: " + patient.Address;
 
             //----------------------Drug---------------------
             Drug drug = GetDrug(recept.IdCodeOfDrug);
-            string receptDetail1 = "drug name: " + drug.Name + "\n" +
+            string receptDetail1 = "Drug name: " + drug.Name + "\n" +
                 "generic name: " + drug.GenericName + "\n" +
                 "quantity: " + recept.Quantity + " in day for " + recept.Days;
             receptDetail1 += recept.Days > 1 ? " day." : " days.";
-            string receptDetail2 = "code: " + drug.IdCode +
+            string receptDetail2 = "code: " + drug.IdCode + "\n" +
                            "valid until: " + recept.ExpirationDate;
             //-------------------------------------------
 
@@ -376,14 +376,15 @@ namespace Drugs2020.BLL
                 , XBrushes.Black, new XRect(25, y, 5, 0), XStringFormats.TopLeft);
 
             gfx.DrawRoundedRectangle(new XPen(XColors.RoyalBlue, Math.PI),
-                 XBrushes.White, 15, y + 30, 450, 80, 20, 20);
+                 XBrushes.White, 15, y + 30, 560, 80, 20, 20);
 
             rect = new XRect(25, y + 40, 420, 100);
             // gfx.DrawRectangle(XBrushes.SeaShell, rect);
             tf.Alignment = XParagraphAlignment.Left;
             tf.DrawString(receptDetail1, font, XBrushes.Black, rect, XStringFormats.TopLeft);
 
-            tf.Alignment = XParagraphAlignment.Right;
+            rect = new XRect(page.Width / 3 + 140, y + 40, 420, 100);
+            tf.Alignment = XParagraphAlignment.Left;
             tf.DrawString(receptDetail2, font, XBrushes.Black, rect, XStringFormats.TopLeft);
 
 
