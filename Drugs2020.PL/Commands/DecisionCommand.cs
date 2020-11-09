@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace Drugs2020.PL.Commands
 {
-    class DecisionCommand : ICommand
+    public class DecisionCommand : ICommand
     {
         private IDecide viewModel;
 

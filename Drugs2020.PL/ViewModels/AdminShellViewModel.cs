@@ -6,16 +6,17 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.TextFormatting;
 
 namespace Drugs2020.PL.ViewModels
 {
-    public class AdminShellViewModel : INotifyPropertyChanged, IViewModel, IScreenReplacementVM, IGoBackScreenVM
+    public class AdminShellViewModel : INotifyPropertyChanged, IViewModel, IScreenReplacementVM, IGoBackScreenVM, IDecide
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private MainWidowViewModel containingVm;
         public Admin Admin { get; set; }
-        private bool isBusy;
 
+        private bool isBusy;
         public bool IsBusy
         {
             get { return isBusy; }
@@ -27,7 +28,6 @@ namespace Drugs2020.PL.ViewModels
         }
 
         private string message;
-
         public string Message
         {
             get { return message; }
@@ -39,7 +39,6 @@ namespace Drugs2020.PL.ViewModels
         }
 
         public BackCommand SignOutCommand { get; set; }
-        public IViewModel DecisionMessage { get; set; }
 
         public ScreenReplacementCommand ScreenReplacementCommand { get; set; }
 
@@ -54,12 +53,38 @@ namespace Drugs2020.PL.ViewModels
                     PropertyChanged(this, new PropertyChangedEventArgs("CurrentVM"));
             }
         }
+
+        private string decisionMessage;
+        public string DecisionMessage
+        {
+            get { return decisionMessage; }
+            set 
+            { 
+                decisionMessage = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("DecisionMessage"));
+            }
+        }
         
-        private IViewModel DecisionMessageScreen;
-        private PatientsManagementViewModel patientsManagementVm;
-        private PhysiciansManagementViewModel physiciansManagementVm;
-        private DrugsManagementViewModel drugssManagementVm;
-        private DrugStatisticsViewModel drugsStatisticsVm;
+        public DecisionCommand DecisionCommand { get; set; }
+
+        private bool isDecisionMessageShown;
+        public bool IsDecisionMessageShown
+        {
+            get { return isDecisionMessageShown; }
+            set 
+            {
+                isDecisionMessageShown = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("IsDecisionMessageShown"));
+            }
+        }
+        private Action action;
+
+        //private PatientsManagementViewModel patientsManagementVm;
+        //private PhysiciansManagementViewModel physiciansManagementVm;
+        //private DrugsManagementViewModel drugssManagementVm;
+        //private DrugStatisticsViewModel drugsStatisticsVm;
         public AdminShellViewModel(MainWidowViewModel containingVm, Admin user)
         {
             this.containingVm = containingVm;
@@ -67,10 +92,13 @@ namespace Drugs2020.PL.ViewModels
             SignOutCommand = new BackCommand(this);
             ScreenReplacementCommand = new ScreenReplacementCommand(this);
              Message = "";
-            patientsManagementVm = new PatientsManagementViewModel(this);
-            physiciansManagementVm = new PhysiciansManagementViewModel(this);
-            drugssManagementVm = new DrugsManagementViewModel(this);
-            drugsStatisticsVm = new DrugStatisticsViewModel();
+            DecisionMessage = "";
+            IsDecisionMessageShown = false;
+            DecisionCommand = new DecisionCommand(this);
+            //patientsManagementVm = new PatientsManagementViewModel(this);
+            //physiciansManagementVm = new PhysiciansManagementViewModel(this);
+            //drugssManagementVm = new DrugsManagementViewModel(this);
+            //drugsStatisticsVm = new DrugStatisticsViewModel();
             CurrentVM = null;
         }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -125,6 +153,21 @@ namespace Drugs2020.PL.ViewModels
         public void GoBack()
         {
             containingVm.GoBack();
+        }
+
+        public void GiveUserToDecide(string message, Action action)
+        {
+            DecisionMessage = message;
+            IsDecisionMessageShown = true;
+            this.action = action;
+        }
+        public void ExecuteDecision(bool decision)
+        {
+            if (decision)
+            {
+                action.Invoke();
+            }
+            IsDecisionMessageShown = false;
         }
     }
 }

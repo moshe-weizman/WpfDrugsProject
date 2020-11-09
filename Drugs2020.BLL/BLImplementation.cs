@@ -22,11 +22,7 @@ namespace Drugs2020.BLL
         const string PDF_FILES_EXTENSION = @".pdf";
         string receptsStoragePath = Path.GetFullPath(@"..\ApplicationResources\ReceptsPDF");
         string imagesStoragePath = Path.GetFullPath(@"..\ApplicationResources\DrugsImages");
-        public BLImplementation()
-        {
-
-            
-        }
+        
         public Dictionary<string, int> GetDictionaryForReceptsByDate(DateTime startDate, DateTime endDate)
         {
             List<Recept> recepts = GetAllReceptsByDate(startDate, endDate);

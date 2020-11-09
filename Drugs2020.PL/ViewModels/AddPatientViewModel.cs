@@ -66,8 +66,9 @@ namespace Drugs2020.PL.ViewModels
         
         public bool UserWantsToReplaceExistingItem()
         {
-            ExistingItemDecisionViewModel existingItemDecision = new ExistingItemDecisionViewModel("Patient");
-            return existingItemDecision.Decision;
+            //ExistingItemDecisionViewModel existingItemDecision = new ExistingItemDecisionViewModel("Patient");
+            containingVm.GiveUserToDecide("A patient with this ID already exists in the system. \nDo you want to override it?", new Action(UpdateExistingItem));
+            return false;
         }
 
         public void GoBack()
