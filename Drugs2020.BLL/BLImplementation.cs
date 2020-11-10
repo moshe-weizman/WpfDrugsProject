@@ -322,7 +322,7 @@ namespace Drugs2020.BLL
             gfx.DrawString("recept No: " + recept.ReceptId, new XFont("Times New Roman", 15, XFontStyle.Bold)
                 , XBrushes.Black, new XRect(page.Width - 25, 5, 5, 0), XStringFormats.TopRight);
 
-            gfx.DrawString(recept.Date.ToString(), new XFont("Times New Roman", 15, XFontStyle.Bold)
+            gfx.DrawString(recept.Date.ToShortDateString(), new XFont("Times New Roman", 15, XFontStyle.Bold)
                 , XBrushes.Black, new XRect(5, 5, 5, 0), XStringFormats.TopLeft);
 
             gfx.DrawString("Recept", new XFont("Times New Roman", 30, XFontStyle.Bold)
@@ -350,7 +350,7 @@ namespace Drugs2020.BLL
                 "quantity: " + recept.Quantity + " in day for " + recept.Days;
             receptDetail1 += recept.Days > 1 ? " day." : " days.";
             string receptDetail2 = "code: " + drug.IdCode + "\n" +
-                           "valid until: " + recept.ExpirationDate;
+                           "valid until: " + recept.ExpirationDate.ToShortDateString();
             //-------------------------------------------
 
             y += 30;
