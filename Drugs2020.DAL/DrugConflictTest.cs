@@ -27,10 +27,9 @@ namespace Drugs2020.DAL
 
         public List<string> ConflictTest2(string IdCodeOfNewDrug, List<string> drugsTakenPatient)
         {
-            if ((drugsTakenPatient == null) || (drugsTakenPatient.Count() < 1))
-                return null;
-
             List<string> result = new List<string>();
+            if ((drugsTakenPatient == null) || (drugsTakenPatient.Count() < 1))
+                return result;
 
             for (int i = 0; i < drugsTakenPatient.Count(); i++)
             {
