@@ -33,7 +33,7 @@ namespace Drugs2020.PL.Models
         }
         public bool ValidatePassword()
         {
-            return bl.ValidatePassword(User, Password);
+                return bl.ValidatePassword(User, Password);
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Media.TextFormatting;
 
@@ -141,6 +142,15 @@ namespace Drugs2020.PL.ViewModels
                 System.Threading.Thread.Sleep(3000);
                 Message = "";
             });  
+        }
+        public async void ShowMessage(string message)
+        {
+            await Task.Run(() =>
+            {
+                Message = message;
+                Thread.Sleep(3000);
+                Message = "";
+            });
         }
         public void GoBack()
         {

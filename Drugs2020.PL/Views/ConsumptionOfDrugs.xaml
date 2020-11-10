@@ -30,7 +30,7 @@
 
             <RadioButton  materialDesign:ColorZoneAssist.Foreground="#2196f3" Uid="1" x:Name="Past" Command="{Binding ChangeListDisplayCommand}" CommandParameter="{x:Static local1:ListsTypes.DRUGS_PREVIOUSLY_TAKEN}" 
     Style="{StaticResource MaterialDesignTabRadioButton}"
-    Margin="4" Height="80" 
+    Margin="4" Height="60" 
     IsChecked="False" Padding="5"
     Content="Past" />
 

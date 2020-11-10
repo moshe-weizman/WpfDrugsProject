@@ -41,8 +41,13 @@ namespace Drugs2020.PL.ViewModels
             containingVm.startProcessing("Updating on database");
             await Task.Run(() =>
             {
-                updatePatientM.UpdatePatientInDb();
-                containingVm.finishProcessing("Success!");
+                try
+                {
+                    updatePatientM.UpdatePatientInDb();
+                    containingVm.finishProcessing("Success!");
+                }
+                catch (ArgumentException ex) { containingVm.ShowMessage(ex.Message); }
+                catch (Exception ex) { containingVm.ShowMessage(ex.Message); }
                 GoBack();
             });
         }

@@ -194,11 +194,14 @@ namespace Drugs2020.PL.ViewModels
 
         public void GetItem(string patientId)
         {
-            physicianShellModel.GetPatient(patientId);
-            if (PatientFound != null)
+            try
             {
+                physicianShellModel.GetPatient(patientId);
                 Init(patientId);
             }
+            catch (KeyNotFoundException e) { ShowMessage(e.Message); }
+            catch (Exception e) { ShowMessage(e.Message); }
+           
         }
         public async void ShowMessage(string message)
         {

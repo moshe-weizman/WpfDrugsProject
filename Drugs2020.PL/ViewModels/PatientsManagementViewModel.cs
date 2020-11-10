@@ -55,10 +55,14 @@ namespace Drugs2020.PL.ViewModels
 
         private void PatientsChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            if (e.Action == NotifyCollectionChangedAction.Add)
+            try
             {
-                patientManagementM.SyncWithDb();
+                if (e.Action == NotifyCollectionChangedAction.Add)
+                {
+                    patientManagementM.SyncWithDb();
+                }
             }
+            catch(Exception ex) { containingShellVm.ShowMessage(ex.Message); }
         }
 
         public void OpenEditingScreen(object selectedPatient)
@@ -69,7 +73,12 @@ namespace Drugs2020.PL.ViewModels
         public void RemoveItemFromDb(object selectedPatient)
         {
             Patient patient = selectedPatient as Patient;
-            patientManagementM.RemoveFromDb(patient);
+            try
+            {
+                patientManagementM.RemoveFromDb(patient);
+            }
+            catch (ArgumentException ex) { containingShellVm.ShowMessage(ex.Message); }
+            catch (Exception ex) { containingShellVm.ShowMessage(ex.Message); }
             Items.Remove(patient);
         }
 

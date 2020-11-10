@@ -17,31 +17,46 @@ namespace Drugs2020.PL.Models
         public MedicalFileModel(string patientId)
         {
             bl = new BLImplementation();
-            
-            MedicalFile = bl.GetMedicalFile(patientId);
-            if (MedicalFile == null)
+            if (bl.DoesMedicalFileExist(patientId))
+                MedicalFile = bl.GetMedicalFile(patientId);
+            else
                 MedicalFile = new MedicalFile(patientId);
             AllRecepts = bl.GetAllReceptsOfPatient(patientId);
         }
 
         public void AddMedicalFileToDb()
         {
-            bl.AddMedicalFileToPatient(MedicalFile);
+            try
+            {
+                bl.AddMedicalFileToPatient(MedicalFile);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception) { throw; }
         }
 
         public bool MedicalFileAlreadyExists()
         {
-            return bl.MedicalFileAlreadyExists(MedicalFile);
+            return bl.DoesMedicalFileExist(MedicalFile.PatientId);
         }
 
         public void UpdateMedicalFile()
         {
-            bl.UpdateMedicalFile(MedicalFile.PatientId, MedicalFile);
+            try
+            {
+                bl.UpdateMedicalFile(MedicalFile.PatientId, MedicalFile);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception) { throw; }
         }
 
         public void RemoveReceiptFromDb(Recept receipt)
         {
-            bl.DeleteReceipt( receipt);
+            try
+            {
+                bl.DeleteReceipt(receipt);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ) { throw; }
         }
 
 

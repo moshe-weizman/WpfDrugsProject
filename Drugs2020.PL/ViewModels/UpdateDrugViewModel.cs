@@ -77,8 +77,14 @@ namespace Drugs2020.PL.ViewModels
             await Task.Run(() =>
             {
                 updateDrugM.Drug.ImageUrl = ImageUrl;
-                updateDrugM.UpdateDrugInDb();
-                containingVm.finishProcessing("Success!");
+                try
+                {
+                    updateDrugM.UpdateDrugInDb();
+                    containingVm.finishProcessing("Success!");
+                }
+                catch (ArgumentException ex) { containingVm.ShowMessage(ex.Message); }
+                catch (Exception ex) { containingVm.ShowMessage(ex.Message); }
+                
                 GoBack();
             });
         }
@@ -90,16 +96,26 @@ namespace Drugs2020.PL.ViewModels
 
         public void AddIngredientToDrug()
         {
-            Ingredients.Add(IngredientToAdd);
-            updateDrugM.AddIngredient(IngredientToAdd);
-            IngredientToAdd = new ActiveIngredient();
+            try
+            {
+                Ingredients.Add(IngredientToAdd);
+                updateDrugM.AddIngredient(IngredientToAdd);
+                IngredientToAdd = new ActiveIngredient();
+            }
+            catch (ArgumentException ex) { containingVm.ShowMessage(ex.Message); }
+            catch (Exception ex) { containingVm.ShowMessage(ex.Message); }
         }
 
         public void RemoveItemFromDb(object ingredient)
         {
             ActiveIngredient activeIngredient = ingredient as ActiveIngredient;
-            Ingredients.Remove(activeIngredient);
-            updateDrugM.RemoveIngredient(activeIngredient);
+            try
+            {
+                Ingredients.Remove(activeIngredient);
+                updateDrugM.RemoveIngredient(activeIngredient);
+            }
+            catch (ArgumentException ex) { containingVm.ShowMessage(ex.Message); }
+            catch (Exception ex) { containingVm.ShowMessage(ex.Message); }
         }
 
         public void SavePath(string path)

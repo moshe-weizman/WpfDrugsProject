@@ -64,8 +64,14 @@ namespace Drugs2020.PL.ViewModels
 
         public void AddItemToDb()
         {
-            addReceptModel.AddRecept();
-            IsEnabledPDF = true;
+            try
+            {
+                addReceptModel.AddRecept();
+                IsEnabledPDF = true;
+            }
+            catch (ArgumentException ex) { containingVm.ShowMessage(ex.Message); }
+            catch (Exception ex) { containingVm.ShowMessage(ex.Message); }
+           
         }
         
         public bool IsEnabledPDF {get; set; }

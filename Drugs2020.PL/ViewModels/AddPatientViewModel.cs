@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
-    class AddPatientViewModel : IAddToDb , IGoBackScreenVM, IViewModel
+    class AddPatientViewModel : IAddToDb, IGoBackScreenVM, IViewModel
     {
         private AddPatientModel addPatientM;
 
@@ -31,17 +31,28 @@ namespace Drugs2020.PL.ViewModels
             TodayDate = DateTime.Today;
             IsNewPatient = true;
             BackCommand = new BackCommand(this);
-            Patient = new Patient();           
+            Patient = new Patient();
         }
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         public async void AddItemToDb()
         {
             containingVm.startProcessing("Adding to database");
             await Task.Run(() =>
             {
-                addPatientM.AddPatientToDb();
+                try
+                {
+                    addPatientM.AddPatientToDb();
+                }
+                catch (ArgumentException ex)
+                {
+                    containingVm.ShowMessage(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    containingVm.ShowMessage(ex.Message);
+                }
                 containingVm.finishProcessing("Success!");
                 GoBack();
             });
@@ -58,12 +69,24 @@ namespace Drugs2020.PL.ViewModels
             containingVm.startProcessing("Updating on database");
             await Task.Run(() =>
             {
-                addPatientM.UpdatePatient();
-                containingVm.finishProcessing("Success!");
+                try
+                {
+                    addPatientM.UpdatePatient();
+                    containingVm.finishProcessing("Success!");
+                }
+                catch (ArgumentException ex)
+                {
+                    containingVm.ShowMessage(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    containingVm.ShowMessage(ex.Message);
+                }
+                
                 GoBack();
             });
         }
-        
+
         public void UserWantsToReplaceExistingItem()
         {
             containingVm.LetUserDecide("A patient with this ID already exists in the system. \nDo you want to override it?", new Action(UpdateExistingItem));

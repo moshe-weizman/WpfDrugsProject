@@ -42,7 +42,12 @@ namespace Drugs2020.PL.ViewModels
 
         public void AddItemToDb()
         {
-            medicalFileM.AddMedicalFileToDb();
+            try
+            {
+                medicalFileM.AddMedicalFileToDb();
+            }
+            catch (ArgumentException e) { containingShellVm.ShowMessage(e.Message); }
+            catch (Exception e) { containingShellVm.ShowMessage(e.Message); }
         }
 
         public bool ItemAlreadyExists()
@@ -52,7 +57,12 @@ namespace Drugs2020.PL.ViewModels
 
         public void UpdateExistingItem()
         {
-            medicalFileM.UpdateMedicalFile();
+            try
+            {
+                medicalFileM.UpdateMedicalFile();
+            }
+            catch (ArgumentException e) { containingShellVm.ShowMessage(e.Message); }
+            catch (Exception e) { containingShellVm.ShowMessage(e.Message); }
         }
        
         public void ReplaceScreen(Screen desiredScreen)

@@ -252,8 +252,6 @@
     <Compile Include="Models\LogInModel.cs" />
     <Compile Include="Models\MainWindowModel.cs" />
     <Compile Include="Models\PhysicianShellModel.cs" />
-    <Compile Include="Models\PhysicianPanelModel.cs" />
-    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -1,6 +1,7 @@
 ﻿using Drugs2020.BLL.BE;
 using Drugs2020.PL.Commands;
 using Drugs2020.PL.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
@@ -80,7 +81,12 @@ namespace Drugs2020.PL.ViewModels
         
         public void IdentifyUser()
         {
-            logInModel.IdentifyUser();
+            try
+            {
+                logInModel.IdentifyUser();
+            }
+            catch (KeyNotFoundException e) {  }
+            catch (Exception e) {  }
         }
         public bool ValidatePassword()
         {

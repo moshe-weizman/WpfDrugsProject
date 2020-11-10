@@ -62,8 +62,15 @@ namespace Drugs2020.PL.ViewModels
 
         public void RemoveItemFromDb(object selectedPrescription)
         {
-            
+            try
+            {
                 medicalFileModel.RemoveReceiptFromDb(selectedPrescription as Recept);
+                DrugsTake.Remove((Recept)selectedPrescription);
+                ListDisplay.Remove((Recept)selectedPrescription);
+
+            }
+            catch (ArgumentException e) { containingVm.ShowMessage(e.Message); }
+            catch (Exception e) { containingVm.ShowMessage(e.Message); }
         }
 
         public bool IsUserSureToDelete()

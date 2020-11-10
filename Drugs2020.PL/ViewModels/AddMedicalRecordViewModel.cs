@@ -50,15 +50,33 @@ namespace Drugs2020.PL.ViewModels
 
         public void AddItemToDb()
         {
-            medicalRecordModel.AddMedicalRecordToDb();
-            containingVm.ReplaceScreen(Screen.PATIENT_DATA);
+            try
+            {
+                medicalRecordModel.AddMedicalRecordToDb();
+                containingVm.ReplaceScreen(Screen.PATIENT_DATA);
+            }
+            catch (ArgumentException e) { containingVm.ShowMessage(e.Message); }
+            catch (Exception e) { containingVm.ShowMessage(e.Message); }
+           
         }
 
         public bool ItemAlreadyExists()
         {
-          return false;
+          return medicalRecordModel.MedicalRecordAlreadyExists();
         }
+        public void UpdateExistingItem()
+        {
+            try
+            {
+                medicalRecordModel.UpdateMedicalRecord();
+            }
+            catch (ArgumentException e) { containingVm.ShowMessage(e.Message); }
+            catch (Exception e) { containingVm.ShowMessage(e.Message); }
+        }
+        void IAddToDb.UserWantsToReplaceExistingItem() 
+        {
+            containingVm.LetUserDecide("A medical record already exists in the system. \nDo you want to override it?", new Action(UpdateExistingItem));
 
-        void IAddToDb.UserWantsToReplaceExistingItem() { }
+        }
     }
 }

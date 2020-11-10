@@ -34,8 +34,8 @@ namespace Drugs2020.PL.ViewModels
         public string ImageUrl
         {
             get { return imageUrl; }
-            set 
-            { 
+            set
+            {
                 imageUrl = value;
                 if (PropertyChanged != null)
                     PropertyChanged(this, new PropertyChangedEventArgs("ImageUrl"));
@@ -76,6 +76,7 @@ namespace Drugs2020.PL.ViewModels
         {
             IngredientToAdd.DrugIdCode = Drug.IdCode;
             Ingredients.Add(IngredientToAdd);
+
             addDrugM.Ingredients.Add(IngredientToAdd);
             IngredientToAdd = new ActiveIngredient();
         }
@@ -85,7 +86,15 @@ namespace Drugs2020.PL.ViewModels
             containingVm.startProcessing("Adding to database");
             await Task.Run(() =>
             {
-                addDrugM.AddDrugToDb();
+                try
+                {
+                    addDrugM.AddDrugToDb();
+                }
+                catch (ArgumentException ex)
+                {
+                    containingVm.ShowMessage(ex.Message);
+                }
+                catch (Exception ex) { containingVm.ShowMessage(ex.Message); }
                 containingVm.finishProcessing("Success!");
                 GoBack();
             });
@@ -101,10 +110,16 @@ namespace Drugs2020.PL.ViewModels
             containingVm.startProcessing("Updating on database");
             await Task.Run(() =>
             {
-                addDrugM.UpdateDrug();
-                containingVm.finishProcessing("Success!");
+                try
+                {
+                    addDrugM.UpdateDrug();
+                    containingVm.finishProcessing("Success!");
+                }
+                catch (ArgumentException ex)  {  containingVm.ShowMessage(ex.Message);}
+                catch (Exception ex) { containingVm.ShowMessage(ex.Message); }
+                
                 GoBack();
-            }); 
+            });
         }
 
         public void UserWantsToReplaceExistingItem()

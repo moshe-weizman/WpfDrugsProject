@@ -28,22 +28,37 @@ namespace Drugs2020.PL.Models
 
         public void AddMedicalRecordToDb()
         {
-            bl.AddMediclRecordToPatient(MedicalRecord);
+            try
+            {
+                bl.AddMediclRecordToPatient(MedicalRecord);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception) { throw; }
         }
 
         public bool MedicalRecordAlreadyExists()
         {
-            return bl.MedicalRecordAlreadyExists(MedicalRecord);
+            return bl.DoesMediclRecordExist(MedicalRecord.MedicalRecordID);
         }
 
         public void UpdateMedicalRecord()
         {
-            bl.UpdateMedicalRecord(MedicalRecord.MedicalRecordID, MedicalRecord);
+            try
+            {
+                bl.UpdateMedicalRecord(MedicalRecord.MedicalRecordID, MedicalRecord);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception) { throw; }
         }
 
         public void GetMedicalRecord(string MedicalRecordID)
         {
-            MedicalRecord= bl.GetMedicalRecord(MedicalRecordID);
+            try
+            {
+                MedicalRecord = bl.GetMedicalRecord(MedicalRecordID);
+            }
+            catch (KeyNotFoundException) { throw; }
+            catch (Exception) { throw; }
         }
     }
 }

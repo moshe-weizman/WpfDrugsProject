@@ -24,6 +24,7 @@ namespace Drugs2020.BLL
         #endregion
 
         #region MedicalFile
+        bool DoesMedicalFileExist(string id);
         void AddMedicalFileToPatient(MedicalFile medicalFile);
         void UpdateMedicalFile(string patientId, MedicalFile medicalFile);
         MedicalFile GetMedicalFile(string patientID);
@@ -32,13 +33,16 @@ namespace Drugs2020.BLL
         #endregion
 
         #region MedicalRecord
+        bool DoesMediclRecordExist(string id);
         void AddMediclRecordToPatient(MedicalRecord medicalRecord);
         bool MedicalRecordAlreadyExists(MedicalRecord medicalRecord);
         MedicalRecord GetMedicalRecord(string medicalRecordID);
         void UpdateMedicalRecord(string medicalRecordID, MedicalRecord medicalRecord);
         #endregion
-        
+
         #region Patient CRUD Functions
+        bool DoesPatientExist(string id);
+
         void AddPatient(Patient patient);
         Patient GetPatient(string id);
         List<Patient> GetAllPatients();
@@ -47,6 +51,7 @@ namespace Drugs2020.BLL
         #endregion
 
         #region Physician CRUD Functions
+        bool DoesPhysicianExist(string id);
         void AddPhysician(Physician physician);
         Physician GetPhysician(string id);
         List<Physician> GetAllPhysicians();
@@ -55,7 +60,9 @@ namespace Drugs2020.BLL
         #endregion
 
         #region Drug
-        void AddDrug(Drug drug);
+        bool DoesDrugExist(string IdCode);
+        
+            void AddDrug(Drug drug);
         Drug GetDrug(string id);
         List<Drug> GetAllDrugs();
       

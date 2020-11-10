@@ -31,14 +31,25 @@ namespace Drugs2020.PL.Models
         {
             //Conflicts = bl.checkConflicts(Recept.IdCodeOfDrug, AllRecepts.Select(x => x.IdCodeOfDrug).ToList());
             //לתת לו להחליט אם רוצה להוסיף
-            bl.AddRecept(Recept);
-            AllRecepts = bl.GetAllReceptsOfPatient(patientId);
-        }
+            try
+            {
+                bl.AddRecept(Recept);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception) { throw; }
+            try
+            {
+                AllRecepts = bl.GetAllReceptsOfPatient(patientId);
+            }
+            catch (Exception) { throw; }
 
-        public bool ReceptAlreadyExists()
-        {
-            return false;//צריך לממש את זה!!!
+
         }
+        //public bool ReceptAlreadyExists()
+        //{
+        //    return false;//צריך לממש את זה!!!
+        //}
+
 
         public void CreatePDF()
         {
@@ -47,8 +58,7 @@ namespace Drugs2020.PL.Models
         public string CheckConflicts(string IdCodeOfDrug)
         {
             Conflicts = bl.checkConflicts(IdCodeOfDrug, AllRecepts.Select(x => x.IdCodeOfDrug).ToList());
-            var result = string.Join(",  ", Conflicts.ToArray());
-            return result;
+            return string.Join(",  ", Conflicts.ToArray());
         }
 
 
