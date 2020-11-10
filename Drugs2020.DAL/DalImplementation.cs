@@ -18,7 +18,59 @@ namespace Drugs2020.DAL
         string receptsStoragePath = Path.GetFullPath(@"..\ApplicationResources\ReceptsPDF");
         string imagesStoragePath = Path.GetFullPath(@"..\ApplicationResources\DrugsImages");
         string defaultImagePath = Path.GetFullPath(@"..\ApplicationResources\DrugsImages\default.png");
-        
+        public DalImplementation()
+        {
+            //initDatabaseSamples();
+        }
+        private void initDatabaseSamples()
+        {
+            string imagesSamplesSourcePath = Path.GetFullPath(@"..\Drugs2020.PL\Images\");
+            AddPatient(new Patient() { FirstName = "Roni", LastName = "Packter", Address = "Yehoodah Hanassi 118, Elad", BirthDate = DateTime.Parse("22/4/1990"), Email = "ronipakter@gmail.com", ID = "123456789", Phone = "0547488565", Sex = Sex.MALE});
+            AddPatient(new Patient() { FirstName = "Moshe", LastName = "Weizman", Address = "Shmaya 8, Elad", BirthDate = DateTime.Parse("17/3/1960"), Email = "mosheweizman@gmail.com", ID = "987654321", Phone = "0547488565", Sex = Sex.MALE });
+            AddPatient(new Patient() { FirstName = "Ishayaho", LastName = "Pewzner", Address = "Ritva 38, Kfar Saba", BirthDate = DateTime.Parse("7/7/1997"), Email = "shaia@gmail.com", ID = "111111111", Phone = "0526655890", Sex = Sex.MALE });
+            AddPatient(new Patient() { FirstName = "Sara", LastName = "Levi", Address = "kalanit 79, Jerusalem", BirthDate = DateTime.Parse("17/3/1955"), Email = "levi3@gmail.com", ID = "222222222", Phone = "0547481115", Sex = Sex.FEMALE });
+            //==================================================================================================================================================================================
+            ctx.Admins.Add(new Admin() { FirstName = "Admin", LastName = "Adminovski", Address = "Yehoodah Hanassi 118, Elad", BirthDate = DateTime.Parse("22/4/1990"), Email = "admin1@gmail.com", ID = "1234", Phone = "0547488565", Sex = Sex.MALE, Password = "1234" });
+            //==================================================================================================================================================================================
+            AddPhysician(new Physician() { FirstName = "Asher", LastName = "Bardugo", Address = "Yehoodah Hanassi 40, Bney Brak", BirthDate = DateTime.Parse("22/4/1980"), Email = "asher@gmail.com", ID = "333333333", Phone = "0507228588", Sex = Sex.MALE, Password = "3"});
+            AddPhysician(new Physician() { FirstName = "Yossi", LastName = "Zaguri", Address = "HaMaapilim 6, Beytar", BirthDate = DateTime.Parse("1/11/1995"), Email = "zaguri_wpf@gmail.com", ID = "444444444", Phone = "0525293488", Sex = Sex.MALE, Password = "4" });
+            //==================================================================================================================================================================================
+            AddDrug(new Drug() { IdCode = "9478", Name = "Rulid", GenericName = "Roxithromycin", Manufacturer = "Sanofi", ImageUrl = ""});
+            AddDrug(new Drug() { IdCode = "235743", Name = "Glucophage Caplets", GenericName = "Metformin Hydrochloride", Manufacturer = "Teva", ImageUrl = "" });
+            AddDrug(new Drug() { IdCode = "212446", Name = "Azenil Capsules", GenericName = "Azithromycin", Manufacturer = "Pfizer", ImageUrl = "" });
+            AddDrug(new Drug() { IdCode = "206812", Name = "Etopan", GenericName = "Etodolac", Manufacturer = "Taro", ImageUrl = "" });
+            AddDrug(new Drug() { IdCode = "1111639", Name = "Copaxone", GenericName = "Glatiramer Acetate", Manufacturer = "Teva", ImageUrl = "" });
+            AddDrug(new Drug() { IdCode = "979093", Name = "Plaquenil", GenericName = "Hydroxychloroquine Sulphate", Manufacturer = "Sanofi", ImageUrl = "" });
+            AddDrug(new Drug() { IdCode = "1091142", Name = "Ritalin", GenericName = "Methylphenidate Hydrochloride", Manufacturer = "Novartis", ImageUrl = "" });
+            AddDrug(new Drug() { IdCode = "731532", Name = "Advil Forte 400", GenericName = "Ibuprofen", Manufacturer = "Wyeth Lederle", ImageUrl = "" });
+            AddDrug(new Drug() { IdCode = "314209", Name = "Rizalt Tablets", GenericName = "Rizatriptan", Manufacturer = "MSD", ImageUrl = "" });
+            //==================================================================================================================================================================================
+            AddActiveIngredient(new ActiveIngredient() { DrugIdCode= "9478", Ingredient= "Roxithromycin", MgQuantity = 150 });
+            AddActiveIngredient(new ActiveIngredient() { DrugIdCode = "235743", Ingredient = "Metformin Hydrochloride", MgQuantity = 850 });
+            AddActiveIngredient(new ActiveIngredient() { DrugIdCode = "212446", Ingredient = "Azithromycin", MgQuantity = 250 });
+            AddActiveIngredient(new ActiveIngredient() { DrugIdCode = "206812", Ingredient = "Etodolac", MgQuantity = 400 });
+            AddActiveIngredient(new ActiveIngredient() { DrugIdCode = "1111639", Ingredient = "Glatiramer Acetate", MgQuantity = 20 });
+            AddActiveIngredient(new ActiveIngredient() { DrugIdCode = "979093", Ingredient = "Hydroxychloroquine Sulphate", MgQuantity = 200 });
+            AddActiveIngredient(new ActiveIngredient() { DrugIdCode = "1091142", Ingredient = "Methylphenidate Hydrochloride", MgQuantity = 10 });
+            AddActiveIngredient(new ActiveIngredient() { DrugIdCode = "731532", Ingredient = "Ibuprofen", MgQuantity = 400 });
+            AddActiveIngredient(new ActiveIngredient() { DrugIdCode = "314209", Ingredient = "Rizatriptan", MgQuantity = 10 });
+            //==================================================================================================================================================================================
+            AddRecept(new Recept() { IdCodeOfDrug = "1111639", DrugGenericName = "Glatiramer Acetate", PatientID = "111111111", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "1" });
+            AddRecept(new Recept() { IdCodeOfDrug = "731532", DrugGenericName = "Ibuprofen", PatientID = "111111111", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "11" });
+            AddRecept(new Recept() { IdCodeOfDrug = "1091142", DrugGenericName = "Methylphenidate Hydrochloride", PatientID = "111111111", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "111" });
+            AddRecept(new Recept() { IdCodeOfDrug = "206812", DrugGenericName = "Etodolac", PatientID = "123456789", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "1111" });
+            AddRecept(new Recept() { IdCodeOfDrug = "206812", DrugGenericName = "Etodolac", PatientID = "111111111", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "12" });
+            AddRecept(new Recept() { IdCodeOfDrug = "206812", DrugGenericName = "Etodolac", PatientID = "111111111", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "122" });
+            AddRecept(new Recept() { IdCodeOfDrug = "206812", DrugGenericName = "Etodolac", PatientID = "111111111", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "1222" });
+            AddRecept(new Recept() { IdCodeOfDrug = "731532", DrugGenericName = "Ibuprofen", PatientID = "123456789", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "13" });
+            AddRecept(new Recept() { IdCodeOfDrug = "1111639", DrugGenericName = "Glatiramer Acetate", PatientID = "111111111", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "133" });
+            AddRecept(new Recept() { IdCodeOfDrug = "1111639", DrugGenericName = "Glatiramer Acetate", PatientID = "123456789", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "1333" });
+            AddRecept(new Recept() { IdCodeOfDrug = "1111639", DrugGenericName = "Glatiramer Acetate", PatientID = "111111111", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "14" });
+            AddRecept(new Recept() { IdCodeOfDrug = "1111639", DrugGenericName = "Glatiramer Acetate", PatientID = "222222222", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "144" });
+            AddRecept(new Recept() { IdCodeOfDrug = "1111639", DrugGenericName = "Glatiramer Acetate", PatientID = "987654321", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "1444" });
+            AddRecept(new Recept() { IdCodeOfDrug = "1091142", DrugGenericName = "Methylphenidate Hydrochloride", PatientID = "222222222", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "15" });
+            AddRecept(new Recept() { IdCodeOfDrug = "731532", DrugGenericName = "Ibuprofen", PatientID = "222222222", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "155" });
+        }
         public IUser IdentifyUser(string userID)
         {
             try
