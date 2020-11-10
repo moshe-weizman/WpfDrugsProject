@@ -75,7 +75,7 @@ namespace Drugs2020.PL.ViewModels
                     drugsManagementM.RemoveFromDb(drug);
                     containingShellVm.finishProcessing("Drug removed");
                 }
-            }
+            
             catch (ArgumentException e) { containingShellVm.ShowMessage(e.Message); }
             catch (Exception e) { containingShellVm.ShowMessage(e.Message); }
         });

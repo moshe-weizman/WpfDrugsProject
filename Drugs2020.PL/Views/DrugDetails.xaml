@@ -7,35 +7,51 @@
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
              mc:Ignorable="d">
     <Grid>
-        <materialDesign:Card Width="400" >
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-                <StackPanel Orientation="Horizontal" Background="#1C2F3E">
+        <materialDesign:Card Height="150"
+                             Width="600">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal"
+                            Background="#1C2F3E">
                     <Label FontSize="20"
                            Content="{Binding Name , StringFormat=First Name: {0}}" />
                     <Label Content="{Binding IdCode , StringFormat=ID Code: {0}}" />
                 </StackPanel>
 
-                <Grid Grid.Row="1" Background="#1C2F3E">
+                <Grid Grid.Row="1"
+                      Background="#1C2F3E">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*" />
                         <ColumnDefinition />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="5*" />
                     </Grid.ColumnDefinitions>
                     <TextBlock TextWrapping="Wrap"
-                               Text="{Binding Manufacturer}" 
-                               Grid.Column="0"/>
+                               Text="{Binding Manufacturer}"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="2"
+                               Margin="5,5,5,4.2" />
                     <TextBlock TextWrapping="Wrap"
                                Text="{Binding GenericName , StringFormat=Generic Name: {0}}"
-                               Grid.Column="1"/>
+                               Grid.Column="2"
+                               Margin="5,5,5,4.2" />
                 </Grid>
+                <Image Grid.Column="1"
+                       Grid.RowSpan="2"
+                       Margin="8"
+                       Source="{Binding ImageUrl}"
+                       Stretch="Uniform" />
             </Grid>
-        
-        </materialDesign:Card>
- </Grid>
 
-   
+        </materialDesign:Card>
+    </Grid>
+
+
 
 </UserControl>
