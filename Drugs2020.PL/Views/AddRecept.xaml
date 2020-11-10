@@ -1,39 +1,43 @@
 ﻿<UserControl x:Class="Drugs2020.PL.Views.AddRecept"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Drugs2020.PL.Views"
              xmlns:converters="clr-namespace:Drugs2020.PL.Converters"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-
-    mc:Ignorable="d">
+             mc:Ignorable="d">
     <UserControl.Resources>
         <converters:FieldsTextToBoolConverter x:Key="FieldsTextToBoolConverter" />
+        <converters:TrueToFalseConverter x:Key="TrueToFalseConveter" />
 
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="390"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="390" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <GroupBox Grid.Column="1"
-        Header="Conflicts" 
-                
-                
-  Style="{DynamicResource MaterialDesignGroupBox}"
-  Margin="16"
-  materialDesign:ColorZoneAssist.Mode="Custom"
-  materialDesign:ColorZoneAssist.Background="#14212B"
-  materialDesign:ColorZoneAssist.Foreground="White">
-            <TextBlock Text="{Binding Conflicts}" Foreground="White"/>
+                  Header="Conflicts"
+                  Style="{DynamicResource MaterialDesignGroupBox}"
+                  Margin="16"
+                  materialDesign:ColorZoneAssist.Mode="Custom"
+                  materialDesign:ColorZoneAssist.Background="#14212B"
+                  materialDesign:ColorZoneAssist.Foreground="White">
+            <TextBlock Text="{Binding Conflicts}"
+                       TextWrapping="Wrap"
+                       Foreground="White" />
 
         </GroupBox>
-        <StackPanel Margin="10" Grid.Column="0">
+        <StackPanel Margin="10"
+                    Grid.Column="0">
 
-            <ComboBox materialDesign:HintAssist.Hint="Drugs"  ItemsSource="{Binding DrugCollection}" SelectedItem="{Binding SelectedDrug}" HorizontalAlignment="Center" >
+            <ComboBox materialDesign:HintAssist.Hint="Drugs"
+                      ItemsSource="{Binding DrugCollection}"
+                      SelectedItem="{Binding SelectedDrug}"
+                      HorizontalAlignment="Center">
                 <!--<ComboBox.Resources>
                 <Style TargetType="ComboBoxItem">
                     <Setter Property="Background" Value="#1C2F3E"/>
@@ -42,7 +46,8 @@
 
                 <ComboBox.ItemContainerStyle>
                     <Style TargetType="{x:Type ComboBoxItem}">
-                        <Setter Property="Background" Value="#1C2F3E" />
+                        <Setter Property="Background"
+                                Value="#1C2F3E" />
                     </Style>
                 </ComboBox.ItemContainerStyle>
 
@@ -52,8 +57,8 @@
 
                     <DataTemplate>
                         <StackPanel Background="#14212B">
-                            <TextBlock Text="{Binding Name}"/>
-                            <TextBlock Text="{Binding GenericName}"/>
+                            <TextBlock Text="{Binding Name}" />
+                            <TextBlock Text="{Binding GenericName}" />
                         </StackPanel>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
@@ -61,30 +66,48 @@
 
 
 
-            <TextBlock TextWrapping="Wrap" Text="Quantity:"/>
+            <TextBlock TextWrapping="Wrap"
+                       Text="Quantity:" />
 
-            <xctk:IntegerUpDown Background="#1C2F3E" Foreground="White"  Name="QuantityTextBox" Height="40" Text="{Binding Recept.Quantity}" />
+            <xctk:IntegerUpDown Background="#1C2F3E"
+                                Foreground="White"
+                                Name="QuantityTextBox"
+                                Height="40"
+                                Text="{Binding Recept.Quantity}" />
 
             <!--<TextBox x:Name="QuantityTextBox"   Height="40" TextWrapping="Wrap" Text="{Binding Recept.Quantity}"/>-->
 
-            <TextBlock TextWrapping="Wrap" Text="Days:"/>
-            <xctk:IntegerUpDown Background="#1C2F3E" Foreground="White"  Name="DaysTextBox" Height="40" Text="{Binding Recept.Days}" />
+            <TextBlock TextWrapping="Wrap"
+                       Text="Days:" />
+            <xctk:IntegerUpDown Background="#1C2F3E"
+                                Foreground="White"
+                                Name="DaysTextBox"
+                                Height="40"
+                                Text="{Binding Recept.Days}" />
 
             <!--<TextBox x:Name="DaysTextBox" Height="40" TextWrapping="Wrap" Text="{Binding Recept.Days}"/>-->
 
-            <Button Content="Create PDF File" Margin="10" Command="{Binding OperationCommand}" />
+            <Button x:Name="PdfButton" Content="Create PDF File"
+                    Margin="10"
+                    Command="{Binding OperationCommand}" />
 
-            <Button Content="Add Recept" d:LayoutOverrides="Height" Margin="10" Command="{Binding AddToDbCommand}">
+            <Button x:Name="AddButton"
+                Content="Add Recept"
+                    d:LayoutOverrides="Height"
+                    IsEnabled="{Binding ElementName=PdfButton, Path=IsEnabled, Converter={StaticResource TrueToFalseConveter}}"
+                    Margin="10"
+                    Command="{Binding AddToDbCommand}">
                 <Button.CommandParameter>
                     <MultiBinding Converter="{StaticResource FieldsTextToBoolConverter}">
-                        
+
                         <Binding Path="Text"
                                  ElementName="DrugTextBox" />
                     </MultiBinding>
-                   
+
                 </Button.CommandParameter>
             </Button>
-            <local:ActionsMeneOfPhysician Height="100" Width="100"/>
+            <local:ActionsMeneOfPhysician Height="100"
+                                          Width="100" />
 
 
 
