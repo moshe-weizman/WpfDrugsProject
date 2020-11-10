@@ -9,8 +9,7 @@
         xmlns:uc="clr-namespace:Drugs2020.PL.Views"
         mc:Ignorable="d"
         Title="Prescription management"
-        Height="600"
-        Width="1080">
+        WindowState="Maximized">
     <Window.DataContext>
         <vm:MainWidowViewModel/>
     </Window.DataContext>

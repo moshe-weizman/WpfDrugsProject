@@ -27,7 +27,7 @@ namespace Drugs2020.BLL.BE
 
         public Recept(string patientID, Physician physician)
         {
-            ReceptId= DateTime.Now.ToString();
+            ReceptId= DateTime.Now.Ticks.ToString();
             PatientID = patientID;
             PhysicianID = physician.ID;
             Date = DateTime.Today;

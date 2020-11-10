@@ -110,6 +110,7 @@
     <Compile Include="Commands\DeleteItemCommand.cs" />
     <Compile Include="Commands\EditingItemCommand.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\TrueToFalseConverter.cs" />
     <Compile Include="ListsTypes.cs" />
     <Compile Include="Models\DrugsManagementModel.cs" />
     <Compile Include="Models\DrugStatisticsModel.cs" />

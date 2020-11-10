@@ -16,12 +16,6 @@ namespace Drugs2020.BLL
     public class BLImplementation : IBL
     {
         IDal dal = new DalImplementation();
-        private ICloudForImage cloud = new GoogleDrive();
-        const string DEFAULT_IMAGE_PATH = @"..\ApplicationResources\DrugsImages\default.png";
-        const string IMAGES_FILES_EXTENSION = @".png";
-        const string PDF_FILES_EXTENSION = @".pdf";
-        string receptsStoragePath = Path.GetFullPath(@"..\ApplicationResources\ReceptsPDF");
-        string imagesStoragePath = Path.GetFullPath(@"..\ApplicationResources\DrugsImages");
 
         public Dictionary<string, int> GetDictionaryForReceptsByDate(DateTime startDate, DateTime endDate)
         {
@@ -186,12 +180,8 @@ namespace Drugs2020.BLL
 
         public List<string> checkConflicts(string IdCodeOfDrug, List<string> drugsTakenPatient)
         {
-            try
-            {
-                DrugConflictTest drugConflictTest = new DrugConflictTest();
-                return drugConflictTest.ConflictTest2(IdCodeOfDrug, drugsTakenPatient);
-            }
-            catch (Exception) { throw; }
+            DrugConflictTest drugConflictTest = new DrugConflictTest();
+            return drugConflictTest.ConflictTest(IdCodeOfDrug, drugsTakenPatient);
         }
 
         public List<Recept> GetAllReceptsOfPatient(string id)
@@ -339,66 +329,13 @@ namespace Drugs2020.BLL
         }
         public Drug GetDrug(string ID)
         {
-            try
-            {
-                Drug drug = dal.GetDrug(ID);
-                if (drug == null)//אפשר למחוק לכאורה בגלל הזריקת חריגה
-                {
-                    return null;
-                }
-                if (File.Exists(drug.ImageUrl))
-                {
-                    return drug;
-                }
-                if (cloud.DoesFileExists(drug.IdCode + IMAGES_FILES_EXTENSION))
-                {
-                    cloud.Download(drug.IdCode + IMAGES_FILES_EXTENSION, imagesStoragePath);
-                    string path = Path.Combine(imagesStoragePath, drug.IdCode + IMAGES_FILES_EXTENSION);
-                    drug.ImageUrl = path;
-                    return drug;
-                }
-                drug.ImageUrl = DEFAULT_IMAGE_PATH;
-                return drug;
-            }
-            catch (KeyNotFoundException) { throw; }
-            catch (Exception ex) { throw; }
+            Drug drug = dal.GetDrug(ID);
+            return drug;
         }
 
         public void AddDrug(Drug drug)
         {
-            if (File.Exists(drug.ImageUrl))
-            {
-                SaveImage(drug);
-            }
-            else
-            {
-                drug.ImageUrl = DEFAULT_IMAGE_PATH;
-            }
-            try
-            {
-                dal.AddDrug(drug);
-            }
-            catch (ArgumentException) { throw; }
-            catch (Exception ex) { throw; }
-        }
-
-        private void SaveImage(Drug drug)
-        {
-            string drugImageName = drug.IdCode + IMAGES_FILES_EXTENSION;
-            drug.ImageUrl = SaveFileLocally(drug.ImageUrl, imagesStoragePath, drugImageName);
-            while (cloud.DoesFileExists(drugImageName))
-            {
-                cloud.Remove(drugImageName);
-            }
-            cloud.Upload(drug.ImageUrl);
-        }
-
-        private string SaveFileLocally(string filePath, string targetDirectory, string targetFileName)
-        {
-            Directory.CreateDirectory(targetDirectory);
-            string destinaion = Path.Combine(targetDirectory, targetFileName);
-            File.Copy(filePath, destinaion, true);
-            return destinaion;
+            dal.AddDrug(drug);
         }
 
         public void UpdateDrug(string id, Drug updatedDrug)
@@ -500,7 +437,7 @@ namespace Drugs2020.BLL
             gfx.DrawString("recept No: " + recept.ReceptId, new XFont("Times New Roman", 15, XFontStyle.Bold)
                 , XBrushes.Black, new XRect(page.Width - 25, 5, 5, 0), XStringFormats.TopRight);
 
-            gfx.DrawString(recept.Date.ToString(), new XFont("Times New Roman", 15, XFontStyle.Bold)
+            gfx.DrawString(recept.Date.ToShortDateString(), new XFont("Times New Roman", 15, XFontStyle.Bold)
                 , XBrushes.Black, new XRect(5, 5, 5, 0), XStringFormats.TopLeft);
 
             gfx.DrawString("Recept", new XFont("Times New Roman", 30, XFontStyle.Bold)
@@ -528,7 +465,7 @@ namespace Drugs2020.BLL
                 "quantity: " + recept.Quantity + " in day for " + recept.Days;
             receptDetail1 += recept.Days > 1 ? " day." : " days.";
             string receptDetail2 = "code: " + drug.IdCode + "\n" +
-                           "valid until: " + recept.ExpirationDate;
+                           "valid until: " + recept.ExpirationDate.ToShortDateString();
             //-------------------------------------------
 
             y += 30;

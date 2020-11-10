@@ -29,8 +29,7 @@ namespace Drugs2020.PL.Models
             {
                 User = bl.IdentifyUser(UserId);
             }
-            catch (KeyNotFoundException) { throw; }
-            catch (Exception) { throw; }
+            catch (KeyNotFoundException ex) { throw; }
         }
         public bool ValidatePassword()
         {

@@ -37,15 +37,15 @@ namespace Drugs2020.PL.Commands
 
         public void Execute(object parameter)
         {         
-            logInViewModel.IdentifyUser();                 
-            if (logInViewModel.User != null && logInViewModel.ValidatePassword()) //צריך להשתמש בתפסית חריגה במקום
-            {              
-                logInViewModel.LogUserIn();
-            }
-            else
-            {
-                MessageBox.Show("invalid user name or password");
-            }
+            logInViewModel.LogIn();                 
+            //if (logInViewModel.User != null && logInViewModel.ValidatePassword()) //צריך להשתמש בתפסית חריגה במקום
+            //{              
+            //    logInViewModel.LogUserIn();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("invalid user name or password");
+            //}
         }
     }
 }
