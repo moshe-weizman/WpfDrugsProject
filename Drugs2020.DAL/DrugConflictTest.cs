@@ -25,7 +25,7 @@ namespace Drugs2020.DAL
             return result;
         }
 
-        public List<string> ConflictTest2(string IdCodeOfNewDrug, List<string> drugsTakenPatient)
+        public List<string> ConflictTest(string IdCodeOfNewDrug, List<string> drugsTakenPatient)
         {
             List<string> result = new List<string>();
             if ((drugsTakenPatient == null) || (drugsTakenPatient.Count() < 1))
@@ -38,58 +38,18 @@ namespace Drugs2020.DAL
                     var uri = @"https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=";
                     uri += IdCodeOfNewDrug;
                     uri += "+" + drugsTakenPatient.ElementAt(i);
-                    result.Union(ConflictReq(uri)).ToList();
+                    
+                    List<string> drogs = ConflictReq(uri);
+                    if ((drogs.ElementAt(0) != null) && (drogs.ElementAt(1) != null))
+                    {
+                        result.Add(drogs.ElementAt(0));
+                        result.Add(drogs.ElementAt(1));
+                    }
                 }
             }
             return result;
         }
 
-        public string ConflictTest(string IdCodeOfNewDrug, List<string> drugsTakenPatient)
-        {
-            if ((drugsTakenPatient==null) ||(drugsTakenPatient.Count() < 1))
-                return null;
-
-            var uri = @"https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=";
-            for (int i = 0; i < drugsTakenPatient.Count(); i++)
-            {
-                uri += (i==0?"":"+") + drugsTakenPatient.ElementAt(i);//משרשר לתוך הURI את הקודים שבליסט
-            }
-            uri += "+" + IdCodeOfNewDrug;
-           // var uri = @"https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=207106+152923+656659";
-
-            var client = new RestClient(uri);
-            client.Timeout = -1;
-            var request = new RestRequest(uri, DataFormat.Json);
-
-            IRestResponse response = client.Execute(request);
-            Root tagList = JsonConvert.DeserializeObject<Root>(response.Content);
-
-            //resultText.Text = response.Content;
-
-            //resultText.Text = drog1.Text + drog2.Text + drog3.Text;
-            string resultText = "";
-            foreach (var item1 in tagList.fullInteractionTypeGroup.ElementAt(0).fullInteractionType)
-            {
-                resultText += "drogs:";
-                resultText += "\n";
-                foreach (var item2 in item1.minConcept)
-                {
-                    resultText += ($"{item2.name}");
-                    resultText += "\n";
-                }
-                resultText += "\n";
-                resultText += "problem:";
-                resultText += "\n";
-                foreach (var item2 in item1.interactionPair)
-                {
-                    resultText += ($"{item2.description}");
-                }
-                resultText += "\n";
-                resultText += "\n";
-
-            }
-            return resultText;
-        }
        
         public int ResolveRxcuiFromName(string name)
         {

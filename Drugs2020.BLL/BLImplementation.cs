@@ -120,7 +120,7 @@ namespace Drugs2020.BLL
         public List<string> checkConflicts(string IdCodeOfDrug, List<string> drugsTakenPatient)
         {
             DrugConflictTest drugConflictTest = new DrugConflictTest();
-            return drugConflictTest.ConflictTest2(IdCodeOfDrug, drugsTakenPatient);
+            return drugConflictTest.ConflictTest(IdCodeOfDrug, drugsTakenPatient);
         }
 
         public List<Recept> GetAllReceptsOfPatient(string id)
