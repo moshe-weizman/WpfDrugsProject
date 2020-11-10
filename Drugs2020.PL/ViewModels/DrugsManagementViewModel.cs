@@ -56,7 +56,8 @@ namespace Drugs2020.PL.ViewModels
                 {
                     drugsManagementM.SyncWithDb();
                 }
-            }catch(Exception ex) { containingShellVm.ShowMessage(ex.Message); }
+            }
+            catch (Exception ex) { containingShellVm.ShowMessage(ex.Message); }
         }
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         public void OpenEditingScreen(object selectedDrug)
@@ -74,18 +75,19 @@ namespace Drugs2020.PL.ViewModels
                 {
                     drugsManagementM.RemoveFromDb(drug);
                     containingShellVm.finishProcessing("Drug removed");
+
                 }
-            }
-            catch (ArgumentException e) { containingShellVm.ShowMessage(e.Message); }
-            catch (Exception e) { containingShellVm.ShowMessage(e.Message); }
-        });
+                catch (ArgumentException e) { containingShellVm.ShowMessage(e.Message); }
+                catch (Exception e) { containingShellVm.ShowMessage(e.Message); }
+            });
             Items.Remove(drug);
+
         }
 
         public void DeleteSelected(object selectedDrug)
         {
             containingShellVm.LetUserDecide("Are you sure you want to delete this drug from the system?", new Action(() => RemoveItemFromDb(selectedDrug)));
-            
+
         }
 
         public void GetItem(string id)

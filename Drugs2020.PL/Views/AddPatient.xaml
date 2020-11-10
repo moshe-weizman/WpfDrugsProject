@@ -17,7 +17,7 @@
             <RowDefinition Height="Auto"  />
             
         </Grid.RowDefinitions>
-        <StackPanel Margin="5" Grid.Column="0" Grid.Row="0"  >
+            <StackPanel Margin="5" Grid.Column="0" Grid.Row="0"   Width="350">
             <TextBlock  TextWrapping="Wrap"
                         Text="ID:" />
                 <local:NumericTextBox Style="{StaticResource TextBoxStyle}" x:Name="Id" MaxLength="9"
@@ -49,6 +49,7 @@
             <TextBlock TextWrapping="Wrap"
                        Text="Address:" />
             <TextBox Name="Address" Height="40"
+                      Style="{StaticResource TextBoxStyle}"
                      TextWrapping="Wrap"
                      Text="{Binding Patient.Address}" />
 
