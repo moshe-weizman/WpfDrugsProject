@@ -25,7 +25,11 @@ namespace Drugs2020.PL.Models
 
         public void IdentifyUser()
         {
-            User = bl.IdentifyUser(UserId);
+            try
+            {
+                User = bl.IdentifyUser(UserId);
+            }
+            catch (KeyNotFoundException ex) { throw; }
         }
         public bool ValidatePassword()
         {

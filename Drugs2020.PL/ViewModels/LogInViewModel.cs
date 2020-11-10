@@ -1,6 +1,7 @@
 ﻿using Drugs2020.BLL.BE;
 using Drugs2020.PL.Commands;
 using Drugs2020.PL.Models;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
 
@@ -97,6 +98,34 @@ namespace Drugs2020.PL.ViewModels
                 else
                     containingVm.InitAdminSell(User);
                 IsBusy = false;
+            });
+        }
+
+        public async void LogIn()
+        {
+            IsBusy = true;
+            Message = "Checking";
+            await Task.Run(() =>
+            {
+                try
+                {
+                    IdentifyUser();
+
+                }
+                catch (KeyNotFoundException ex) 
+                {
+                    IsBusy = false;
+                    IsPasswordInvalid = true;
+                }
+                if (User != null && ValidatePassword() == true)
+                {
+                    LogUserIn();
+                }
+                else
+                {
+                    IsBusy = false;
+                    IsPasswordInvalid = true;
+                }
             });
         }
     }

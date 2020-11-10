@@ -49,8 +49,11 @@ namespace Drugs2020.BLL
         }
         public IUser IdentifyUser(string userID)
         {
-            return dal.IdentifyUser(userID);
-            
+            try
+            {
+                return dal.IdentifyUser(userID);
+            }
+            catch (KeyNotFoundException ex) { throw; }
         }
 
         #endregion
