@@ -11,6 +11,7 @@ namespace Drugs2020.DAL
     {
         protected override void Seed(PharmacyContext context)
         {
+            
             #region user
             #region Patient   
 

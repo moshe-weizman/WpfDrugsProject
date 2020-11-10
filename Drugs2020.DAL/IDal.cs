@@ -8,6 +8,7 @@ namespace Drugs2020.DAL
     public interface IDal
     {
         IUser IdentifyUser(string userID);
+        void SyncWithCloud();
 
         #region Patient CRUD Functions
         void AddPatient(Patient patient);

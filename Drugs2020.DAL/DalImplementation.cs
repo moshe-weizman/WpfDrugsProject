@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,8 +11,14 @@ namespace Drugs2020.DAL
 {
     public class DalImplementation : IDal
     {
-
+        private ICloudForImage cloud = new GoogleDrive();
         private PharmacyContext ctx = new PharmacyContext();
+        const string IMAGES_FILES_EXTENSION = @".png";
+        const string PDF_FILES_EXTENSION = @".pdf";
+        string receptsStoragePath = Path.GetFullPath(@"..\ApplicationResources\ReceptsPDF");
+        string imagesStoragePath = Path.GetFullPath(@"..\ApplicationResources\DrugsImages");
+        string defaultImagePath = Path.GetFullPath(@"..\ApplicationResources\DrugsImages\default.png");
+        
         public IUser IdentifyUser(string userID)
         {
             try
@@ -20,11 +27,19 @@ namespace Drugs2020.DAL
                 if (User == null)
                     User = ctx.Admins.Find(userID);
                 if (User == null)
-                    throw new KeyNotFoundException("Uder Not Found");
+                    throw new KeyNotFoundException("User Not Found");
                 return User;
             }
             catch (KeyNotFoundException ex) { throw; }
 
+        }
+        public void SyncWithCloud()
+        {
+            GetAllDrugs().ForEach(drug =>
+            {
+                drug.ImageUrl = getImageForDrug(drug);
+                UpdateDrug(drug);
+            });
         }
 
         #region Patient
@@ -169,6 +184,14 @@ namespace Drugs2020.DAL
         {
             try
             {
+                if (File.Exists(drug.ImageUrl))
+                {
+                    drug.ImageUrl = SaveImage(drug);
+                }
+                else
+                {
+                    drug.ImageUrl = defaultImagePath;
+                }
                 ctx.Drugs.Add(drug);
                 ctx.SaveChanges();
             }
@@ -177,11 +200,48 @@ namespace Drugs2020.DAL
                 throw new Exception("Error adding drug");
             }
         }
+        private string SaveImage(Drug drug)
+        {
+            string drugImageName = drug.IdCode + IMAGES_FILES_EXTENSION;
+            drug.ImageUrl = SaveFileLocally(drug.ImageUrl, imagesStoragePath, drugImageName);
+            while (cloud.DoesFileExists(drugImageName))
+            {
+                cloud.Remove(drugImageName);
+            }
+            cloud.Upload(drug.ImageUrl);
+            return drug.ImageUrl;
+        }
+        private string SaveFileLocally(string filePath, string targetDirectory, string targetFileName)
+        {
+            Directory.CreateDirectory(targetDirectory);
+            string destinaion = Path.Combine(targetDirectory, targetFileName);
+            File.Copy(filePath, destinaion, true);
+            return destinaion;
+        }
+        private string getImageForDrug(Drug drug)
+        {
+            //Drug image exists locally
+            if (File.Exists(drug.ImageUrl))
+            {
+                return drug.ImageUrl;
+            }
+            //Drug image exists locally
+            if (cloud.DoesFileExists(drug.IdCode + IMAGES_FILES_EXTENSION))
+            {
+                cloud.Download(drug.IdCode + IMAGES_FILES_EXTENSION, imagesStoragePath);
+                string path = Path.Combine(imagesStoragePath, drug.IdCode + IMAGES_FILES_EXTENSION);
+                return path;
+            }
+            return defaultImagePath;
+        }
         public void DeleteDrug(string id)
         {
             try
             {
-
+                if (cloud.DoesFileExists(id + IMAGES_FILES_EXTENSION))
+                {
+                    cloud.Remove(id + IMAGES_FILES_EXTENSION);
+                }
                 ctx.Drugs.Remove(ctx.Drugs.Find(id));
                 ctx.SaveChanges();
             }
@@ -194,10 +254,8 @@ namespace Drugs2020.DAL
         {
             try
             {
-                ctx.Drugs.Remove(ctx.Drugs.Find(drug.IdCode));
-                ctx.SaveChanges();
-                ctx.Drugs.Add(drug);
-                ctx.SaveChanges();
+                DeleteDrug(drug.IdCode);
+                AddDrug(drug);
             }
             catch (Exception ex)
             {
@@ -208,19 +266,22 @@ namespace Drugs2020.DAL
         {
             try
             {
-                return ctx.Drugs.Find(IdCode);
+                Drug drug = ctx.Drugs.Find(IdCode);
+                return drug;
             }
             catch (Exception ex)
             {
                 throw new Exception("DalImplementation - GetDrug " + ex);
             }
         }
+        
         public List<Drug> GetAllDrugs()
         {
             try
             {
-                return ctx.Drugs.
+                List<Drug> drugs =  ctx.Drugs.
                  Where(s => s.IdCode != null).ToList();
+                return drugs;
             }
             catch (Exception ex)
             {

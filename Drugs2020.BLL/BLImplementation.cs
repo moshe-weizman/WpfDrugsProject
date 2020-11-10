@@ -16,13 +16,7 @@ namespace Drugs2020.BLL
     public class BLImplementation : IBL
     {
         IDal dal = new DalImplementation();
-        private ICloudForImage cloud = new GoogleDrive();
-        const string DEFAULT_IMAGE_PATH = @"..\ApplicationResources\DrugsImages\default.png";
-        const string IMAGES_FILES_EXTENSION = @".png";
-        const string PDF_FILES_EXTENSION = @".pdf";
-        string receptsStoragePath = Path.GetFullPath(@"..\ApplicationResources\ReceptsPDF");
-        string imagesStoragePath = Path.GetFullPath(@"..\ApplicationResources\DrugsImages");
-        
+
         public Dictionary<string, int> GetDictionaryForReceptsByDate(DateTime startDate, DateTime endDate)
         {
             List<Recept> recepts = GetAllReceptsByDate(startDate, endDate);
@@ -136,7 +130,6 @@ namespace Drugs2020.BLL
         public List<Recept> GetAllReceptsOfPatient(string id)
         {
              return dal.GetAllReceptsOfPatient(id);
-            //return new List<Recept>() { new Recept("123", 12, "er12", "acmol", 12, 10, DateTime.Now), new Recept("123", 12, "op2", "advil", 12, 10, DateTime.Now) };
         }
 
         public List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate)
@@ -209,55 +202,12 @@ namespace Drugs2020.BLL
         public Drug GetDrug(string ID)
         {
             Drug drug = dal.GetDrug(ID);
-            if (drug == null)
-            {
-                return null;
-            }
-            if (File.Exists(drug.ImageUrl))
-            {
-                return drug;
-            }
-            if (cloud.DoesFileExists(drug.IdCode + IMAGES_FILES_EXTENSION))
-            {
-                cloud.Download(drug.IdCode + IMAGES_FILES_EXTENSION, imagesStoragePath);
-                string path = Path.Combine(imagesStoragePath, drug.IdCode + IMAGES_FILES_EXTENSION);
-                drug.ImageUrl = path;
-                return drug;
-            }
-            drug.ImageUrl = DEFAULT_IMAGE_PATH;
             return drug;
         }
 
         public void AddDrug(Drug drug)
         {
-            if (File.Exists(drug.ImageUrl))
-            {
-                SaveImage(drug);
-            }
-            else
-            {
-                drug.ImageUrl = DEFAULT_IMAGE_PATH;
-            }
             dal.AddDrug(drug);
-        }
-
-        private void SaveImage(Drug drug)
-        {
-            string drugImageName = drug.IdCode + IMAGES_FILES_EXTENSION;
-            drug.ImageUrl = SaveFileLocally(drug.ImageUrl, imagesStoragePath, drugImageName);
-            while (cloud.DoesFileExists(drugImageName))
-            {
-                cloud.Remove(drugImageName);
-            }
-            cloud.Upload(drug.ImageUrl);
-        }
-
-        private string SaveFileLocally(string filePath, string targetDirectory, string targetFileName)
-        {
-            Directory.CreateDirectory(targetDirectory);
-            string destinaion = Path.Combine(targetDirectory, targetFileName);
-            File.Copy(filePath, destinaion, true);
-            return destinaion;
         }
 
         public void UpdateDrug(string id, Drug updatedDrug)
