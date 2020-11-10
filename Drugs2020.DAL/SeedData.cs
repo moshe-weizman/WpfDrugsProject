@@ -64,8 +64,22 @@ namespace Drugs2020.DAL
 
             #region Recept   
             IList<Recept> defaultSRecept = new List<Recept>();
-            //defaultSRecept.Add(new Recept() {/*add drug here*/ });
-            //defaultSRecept.Add(new Recept() { });
+            defaultSRecept.Add(new Recept() { IdCodeOfDrug = "1111639", DrugGenericName = "Glatiramer Acetate", PatientID = "111111111" ,Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "1"});
+            defaultSRecept.Add(new Recept() { IdCodeOfDrug = "731532", DrugGenericName = "Ibuprofen", PatientID = "111111111", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "11" });
+            defaultSRecept.Add(new Recept() { IdCodeOfDrug = "1091142", DrugGenericName = "Methylphenidate Hydrochloride", PatientID = "111111111", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "111" });
+            defaultSRecept.Add(new Recept() { IdCodeOfDrug = "206812", DrugGenericName = "Etodolac", PatientID = "123456789", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "1111" });
+            defaultSRecept.Add(new Recept() { IdCodeOfDrug = "206812", DrugGenericName = "Etodolac", PatientID = "111111111", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "12" });
+            defaultSRecept.Add(new Recept() { IdCodeOfDrug = "206812", DrugGenericName = "Etodolac", PatientID = "111111111", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "122" });
+            defaultSRecept.Add(new Recept() { IdCodeOfDrug = "206812", DrugGenericName = "Etodolac", PatientID = "111111111", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "1222" });
+            defaultSRecept.Add(new Recept() { IdCodeOfDrug = "731532", DrugGenericName = "Ibuprofen", PatientID = "123456789", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "13"});
+            defaultSRecept.Add(new Recept() { IdCodeOfDrug = "1111639", DrugGenericName = "Glatiramer Acetate", PatientID = "111111111", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "133" });
+            defaultSRecept.Add(new Recept() { IdCodeOfDrug = "1111639", DrugGenericName = "Glatiramer Acetate", PatientID = "123456789", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "1333" });
+            defaultSRecept.Add(new Recept() { IdCodeOfDrug = "1111639", DrugGenericName = "Glatiramer Acetate", PatientID = "111111111", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "14" });
+            defaultSRecept.Add(new Recept() { IdCodeOfDrug = "1111639", DrugGenericName = "Glatiramer Acetate", PatientID = "222222222", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "144"});
+            defaultSRecept.Add(new Recept() { IdCodeOfDrug = "1111639", DrugGenericName = "Glatiramer Acetate", PatientID = "987654321", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "1444" });
+            defaultSRecept.Add(new Recept() { IdCodeOfDrug = "1091142", DrugGenericName = "Methylphenidate Hydrochloride", PatientID = "222222222", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "15" });
+            defaultSRecept.Add(new Recept() { IdCodeOfDrug = "731532", DrugGenericName = "Ibuprofen", PatientID = "222222222", Days = 5, Date = DateTime.Now, PhysicianID = "444444444", Quantity = 8, ReceptId = "155" });
+
             context.Recepts.AddRange(defaultSRecept);
 
             #endregion
