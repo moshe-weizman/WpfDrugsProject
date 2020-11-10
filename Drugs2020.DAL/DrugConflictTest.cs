@@ -10,7 +10,7 @@ namespace Drugs2020.DAL
     public class DrugConflictTest: IDrugsConflict
     {
 
-        public List<string> ConflictTest22(string uri)
+        public List<string> ConflictReq(string uri)
         {
             var client = new RestClient(uri);
             client.Timeout = -1;
@@ -39,7 +39,7 @@ namespace Drugs2020.DAL
                     var uri = @"https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=";
                     uri += IdCodeOfNewDrug;
                     uri += "+" + drugsTakenPatient.ElementAt(i);
-                    result.Union(ConflictTest22(uri)).ToList();
+                    result.Union(ConflictReq(uri)).ToList();
                 }
             }
             return result;
