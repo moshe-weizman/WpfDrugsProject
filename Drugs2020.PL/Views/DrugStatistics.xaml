@@ -14,22 +14,35 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
+        
         <StackPanel Orientation="Vertical"
                     Grid.Column="0"
                     Margin="10">
-            <TextBlock Text="Drugs Prescription Between Dates" />
+            <TextBlock Text="Drugs Prescription Between Dates" Margin="10"/>
             <DockPanel>
-                <TextBlock DockPanel.Dock="Left"
-                           Text="Start Date:"/>
-                <DatePicker DockPanel.Dock="Left"
-                            HorizontalAlignment="Left"
-                            SelectedDate="{Binding StartDate}"/>
                 
-                <DatePicker DockPanel.Dock="Right"
-                            HorizontalAlignment="Right"
-                            SelectedDate="{Binding EndDate}"/>
-                <TextBlock DockPanel.Dock="Right"
-                           Text="End Date:" />
+                <DatePicker Name="BirthDate" Style="{StaticResource MaterialDesignOutlinedDatePicker}"   materialDesign:HintAssist.Hint="Start Date"
+                           Foreground="White"
+                            Margin="5"
+                            Background="#14212B"
+                        SelectedDate="{Binding StartDate}" 
+                            HorizontalAlignment="Center"
+                            DockPanel.Dock="Left"
+                        DisplayDate="{Binding TodayDate, Mode=OneWay}"
+                        DisplayDateEnd="{Binding TodayDate, Mode=OneWay}" 
+                        DisplayDateStart="1/1/1900" />
+
+                <DatePicker  Style="{StaticResource MaterialDesignOutlinedDatePicker}"   materialDesign:HintAssist.Hint="End Date"
+                           Foreground="White"
+                            DockPanel.Dock="Right"
+                            Background="#14212B"
+                              Margin="5"
+                        SelectedDate="{Binding EndDate}" 
+                           HorizontalAlignment="Right"
+                        DisplayDate="{Binding TodayDate, Mode=OneWay}"
+                        DisplayDateEnd="{Binding TodayDate, Mode=OneWay}" 
+                        DisplayDateStart="1/1/1900" />
+                
             </DockPanel>
 
             <DVC:Chart Width="400"
@@ -68,9 +81,9 @@
         <StackPanel Orientation="Vertical"
                     Grid.Column="1"
                     Margin="10">
-            <TextBlock Text="Drug Consumption By Months" />
-            
-                <ComboBox materialDesign:HintAssist.Hint="Drugs"
+            <TextBlock Text="Drug Consumption By Months" Margin="10" />
+
+            <ComboBox materialDesign:HintAssist.Hint="Drugs"  Margin="5"
                           ItemsSource="{Binding DrugCollection}"
                           SelectedItem="{Binding SelectedDrug}"
                           HorizontalAlignment="Center">
@@ -130,5 +143,6 @@
                 </DVC:ColumnSeries>
             </DVC:Chart>
         </StackPanel>
+       
     </Grid>
 </UserControl>
