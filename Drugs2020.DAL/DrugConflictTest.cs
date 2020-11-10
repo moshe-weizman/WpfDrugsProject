@@ -9,31 +9,37 @@ namespace Drugs2020.DAL
 {
     public class DrugConflictTest: IDrugsConflict
     {
-        public string ConflictTest22(string uri) {
+
+        public List<string> ConflictTest22(string uri)
+        {
             var client = new RestClient(uri);
             client.Timeout = -1;
             var request = new RestRequest(uri, DataFormat.Json);
 
             IRestResponse response = client.Execute(request);
             Root tagList = JsonConvert.DeserializeObject<Root>(response.Content);
+            List<string> result = new List<string>();
 
-            return ($"{tagList.fullInteractionTypeGroup.ElementAt(0).fullInteractionType.ElementAt(0).minConcept.ElementAt(0).name}");
+            result.Add($"{tagList.fullInteractionTypeGroup.ElementAt(0).fullInteractionType.ElementAt(0).minConcept.ElementAt(0).name}");
+            result.Add($"{tagList.fullInteractionTypeGroup.ElementAt(0).fullInteractionType.ElementAt(0).interactionPair.ElementAt(0).description}");
+            return result;
         }
 
         public List<string> ConflictTest2(string IdCodeOfNewDrug, List<string> drugsTakenPatient)
         {
             if ((drugsTakenPatient == null) || (drugsTakenPatient.Count() < 1))
-                return new List<string>();
+                return null;
 
-            List<string> result=new List<string>();
+            List<string> result = new List<string>();
 
             for (int i = 0; i < drugsTakenPatient.Count(); i++)
             {
-                if (IdCodeOfNewDrug != drugsTakenPatient[i]) { 
-                var uri = @"https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=";
-                uri += IdCodeOfNewDrug;
-                uri += "+" + drugsTakenPatient.ElementAt(i);
-                result.Add(ConflictTest22(uri));
+                if (IdCodeOfNewDrug != drugsTakenPatient[i])
+                {
+                    var uri = @"https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=";
+                    uri += IdCodeOfNewDrug;
+                    uri += "+" + drugsTakenPatient.ElementAt(i);
+                    result.Union(ConflictTest22(uri)).ToList();
                 }
             }
             return result;
