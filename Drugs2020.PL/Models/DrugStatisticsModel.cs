@@ -33,13 +33,13 @@ namespace Drugs2020.PL.Models
         {
             return bl.GetAllDrugs();
         }
-        public void RefreshReceptsByDateDiagram()
+        public Dictionary<string, int> RefreshReceptsByDateDiagram()
         {
-            ReceptsByDate = bl.GetDictionaryForReceptsByDate(StartDate, EndDate);
+            return bl.GetDictionaryForReceptsByDate(StartDate, EndDate);
         }
-        public void RefreshReceptsByDrugDiagram()
+        public Dictionary<string, int> RefreshReceptsByDrugDiagram()
         {
-            ReceptsByDrug = bl.GetDictionaryForReceptsByDrug(SelectedDrug);
+            return bl.GetDictionaryForReceptsByDrug(SelectedDrug);
         }
     }
 }

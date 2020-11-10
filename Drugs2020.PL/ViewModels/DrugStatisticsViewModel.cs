@@ -42,7 +42,7 @@ namespace Drugs2020.PL.ViewModels
             set 
             { 
                 drugStatisticsM.StartDate = value;
-                drugStatisticsM.RefreshReceptsByDateDiagram();
+                ReceptsByDate = drugStatisticsM.RefreshReceptsByDateDiagram();
             }
         }
         public DateTime EndDate
@@ -51,7 +51,7 @@ namespace Drugs2020.PL.ViewModels
             set
             {
                 drugStatisticsM.EndDate = value;
-                drugStatisticsM.RefreshReceptsByDateDiagram();
+                ReceptsByDate = drugStatisticsM.RefreshReceptsByDateDiagram();
             }
         }
         public ObservableCollection<Drug> DrugCollection { get; set; }
@@ -68,7 +68,7 @@ namespace Drugs2020.PL.ViewModels
                 selectedDrug = value;
                 if (PropertyChanged != null)
                     PropertyChanged(this, new PropertyChangedEventArgs("SelectedDrug"));
-                drugStatisticsM.RefreshReceptsByDrugDiagram();
+                ReceptsByDrug = drugStatisticsM.RefreshReceptsByDrugDiagram();
             }
         }
     
