@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Drugs2020.PL.ViewModels
 {
@@ -60,10 +61,15 @@ namespace Drugs2020.PL.ViewModels
             containingShellVm.CurrentVM = new UpdateDrugViewModel(containingShellVm, selectedDrug as Drug);
         }
 
-        public void RemoveItemFromDb(object selectedDrug)
+        public async void RemoveItemFromDb(object selectedDrug)
         {
+            containingShellVm.startProcessing("Removing drug");
             Drug drug = selectedDrug as Drug;
-            drugsManagementM.RemoveFromDb(drug);
+            await Task.Run(() =>
+            {
+                drugsManagementM.RemoveFromDb(drug);
+                containingShellVm.finishProcessing("Drug removed");
+            });
             Items.Remove(drug);
         }
 

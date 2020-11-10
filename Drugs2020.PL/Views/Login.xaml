@@ -10,14 +10,12 @@
              >
     <UserControl.Resources>
         <Converters:FieldsTextToBoolConverter x:Key="fieldsTextToBoolConverter" />
+        <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </UserControl.Resources>
     
   
         <!--<Grid >
-            --><!--<ProgressBar
-  Style="{StaticResource MaterialDesignCircularProgressBar}"
-  Value="0"
-  IsIndeterminate="True" />--><!--
+            --><!----><!--
         </Grid>-->
         <Grid >
         <StackPanel  Background="#14212B" Width="330" Margin="50"  VerticalAlignment="Center" >
@@ -67,10 +65,21 @@
                      TextWrapping="Wrap"
                  Text="{Binding Password}"
                  Margin="10" />-->
-                    
-                   
-            </StackPanel>
+
+                    <TextBlock Text="Invalid password or ID"
+                               Foreground="Red"
+                               Visibility="{Binding IsPasswordInvalid, Converter={StaticResource BoolToVisibilityConverter}}" />
+                
+                </StackPanel>
             </Border>
+            <StackPanel Orientation="Horizontal"
+                        Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}">
+                <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                             Value="0"
+                             IsIndeterminate="True" />
+                <TextBlock Text="{Binding Message}" />
+            </StackPanel>
+                        
             <Button Content="Log in"
 
                     Command="{Binding LogInUserCommand}" Margin="25">

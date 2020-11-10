@@ -50,14 +50,7 @@ namespace Drugs2020.BLL
         public IUser IdentifyUser(string userID)
         {
             return dal.IdentifyUser(userID);
-            //switch (userID)
-            //{
-            //    case "1234":
-            //        return new Admin("1234", "Mose", "Weizman", Sex.MALE, "0545678990", @"Moshe@gmail.com", "1234", "Elad", DateTime.Parse("12/10/1985"));
-            //    case "4321":
-            //        return new Physician("4321", "Mose", "Weizman", Sex.MALE, "0545678990", @"Moshe@gmail.com", "4321", "Elad", DateTime.Parse("12/10/1985"));
-            //}
-            //return null;
+            
         }
 
         #endregion
