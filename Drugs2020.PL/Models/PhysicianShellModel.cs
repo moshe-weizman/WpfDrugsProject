@@ -23,21 +23,29 @@ namespace Drugs2020.PL.Models
         public PhysicianShellModel(string id)
         {
             bl = new BLImplementation();
-            this.CurrentPatient = bl.GetPatient(id);
+           if(bl.DoesPatientExist(id))
+                this.CurrentPatient = bl.GetPatient(id);      
         }
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         public void GetPatient(string id)
         {
-            CurrentPatient = bl.GetPatient(id);
-            if (CurrentPatient == null)//exception instead?
+            try
             {
-                return;
+                CurrentPatient = bl.GetPatient(id);
             }
+            catch (KeyNotFoundException e) { throw; }
+            catch (Exception e) { throw; }
+           
         }
 
         public void UpdatePatient()
         {
-            bl.UpdatePatient(CurrentPatient.ID, CurrentPatient);
+            try
+            {
+                bl.UpdatePatient(CurrentPatient.ID, CurrentPatient);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ) { throw; }
         }
 
        

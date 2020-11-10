@@ -22,7 +22,7 @@ namespace Drugs2020.BLL
         const string PDF_FILES_EXTENSION = @".pdf";
         string receptsStoragePath = Path.GetFullPath(@"..\ApplicationResources\ReceptsPDF");
         string imagesStoragePath = Path.GetFullPath(@"..\ApplicationResources\DrugsImages");
-        
+
         public Dictionary<string, int> GetDictionaryForReceptsByDate(DateTime startDate, DateTime endDate)
         {
             List<Recept> recepts = GetAllReceptsByDate(startDate, endDate);
@@ -55,15 +55,12 @@ namespace Drugs2020.BLL
         }
         public IUser IdentifyUser(string userID)
         {
-            return dal.IdentifyUser(userID);
-            //switch (userID)
-            //{
-            //    case "1234":
-            //        return new Admin("1234", "Mose", "Weizman", Sex.MALE, "0545678990", @"Moshe@gmail.com", "1234", "Elad", DateTime.Parse("12/10/1985"));
-            //    case "4321":
-            //        return new Physician("4321", "Mose", "Weizman", Sex.MALE, "0545678990", @"Moshe@gmail.com", "4321", "Elad", DateTime.Parse("12/10/1985"));
-            //}
-            //return null;
+            try
+            {
+                return dal.IdentifyUser(userID);
+            }
+            catch (KeyNotFoundException) { throw; }
+            catch (Exception) { throw; }
         }
 
         #endregion
@@ -71,161 +68,300 @@ namespace Drugs2020.BLL
         #region Medical Record
         public void AddMediclRecordToPatient(MedicalRecord medicalRecord)
         {
-            dal.AddMediclRecordToPatient(medicalRecord);
+            try
+            {
+                dal.AddMediclRecordToPatient(medicalRecord);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception) { throw; }
         }
         public MedicalRecord GetMedicalRecord(string medicalRecordID)
         {
-            return dal.GetMedicalRecord(medicalRecordID);
+            try
+            {
+                return dal.GetMedicalRecord(medicalRecordID);
+            }
+            catch (KeyNotFoundException) { throw; }
+            catch (Exception) { throw; }
         }
         public void UpdateMedicalRecord(string medicalRecordID, MedicalRecord medicalRecord)
         {
-            dal.UpdateMedicalRecord(medicalRecordID, medicalRecord);
+            try
+            {
+                dal.UpdateMedicalRecord(medicalRecordID, medicalRecord);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception) { throw; }
         }
-        public bool MedicalRecordAlreadyExists(MedicalRecord medicalRecord)
+        public bool DoesMediclRecordExist(string id)
         {
-            if (dal.GetMedicalRecord(medicalRecord.MedicalRecordID) == null)
-                return false;
-            return true;
+            return dal.DoesMediclRecordExist(id);
+        }
+        public bool MedicalRecordAlreadyExists(MedicalRecord medicalRecord)//מיותר לכאורה
+        {
+            try
+            {
+                if (dal.GetMedicalRecord(medicalRecord.MedicalRecordID) == null)
+                    return false;
+                return true;
+            }
+            catch (KeyNotFoundException) { throw; }
+            catch (Exception) { throw; }
         }
         #endregion
 
         #region Medical File Functions
-        public void AddMedicalFileToPatient(MedicalFile medicalFile)
+        public bool DoesMedicalFileExist(string id)
         {
-            dal.AddMedicalFile(medicalFile);
+            return dal.DoesMedicalFileExist(id);
         }
 
-        public bool MedicalFileAlreadyExists(MedicalFile medicalFile)
+        public void AddMedicalFileToPatient(MedicalFile medicalFile)
         {
-            if (dal.GetMedicalFile(medicalFile.PatientId) == null)
-                return false;
-            return true;
+            try
+            {
+                dal.AddMedicalFile(medicalFile);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception) { throw; }
+        }
+
+        public bool MedicalFileAlreadyExists(MedicalFile medicalFile)//לכאורה פונקציה לא נצרכת
+        {
+            try
+            {
+                if (dal.GetMedicalFile(medicalFile.PatientId) == null)
+
+                    return false;
+                return true;
+            }
+            catch (KeyNotFoundException) { throw; }
+            catch (Exception) { throw; }
         }
 
         public MedicalFile GetMedicalFile(string patientID)
         {
-            return dal.GetMedicalFile(patientID); 
+            try
+            {
+                return dal.GetMedicalFile(patientID);
+            }
+            catch (KeyNotFoundException) { throw; }
+            catch (Exception) { throw; }
         }
 
         public void UpdateMedicalFile(string patientId, MedicalFile medicalFile)
         {
-            dal.UpdateMedicalFile(patientId, medicalFile);
+            try
+            {
+                dal.UpdateMedicalFile(patientId, medicalFile);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception) { throw; }
         }
         #endregion
 
         #region Recept & Drugs-Taken Functions
         public void AddRecept(Recept recept)
         {
+            try
+            {
                 dal.AddRecept(recept);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception) { throw; }
         }
 
-       
+
         public void DeleteReceipt(Recept receipt)
         {
-            dal.DeleteReceipt(receipt.ReceptId.ToString());
+            try
+            {
+                dal.DeleteReceipt(receipt.ReceptId.ToString());
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ex) { throw; }
         }
 
 
 
         public List<string> checkConflicts(string IdCodeOfDrug, List<string> drugsTakenPatient)
         {
-            DrugConflictTest drugConflictTest = new DrugConflictTest();
-            return drugConflictTest.ConflictTest2(IdCodeOfDrug, drugsTakenPatient);
+            try
+            {
+                DrugConflictTest drugConflictTest = new DrugConflictTest();
+                return drugConflictTest.ConflictTest2(IdCodeOfDrug, drugsTakenPatient);
+            }
+            catch (Exception) { throw; }
         }
 
         public List<Recept> GetAllReceptsOfPatient(string id)
         {
-             return dal.GetAllReceptsOfPatient(id);
-            //return new List<Recept>() { new Recept("123", 12, "er12", "acmol", 12, 10, DateTime.Now), new Recept("123", 12, "op2", "advil", 12, 10, DateTime.Now) };
+            try
+            {
+                return dal.GetAllReceptsOfPatient(id);
+            }
+            catch (Exception) { throw; }
         }
 
         public List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate)
         {
-            return dal.GetAllReceptsByDate(startDate, endDate);
+            try
+            {
+                return dal.GetAllReceptsByDate(startDate, endDate);
+            }
+            catch (Exception) { throw; }
         }
 
         public List<Recept> GetAllReceptsByDrug(string drugIdCode)
         {
-            return dal.GetAllReceptsByDrug(drugIdCode);
+            try
+            {
+                return dal.GetAllReceptsByDrug(drugIdCode);
+            }
+            catch (Exception) { throw; }
         }
         #endregion
 
         #region Patient CRUD Functions
+        public bool DoesPatientExist(string id)
+        {
+            return dal.DoesPatientExist(id);
+        }
+
         public Patient GetPatient(string ID)
         {
-             return dal.GetPatient(ID);
-           // return new Patient("1", "mor", "cohen", Sex.FEMALE, "0500000000", "email", "elad", DateTime.Now);
+            try
+            {
+                return dal.GetPatient(ID);
+            }
+            catch (KeyNotFoundException e) { throw; }
+            catch (Exception e) { throw; }
         }
         public List<Patient> GetAllPatients()
         {
-            return dal.GetAllPatients();           
+            try
+            {
+                return dal.GetAllPatients();
+            }
+            catch (Exception ex) { throw; }
         }
 
         public void AddPatient(Patient patient)
         {
-            dal.AddPatient(patient);
+            try
+            {
+                dal.AddPatient(patient);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception) { throw; }
         }
 
         public void UpdatePatient(string id, Patient updatedPatient)
         {
-            dal.UpdatePatient(updatedPatient);
+            try
+            {
+                dal.UpdatePatient(updatedPatient);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ex) { throw; }
         }
 
         public void DeletePatient(string id)
         {
-            dal.DeletePatient(id);
+            try
+            {
+                dal.DeletePatient(id);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ex) { throw; }
         }
         #endregion
 
         #region Physician CRUD Functions
         public Physician GetPhysician(string ID)
         {
-            return dal.GetPhysician(ID);
+            try
+            {
+                return dal.GetPhysician(ID);
+            }
+            catch (KeyNotFoundException e) { throw; }
+            catch (Exception ex) { throw; }
         }
 
         public List<Physician> GetAllPhysicians()
         {
-            return dal.GetAllPhysicians();
+            try
+            {
+                return dal.GetAllPhysicians();
+            }
+            catch (Exception ex) { throw; }
         }
-
+        public bool DoesPhysicianExist(string id)
+        {
+            return dal.DoesPhysicianExist(id);
+        }
         public void AddPhysician(Physician physician)
         {
-            dal.AddPhysician(physician);
+            try
+            {
+                dal.AddPhysician(physician);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ex) { throw; }
         }
 
         public void UpdatePhysician(string id, Physician updatedPhysician)
         {
-            dal.UpdatePhysician(updatedPhysician);
+            try
+            {
+                dal.UpdatePhysician(updatedPhysician);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ex) { throw; }
         }
 
         public void DeletePhysician(string id)
         {
-            dal.DeletePhysician(id);
+            try
+            {
+                dal.DeletePhysician(id);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ex) { throw; }
         }
 
         #endregion
 
         #region Drug CRUD Functions
+        public bool DoesDrugExist(string IdCode)
+        {
+            return dal.DoesDrugExist(IdCode);
+        }
         public Drug GetDrug(string ID)
         {
-            Drug drug = dal.GetDrug(ID);
-            if (drug == null)
+            try
             {
-                return null;
-            }
-            if (File.Exists(drug.ImageUrl))
-            {
+                Drug drug = dal.GetDrug(ID);
+                if (drug == null)//אפשר למחוק לכאורה בגלל הזריקת חריגה
+                {
+                    return null;
+                }
+                if (File.Exists(drug.ImageUrl))
+                {
+                    return drug;
+                }
+                if (cloud.DoesFileExists(drug.IdCode + IMAGES_FILES_EXTENSION))
+                {
+                    cloud.Download(drug.IdCode + IMAGES_FILES_EXTENSION, imagesStoragePath);
+                    string path = Path.Combine(imagesStoragePath, drug.IdCode + IMAGES_FILES_EXTENSION);
+                    drug.ImageUrl = path;
+                    return drug;
+                }
+                drug.ImageUrl = DEFAULT_IMAGE_PATH;
                 return drug;
             }
-            if (cloud.DoesFileExists(drug.IdCode + IMAGES_FILES_EXTENSION))
-            {
-                cloud.Download(drug.IdCode + IMAGES_FILES_EXTENSION, imagesStoragePath);
-                string path = Path.Combine(imagesStoragePath, drug.IdCode + IMAGES_FILES_EXTENSION);
-                drug.ImageUrl = path;
-                return drug;
-            }
-            drug.ImageUrl = DEFAULT_IMAGE_PATH;
-            return drug;
+            catch (KeyNotFoundException) { throw; }
+            catch (Exception ex) { throw; }
         }
 
         public void AddDrug(Drug drug)
@@ -238,7 +374,12 @@ namespace Drugs2020.BLL
             {
                 drug.ImageUrl = DEFAULT_IMAGE_PATH;
             }
-            dal.AddDrug(drug);
+            try
+            {
+                dal.AddDrug(drug);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ex) { throw; }
         }
 
         private void SaveImage(Drug drug)
@@ -262,45 +403,82 @@ namespace Drugs2020.BLL
 
         public void UpdateDrug(string id, Drug updatedDrug)
         {
-            dal.UpdateDrug(updatedDrug);
+            try
+            {
+                dal.UpdateDrug(updatedDrug);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ex) { throw; }
         }
 
         public void DeleteDrug(string id)
         {
-            dal.DeleteDrug(id);
+            try
+            {
+                dal.DeleteDrug(id);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ex) { throw; }
         }
 
 
         public List<Drug> GetAllDrugs()
         {
-            return dal.GetAllDrugs();
+            try
+            {
+                return dal.GetAllDrugs();
+            }
+            catch (Exception ex) { throw; }
         }
         #endregion
 
         #region ActiveIngredient CRUD Functions
         public void AddActiveIngredient(ActiveIngredient ingredient)
         {
-            dal.AddActiveIngredient( ingredient);
+            try
+            {
+                dal.AddActiveIngredient(ingredient);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ex) { throw; }
         }
 
         public List<ActiveIngredient> GetActiveIngredientsOfDrug(string DrugIdCode)
         {
-            return dal.GetActiveIngredientsOfDrug(DrugIdCode);
+            try
+            {
+                return dal.GetActiveIngredientsOfDrug(DrugIdCode);
+            }
+            catch (Exception ex) { throw; }
         }
 
         public void UpdateActiveIngredient(ActiveIngredient ingredient)
         {
-            dal.UpdateActiveIngredient(ingredient);
+            try
+            {
+                dal.UpdateActiveIngredient(ingredient);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ex) { throw; }
         }
 
         public void DeleteActiveIngredient(ActiveIngredient ingredient)
         {
-            dal.DeleteActiveIngredient(ingredient);
+            try
+            {
+                dal.DeleteActiveIngredient(ingredient);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ex) { throw; }
         }
 
         public List<MedicalRecord> GetAllMedicalRecordsOfPatient(string patientId)
         {
-            return dal.GetAllMedicalRecordsOfPatient(patientId);
+            try
+            {
+                return dal.GetAllMedicalRecordsOfPatient(patientId);
+            }
+            catch (Exception) { throw; }
         }
 
         public void CreatePDF(Recept recept)
@@ -407,7 +585,7 @@ namespace Drugs2020.BLL
             return 770;
         }
 
-       
+
         #endregion
     }
 }

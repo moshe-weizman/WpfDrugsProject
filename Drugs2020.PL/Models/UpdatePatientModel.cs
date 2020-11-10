@@ -21,7 +21,12 @@ namespace Drugs2020.PL.Models
 
         public void UpdatePatientInDb()
         {
-            bl.UpdatePatient(Patient.ID, Patient);
+            try
+            {
+                bl.UpdatePatient(Patient.ID, Patient);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ex) { throw; }
         }
     }
 }

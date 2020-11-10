@@ -67,8 +67,13 @@ namespace Drugs2020.PL.ViewModels
         public void RemoveItemFromDb(object selectedPhysician)
         {
             Physician physician = selectedPhysician as Physician;
-            physiciansManagementM.RemoveFromDb(physician);
-            Items.Remove(physician);//בטוח שזה נצרך???
+            try
+            {
+                physiciansManagementM.RemoveFromDb(physician);
+            }
+            catch (ArgumentException ex) { containingShellVm.ShowMessage(ex.Message); }
+            catch (Exception ex) { containingShellVm.ShowMessage(ex.Message); }
+            Items.Remove(physician);
         }
 
         public bool IsUserSureToDelete()

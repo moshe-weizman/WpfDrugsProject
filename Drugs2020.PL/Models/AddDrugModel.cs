@@ -23,23 +23,29 @@ namespace Drugs2020.PL.Models
 
         public void AddDrugToDb()
         {
-            Ingredients.ForEach(i => bl.AddActiveIngredient(i));
-
-            bl.AddDrug(Drug);
+            try
+            {
+                Ingredients.ForEach(i => bl.AddActiveIngredient(i));
+                bl.AddDrug(Drug);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ex) { throw; }
         }
 
         public bool DoesDrugExist()
         {
-            if (bl.GetDrug(Drug.IdCode) != null)
-            {
-                return true;
-            }
-            return false;
+            return bl.DoesDrugExist(Drug.IdCode);
+            
         }
 
         public void UpdateDrug()
         {
-            bl.UpdateDrug(Drug.IdCode, Drug);
+            try
+            {
+                bl.UpdateDrug(Drug.IdCode, Drug);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ) { throw; }
         }
     }
 }

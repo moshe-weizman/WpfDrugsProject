@@ -28,14 +28,23 @@ namespace Drugs2020.DAL
         }
 
         #region Patient
+        public bool DoesPatientExist(string id)
+        {
+            if (ctx.Patients.Find(id) != null)
+                return true;
+            return false;
+        }
         public void AddPatient(Patient patient)
         {
             try
             {
+                if (ctx.Patients.Find(patient.ID) != null)
+                    throw new ArgumentException("id Already exists");
                 ctx.Patients.Add(patient);
                 ctx.SaveChanges();
             }
-            catch (Exception ex)
+            catch (ArgumentException) { throw; }
+            catch (Exception)
             {
                 throw new Exception("Error adding Patient");
             }
@@ -44,9 +53,12 @@ namespace Drugs2020.DAL
         {
             try
             {
+                if (ctx.Patients.Find(id) == null)
+                    throw new ArgumentException("id not exists");
                 ctx.Patients.Remove(ctx.Patients.Find(id));
                 ctx.SaveChanges();
             }
+            catch (ArgumentException) { throw; }
             catch (Exception ex)
             {
                 throw new Exception("Error Deleteing Patient");
@@ -56,11 +68,15 @@ namespace Drugs2020.DAL
         {
             try
             {
-                ctx.Patients.Remove(ctx.Patients.Find(patient.ID));
+                Patient oldPatient = ctx.Patients.Find(patient.ID);
+                if (oldPatient == null)
+                    throw new ArgumentException("id not exists");
+                ctx.Patients.Remove(oldPatient);
                 ctx.SaveChanges();
                 ctx.Patients.Add(patient);
                 ctx.SaveChanges();
             }
+            catch (ArgumentException) { throw; }
             catch (Exception ex)
             {
                 throw new Exception("Error Updating Patient");
@@ -70,9 +86,9 @@ namespace Drugs2020.DAL
         {
             try
             {
-                Patient patient= ctx.Patients.Find(id);
-                if(patient==null)
-                    throw new KeyNotFoundException(id+"of Patient not found");
+                Patient patient = ctx.Patients.Find(id);
+                if (patient == null)
+                    throw new KeyNotFoundException(id + "of Patient not found");
                 return patient;
             }
             catch (KeyNotFoundException e) { throw; }
@@ -80,7 +96,7 @@ namespace Drugs2020.DAL
             {
                 throw new Exception("Error to Get patient");
             }
-           
+
         }
         public List<Patient> GetAllPatients()
         {
@@ -96,13 +112,22 @@ namespace Drugs2020.DAL
         #endregion
 
         #region Physician
+        public bool DoesPhysicianExist(string id)
+        {
+            if (ctx.Physicians.Find(id) != null)
+                return true;
+            return false;
+        }
         public void AddPhysician(Physician physician)
         {
             try
             {
+                if (ctx.Physicians.Find(physician.ID) != null)
+                    throw new ArgumentException("Id Already exists");
                 ctx.Physicians.Add(physician);
                 ctx.SaveChanges();
             }
+            catch (ArgumentException) { throw; }
             catch (Exception ex)
             {
                 throw new Exception("Error adding Patient");
@@ -112,10 +137,12 @@ namespace Drugs2020.DAL
         {
             try
             {
-
+                if (ctx.Physicians.Find(id) == null)
+                    throw new ArgumentException("physician not exists");
                 ctx.Physicians.Remove(ctx.Physicians.Find(id));
                 ctx.SaveChanges();
             }
+            catch (ArgumentException) { throw; }
             catch (Exception ex)
             {
                 throw new Exception("Error Delteing physician");
@@ -125,11 +152,14 @@ namespace Drugs2020.DAL
         {
             try
             {
+                if (ctx.Physicians.Find(physician.ID) == null)
+                    throw new ArgumentException("physician not exists");
                 ctx.Physicians.Remove(ctx.Physicians.Find(physician.ID));
                 ctx.SaveChanges();
                 ctx.Physicians.Add(physician);
                 ctx.SaveChanges();
             }
+            catch (ArgumentException) { throw; }
             catch (Exception ex)
             {
                 throw new Exception("Error Updating physician");
@@ -139,12 +169,12 @@ namespace Drugs2020.DAL
         {
             try
             {
-                Physician physician= ctx.Physicians.Find(id);
+                Physician physician = ctx.Physicians.Find(id);
                 if (physician == null)
-                    throw new KeyNotFoundException(id+"of Physician not found");
+                    throw new KeyNotFoundException(id + "of Physician not found");
                 return physician;
             }
-            catch(KeyNotFoundException e) { throw; }
+            catch (KeyNotFoundException e) { throw; }
             catch (Exception ex)
             {
                 throw new Exception("Error to Get Physician");
@@ -165,13 +195,23 @@ namespace Drugs2020.DAL
         #endregion
 
         #region Drug
+        public bool DoesDrugExist(string IdCode)
+        {
+            if (ctx.Drugs.Find(IdCode) != null)
+                return true;
+            return false;
+        }
         public void AddDrug(Drug drug)
         {
             try
             {
+
+                if (ctx.Drugs.Find(drug.IdCode) != null)
+                    throw new ArgumentException("Id Already exists");
                 ctx.Drugs.Add(drug);
                 ctx.SaveChanges();
             }
+            catch (ArgumentException) { throw; }
             catch (Exception ex)
             {
                 throw new Exception("Error adding drug");
@@ -181,10 +221,12 @@ namespace Drugs2020.DAL
         {
             try
             {
-
+                if (ctx.Drugs.Find(id) == null)
+                    throw new ArgumentException("Id not exists");
                 ctx.Drugs.Remove(ctx.Drugs.Find(id));
                 ctx.SaveChanges();
             }
+            catch (ArgumentException) { throw; }
             catch (Exception ex)
             {
                 throw new Exception("Error Deleteing Drug");
@@ -194,11 +236,14 @@ namespace Drugs2020.DAL
         {
             try
             {
+                if (ctx.Drugs.Find(drug.IdCode) == null)
+                    throw new ArgumentException("Id not exists");
                 ctx.Drugs.Remove(ctx.Drugs.Find(drug.IdCode));
                 ctx.SaveChanges();
                 ctx.Drugs.Add(drug);
                 ctx.SaveChanges();
             }
+            catch (ArgumentException) { throw; }
             catch (Exception ex)
             {
                 throw new Exception("Error Updateing Drug ");
@@ -208,11 +253,15 @@ namespace Drugs2020.DAL
         {
             try
             {
-                return ctx.Drugs.Find(IdCode);
+                Drug drug = ctx.Drugs.Find(IdCode);
+                if (drug == null)
+                    throw new KeyNotFoundException("Drug not found");
+                return drug;
             }
+            catch (KeyNotFoundException) { throw; }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - GetDrug " + ex);
+                throw new Exception("Error to Get Drug");
             }
         }
         public List<Drug> GetAllDrugs()
@@ -224,22 +273,32 @@ namespace Drugs2020.DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - GetAllDrugs " + ex);
+                throw new Exception("Error to Get List of Drugs");
             }
         }
         #endregion
 
         #region MedicalFile  
+        public bool DoesMedicalFileExist(string id)
+        {
+            if (ctx.MedicalFiles.Find(id) != null)
+                return true;
+            return false;
+        }
+
         public void AddMedicalFile(MedicalFile medicalFile)
         {
             try
             {
+                if (ctx.MedicalFiles.Find(medicalFile.PatientId) != null)
+                    throw new ArgumentException("medica File Already exists");
                 ctx.MedicalFiles.Add(medicalFile);
                 ctx.SaveChanges();
             }
+            catch (ArgumentException) { throw; }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - AddMedicalFile " + ex);
+                throw new Exception("Error adding Medica lFile");
             }
         }
         public MedicalFile GetMedicalFile(string patientID)
@@ -247,25 +306,32 @@ namespace Drugs2020.DAL
             try
             {
 
-                return ctx.MedicalFiles.Find(patientID);
+                MedicalFile medicalFile = ctx.MedicalFiles.Find(patientID);
+                if (medicalFile == null)
+                    throw new KeyNotFoundException("Not found Medical File");
+                return medicalFile;
             }
+            catch (KeyNotFoundException) { throw; }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - GetMedicalFile " + ex);
+                throw new Exception("Error to Get Medical File");
             }
         }
         public void UpdateMedicalFile(string patientId, MedicalFile medicalFile)
         {
             try
             {
+                if (ctx.MedicalFiles.Find(patientId) == null)
+                    throw new ArgumentException("medicalFile not exists");
                 ctx.MedicalFiles.Remove(ctx.MedicalFiles.Find(patientId));
                 ctx.SaveChanges();
                 ctx.MedicalFiles.Add(medicalFile);
                 ctx.SaveChanges();
             }
+            catch (ArgumentException) { throw; }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - UpdateMedicalFile " + ex);
+                throw new Exception("Error updateing Medical File");
             }
         }
         #endregion
@@ -275,25 +341,30 @@ namespace Drugs2020.DAL
         {
             try
             {
+                if (ctx.Recepts.Find(recept.ReceptId) != null)
+                    throw new ArgumentException("Recept Already exists");
                 ctx.Recepts.Add(recept);
                 ctx.SaveChanges();
             }
+            catch (ArgumentException) { throw; }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - AddRecept " + ex);
+                throw new Exception("Error Adding Recept");
             }
         }
         public void DeleteReceipt(string ReceptId)
         {
             try
             {
-
+                if (ctx.Recepts.Find(ReceptId) == null)
+                    throw new ArgumentException("Recept not exists");
                 ctx.Recepts.Remove(ctx.Recepts.Find(ReceptId));
                 ctx.SaveChanges();
             }
+            catch (ArgumentException) { throw; }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - DeleteReceipt " + ex);
+                throw new Exception("Error Deleting Recept");
             }
         }
 
@@ -305,7 +376,7 @@ namespace Drugs2020.DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - GetAllReceptsOfPatient " + ex);
+                throw new Exception("Error to Get List of Recepts");
             }
         }
         public List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate)
@@ -316,46 +387,57 @@ namespace Drugs2020.DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - GetAllReceptsByDate " + ex);
+                throw new Exception("Error to Get List of Recepts By Date");
             }
         }
         public List<Recept> GetAllReceptsByDrug(string drugIdCode)
         {
             try
             {
-                //string name = ctx.Drugs.Find(drugIdCode).Name;
                 return ctx.Recepts.Where(r => r.IdCodeOfDrug == drugIdCode).ToList();
             }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - GetAllReceptsByDrug " + ex);
+                throw new Exception("Error to Get List of Recepts By Drug");
             }
         }
         #endregion
 
         #region MediclRecord
+        public bool DoesMediclRecordExist(string id)
+        {
+            if (ctx.MedicalRecords.Find(id) != null)
+                return true;
+            return false;
+        }
         public void AddMediclRecordToPatient(MedicalRecord medicalRecord)
         {
             try
             {
+                if (ctx.MedicalRecords.Find(medicalRecord.MedicalRecordID) != null)
+                    throw new ArgumentException("Medical Record Already exists");
                 ctx.MedicalRecords.Add(medicalRecord);
                 ctx.SaveChanges();
             }
+            catch (ArgumentException) { throw; }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - AddMediclRecordToPatient " + ex);
+                throw new Exception("Error adding MedicalRecord");
             }
         }
         public MedicalRecord GetMedicalRecord(string medicalRecordID)
         {
             try
             {
-
-                return ctx.MedicalRecords.Find(medicalRecordID);
+                MedicalRecord medicalRecord = ctx.MedicalRecords.Find(medicalRecordID);
+                if (medicalRecord == null)
+                    throw new KeyNotFoundException("Not found Medical Record");
+                return medicalRecord;
             }
+            catch (KeyNotFoundException) { throw; }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - getMedicalRecord " + ex);
+                throw new Exception("Error Get Medical Record");
             }
         }
 
@@ -363,14 +445,17 @@ namespace Drugs2020.DAL
         {
             try
             {
+                if (ctx.MedicalRecords.Find(medicalRecordID) == null)
+                    throw new ArgumentException("Medical Record not exists");
                 ctx.MedicalRecords.Remove(ctx.MedicalRecords.Find(medicalRecord.MedicalRecordID));
                 ctx.SaveChanges();
                 ctx.MedicalRecords.Add(medicalRecord);
                 ctx.SaveChanges();
             }
+            catch (ArgumentException) { throw; }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - UpdateMedicalRecord " + ex);
+                throw new Exception("Error update Medical Record ");
             }
         }
         #endregion
@@ -380,12 +465,15 @@ namespace Drugs2020.DAL
         {
             try
             {
+                if (ctx.ActiveIngredients.Find(ingredient.ID) != null)
+                    throw new ArgumentException("Active Ingredient Already exists");
                 ctx.ActiveIngredients.Add(ingredient);
                 ctx.SaveChanges();
             }
+            catch (ArgumentException) { throw; }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - AddActiveIngredient " + ex);
+                throw new Exception("Error add Active Ingredient");
             }
         }
         public List<ActiveIngredient> GetActiveIngredientsOfDrug(string drugIdCode)
@@ -396,33 +484,39 @@ namespace Drugs2020.DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - GetActiveIngredientsOfDrug " + ex);
+                throw new Exception("Error Get Active Ingredients Of Drug ");
             }
         }
         public void UpdateActiveIngredient(ActiveIngredient ingredient)
         {
             try
             {
+                if (ctx.ActiveIngredients.Find(ingredient.ID) == null)
+                    throw new ArgumentException("Active Ingredient not exists");
                 ctx.ActiveIngredients.Remove(ctx.ActiveIngredients.Find(ingredient));
                 ctx.SaveChanges();
                 ctx.ActiveIngredients.Add(ingredient);
                 ctx.SaveChanges();
             }
+            catch (ArgumentException) { throw; }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - UpdateActiveIngredient " + ex);
+                throw new Exception("Error - Update Active Ingredient ");
             }
         }
         public void DeleteActiveIngredient(ActiveIngredient ingredient)
         {
             try
             {
+                if (ctx.ActiveIngredients.Find(ingredient.ID) == null)
+                    throw new ArgumentException("Active Ingredient not exists");
                 ctx.ActiveIngredients.Remove(ctx.ActiveIngredients.Find(ingredient.ID));
                 ctx.SaveChanges();
             }
+            catch (ArgumentException) { throw; }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - DeleteActiveIngredient " + ex);
+                throw new Exception("Error - Delete Active Ingredient ");
             }
         }
         public List<MedicalRecord> GetAllMedicalRecordsOfPatient(string patientId)
@@ -433,11 +527,9 @@ namespace Drugs2020.DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("DalImplementation - GetAllMedicalRecordsOfPatient " + ex);
+                throw new Exception("Error - Get All Medical Records Of Patient ");
             }
         }
-
-
 
         #endregion
     }

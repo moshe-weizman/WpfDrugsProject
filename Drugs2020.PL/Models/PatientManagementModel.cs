@@ -23,12 +23,21 @@ namespace Drugs2020.PL.Models
 
         internal void SyncWithDb()
         {
-            Patients = bl.GetAllPatients();
+            try
+            {
+                Patients = bl.GetAllPatients();
+            }
+            catch (Exception) { throw; }
         }
 
         internal void RemoveFromDb(Patient patient)
         {
-            bl.DeletePatient(patient.ID);
+            try
+            {
+                bl.DeletePatient(patient.ID);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ) { throw; }
             SyncWithDb();
         }
     }

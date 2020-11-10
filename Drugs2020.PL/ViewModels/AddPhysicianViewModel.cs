@@ -41,7 +41,18 @@ namespace Drugs2020.PL.ViewModels
             containingVm.startProcessing("Adding to database");
             await Task.Run(() =>
             {
-                addPhysicianM.AddPhysicianToDb();
+                try
+                {
+                    addPhysicianM.AddPhysicianToDb();
+                }
+                catch (ArgumentException ex)
+                {
+                    containingVm.ShowMessage(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    containingVm.ShowMessage(ex.Message);
+                }
                 containingVm.finishProcessing("Success!");
                 GoBack();
             });
@@ -57,8 +68,14 @@ namespace Drugs2020.PL.ViewModels
             containingVm.startProcessing("Updating on database");
             await Task.Run(() =>
             {
-                addPhysicianM.UpdatePhysician();
-                containingVm.finishProcessing("Success!");
+                try
+                {
+                    addPhysicianM.UpdatePhysician();
+                    containingVm.finishProcessing("Success!");
+                }
+                catch (ArgumentException ex) { containingVm.ShowMessage(ex.Message); }
+                catch (Exception ex) { containingVm.ShowMessage(ex.Message); }
+                
                 GoBack();
             });
         }

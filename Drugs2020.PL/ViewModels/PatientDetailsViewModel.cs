@@ -23,14 +23,7 @@ namespace Drugs2020.PL.ViewModels
         public Patient CurrentPatient
         {
             get { return physicianShellModel.CurrentPatient; }
-            //set//לכאורה זה לא נצרך
-            //{
-            //    physicianShellModel.CurrentPatient = value;
-            //    if (PropertyChanged != null)
-            //    {
-            //        PropertyChanged(this, new PropertyChangedEventArgs("CurrentPatient"));
-            //    }
-            //}
+           
         }
        
 

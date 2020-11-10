@@ -49,10 +49,13 @@ namespace Drugs2020.PL.ViewModels
 
         private void DrugsChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            if (e.Action == NotifyCollectionChangedAction.Add)
+            try
             {
-                drugsManagementM.SyncWithDb();
-            }
+                if (e.Action == NotifyCollectionChangedAction.Add)
+                {
+                    drugsManagementM.SyncWithDb();
+                }
+            }catch(Exception ex) { containingShellVm.ShowMessage(ex.Message); }
         }
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         public void OpenEditingScreen(object selectedDrug)
@@ -63,7 +66,12 @@ namespace Drugs2020.PL.ViewModels
         public void RemoveItemFromDb(object selectedDrug)
         {
             Drug drug = selectedDrug as Drug;
-            drugsManagementM.RemoveFromDb(drug);
+            try
+            {
+                drugsManagementM.RemoveFromDb(drug);
+            }
+            catch (ArgumentException e) { containingShellVm.ShowMessage(e.Message); }
+            catch (Exception e) { containingShellVm.ShowMessage(e.Message); }
             Items.Remove(drug);
         }
 

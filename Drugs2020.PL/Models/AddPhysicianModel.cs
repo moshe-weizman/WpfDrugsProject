@@ -21,20 +21,26 @@ namespace Drugs2020.PL.Models
 
         public void AddPhysicianToDb()
         {
-            bl.AddPhysician(Physician);
+            try
+            {
+                bl.AddPhysician(Physician);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ex) { throw; }
         }
         public bool DoesPhysicianExist()
         {
-            if (bl.GetPhysician(Physician.ID) != null)
-            {
-                return true;
-            }
-            return false;
+            return bl.DoesPhysicianExist(Physician.ID);
         }
 
         public void UpdatePhysician()
         {
-            bl.UpdatePhysician(Physician.ID, Physician);
+            try
+            {
+                bl.UpdatePhysician(Physician.ID, Physician);
+            }
+            catch(ArgumentException) { throw; }
+            catch (Exception ) { throw; }
         }
     }
 }

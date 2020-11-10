@@ -10,6 +10,7 @@ namespace Drugs2020.DAL
         IUser IdentifyUser(string userID);
 
         #region Patient CRUD Functions
+        bool DoesPatientExist(string id);
         void AddPatient(Patient patient);
         Patient GetPatient(string id);
         void UpdatePatient(Patient patient);
@@ -18,6 +19,7 @@ namespace Drugs2020.DAL
         #endregion
 
         #region Physician CRUD Functions
+        bool DoesPhysicianExist(string id);
         void AddPhysician(Physician physician);
         Physician GetPhysician(string id);
         void UpdatePhysician(Physician physician);
@@ -26,6 +28,7 @@ namespace Drugs2020.DAL
         #endregion
 
         #region Drug CRUD Functions
+        bool DoesDrugExist(string IdCode);
         void AddDrug(Drug drug);
         Drug GetDrug(string IdCode);
         void UpdateDrug(Drug drug);
@@ -34,6 +37,7 @@ namespace Drugs2020.DAL
         #endregion
 
         #region MedicalFile
+        bool DoesMedicalFileExist(string id);
         void AddMedicalFile(MedicalFile medicalFile);
         MedicalFile GetMedicalFile(string patientID);
         void UpdateMedicalFile(string patientId, MedicalFile medicalFile);
@@ -45,11 +49,13 @@ namespace Drugs2020.DAL
         List<Recept> GetAllReceptsOfPatient(string id);
         List<Recept> GetAllReceptsByDate(DateTime startDate, DateTime endDate);
         List<Recept> GetAllReceptsByDrug(string drugIdCode);
-        List<MedicalRecord> GetAllMedicalRecordsOfPatient(string patientId); 
+        List<MedicalRecord> GetAllMedicalRecordsOfPatient(string patientId);
 
         #endregion
 
         #region MediclRecord
+        bool DoesMediclRecordExist(string id);
+
         void AddMediclRecordToPatient(MedicalRecord medicalRecord);
         MedicalRecord GetMedicalRecord(string medicalRecordID);
         void UpdateMedicalRecord(string medicalRecordID, MedicalRecord medicalRecord);

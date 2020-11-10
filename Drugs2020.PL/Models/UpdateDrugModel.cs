@@ -24,17 +24,32 @@ namespace Drugs2020.PL.Models
 
         public void UpdateDrugInDb()
         {
-            bl.UpdateDrug(Drug.IdCode, Drug);
+            try
+            {
+                bl.UpdateDrug(Drug.IdCode, Drug);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ex) { throw; }
         }
 
         internal void AddIngredient(ActiveIngredient ingredientToAdd)
         {
-            bl.AddActiveIngredient(ingredientToAdd);
+            try
+            {
+                bl.AddActiveIngredient(ingredientToAdd);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ex) { throw; }
         }
 
         internal void RemoveIngredient(ActiveIngredient activeIngredient)
         {
-            bl.DeleteActiveIngredient(activeIngredient);
+            try
+            {
+                bl.DeleteActiveIngredient(activeIngredient);
+            }
+            catch (ArgumentException) { throw; }
+            catch (Exception ex) { throw; }
         }
     }
 }
