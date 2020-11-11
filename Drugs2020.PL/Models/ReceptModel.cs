@@ -58,7 +58,8 @@ namespace Drugs2020.PL.Models
         public string CheckConflicts(string IdCodeOfDrug)
         {
             Conflicts = bl.checkConflicts(IdCodeOfDrug, AllRecepts.Select(x => x.IdCodeOfDrug).ToList());
-            return string.Join(",  ", Conflicts.ToArray());
+            result = string.Join(",  ", Conflicts.ToArray());
+            return result;
         }
 
 

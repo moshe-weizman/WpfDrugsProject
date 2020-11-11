@@ -105,7 +105,7 @@ namespace Drugs2020.DAL
         {
             try
             {
-                if (ctx.Patients.Find(patient.ID) != null)
+                if (DoesPatientExist(patient.ID))
                     throw new ArgumentException("id Already exists");
                 ctx.Patients.Add(patient);
                 ctx.SaveChanges();
@@ -120,7 +120,7 @@ namespace Drugs2020.DAL
         {
             try
             {
-                if (ctx.Patients.Find(id) == null)
+                if (!DoesPatientExist(id))
                     throw new ArgumentException("id not exists");
                 ctx.Patients.Remove(ctx.Patients.Find(id));
                 ctx.SaveChanges();
@@ -155,7 +155,7 @@ namespace Drugs2020.DAL
             {
                 Patient patient = ctx.Patients.Find(id);
                 if (patient == null)
-                    throw new KeyNotFoundException(id + "of Patient not found");
+                    throw new KeyNotFoundException(id + " of Patient not found");
                 return patient;
             }
             catch (KeyNotFoundException e) { throw; }
@@ -189,7 +189,7 @@ namespace Drugs2020.DAL
         {
             try
             {
-                if (ctx.Physicians.Find(physician.ID) != null)
+                if (DoesPhysicianExist(physician.ID))
                     throw new ArgumentException("Id Already exists");
                 ctx.Physicians.Add(physician);
                 ctx.SaveChanges();
@@ -204,7 +204,7 @@ namespace Drugs2020.DAL
         {
             try
             {
-                if (ctx.Physicians.Find(id) == null)
+                if (!DoesPhysicianExist(id))
                     throw new ArgumentException("physician not exists");
                 ctx.Physicians.Remove(ctx.Physicians.Find(id));
                 ctx.SaveChanges();
@@ -219,7 +219,7 @@ namespace Drugs2020.DAL
         {
             try
             {
-                if (ctx.Physicians.Find(physician.ID) == null)
+                if (!DoesPhysicianExist(physician.ID))
                     throw new ArgumentException("physician not exists");
                 ctx.Physicians.Remove(ctx.Physicians.Find(physician.ID));
                 ctx.SaveChanges();
@@ -281,7 +281,7 @@ namespace Drugs2020.DAL
                     drug.ImageUrl = defaultImagePath;
                 }
 
-                if (ctx.Drugs.Find(drug.IdCode) != null)
+                if (DoesDrugExist(drug.IdCode))
                     throw new ArgumentException("Id Already exists");
                 ctx.Drugs.Add(drug);
                 ctx.SaveChanges();
@@ -334,7 +334,7 @@ namespace Drugs2020.DAL
                 {
                     cloud.Remove(id + IMAGES_FILES_EXTENSION);
                 }
-                if (ctx.Drugs.Find(id) == null)
+                if (!DoesDrugExist(id))
                     throw new ArgumentException("Id not exists");
                 ctx.Drugs.Remove(ctx.Drugs.Find(id));
                 ctx.SaveChanges();
@@ -349,7 +349,7 @@ namespace Drugs2020.DAL
         {
             try
             {
-                if (ctx.Drugs.Find(drug.IdCode) == null)
+                if (!DoesDrugExist(drug.IdCode))
                     throw new ArgumentException("Id not exists");
                 DeleteDrug(drug.IdCode);
                 AddDrug(drug);
@@ -405,7 +405,7 @@ namespace Drugs2020.DAL
         {
             try
             {
-                if (ctx.MedicalFiles.Find(medicalFile.PatientId) != null)
+                if (DoesMedicalFileExist(medicalFile.PatientId))
                     throw new ArgumentException("medica File Already exists");
                 ctx.MedicalFiles.Add(medicalFile);
                 ctx.SaveChanges();
@@ -436,7 +436,7 @@ namespace Drugs2020.DAL
         {
             try
             {
-                if (ctx.MedicalFiles.Find(patientId) == null)
+                if (!DoesMedicalFileExist(patientId))
                     throw new ArgumentException("medicalFile not exists");
                 ctx.MedicalFiles.Remove(ctx.MedicalFiles.Find(patientId));
                 ctx.SaveChanges();
@@ -529,7 +529,7 @@ namespace Drugs2020.DAL
         {
             try
             {
-                if (ctx.MedicalRecords.Find(medicalRecord.MedicalRecordID) != null)
+                if (DoesMediclRecordExist(medicalRecord.MedicalRecordID))
                     throw new ArgumentException("Medical Record Already exists");
                 ctx.MedicalRecords.Add(medicalRecord);
                 ctx.SaveChanges();
@@ -560,7 +560,7 @@ namespace Drugs2020.DAL
         {
             try
             {
-                if (ctx.MedicalRecords.Find(medicalRecordID) == null)
+                if (!DoesMediclRecordExist(medicalRecordID))
                     throw new ArgumentException("Medical Record not exists");
                 ctx.MedicalRecords.Remove(ctx.MedicalRecords.Find(medicalRecord.MedicalRecordID));
                 ctx.SaveChanges();

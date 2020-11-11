@@ -38,12 +38,7 @@
                       ItemsSource="{Binding DrugCollection}"
                       SelectedItem="{Binding SelectedDrug}"
                       HorizontalAlignment="Center">
-                <!--<ComboBox.Resources>
-                <Style TargetType="ComboBoxItem">
-                    <Setter Property="Background" Value="#1C2F3E"/>
-                </Style>
-            </ComboBox.Resources>-->
-
+               
                 <ComboBox.ItemContainerStyle>
                     <Style TargetType="{x:Type ComboBoxItem}">
                         <Setter Property="Background"
@@ -75,7 +70,6 @@
                                 Height="40"
                                 Text="{Binding Recept.Quantity}" />
 
-            <!--<TextBox x:Name="QuantityTextBox"   Height="40" TextWrapping="Wrap" Text="{Binding Recept.Quantity}"/>-->
 
             <TextBlock TextWrapping="Wrap"
                        Text="Days:" />
@@ -85,7 +79,6 @@
                                 Height="40"
                                 Text="{Binding Recept.Days}" />
 
-            <!--<TextBox x:Name="DaysTextBox" Height="40" TextWrapping="Wrap" Text="{Binding Recept.Days}"/>-->
 
             <Button x:Name="PdfButton" Content="Create PDF File"
                     Margin="10"
