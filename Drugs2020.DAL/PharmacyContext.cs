@@ -5,7 +5,7 @@ namespace Drugs2020.DAL
 {
     public class PharmacyContext : DbContext
     {
-        public PharmacyContext() : base("test_29")
+        public PharmacyContext() : base("test_30")
         {
         //  Database.SetInitializer(new SeedData());
            
